@@ -6,7 +6,7 @@
     },
     "item_input": {
         "count": 1,
-        "tag": "mekanism:crystals/iridium"
+        "tag": "c:crystals/iridium"
     },
     "output": {
         "count": 1,

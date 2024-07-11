@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -28,13 +29,22 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_PLA);
         tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_SIL);
         tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_ZIN);
+        tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_IRI);
+        tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_LEA);
+        tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_OSM);
+        tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_URA);
+        tag(ItemTagRegistry.CLUMPS_MEK).addTag(ItemTagRegistry.CLUMPS_MEK_TIN);
 
         tag(ItemTagRegistry.CLUMPS_MEK_ALU).add(MekRegistry.ALUM_CLUMP.get());
         tag(ItemTagRegistry.CLUMPS_MEK_NIC).add(MekRegistry.NICK_CLUMP.get());
         tag(ItemTagRegistry.CLUMPS_MEK_PLA).add(MekRegistry.PLAT_CLUMP.get());
         tag(ItemTagRegistry.CLUMPS_MEK_SIL).add(MekRegistry.SILV_CLUMP.get());
         tag(ItemTagRegistry.CLUMPS_MEK_ZIN).add(MekRegistry.ZINC_CLUMP.get());
-
+        tag(ItemTagRegistry.CLUMPS_MEK_IRI).add(MekRegistry.IRIDIUM_CLUMP.get());
+        tag(ItemTagRegistry.CLUMPS_MEK_LEA).add(MekRegistry.LEAD_CLUMP.get());
+        tag(ItemTagRegistry.CLUMPS_MEK_OSM).add(MekRegistry.OSMI_CLUMP.get());
+        tag(ItemTagRegistry.CLUMPS_MEK_URA).add(MekRegistry.URAN_CLUMP.get());
+        tag(ItemTagRegistry.CLUMPS_MEK_TIN).add(MekRegistry.TIN_CLUMP.get());
         //
 
 
@@ -43,12 +53,24 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_PLA);
         tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_SIL);
         tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_ZIN);
+        tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_IRI);
+        tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_LEA);
+        tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_OSM);
+        tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_URA);
+        tag(ItemTagRegistry.CRYSTAL_MEK).addTag(ItemTagRegistry.CRYSTAL_MEK_TIN);
+
 
         tag(ItemTagRegistry.CRYSTAL_MEK_ALU).add(MekRegistry.ALUM_CRYSTAL.get());
         tag(ItemTagRegistry.CRYSTAL_MEK_NIC).add(MekRegistry.NICK_CRYSTAL.get());
         tag(ItemTagRegistry.CRYSTAL_MEK_PLA).add(MekRegistry.PLAT_CRYSTAL.get());
         tag(ItemTagRegistry.CRYSTAL_MEK_SIL).add(MekRegistry.SILV_CRYSTAL.get());
         tag(ItemTagRegistry.CRYSTAL_MEK_ZIN).add(MekRegistry.ZINC_CRYSTAL.get());
+        tag(ItemTagRegistry.CRYSTAL_MEK_IRI).add(MekRegistry.IRIDIUM_CRYSTAL.get());
+        tag(ItemTagRegistry.CRYSTAL_MEK_LEA).add(MekRegistry.LEAD_CRYSTAL.get());
+        tag(ItemTagRegistry.CRYSTAL_MEK_OSM).add(MekRegistry.OSMI_CRYSTAL.get());
+        tag(ItemTagRegistry.CRYSTAL_MEK_URA).add(MekRegistry.URAN_CRYSTAL.get());
+        tag(ItemTagRegistry.CRYSTAL_MEK_TIN).add(MekRegistry.TIN_CRYSTAL.get());
+
         //
 
         tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_ALU);
@@ -56,12 +78,24 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_PLA);
         tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_SIL);
         tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_ZIN);
+        tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_IRI);
+        tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_LEA);
+        tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_OSM);
+        tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_URA);
+        tag(ItemTagRegistry.DIRTY_MEK).addTag(ItemTagRegistry.DIRTY_MEK_TIN);
+
 
         tag(ItemTagRegistry.DIRTY_MEK_ALU).add(MekRegistry.ALUM_DIRTY.get());
         tag(ItemTagRegistry.DIRTY_MEK_NIC).add(MekRegistry.NICK_DIRTY.get());
         tag(ItemTagRegistry.DIRTY_MEK_PLA).add(MekRegistry.PLAT_DIRTY.get());
         tag(ItemTagRegistry.DIRTY_MEK_SIL).add(MekRegistry.SILV_DIRTY.get());
         tag(ItemTagRegistry.DIRTY_MEK_ZIN).add(MekRegistry.ZINC_DIRTY.get());
+        tag(ItemTagRegistry.DIRTY_MEK_IRI).add(MekRegistry.IRIDIUM_DIRTY.get());
+        tag(ItemTagRegistry.DIRTY_MEK_LEA).add(MekRegistry.LEAD_DIRTY.get());
+        tag(ItemTagRegistry.DIRTY_MEK_OSM).add(MekRegistry.OSMI_DIRTY.get());
+        tag(ItemTagRegistry.DIRTY_MEK_URA).add(MekRegistry.URAN_DIRTY.get());
+        tag(ItemTagRegistry.DIRTY_MEK_TIN).add(MekRegistry.TIN_DIRTY.get());
+
 
         //
 
@@ -70,12 +104,24 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_PLA);
         tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_SIL);
         tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_ZIN);
+        tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_IRI);
+        tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_LEA);
+        tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_OSM);
+        tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_URA);
+        tag(ItemTagRegistry.SHARD_MEK).addTag(ItemTagRegistry.SHARD_MEK_TIN);
+
 
         tag(ItemTagRegistry.SHARD_MEK_ALU).add(MekRegistry.ALUM_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_NIC).add(MekRegistry.NICK_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_PLA).add(MekRegistry.PLAT_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_SIL).add(MekRegistry.SILV_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_ZIN).add(MekRegistry.ZINC_SHARD.get());
+        tag(ItemTagRegistry.SHARD_MEK_IRI).add(MekRegistry.IRIDIUM_SHARD.get());
+        tag(ItemTagRegistry.SHARD_MEK_LEA).add(MekRegistry.LEAD_SHARD.get());
+        tag(ItemTagRegistry.SHARD_MEK_OSM).add(MekRegistry.OSMI_SHARD.get());
+        tag(ItemTagRegistry.SHARD_MEK_URA).add(MekRegistry.URAN_SHARD.get());
+        tag(ItemTagRegistry.SHARD_MEK_TIN).add(MekRegistry.TIN_SHARD.get());
+        
 
         //
         tag(ItemTagRegistry.ALUMINUM_INGOT).add(BlockList.ALUMINUM_INGOT.get());
@@ -555,6 +601,10 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.ORES).add(BlockList.RUBY_ORE_ITEM.get());
         tag(ItemTagRegistry.ORES).add(BlockList.SAPPHIRE_ORE_ITEM.get());
         tag(ItemTagRegistry.ORES).add(BlockList.PERIDOT_ORE_ITEM.get());
+        tag(ItemTagRegistry.ORES).add(BlockList.SALT_ORE_ITEM.get());
+        tag(ItemTagRegistry.ORES).add(BlockList.SULFUR_ORE_ITEM.get());
+        tag(ItemTagRegistry.ORES).add(BlockList.CINNABAR_ORE_ITEM.get());
+        tag(ItemTagRegistry.ORES).add(BlockList.FLUORITE_ORE_ITEM.get());
 
 
         tag(ItemTagRegistry.ORES).add(BlockList.ALUMINUM_SLATE_ORE_ITEM.get());
@@ -708,6 +758,18 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.RAW_TIN).add(BlockList.TIN_RAW.get());
         tag(ItemTagRegistry.RAW_URANIUM).add(BlockList.URANIUM_RAW.get());
         tag(ItemTagRegistry.RAW_ZINC).add(BlockList.ZINC_RAW.get());
+        tag(ItemTagRegistry.DUSTS).add(BlockList.SALT.get());
+        tag(ItemTagRegistry.SALT_DUST).add(BlockList.SALT.get());
+        tag(ItemTagRegistry.RAW_SULFUR).add(BlockList.SULFUR.get());
+        tag(ItemTagRegistry.SULFUR_DUST).add(BlockList.SULFUR.get());
+        tag(ItemTagRegistry.DYES).add(BlockList.SULFUR.get());
+        tag(ItemTagRegistry.YELLOW_DYE).add(BlockList.SULFUR.get());
+
+        tag(ItemTagRegistry.MUFFLING_CENTER).add(BlockList.FLUORITE.get());
+        tag(ItemTagRegistry.RAW_FLUORITE).add(BlockList.FLUORITE.get());
+        tag(ItemTagRegistry.GEMS).add(BlockList.CINNABAR.get());
+        tag(ItemTagRegistry.RAW_CINNABAR).add(BlockList.CINNABAR.get());
+        tag(ItemTagRegistry.GEMS).add(BlockList.FLUORITE.get());
 
         tag(ItemTagRegistry.RAWORES).add(BlockList.ALUMINUM_RAW.get());
         tag(ItemTagRegistry.RAWORES).add(BlockList.IRIDIUM_RAW.get());

@@ -15,6 +15,8 @@ public class ItemTagRegistry {
     //ATM Compat
     //public static final TagKey<Block> ANCIENT_STONE = BlockTags.create(Reference.location("allthemodium:ancient_stone"));
     //
+    //Mekanism Compat
+    public static final TagKey<Item> MUFFLING_CENTER = ItemTags.create(Reference.mek("muffling_center"));
 
     public static final TagKey<Item> ORE_HAMMERS = ItemTags.create(Reference.ato("ore_hammers"));
     public static final TagKey<Item> INGOTS = ItemTags.create(Reference.forge("ingots"));
@@ -24,6 +26,7 @@ public class ItemTagRegistry {
     public static final TagKey<Item> GEARS = ItemTags.create(Reference.forge("gears"));
     public static final TagKey<Item> PLATES = ItemTags.create(Reference.forge("plates"));
     public static final TagKey<Item> RODS = ItemTags.create(Reference.forge("rods"));
+    public static final TagKey<Item> DYES = ItemTags.create(Reference.forge("dyes"));
     public static final TagKey<Item> RODS_METAL = ItemTags.create(Reference.forge("rods/metal"));
 
     public static final TagKey<Block> FORES = BlockTags.create(Reference.forge("ores"));
@@ -31,6 +34,9 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RAWORES = ItemTags.create(Reference.forge("raw_materials"));
     public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));
     public static final TagKey<Item> GEMS = ItemTags.create(Reference.forge("gems"));
+
+    public static final TagKey<Item> YELLOW_DYE = ItemTags.create(Reference.forge("dyes/yellow"));
+
 
     public static final TagKey<Item> LEAD_INGOT = ItemTags.create(Reference.ingot("lead"));
     public static final TagKey<Item> IRIDIUM_INGOT = ItemTags.create(Reference.ingot("iridium"));
@@ -249,6 +255,8 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RUBY_DUST = forge("dusts/ruby");
     public static final TagKey<Item> SAPPHIRE_DUST = forge("dusts/sapphire");
     public static final TagKey<Item> PERIDOT_DUST = forge("dusts/peridot");
+    public static final TagKey<Item> SALT_DUST = forge("dusts/salt");
+    public static final TagKey<Item> SULFUR_DUST = forge("dusts/sulfur");
     //ORE
 
 
@@ -266,6 +274,10 @@ public class ItemTagRegistry {
     public static final TagKey<Block> RUBY_ORE = BlockTags.create(Reference.ore("ruby"));
     public static final TagKey<Block> SAPPHIRE_ORE = BlockTags.create(Reference.ore("sapphire"));
     public static final TagKey<Block> QUARTZ_ORE = BlockTags.create(Reference.ore("quartz"));
+    public static final TagKey<Block> SALT_ORE = BlockTags.create(Reference.ore("salt"));
+    public static final TagKey<Block> SULFUR_ORE = BlockTags.create(Reference.ore("sulfur"));
+    public static final TagKey<Block> CINNABAR_ORE = BlockTags.create(Reference.ore("cinnabar"));
+    public static final TagKey<Block> FLUORITE_ORE = BlockTags.create(Reference.ore("fluorite"));
 
     public static final TagKey<Item> IRIDIUM_ORE_ITEM = ItemTags.create(Reference.ore("iridium"));
     public static final TagKey<Item> LEAD_ORE_ITEM = ItemTags.create(Reference.ore("lead"));
@@ -314,6 +326,10 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RAW_OSMIUM = ItemTags.create(Reference.raw_materials("osmium"));
     public static final TagKey<Item> RAW_ZINC = ItemTags.create(Reference.raw_materials("zinc"));
     public static final TagKey<Item> RAW_TIN = ItemTags.create(Reference.raw_materials("tin"));
+    public static final TagKey<Item> RAW_FLUORITE = ItemTags.create(Reference.gem("fluorite"));
+    public static final TagKey<Item> RAW_SALT = ItemTags.create(Reference.forge("dusts/salt"));
+    public static final TagKey<Item> RAW_SULFUR = ItemTags.create(Reference.forge("dusts/sulfur"));
+    public static final TagKey<Item> RAW_CINNABAR = ItemTags.create(Reference.gem("cinnabar"));
     public static final TagKey<Item> PERIDOT = ItemTags.create(Reference.gem("peridot"));
     public static final TagKey<Item> RUBY = ItemTags.create(Reference.gem("ruby"));
     public static final TagKey<Item> SAPPHIRE = ItemTags.create(Reference.gem("sapphire"));
@@ -329,6 +345,7 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RAW_ZINC_MATERIAL = ItemTags.create(Reference.raw_materials("zinc"));
     public static final TagKey<Item> RAW_TIN_MATERIAL = ItemTags.create(Reference.raw_materials("tin"));
 
+
     //MEK COMPAT
 
     public static final TagKey<Item> CLUMPS_MEK = ItemTags.create(Reference.mek("clumps"));
@@ -337,6 +354,11 @@ public class ItemTagRegistry {
     public static final TagKey<Item> CLUMPS_MEK_PLA = ItemTags.create(Reference.forge("clumps/platinum"));
     public static final TagKey<Item> CLUMPS_MEK_SIL = ItemTags.create(Reference.forge("clumps/silver"));
     public static final TagKey<Item> CLUMPS_MEK_ZIN = ItemTags.create(Reference.forge("clumps/zinc"));
+    public static final TagKey<Item> CLUMPS_MEK_IRI = ItemTags.create(Reference.forge("clumps/iridium"));
+    public static final TagKey<Item> CLUMPS_MEK_LEA = ItemTags.create(Reference.forge("clumps/lead"));
+    public static final TagKey<Item> CLUMPS_MEK_OSM = ItemTags.create(Reference.forge("clumps/osmium"));
+    public static final TagKey<Item> CLUMPS_MEK_TIN = ItemTags.create(Reference.forge("clumps/tin"));
+    public static final TagKey<Item> CLUMPS_MEK_URA = ItemTags.create(Reference.forge("clumps/uranium"));
 
     public static final TagKey<Item> CRYSTAL_MEK = ItemTags.create(Reference.mek("crystals"));
     public static final TagKey<Item> CRYSTAL_MEK_ALU = ItemTags.create(Reference.forge("crystals/aluminum"));
@@ -344,6 +366,11 @@ public class ItemTagRegistry {
     public static final TagKey<Item> CRYSTAL_MEK_PLA = ItemTags.create(Reference.forge("crystals/platinum"));
     public static final TagKey<Item> CRYSTAL_MEK_SIL = ItemTags.create(Reference.forge("crystals/silver"));
     public static final TagKey<Item> CRYSTAL_MEK_ZIN = ItemTags.create(Reference.forge("crystals/zinc"));
+    public static final TagKey<Item> CRYSTAL_MEK_IRI = ItemTags.create(Reference.forge("crystals/iridium"));
+    public static final TagKey<Item> CRYSTAL_MEK_LEA = ItemTags.create(Reference.forge("crystals/lead"));
+    public static final TagKey<Item> CRYSTAL_MEK_OSM = ItemTags.create(Reference.forge("crystals/osmium"));
+    public static final TagKey<Item> CRYSTAL_MEK_TIN = ItemTags.create(Reference.forge("crystals/tin"));
+    public static final TagKey<Item> CRYSTAL_MEK_URA = ItemTags.create(Reference.forge("crystals/uranium"));
 
     public static final TagKey<Item> DIRTY_MEK = ItemTags.create(Reference.mek("dirty_dusts"));
     public static final TagKey<Item> DIRTY_MEK_ALU = ItemTags.create(Reference.forge("dirty_dusts/aluminum"));
@@ -351,6 +378,12 @@ public class ItemTagRegistry {
     public static final TagKey<Item> DIRTY_MEK_PLA = ItemTags.create(Reference.forge("dirty_dusts/platinum"));
     public static final TagKey<Item> DIRTY_MEK_SIL = ItemTags.create(Reference.forge("dirty_dusts/silver"));
     public static final TagKey<Item> DIRTY_MEK_ZIN = ItemTags.create(Reference.forge("dirty_dusts/zinc"));
+    public static final TagKey<Item> DIRTY_MEK_IRI = ItemTags.create(Reference.forge("dirty_dusts/iridium"));
+    public static final TagKey<Item> DIRTY_MEK_LEA = ItemTags.create(Reference.forge("dirty_dusts/lead"));
+    public static final TagKey<Item> DIRTY_MEK_OSM = ItemTags.create(Reference.forge("dirty_dusts/osmium"));
+    public static final TagKey<Item> DIRTY_MEK_TIN = ItemTags.create(Reference.forge("dirty_dusts/tin"));
+    public static final TagKey<Item> DIRTY_MEK_URA = ItemTags.create(Reference.forge("dirty_dusts/uranium"));
+
 
     public static final TagKey<Item> SHARD_MEK = ItemTags.create(Reference.mek("shards"));
     public static final TagKey<Item> SHARD_MEK_ALU = ItemTags.create(Reference.forge("shards/aluminum"));
@@ -358,7 +391,12 @@ public class ItemTagRegistry {
     public static final TagKey<Item> SHARD_MEK_PLA = ItemTags.create(Reference.forge("shards/platinum"));
     public static final TagKey<Item> SHARD_MEK_SIL = ItemTags.create(Reference.forge("shards/silver"));
     public static final TagKey<Item> SHARD_MEK_ZIN = ItemTags.create(Reference.forge("shards/zinc"));
-
+    public static final TagKey<Item> SHARD_MEK_IRI = ItemTags.create(Reference.forge("shards/iridium"));
+    public static final TagKey<Item> SHARD_MEK_LEA = ItemTags.create(Reference.forge("shards/lead"));
+    public static final TagKey<Item> SHARD_MEK_OSM = ItemTags.create(Reference.forge("shards/osmium"));
+    public static final TagKey<Item> SHARD_MEK_TIN = ItemTags.create(Reference.forge("shards/tin"));
+    public static final TagKey<Item> SHARD_MEK_URA = ItemTags.create(Reference.forge("shards/uranium"));
+    
 
     private static TagKey<Item> forge(String name)
     {

@@ -32,7 +32,7 @@ public class AllTheOres {
 			ATOSlurries.SLURRIES.register(modEventBus);
 			MekRegistry.CREATIVE_TABS.register(modEventBus);
 			
-		}
+		} 
 		setupLogFilter();
 	}
 

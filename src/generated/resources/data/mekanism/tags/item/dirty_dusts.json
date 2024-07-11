@@ -4,6 +4,11 @@
     "#c:dirty_dusts/nickel",
     "#c:dirty_dusts/platinum",
     "#c:dirty_dusts/silver",
-    "#c:dirty_dusts/zinc"
+    "#c:dirty_dusts/zinc",
+    "#c:dirty_dusts/iridium",
+    "#c:dirty_dusts/lead",
+    "#c:dirty_dusts/osmium",
+    "#c:dirty_dusts/uranium",
+    "#c:dirty_dusts/tin"
   ]
 }

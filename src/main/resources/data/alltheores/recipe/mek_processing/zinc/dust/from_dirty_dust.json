@@ -2,7 +2,7 @@
     "type": "mekanism:enriching",
     "input": {
         "count": 1,
-        "tag": "mekanism:dirty_dusts/zinc"
+        "tag": "c:dirty_dusts/zinc"
     },
     "output": {
         "count": 1,

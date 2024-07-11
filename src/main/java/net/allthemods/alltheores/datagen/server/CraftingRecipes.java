@@ -155,7 +155,21 @@ private ShapedRecipeBuilder shaped(ItemLike provider) {
                 .setRod(BlockList.COPPER_ROD)
                 .build(consumer);
 
+        ShapedBlockBuilder.builder(ItemTagRegistry.SALT_DUST)
+                .setBlock(BlockList.SALT_BLOCK_ITEM)
+                .build(consumer);
 
+        ShapedBlockBuilder.builder(ItemTagRegistry.RAW_FLUORITE)
+                .setBlock(BlockList.FLUORITE_BLOCK_ITEM)
+                .build(consumer);
+        
+        ShapedBlockBuilder.builder(ItemTagRegistry.RAW_CINNABAR)        
+                .setBlock(BlockList.CINNABAR_BLOCK_ITEM)
+                .build(consumer);
+
+        ShapedBlockBuilder.builder(ItemTagRegistry.RAW_SULFUR)
+                .setBlock(BlockList.SULFUR_BLOCK_ITEM)
+                .build(consumer);
 
         ShapedBlockBuilder.builder(ItemTagRegistry.RUBY)
                 .setBlock(BlockList.RUBY_BLOCK_ITEM)
@@ -403,7 +417,47 @@ private ShapedRecipeBuilder shaped(ItemLike provider) {
     }
     protected void buildBlastingRecipes(RecipeOutput consumer) {
 
-        final String hasCondition = "has_item";
+        final String hasCondition = "has_item";  
+        
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(BlockList.OSMIUM_DUST.get()), RecipeCategory.MISC,BlockList.OSMIUM_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.OSMIUM_DUST.get()))
+                .save(consumer, smeltingRecipeDir("osmium_ingot","dust"));
+        
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(BlockList.URANIUM_DUST.get()), RecipeCategory.MISC,BlockList.URANIUM_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.URANIUM_DUST.get()))
+                .save(consumer, smeltingRecipeDir("uranium_ingot","dust"));
+        
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(BlockList.LEAD_DUST.get()), RecipeCategory.MISC,BlockList.LEAD_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.URANIUM_DUST.get()))
+                .save(consumer, smeltingRecipeDir("lead_ingot","dust"));   
+
+        SimpleCookingRecipeBuilder
+                .smelting(Ingredient.of(BlockList.TIN_DUST.get()), RecipeCategory.MISC,BlockList.TIN_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.TIN_DUST.get()))
+                .save(consumer, smeltingRecipeDir("tin_ingot","dust"));   
+
+                SimpleCookingRecipeBuilder
+                .blasting(Ingredient.of(BlockList.OSMIUM_DUST.get()), RecipeCategory.MISC,BlockList.OSMIUM_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.OSMIUM_DUST.get()))
+                .save(consumer, blastingRecipeDir("osmium_ingot","dust_blasting"));
+        
+        SimpleCookingRecipeBuilder
+                .blasting(Ingredient.of(BlockList.URANIUM_DUST.get()), RecipeCategory.MISC,BlockList.URANIUM_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.URANIUM_DUST.get()))
+                .save(consumer, blastingRecipeDir("uranium_ingot","dust_blasting"));
+        
+        SimpleCookingRecipeBuilder
+                .blasting(Ingredient.of(BlockList.LEAD_DUST.get()), RecipeCategory.MISC,BlockList.LEAD_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.URANIUM_DUST.get()))
+                .save(consumer, blastingRecipeDir("lead_ingot","dust_blasting"));   
+
+        SimpleCookingRecipeBuilder
+                .blasting(Ingredient.of(BlockList.TIN_DUST.get()), RecipeCategory.MISC,BlockList.TIN_INGOT.get(),0.15f,100)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.TIN_DUST.get()))
+                .save(consumer, blastingRecipeDir("tin_ingot","dust_blasting"));   
 
         SimpleCookingRecipeBuilder
                 .blasting(Ingredient.of(BlockList.INVAR_DUST.get()), RecipeCategory.MISC, BlockList.INVAR_INGOT.get(),0.15f,100)
@@ -632,7 +686,30 @@ private ShapedRecipeBuilder shaped(ItemLike provider) {
     protected void buildShapelessRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.CINNABAR.get(),9)
+                .requires(BlockList.CINNABAR_BLOCK_ITEM)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.CINNABAR_BLOCK_ITEM.get()))
+                .save(consumer, shapelessRecipeDir("cinnabar","block"));
 
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.FLUORITE.get(),9)
+                .requires(BlockList.FLUORITE_BLOCK_ITEM)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.FLUORITE_BLOCK_ITEM.get()))
+                .save(consumer, shapelessRecipeDir("fluorite","block"));
+        
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.SULFUR.get(),9)
+                .requires(BlockList.SULFUR_BLOCK_ITEM)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.SULFUR_BLOCK_ITEM.get()))
+                .save(consumer, shapelessRecipeDir("sulfur","block"));
+        
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.SALT.get(),9)
+                .requires(BlockList.SALT_BLOCK_ITEM)
+                .unlockedBy(hasCondition,RecipeProvider.has(BlockList.SALT_BLOCK_ITEM.get()))
+                .save(consumer, shapelessRecipeDir("salt","block"));
+                
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,BlockList.RUBY.get(),3)
                 .requires(ItemTagRegistry.ORE_HAMMERS)
@@ -1250,7 +1327,7 @@ private ShapedRecipeBuilder shaped(ItemLike provider) {
                 .save(consumer, shapelessRecipeDir("copper_ingot","block"));
     }
     private ResourceLocation smeltingRecipeDir(String typeIn, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,typeIn + "_from_" + typeOut);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,typeIn + "_from_" + typeOut + "smelting");
     }
 
     protected void buildSmeltingRecipes(RecipeOutput consumer) {

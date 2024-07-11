@@ -6,7 +6,7 @@
     },
     "item_input": {
         "count": 1,
-        "tag": "mekanism:crystals/nickel"
+        "tag": "c:crystals/nickel"
     },
     "output": {
         "count": 1,

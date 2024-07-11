@@ -16,7 +16,7 @@ public class MekRegistry {
     //  ***********************DIRTY DUSTS
 
     public static final DeferredHolder<Item,Item> ALUM_DIRTY = ITEMS.register("dirty_aluminum_dust", () -> new Item(new Item.Properties()));
-    public static final DeferredHolder<Item,Item> COPP_DIRTY = ITEMS.register("dirty_copper_dust", () -> new Item(new Item.Properties()));
+    //public static final DeferredHolder<Item,Item> COPP_DIRTY = ITEMS.register("dirty_copper_dust", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> LEAD_DIRTY = ITEMS.register("dirty_lead_dust", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> NICK_DIRTY = ITEMS.register("dirty_nickel_dust", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> OSMI_DIRTY = ITEMS.register("dirty_osmium_dust", () -> new Item(new Item.Properties()));
@@ -28,7 +28,7 @@ public class MekRegistry {
     public static final DeferredHolder<Item,Item> IRIDIUM_DIRTY = ITEMS.register("dirty_iridium_dust", () -> new Item(new Item.Properties()));
     //  ***********************SHARDS
     public static final DeferredHolder<Item,Item> ALUM_SHARD = ITEMS.register("aluminum_shard", () -> new Item(new Item.Properties()));
-    public static final DeferredHolder<Item,Item> COPP_SHARD = ITEMS.register("copper_shard", () -> new Item(new Item.Properties()));
+    //public static final DeferredHolder<Item,Item> COPP_SHARD = ITEMS.register("copper_shard", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> LEAD_SHARD = ITEMS.register("lead_shard", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> NICK_SHARD = ITEMS.register("nickel_shard", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> OSMI_SHARD = ITEMS.register("osmium_shard", () -> new Item(new Item.Properties()));
@@ -40,7 +40,7 @@ public class MekRegistry {
     public static final DeferredHolder<Item,Item> IRIDIUM_SHARD = ITEMS.register("iridium_shard", () -> new Item(new Item.Properties()));
     //  ************************CRYSTALS
     public static final DeferredHolder<Item,Item> ALUM_CRYSTAL = ITEMS.register("aluminum_crystal", () -> new Item(new Item.Properties()));
-    public static final DeferredHolder<Item,Item> COPP_CRYSTAL = ITEMS.register("copper_crystal", () -> new Item(new Item.Properties()));
+    //public static final DeferredHolder<Item,Item> COPP_CRYSTAL = ITEMS.register("copper_crystal", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> LEAD_CRYSTAL = ITEMS.register("lead_crystal", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> NICK_CRYSTAL = ITEMS.register("nickel_crystal", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> OSMI_CRYSTAL = ITEMS.register("osmium_crystal", () -> new Item(new Item.Properties()));
@@ -52,7 +52,7 @@ public class MekRegistry {
     public static final DeferredHolder<Item,Item> IRIDIUM_CRYSTAL = ITEMS.register("iridium_crystal", () -> new Item(new Item.Properties()));
     //  ************************CLUMPS
     public static final DeferredHolder<Item,Item> ALUM_CLUMP = ITEMS.register("aluminum_clump", () -> new Item(new Item.Properties()));
-    public static final DeferredHolder<Item,Item> COPP_CLUMP = ITEMS.register("copper_clump", () -> new Item(new Item.Properties()));
+    //public static final DeferredHolder<Item,Item> COPP_CLUMP = ITEMS.register("copper_clump", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> LEAD_CLUMP = ITEMS.register("lead_clump", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> NICK_CLUMP = ITEMS.register("nickel_clump", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item,Item> OSMI_CLUMP = ITEMS.register("osmium_clump", () -> new Item(new Item.Properties()));

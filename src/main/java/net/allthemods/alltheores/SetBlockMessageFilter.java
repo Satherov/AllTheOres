@@ -20,6 +20,9 @@ public class SetBlockMessageFilter extends AbstractFilter {
     @Override
     public Filter.Result filter(LogEvent event) {
         var message = event.getMessage();
+        if(StringUtils.startsWith(message.getFormat(), "Exception loading blockstate definition: 'allthemodium:blockstates/soul_lava.json")) {
+            return Result.DENY;
+        }
         if (StringUtils.startsWith(message.getFormat(), "Detected setBlock in a far chunk")) {
             return Result.DENY;
         }

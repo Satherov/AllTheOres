@@ -6,7 +6,7 @@
     },
     "item_input": {
         "count": 1,
-        "tag": "mekanism:crystals/aluminum"
+        "tag": "c:crystals/aluminum"
     },
     "output": {
         "count": 1,

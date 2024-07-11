@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.predicate.BlockPredicate;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -581,4 +582,8 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 			() -> new BlockItem(SULFUR_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> SULFUR = ITEMS.register("sulfur",
 			() -> new Item(new Item.Properties()));
+
+			
 }
+
+

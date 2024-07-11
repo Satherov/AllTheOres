@@ -113,7 +113,10 @@ public class BlockTags extends BlockTagsProvider {
         tag(ItemTagRegistry.TIN_ORE).add(BlockList.OTHER_TIN_ORE.get());
         tag(ItemTagRegistry.URANIUM_ORE).add(BlockList.OTHER_URANIUM_ORE.get());
         tag(ItemTagRegistry.ZINC_ORE).add(BlockList.OTHER_ZINC_ORE.get());
-
+        tag(ItemTagRegistry.SALT_ORE).add(BlockList.SALT_ORE.get());
+        tag(ItemTagRegistry.SULFUR_ORE).add(BlockList.SULFUR_ORE.get());
+        tag(ItemTagRegistry.FLUORITE_ORE).add(BlockList.FLUORITE_ORE.get());
+        tag(ItemTagRegistry.CINNABAR_ORE).add(BlockList.CINNABAR_ORE.get());
        ////
 
         tag(ItemTagRegistry.FORES).add(BlockList.ALUMINUM_ORE.get());
@@ -177,6 +180,11 @@ public class BlockTags extends BlockTagsProvider {
         tag(ItemTagRegistry.FORES).add(BlockList.OTHER_URANIUM_ORE.get());
         tag(ItemTagRegistry.FORES).add(BlockList.OTHER_QUARTZ_ORE.get());
         tag(ItemTagRegistry.FORES).add(BlockList.OTHER_ZINC_ORE.get());
+
+        tag(ItemTagRegistry.FORES).add(BlockList.SALT_ORE.get());
+        tag(ItemTagRegistry.FORES).add(BlockList.SULFUR_ORE.get());
+        tag(ItemTagRegistry.FORES).add(BlockList.FLUORITE_ORE.get());
+        tag(ItemTagRegistry.FORES).add(BlockList.CINNABAR_ORE.get());
 
 
         ////
@@ -261,6 +269,10 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.OTHER_TIN_ORE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.OTHER_URANIUM_ORE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.OTHER_ZINC_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.SALT_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.SULFUR_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.FLUORITE_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.CINNABAR_ORE.get());
 
         ////
 
@@ -274,6 +286,12 @@ public class BlockTags extends BlockTagsProvider {
         tag(ItemTagRegistry.IN_STONE).add(BlockList.TIN_ORE.get());
         tag(ItemTagRegistry.IN_STONE).add(BlockList.URANIUM_ORE.get());
         tag(ItemTagRegistry.IN_STONE).add(BlockList.ZINC_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.RUBY_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.SAPPHIRE_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.PERIDOT_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.SULFUR_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.FLUORITE_ORE.get());
+        tag(ItemTagRegistry.IN_STONE).add(BlockList.CINNABAR_ORE.get());
 
         tag(ItemTagRegistry.IN_DEEPSLATE).add(BlockList.ALUMINUM_SLATE_ORE.get());
         tag(ItemTagRegistry.IN_DEEPSLATE).add(BlockList.IRIDIUM_SLATE_ORE.get());

@@ -56,6 +56,10 @@
     "alltheores:other_tin_ore",
     "alltheores:other_uranium_ore",
     "alltheores:other_quartz_ore",
-    "alltheores:other_zinc_ore"
+    "alltheores:other_zinc_ore",
+    "alltheores:salt_ore",
+    "alltheores:sulfur_ore",
+    "alltheores:fluorite_ore",
+    "alltheores:cinnabar_ore"
   ]
 }

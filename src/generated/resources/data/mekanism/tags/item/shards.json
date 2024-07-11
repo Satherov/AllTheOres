@@ -4,6 +4,11 @@
     "#c:shards/nickel",
     "#c:shards/platinum",
     "#c:shards/silver",
-    "#c:shards/zinc"
+    "#c:shards/zinc",
+    "#c:shards/iridium",
+    "#c:shards/lead",
+    "#c:shards/osmium",
+    "#c:shards/uranium",
+    "#c:shards/tin"
   ]
 }

@@ -9,6 +9,12 @@
     "alltheores:silver_ore",
     "alltheores:tin_ore",
     "alltheores:uranium_ore",
-    "alltheores:zinc_ore"
+    "alltheores:zinc_ore",
+    "alltheores:ruby_ore",
+    "alltheores:sapphire_ore",
+    "alltheores:peridot_ore",
+    "alltheores:sulfur_ore",
+    "alltheores:fluorite_ore",
+    "alltheores:cinnabar_ore"
   ]
 }

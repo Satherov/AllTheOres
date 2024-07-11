@@ -6,7 +6,7 @@
     },
     "item_input": {
         "count": 1,
-        "tag": "mekanism:crystals/silver"
+        "tag": "c:crystals/silver"
     },
     "output": {
         "count": 1,

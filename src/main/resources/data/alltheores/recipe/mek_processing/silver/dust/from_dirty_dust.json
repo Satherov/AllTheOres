@@ -2,7 +2,7 @@
     "type": "mekanism:enriching",
     "input": {
         "count": 1,
-        "tag": "mekanism:dirty_dusts/silver"
+        "tag": "c:dirty_dusts/silver"
     },
     "output": {
         "count": 1,

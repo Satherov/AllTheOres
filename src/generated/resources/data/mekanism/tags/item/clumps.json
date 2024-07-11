@@ -4,6 +4,11 @@
     "#c:clumps/nickel",
     "#c:clumps/platinum",
     "#c:clumps/silver",
-    "#c:clumps/zinc"
+    "#c:clumps/zinc",
+    "#c:clumps/iridium",
+    "#c:clumps/lead",
+    "#c:clumps/osmium",
+    "#c:clumps/uranium",
+    "#c:clumps/tin"
   ]
 }

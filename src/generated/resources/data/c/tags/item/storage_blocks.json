@@ -10,6 +10,9 @@
     "alltheores:raw_tin_block",
     "alltheores:raw_uranium_block",
     "alltheores:raw_zinc_block",
+    "alltheores:salt_block",
+    "alltheores:sulfur_block",
+    "alltheores:fluorite_block",
     "alltheores:aluminum_block",
     "alltheores:iridium_block",
     "alltheores:lead_block",
@@ -31,6 +34,10 @@
     "alltheores:brass_block",
     "alltheores:ruby_block",
     "alltheores:sapphire_block",
-    "alltheores:peridot_block"
+    "alltheores:peridot_block",
+    "alltheores:sulfur_block",
+    "alltheores:salt_block",
+    "alltheores:fluorite_block",
+    "alltheores:cinnabar_block"
   ]
 }

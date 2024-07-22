@@ -105,7 +105,7 @@ public class ItemTagRegistry {
     public static final TagKey<Block> PERIDOT_BLOCK = BlockTags.create(Reference.block("peridot"));
     public static final TagKey<Block> RUBY_BLOCK = BlockTags.create(Reference.block("ruby"));
     public static final TagKey<Block> SAPPHIRE_BLOCK = BlockTags.create(Reference.block("sapphire"));
-
+    public static final TagKey<Block> SULFUR_BLOCK = BlockTags.create(Reference.block("sulfur"));
 
     public static final TagKey<Block> RAW_IRIDIUM_BLOCK = BlockTags.create(Reference.block("raw_iridium"));
     public static final TagKey<Block> RAW_LEAD_BLOCK = BlockTags.create(Reference.block("raw_lead"));
@@ -117,6 +117,11 @@ public class ItemTagRegistry {
     public static final TagKey<Block> RAW_OSMIUM_BLOCK = BlockTags.create(Reference.block("raw_osmium"));
     public static final TagKey<Block> RAW_ZINC_BLOCK = BlockTags.create(Reference.block("raw_zinc"));
     public static final TagKey<Block> RAW_TIN_BLOCK = BlockTags.create(Reference.block("raw_tin"));
+    public static final TagKey<Block> RAW_FLUORITE_BLOCK = BlockTags.create(Reference.block("fluorite"));
+    public static final TagKey<Block> RAW_SALT_BLOCK = BlockTags.create(Reference.block("salt_block"));
+    public static final TagKey<Block> RAW_SULFUR_BLOCK = BlockTags.create(Reference.block("raw_sulfur"));
+    public static final TagKey<Block> RAW_CINNABAR_BLOCK = BlockTags.create(Reference.block("raw_cinnabar"));
+    
 
     public static final TagKey<Item> RAW_IRIDIUM_BLOCK_ITEM = ItemTags.create(Reference.block("raw_iridium"));
     public static final TagKey<Item> RAW_LEAD_BLOCK_ITEM = ItemTags.create(Reference.block("raw_lead"));
@@ -128,6 +133,10 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RAW_OSMIUM_BLOCK_ITEM = ItemTags.create(Reference.block("raw_osmium"));
     public static final TagKey<Item> RAW_ZINC_BLOCK_ITEM = ItemTags.create(Reference.block("raw_zinc"));
     public static final TagKey<Item> RAW_TIN_BLOCK_ITEM = ItemTags.create(Reference.block("raw_tin"));
+    public static final TagKey<Item> RAW_FLUORITE_BLOCK_ITEM = ItemTags.create(Reference.block("fluorite"));
+    public static final TagKey<Item> RAW_SALT_BLOCK_ITEM = ItemTags.create(Reference.block("salt"));
+    public static final TagKey<Item> RAW_SULFUR_BLOCK_ITEM = ItemTags.create(Reference.block("raw_sulfur"));
+    public static final TagKey<Item> RAW_CINNABAR_BLOCK_ITEM = ItemTags.create(Reference.block("raw_cinnabar"));
 
     public static final TagKey<Item> IRIDIUM_BLOCK_ITEM = ItemTags.create(Reference.block("iridium"));
     public static final TagKey<Item> LEAD_BLOCK_ITEM = ItemTags.create(Reference.block("lead"));
@@ -301,6 +310,10 @@ public class ItemTagRegistry {
     public static final TagKey<Item> LAPIS_ORE_ITEM = ItemTags.create(Reference.ore("lapis"));
     public static final TagKey<Item> QUARTZ_ORE_ITEM = ItemTags.create(Reference.ore("quartz"));
     public static final TagKey<Item> REDSTONE_ORE_ITEM = ItemTags.create(Reference.ore("redstone"));
+    public static final TagKey<Item> SALT_ORE_ITEM = ItemTags.create(Reference.ore("salt"));
+    public static final TagKey<Item> SULFUR_ORE_ITEM = ItemTags.create(Reference.ore("sulfur"));
+    public static final TagKey<Item> CINNABAR_ORE_ITEM = ItemTags.create(Reference.ore("cinnabar"));
+    public static final TagKey<Item> FLUORITE_ORE_ITEM = ItemTags.create(Reference.ore("fluorite"));
 
     // ORE BLOCK BASE
     public static final TagKey<Block> IN_STONE = BlockTags.create(Reference.ores_in_ground("stone"));

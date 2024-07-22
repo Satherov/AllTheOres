@@ -15,6 +15,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
+import org.checkerframework.checker.units.qual.t;
+
 public class ItemTags extends ItemTagsProvider {
     public ItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
         super(packOutPut, lookupProvider,tagLookup, Reference.MOD_ID, existingFileHelper);
@@ -235,6 +237,9 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.RAW_TIN_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.RAW_URANIUM_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.RAW_ZINC_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SALT_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SULFUR_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.FLUORITE_BLOCK_ITEM.get());
 
         tag(ItemTagRegistry.COPPER_BLOCK_ITEM).add(Blocks.COPPER_BLOCK.asItem());
 
@@ -283,6 +288,12 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.RUBY_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SAPPHIRE_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.PERIDOT_BLOCK_ITEM.get());
+        
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SULFUR_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SALT_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.FLUORITE_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.CINNABAR_BLOCK_ITEM.get());
+        
 
         tag(ItemTagRegistry.PLATINUM_DUST).add(BlockList.PLATINUM_DUST.get());
         tag(ItemTagRegistry.IRIDIUM_DUST).add(BlockList.IRIDIUM_DUST.get());
@@ -532,6 +543,13 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.RUBY_ORE_ITEM).add(BlockList.RUBY_SLATE_ORE_ITEM.get());
         tag(ItemTagRegistry.SAPPHIRE_ORE_ITEM).add(BlockList.SAPPHIRE_SLATE_ORE_ITEM.get());
         tag(ItemTagRegistry.PERIDOT_ORE_ITEM).add(BlockList.PERIDOT_SLATE_ORE_ITEM.get());
+        tag(ItemTagRegistry.SULFUR_ORE_ITEM).add(BlockList.SULFUR_ORE_ITEM.get());
+        tag(ItemTagRegistry.SALT_ORE_ITEM).add(BlockList.SALT_ORE_ITEM.get());
+        tag(ItemTagRegistry.FLUORITE_ORE_ITEM).add(BlockList.FLUORITE_ORE_ITEM.get());
+        tag(ItemTagRegistry.RAW_FLUORITE_BLOCK_ITEM).add(BlockList.FLUORITE_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.RAW_CINNABAR_BLOCK_ITEM).add(BlockList.CINNABAR_BLOCK_ITEM.get());
+        tag(ItemTagRegistry.RAW_SULFUR_BLOCK_ITEM).add(BlockList.SULFUR_BLOCK_ITEM.get());
+
 
         tag(ItemTagRegistry.ALUMINUM_ORE_ITEM).add(BlockList.ALUMINUM_NETHER_ORE_ITEM.get());
         tag(ItemTagRegistry.IRIDIUM_ORE_ITEM).add(BlockList.IRIDIUM_NETHER_ORE_ITEM.get());
@@ -781,6 +799,8 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.RAWORES).add(BlockList.TIN_RAW.get());
         tag(ItemTagRegistry.RAWORES).add(BlockList.URANIUM_RAW.get());
         tag(ItemTagRegistry.RAWORES).add(BlockList.ZINC_RAW.get());
+        tag(ItemTagRegistry.RAWORES).add(BlockList.SALT.get());
+        tag(ItemTagRegistry.RAWORES).add(BlockList.SULFUR.get());
 
 
         tag(ItemTagRegistry.ORE_HAMMERS).add(BlockList.COPPER_ORE_HAMMER.get());

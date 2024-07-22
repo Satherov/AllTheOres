@@ -29,6 +29,8 @@ public class BlockTags extends BlockTagsProvider {
         tag(ItemTagRegistry.RAW_TIN_BLOCK).add(BlockList.RAW_TIN_BLOCK.get());
         tag(ItemTagRegistry.RAW_URANIUM_BLOCK).add(BlockList.RAW_URANIUM_BLOCK.get());
         tag(ItemTagRegistry.RAW_ZINC_BLOCK).add(BlockList.RAW_ZINC_BLOCK.get());
+        tag(ItemTagRegistry.RAW_SALT_BLOCK).add(BlockList.SALT_BLOCK.get());
+        tag(ItemTagRegistry.SULFUR_BLOCK).add(BlockList.SULFUR_BLOCK.get());
 
         tag(ItemTagRegistry.ALUMINUM_BLOCK).add(BlockList.ALUMINUM_BLOCK.get());
         tag(ItemTagRegistry.IRIDIUM_BLOCK).add(BlockList.IRIDIUM_BLOCK.get());

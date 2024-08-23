@@ -6,7 +6,7 @@
   "value": 1,
   "needed": 1,
   "material": "alltheores:nickel",
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

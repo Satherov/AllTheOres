@@ -6,7 +6,7 @@
   "value": 9,
   "needed": 1,
   "material": "alltheores:platinum",
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

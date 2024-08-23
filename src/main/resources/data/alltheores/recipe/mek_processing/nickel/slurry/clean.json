@@ -8,8 +8,8 @@
         "amount": 1,
         "id": "alltheores:clean_nickel"
     },
-    "slurry_input": {
+    "chemical_input": {
         "amount": 1,
-        "slurry": "alltheores:dirty_nickel"
+        "chemical": "alltheores:dirty_nickel"
     }
 }

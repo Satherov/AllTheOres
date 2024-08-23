@@ -8,8 +8,8 @@
         "amount": 1,
         "id": "alltheores:clean_aluminum"
     },
-    "slurry_input": {
+    "chemical_input": {
         "amount": 1,
-        "slurry": "alltheores:dirty_aluminum"
+        "chemical": "alltheores:dirty_aluminum"
     }
 }

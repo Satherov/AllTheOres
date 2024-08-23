@@ -8,8 +8,8 @@
         "amount": 1,
         "id": "alltheores:clean_iridium"
     },
-    "slurry_input": {
+    "chemical_input": {
         "amount": 1,
-        "slurry": "alltheores:dirty_iridium"
+        "chemical": "alltheores:dirty_iridium"
     }
 }

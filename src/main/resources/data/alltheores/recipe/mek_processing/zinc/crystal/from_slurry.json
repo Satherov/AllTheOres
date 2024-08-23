@@ -1,9 +1,8 @@
 {
     "type": "mekanism:crystallizing",
-    "chemical_type": "slurry",
     "input": {
         "amount": 200,
-        "slurry": "alltheores:clean_zinc"
+        "chemical": "alltheores:clean_zinc"
     },
     "output": {
         "count": 1,

@@ -1,9 +1,8 @@
 {
     "type": "mekanism:crystallizing",
-    "chemical_type": "slurry",
     "input": {
         "amount": 200,
-        "slurry": "alltheores:clean_nickel"
+        "chemical": "alltheores:clean_nickel"
     },
     "output": {
         "count": 1,

@@ -1,9 +1,8 @@
 {
     "type": "mekanism:crystallizing",
-    "chemical_type": "slurry",
     "input": {
         "amount": 200,
-        "slurry": "alltheores:clean_platinum"
+        "chemical": "alltheores:clean_platinum"
     },
     "output": {
         "count": 1,

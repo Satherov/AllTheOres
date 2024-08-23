@@ -1,33 +1,34 @@
 package net.allthemods.alltheores.blocks.mek_reg;
+
 import mekanism.api.MekanismAPI;
-import mekanism.api.chemical.slurry.Slurry;
-import mekanism.api.chemical.slurry.SlurryBuilder;
-import mekanism.common.registration.impl.SlurryDeferredRegister;
-import mekanism.common.registration.impl.SlurryRegistryObject;
+import mekanism.api.chemical.Chemical;
+import mekanism.api.chemical.ChemicalBuilder;
 import mekanism.common.registration.MekanismDeferredRegister;
-import mekanism.common.registration.impl.DeferredChemical.DeferredSlurry;
+import mekanism.common.registration.impl.DeferredChemical;
+import mekanism.common.registration.impl.SlurryRegistryObject;
+
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-public class SlurryRegistry extends MekanismDeferredRegister<Slurry> {
+public class SlurryRegistry extends MekanismDeferredRegister<Chemical> {
 
 
     public SlurryRegistry(String modid) {
-        super(MekanismAPI.SLURRY_REGISTRY_NAME,modid,DeferredSlurry::new);
+        super(MekanismAPI.CHEMICAL_REGISTRY_NAME,modid, DeferredChemical::new);
     }
 
-    public SlurryRegistryObject<Slurry, Slurry> register(ATOResource resource) {
+    public SlurryRegistryObject<Chemical, Chemical> register(ATOResource resource) {
         return registera(resource.getRegistrySuffix(), builder -> builder.tint(resource.getTint()).ore(resource.getOreTag()));
     }
 
-    public SlurryRegistryObject<Slurry, Slurry> registera(String baseName, UnaryOperator<SlurryBuilder> builderModifier) {
-        return new SlurryRegistryObject<>(register("dirty_" + baseName, () -> new Slurry(builderModifier.apply(SlurryBuilder.dirty()))),
-                register("clean_" + baseName, () -> new Slurry(builderModifier.apply(SlurryBuilder.clean()))));
+    public SlurryRegistryObject<Chemical, Chemical> registera(String baseName, UnaryOperator<ChemicalBuilder> builderModifier) {
+        return new SlurryRegistryObject<>(register("dirty_" + baseName, () -> new Chemical(builderModifier.apply(ChemicalBuilder.dirtySlurry()))),
+                register("clean_" + baseName, () -> new Chemical(builderModifier.apply(ChemicalBuilder.cleanSlurry()))));
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public <SLURRY extends Slurry> DeferredSlurry<SLURRY> register(String name, Supplier<? extends SLURRY> sup) {
-        return (DeferredSlurry<SLURRY>) super.register(name, sup);
+    public <CHEM extends Chemical> DeferredChemical<CHEM> register(String name, Supplier<? extends CHEM> sup) {
+        return (DeferredChemical<CHEM>) super.register(name, sup);
     }
 }

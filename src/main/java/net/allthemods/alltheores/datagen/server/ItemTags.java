@@ -547,8 +547,6 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.SALT_ORE_ITEM).add(BlockList.SALT_ORE_ITEM.get());
         tag(ItemTagRegistry.FLUORITE_ORE_ITEM).add(BlockList.FLUORITE_ORE_ITEM.get());
         tag(ItemTagRegistry.RAW_FLUORITE_BLOCK_ITEM).add(BlockList.FLUORITE_BLOCK_ITEM.get());
-        tag(ItemTagRegistry.RAW_CINNABAR_BLOCK_ITEM).add(BlockList.CINNABAR_BLOCK_ITEM.get());
-        tag(ItemTagRegistry.RAW_SULFUR_BLOCK_ITEM).add(BlockList.SULFUR_BLOCK_ITEM.get());
 
 
         tag(ItemTagRegistry.ALUMINUM_ORE_ITEM).add(BlockList.ALUMINUM_NETHER_ORE_ITEM.get());

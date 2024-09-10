@@ -14,9 +14,6 @@
     "alltheores:end_uranium_ore",
     "alltheores:other_platinum_ore",
     "alltheores:other_iridium_ore",
-    "alltheores:other_uranium_ore",
-    "alltheores:raw_platinum_block",
-    "alltheores:raw_iridium_block",
-    "alltheores:raw_uranium_block"
+    "alltheores:other_uranium_ore"
   ]
 }

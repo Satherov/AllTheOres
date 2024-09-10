@@ -407,16 +407,27 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.RAW_URANIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(BlockList.RAW_ZINC_BLOCK.get());
 
-        tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL).add(BlockList.RAW_ALUMINUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_ALUMINUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_LEAD_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_OSMIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL).add(BlockList.RAW_NICKEL_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_DIAMOND_TOOL).add(BlockList.RAW_PLATINUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_DIAMOND_TOOL).add(BlockList.RAW_IRIDIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_NICKEL_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_PLATINUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_IRIDIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_SILVER_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL).add(BlockList.RAW_TIN_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_DIAMOND_TOOL).add(BlockList.RAW_URANIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.NEEDS_STONE_TOOL).add(BlockList.RAW_ZINC_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_TIN_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_URANIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.NEEDS_IRON_TOOL).add(BlockList.RAW_ZINC_BLOCK.get());
+
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_ALUMINUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_LEAD_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_OSMIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_NICKEL_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_PLATINUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_IRIDIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_SILVER_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_TIN_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_URANIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.INCORRECT_FOR_STONE_TOOL).add(BlockList.RAW_ZINC_BLOCK.get());
 
         tag(net.minecraft.tags.BlockTags.COAL_ORES).add(BlockList.OTHER_COAL_ORE.get());
         tag(net.minecraft.tags.BlockTags.COPPER_ORES).add(BlockList.OTHER_COPPER_ORE.get());

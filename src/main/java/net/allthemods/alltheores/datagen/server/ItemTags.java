@@ -807,6 +807,8 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.ORE_HAMMERS).add(BlockList.INVAR_ORE_HAMMER.get());
         tag(ItemTagRegistry.ORE_HAMMERS).add(BlockList.PLATINUM_ORE_HAMMER.get());
 
+        
+
     }
 
 

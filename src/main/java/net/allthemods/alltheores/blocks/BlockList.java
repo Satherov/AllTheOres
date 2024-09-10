@@ -49,7 +49,7 @@ public class BlockList {
 	public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore",() -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_ALUMINUM_ORE = BLOCKS.register("other_aluminum_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> ALUMINUM_BLOCK = BLOCKS.register("aluminum_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_ALUMINUM_BLOCK = BLOCKS.register("raw_aluminum_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_ALUMINUM_BLOCK = BLOCKS.register("raw_aluminum_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_ALUMINUM_BLOCK_ITEM = ITEMS.register("raw_aluminum_block",() -> new BlockItem(RAW_ALUMINUM_BLOCK.get(), new Item.Properties()));
 
 	public static final DeferredItem<Item> ALUMINUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_aluminum_ore",
@@ -73,7 +73,7 @@ public class BlockList {
 	public static final DeferredBlock<Block> LEAD_ORE = BLOCKS.register("lead_ore",() -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_LEAD_ORE = BLOCKS.register("other_lead_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> LEAD_BLOCK = BLOCKS.register("lead_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_LEAD_BLOCK = BLOCKS.register("raw_lead_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_LEAD_BLOCK = BLOCKS.register("raw_lead_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_LEAD_BLOCK_ITEM = ITEMS.register("raw_lead_block",
 			() -> new BlockItem(RAW_LEAD_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> LEAD_SLATE_ORE_ITEM = ITEMS.register("deepslate_lead_ore",
@@ -97,7 +97,7 @@ public class BlockList {
 	public static final DeferredBlock<Block> NICKEL_ORE = BLOCKS.register("nickel_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_NICKEL_ORE = BLOCKS.register("other_nickel_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> NICKEL_BLOCK = BLOCKS.register("nickel_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_NICKEL_BLOCK = BLOCKS.register("raw_nickel_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_NICKEL_BLOCK = BLOCKS.register("raw_nickel_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_NICKEL_BLOCK_ITEM = ITEMS.register("raw_nickel_block",
 			() -> new BlockItem(RAW_NICKEL_BLOCK.get(), new Item.Properties()));
 
@@ -121,7 +121,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> OSMIUM_ORE = BLOCKS.register("osmium_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_OSMIUM_ORE = BLOCKS.register("other_osmium_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> OSMIUM_BLOCK = BLOCKS.register("osmium_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_OSMIUM_BLOCK = BLOCKS.register("raw_osmium_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_OSMIUM_BLOCK = BLOCKS.register("raw_osmium_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_OSMIUM_BLOCK_ITEM = ITEMS.register("raw_osmium_block",
 			() -> new BlockItem(RAW_OSMIUM_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> OSMIUM_ORE_ITEM = ITEMS.register("osmium_ore",
@@ -144,7 +144,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> PLATINUM_ORE = BLOCKS.register("platinum_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_PLATINUM_ORE = BLOCKS.register("other_platinum_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> PLATINUM_BLOCK = BLOCKS.register("platinum_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_PLATINUM_BLOCK = BLOCKS.register("raw_platinum_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_PLATINUM_BLOCK = BLOCKS.register("raw_platinum_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_PLATINUM_BLOCK_ITEM = ITEMS.register("raw_platinum_block",
 			() -> new BlockItem(RAW_PLATINUM_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> PLATINUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_platinum_ore",
@@ -167,7 +167,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> SILVER_ORE = BLOCKS.register("silver_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_SILVER_ORE = BLOCKS.register("other_silver_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> SILVER_BLOCK = BLOCKS.register("silver_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_SILVER_BLOCK = BLOCKS.register("raw_silver_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_SILVER_BLOCK = BLOCKS.register("raw_silver_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_SILVER_BLOCK_ITEM = ITEMS.register("raw_silver_block",
 			() -> new BlockItem(RAW_SILVER_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> SILVER_SLATE_ORE_ITEM = ITEMS.register("deepslate_silver_ore",
@@ -190,7 +190,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> TIN_ORE = BLOCKS.register("tin_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_TIN_ORE = BLOCKS.register("other_tin_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> TIN_BLOCK = BLOCKS.register("tin_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_TIN_BLOCK = BLOCKS.register("raw_tin_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_TIN_BLOCK = BLOCKS.register("raw_tin_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_TIN_BLOCK_ITEM = ITEMS.register("raw_tin_block",
 			() -> new BlockItem(RAW_TIN_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> TIN_ORE_ITEM = ITEMS.register("tin_ore",
@@ -214,7 +214,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> URANIUM_ORE = BLOCKS.register("uranium_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_URANIUM_ORE = BLOCKS.register("other_uranium_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> URANIUM_BLOCK = BLOCKS.register("uranium_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_URANIUM_BLOCK = BLOCKS.register("raw_uranium_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_URANIUM_BLOCK = BLOCKS.register("raw_uranium_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_URANIUM_BLOCK_ITEM = ITEMS.register("raw_uranium_block",
 			() -> new BlockItem(RAW_URANIUM_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> URANIUM_ORE_ITEM = ITEMS.register("uranium_ore",
@@ -237,7 +237,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> ZINC_ORE = BLOCKS.register("zinc_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_ZINC_ORE = BLOCKS.register("other_zinc_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> ZINC_BLOCK = BLOCKS.register("zinc_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_ZINC_BLOCK = BLOCKS.register("raw_zinc_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_ZINC_BLOCK = BLOCKS.register("raw_zinc_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_ZINC_BLOCK_ITEM = ITEMS.register("raw_zinc_block",
 			() -> new BlockItem(RAW_ZINC_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> ZINC_ORE_ITEM = ITEMS.register("zinc_ore",
@@ -261,7 +261,7 @@ public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("dee
 	public static final DeferredBlock<Block> IRIDIUM_ORE = BLOCKS.register("iridium_ore", () -> new AOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 	public static final DeferredBlock<Block> OTHER_IRIDIUM_ORE = BLOCKS.register("other_iridium_ore", OtherOreBlock::new);
 	public static final DeferredBlock<Block> IRIDIUM_BLOCK = BLOCKS.register("iridium_block", () -> new Block(Block.Properties.of().strength(3.0f,3.0f).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> RAW_IRIDIUM_BLOCK = BLOCKS.register("raw_iridium_block",() -> new Block(Block.Properties.of().strength(3.0f,3.0f)));
+	public static final DeferredBlock<Block> RAW_IRIDIUM_BLOCK = BLOCKS.register("raw_iridium_block",() -> new Block(Block.Properties.of().requiresCorrectToolForDrops().strength(3.0f,3.0f)));
 	public static final DeferredItem<Item> RAW_IRIDIUM_BLOCK_ITEM = ITEMS.register("raw_iridium_block",
 			() -> new BlockItem(RAW_IRIDIUM_BLOCK.get(), new Item.Properties()));
 	public static final DeferredItem<Item> IRIDIUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_iridium_ore",

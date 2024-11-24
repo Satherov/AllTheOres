@@ -20,20 +20,10 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ShapedIngotBuilder {
-    public enum Slot {
-        INGOT;
-        public String lower() {
-            return toString().toLowerCase(Locale.ROOT);
-        }
-    }
-
-
     private final String criteriaName;
     private final Criterion<InventoryChangeTrigger.TriggerInstance> criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> nugget;
-
-
     public ShapedIngotBuilder(TagKey<Item> nugget) {
         this.nugget = nugget;
 
@@ -47,13 +37,10 @@ public class ShapedIngotBuilder {
         return new ShapedIngotBuilder(nugget);
     }
 
-
-
     public ShapedIngotBuilder setIngot(DeferredItem<Item> object) {
         pieces.put(Slot.INGOT, object.get());
         return this;
     }
-
 
     protected void validate(ResourceLocation id) {
         if (pieces.isEmpty()) {
@@ -66,21 +53,21 @@ public class ShapedIngotBuilder {
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
 
         Optional.ofNullable(pieces.get(Slot.INGOT))
-            .map(this::ingot)
-            .map(this::addCriterionNugget)
-            .ifPresent(register);
+                .map(this::ingot)
+                .map(this::addCriterionNugget)
+                .ifPresent(register);
 
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
-            .group(Reference.MOD_ID);
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
+                .group(Reference.MOD_ID);
     }
 
     private ShapedRecipeBuilder addCriterionNugget(ShapedRecipeBuilder builder) {
         return builder
-            .define('a', nugget)
-            .unlockedBy(criteriaName, criterion);
+                .define('a', nugget)
+                .unlockedBy(criteriaName, criterion);
     }
 
     private ShapedRecipeBuilder ingot(ItemLike provider) {
@@ -88,5 +75,13 @@ public class ShapedIngotBuilder {
                 .pattern("aaa")
                 .pattern("aaa")
                 .pattern("aaa");
+    }
+
+    public enum Slot {
+        INGOT;
+
+        public String lower() {
+            return toString().toLowerCase(Locale.ROOT);
+        }
     }
 }

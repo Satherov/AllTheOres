@@ -8,18 +8,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-import org.checkerframework.checker.units.qual.t;
-
 public class ItemTags extends ItemTagsProvider {
     public ItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
-        super(packOutPut, lookupProvider,tagLookup, Reference.MOD_ID, existingFileHelper);
+        super(packOutPut, lookupProvider, tagLookup, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -123,7 +120,7 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.SHARD_MEK_OSM).add(MekRegistry.OSMI_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_URA).add(MekRegistry.URAN_SHARD.get());
         tag(ItemTagRegistry.SHARD_MEK_TIN).add(MekRegistry.TIN_SHARD.get());
-        
+
 
         //
         tag(ItemTagRegistry.ALUMINUM_INGOT).add(BlockList.ALUMINUM_INGOT.get());
@@ -288,12 +285,12 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.RUBY_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SAPPHIRE_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.PERIDOT_BLOCK_ITEM.get());
-        
+
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SULFUR_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.SALT_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.FLUORITE_BLOCK_ITEM.get());
         tag(ItemTagRegistry.STORAGE_BLOCKS).add(BlockList.CINNABAR_BLOCK_ITEM.get());
-        
+
 
         tag(ItemTagRegistry.PLATINUM_DUST).add(BlockList.PLATINUM_DUST.get());
         tag(ItemTagRegistry.IRIDIUM_DUST).add(BlockList.IRIDIUM_DUST.get());
@@ -685,7 +682,6 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.ORES).add(BlockList.OTHER_REDSTONE_ORE_ITEM.get());
 
 
-
         ////
         tag(ItemTagRegistry.IN_STONE_ITEM).add(BlockList.ALUMINUM_ORE_ITEM.get());
         tag(ItemTagRegistry.IN_STONE_ITEM).add(BlockList.IRIDIUM_ORE_ITEM.get());
@@ -807,7 +803,6 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.ORE_HAMMERS).add(BlockList.INVAR_ORE_HAMMER.get());
         tag(ItemTagRegistry.ORE_HAMMERS).add(BlockList.PLATINUM_ORE_HAMMER.get());
 
-        
 
     }
 

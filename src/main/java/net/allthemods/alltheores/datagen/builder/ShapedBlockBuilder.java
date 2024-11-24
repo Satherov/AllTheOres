@@ -6,41 +6,27 @@ import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.EnumMap;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ShapedBlockBuilder {
-    public enum Slot {
-        BLOCK, GEAR, ROD, PLATE;
-        public String lower() {
-            return toString().toLowerCase(Locale.ROOT);
-        }
-    }
-
-
     private final String criteriaName;
     private final Criterion<InventoryChangeTrigger.TriggerInstance> criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> ingot;
     private final TagKey<Item> hammer = ItemTagRegistry.ORE_HAMMERS;
-
     private final TagKey<Item> nugget = ItemTagRegistry.IRON_NUGGET;
-
 
     public ShapedBlockBuilder(TagKey<Item> ingot) {
         this.ingot = ingot;
@@ -56,25 +42,25 @@ public class ShapedBlockBuilder {
         return new ShapedBlockBuilder(ingot);
     }
 
-
-
     public ShapedBlockBuilder setBlock(DeferredItem<Item> object) {
         pieces.put(Slot.BLOCK, object.get());
         return this;
     }
+
     public ShapedBlockBuilder setGear(DeferredItem<Item> object) {
         pieces.put(Slot.GEAR, object.get());
         return this;
     }
+
     public ShapedBlockBuilder setPlate(DeferredItem<Item> object) {
         pieces.put(Slot.PLATE, object.get());
         return this;
     }
+
     public ShapedBlockBuilder setRod(DeferredItem<Item> object) {
         pieces.put(Slot.ROD, object.get());
         return this;
     }
-
 
     protected void validate(ResourceLocation id) {
         if (pieces.isEmpty()) {
@@ -86,21 +72,21 @@ public class ShapedBlockBuilder {
 
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
 
-           Optional.ofNullable(pieces.get(Slot.BLOCK))
+        Optional.ofNullable(pieces.get(Slot.BLOCK))
                 .map(this::block)
                 .map(this::addCriterionIngot)
                 .ifPresent(register);
-            Optional.ofNullable(pieces.get(Slot.GEAR))
+        Optional.ofNullable(pieces.get(Slot.GEAR))
                 .map(this::gear)
                 .map(this::addCriterionIngot)
                 .map(this::addCriterionNugget)
                 .ifPresent(register);
-            Optional.ofNullable(pieces.get(Slot.ROD))
+        Optional.ofNullable(pieces.get(Slot.ROD))
                 .map(this::rod)
                 .map(this::addCriterionIngot)
                 .map(this::addCriterionHammer)
                 .ifPresent(register);
-            Optional.ofNullable(pieces.get(Slot.PLATE))
+        Optional.ofNullable(pieces.get(Slot.PLATE))
                 .map(this::plate)
                 .map(this::addCriterionIngot)
                 .map(this::addCriterionHammer)
@@ -109,19 +95,21 @@ public class ShapedBlockBuilder {
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
-            .group(Reference.MOD_ID);
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
+                .group(Reference.MOD_ID);
     }
 
     private ShapedRecipeBuilder addCriterionIngot(ShapedRecipeBuilder builder) {
         return builder
-            .define('a', ingot)
-            .unlockedBy(criteriaName, criterion);
+                .define('a', ingot)
+                .unlockedBy(criteriaName, criterion);
     }
+
     private ShapedRecipeBuilder addCriterionHammer(ShapedRecipeBuilder builder) {
         return builder
                 .define('h', hammer);
     }
+
     private ShapedRecipeBuilder addCriterionNugget(ShapedRecipeBuilder builder) {
         return builder
                 .define('i', nugget);
@@ -129,9 +117,9 @@ public class ShapedBlockBuilder {
 
     private ShapedRecipeBuilder block(ItemLike provider) {
         return shaped((ItemLike) provider)
-            .pattern("aaa")
-            .pattern("aaa")
-            .pattern("aaa");
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa");
 
     }
 
@@ -150,6 +138,7 @@ public class ShapedBlockBuilder {
                 .pattern(" a ");
 
     }
+
     private ShapedRecipeBuilder rod(ItemLike provider) {
         return shaped(provider)
                 .pattern("  a")
@@ -157,12 +146,21 @@ public class ShapedBlockBuilder {
                 .pattern("   ");
 
     }
+
     private ShapedRecipeBuilder plate(ItemLike provider) {
         return shaped((ItemLike) provider)
                 .pattern("ha ")
                 .pattern("a  ")
                 .pattern("   ");
 
+    }
+
+    public enum Slot {
+        BLOCK, GEAR, ROD, PLATE;
+
+        public String lower() {
+            return toString().toLowerCase(Locale.ROOT);
+        }
     }
 
 }

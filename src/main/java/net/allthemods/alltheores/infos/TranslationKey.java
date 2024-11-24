@@ -1,10 +1,11 @@
 package net.allthemods.alltheores.infos;
+
 public class TranslationKey {
+    private static final String FORMAT = "%s." + Reference.MOD_ID + ".%s";
+
     private TranslationKey() {
         // nothing to do
     }
-
-    private static final String FORMAT = "%s." + Reference.MOD_ID + ".%s";
 
     public static String tooltip(String key) {
         return String.format(FORMAT, "tooltip", key);

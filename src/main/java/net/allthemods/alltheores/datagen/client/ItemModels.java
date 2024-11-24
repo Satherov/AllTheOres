@@ -24,21 +24,23 @@ public class ItemModels extends ItemModelProvider {
         ResourceLocation generated = ResourceLocation.withDefaultNamespace("item/generated");
 
         BlockList.ITEMS.getEntries().stream()
-            .filter(item -> !(item.get() instanceof BlockItem))
-            .forEach(item -> {
-                String name = item.getId().getPath();
-                if(!name.contains("bucket")){
-                withExistingParent(name, generated)
-                    .texture("layer0", res(name));
+                .filter(item -> !(item.get() instanceof BlockItem))
+                .forEach(item -> {
+                    String name = item.getId().getPath();
+                    if (!name.contains("bucket")) {
+                        withExistingParent(name, generated)
+                                .texture("layer0", res(name));
 
-            }});
+                    }
+                });
         MekRegistry.ITEMS.getEntries().stream()
                 .filter(item -> !(item.get() instanceof BlockItem))
                 .forEach(item -> {
                     String name = item.getId().getPath();
-                    if(!name.contains("bucket")){
+                    if (!name.contains("bucket")) {
                         withExistingParent(name, generated)
                                 .texture("layer0", res(name));
-            }});
+                    }
+                });
     }
 }

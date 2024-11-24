@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 public class BlockTags extends BlockTagsProvider {
 
     public BlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
+        super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class BlockTags extends BlockTagsProvider {
         tag(ItemTagRegistry.SULFUR_ORE).add(BlockList.SULFUR_ORE.get());
         tag(ItemTagRegistry.FLUORITE_ORE).add(BlockList.FLUORITE_ORE.get());
         tag(ItemTagRegistry.CINNABAR_ORE).add(BlockList.CINNABAR_ORE.get());
-       ////
+        ////
 
         tag(ItemTagRegistry.FORES).add(BlockList.ALUMINUM_ORE.get());
         tag(ItemTagRegistry.FORES).add(BlockList.IRIDIUM_ORE.get());

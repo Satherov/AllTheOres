@@ -9,34 +9,21 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.EnumMap;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ShapedRawBuilder {
-    public enum Slot {
-        RAW;
-        public String lower() {
-            return toString().toLowerCase(Locale.ROOT);
-        }
-    }
-
-
     private final String criteriaName;
     private final Criterion<InventoryChangeTrigger.TriggerInstance> criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> raw;
-
-
     public ShapedRawBuilder(TagKey<Item> raw) {
         this.raw = raw;
 
@@ -51,13 +38,10 @@ public class ShapedRawBuilder {
         return new ShapedRawBuilder(raw);
     }
 
-
-
     public ShapedRawBuilder setRaw(DeferredItem<Item> object) {
         pieces.put(Slot.RAW, object.get());
         return this;
     }
-
 
     protected void validate(ResourceLocation id) {
         if (pieces.isEmpty()) {
@@ -70,21 +54,21 @@ public class ShapedRawBuilder {
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
 
         Optional.ofNullable(pieces.get(Slot.RAW))
-            .map(this::raw_block)
-            .map(this::addCriterionRaw)
-            .ifPresent(register);
+                .map(this::raw_block)
+                .map(this::addCriterionRaw)
+                .ifPresent(register);
 
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
-            .group(Reference.MOD_ID);
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
+                .group(Reference.MOD_ID);
     }
 
     private ShapedRecipeBuilder addCriterionRaw(ShapedRecipeBuilder builder) {
         return builder
-            .define('a', raw)
-            .unlockedBy(criteriaName, criterion);
+                .define('a', raw)
+                .unlockedBy(criteriaName, criterion);
     }
 
     private ShapedRecipeBuilder raw_block(ItemLike provider) {
@@ -92,5 +76,13 @@ public class ShapedRawBuilder {
                 .pattern("aaa")
                 .pattern("aaa")
                 .pattern("aaa");
+    }
+
+    public enum Slot {
+        RAW;
+
+        public String lower() {
+            return toString().toLowerCase(Locale.ROOT);
+        }
     }
 }

@@ -13,7 +13,6 @@ import java.util.List;
 public class ToolTipBlockItem  extends BlockItem {
     public ToolTipBlockItem(Block block, Properties properties) {
         super(block, properties);
-
     }
     /*
     @OnlyIn(Dist.CLIENT)

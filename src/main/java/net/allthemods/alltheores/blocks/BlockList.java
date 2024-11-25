@@ -12,8 +12,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -32,7 +30,7 @@ public class BlockList {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable(TranslationKey.tab()))
-            .icon(() -> BlockList.ALUMINUM_NETHER_ORE_ITEM.get().getDefaultInstance())
+            .icon(() -> BlockList.ALUMINUM_ORE_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> ITEMS.getEntries().stream()
                     .map(DeferredHolder::get)
                     .map(Item::getDefaultInstance)
@@ -43,19 +41,20 @@ public class BlockList {
     // ###################### ALL THE ORES
 
     // ********************** ALUMINUM
+
     public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore", StoneOreBlock::new);
     public static final DeferredItem<Item> ALUMINUM_ORE_ITEM = ITEMS.register("aluminum_ore", () -> basicToolTipBlockItem(ALUMINUM_ORE.get()));
     public static final DeferredBlock<Block> ALUMINUM_SLATE_ORE = BLOCKS.register("deepslate_aluminum_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> ALUMINUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_aluminum_ore", () -> basicToolTipBlockItem(ALUMINUM_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_ALUMINUM_ORE = BLOCKS.register("other_aluminum_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_ALUMINUM_ORE_ITEM = ITEMS.register("other_aluminum_ore", () -> basicToolTipBlockItem(OTHER_ALUMINUM_ORE.get()));
+    public static final DeferredBlock<Block> ALUMINUM_OTHER_ORE = BLOCKS.register("other_aluminum_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> ALUMINUM_OTHER_ORE_ITEM = ITEMS.register("other_aluminum_ore", () -> basicToolTipBlockItem(ALUMINUM_OTHER_ORE.get()));
     public static final DeferredBlock<Block> ALUMINUM_NETHER_ORE = BLOCKS.register("nether_aluminum_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> ALUMINUM_NETHER_ORE_ITEM = ITEMS.register("nether_aluminum_ore", () -> basicToolTipBlockItem(ALUMINUM_NETHER_ORE.get()));
     public static final DeferredBlock<Block> ALUMINUM_END_ORE = BLOCKS.register("end_aluminum_ore", EndOreBlock::new);
     public static final DeferredItem<Item> ALUMINUM_END_ORE_ITEM = ITEMS.register("end_aluminum_ore", () -> basicToolTipBlockItem(ALUMINUM_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_ALUMINUM_BLOCK = BLOCKS.register("raw_aluminum_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_ALUMINUM_BLOCK_ITEM = ITEMS.register("raw_aluminum_block", () -> basicBlockItem(RAW_ALUMINUM_BLOCK.get()));
+    public static final DeferredBlock<Block> ALUMINUM_RAW_BLOCK = BLOCKS.register("raw_aluminum_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> ALUMINUM_RAW_BLOCK_ITEM = ITEMS.register("raw_aluminum_block", () -> basicBlockItem(ALUMINUM_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> ALUMINUM_NUGGET = ITEMS.register("aluminum_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot", BlockList::basicItem);
@@ -75,15 +74,15 @@ public class BlockList {
     public static final DeferredItem<Item> LEAD_ORE_ITEM = ITEMS.register("lead_ore", () -> basicToolTipBlockItem(LEAD_ORE.get()));
     public static final DeferredBlock<Block> LEAD_SLATE_ORE = BLOCKS.register("deepslate_lead_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> LEAD_SLATE_ORE_ITEM = ITEMS.register("deepslate_lead_ore", () -> basicToolTipBlockItem(LEAD_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_LEAD_ORE = BLOCKS.register("other_lead_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_LEAD_ORE_ITEM = ITEMS.register("other_lead_ore", () -> basicToolTipBlockItem(OTHER_LEAD_ORE.get()));
+    public static final DeferredBlock<Block> LEAD_OTHER_ORE = BLOCKS.register("other_lead_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> LEAD_OTHER_ORE_ITEM = ITEMS.register("other_lead_ore", () -> basicToolTipBlockItem(LEAD_OTHER_ORE.get()));
     public static final DeferredBlock<Block> LEAD_NETHER_ORE = BLOCKS.register("nether_lead_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> LEAD_NETHER_ORE_ITEM = ITEMS.register("nether_lead_ore", () -> basicToolTipBlockItem(LEAD_NETHER_ORE.get()));
     public static final DeferredBlock<Block> LEAD_END_ORE = BLOCKS.register("end_lead_ore", EndOreBlock::new);
     public static final DeferredItem<Item> LEAD_END_ORE_ITEM = ITEMS.register("end_lead_ore", () -> basicToolTipBlockItem(LEAD_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_LEAD_BLOCK = BLOCKS.register("raw_lead_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_LEAD_BLOCK_ITEM = ITEMS.register("raw_lead_block", () -> basicBlockItem(RAW_LEAD_BLOCK.get()));
+    public static final DeferredBlock<Block> LEAD_RAW_BLOCK = BLOCKS.register("raw_lead_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> LEAD_RAW_BLOCK_ITEM = ITEMS.register("raw_lead_block", () -> basicBlockItem(LEAD_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.register("lead_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> LEAD_INGOT = ITEMS.register("lead_ingot", BlockList::basicItem);
@@ -103,15 +102,15 @@ public class BlockList {
     public static final DeferredItem<Item> NICKEL_ORE_ITEM = ITEMS.register("nickel_ore", () -> basicToolTipBlockItem(NICKEL_ORE.get()));
     public static final DeferredBlock<Block> NICKEL_SLATE_ORE = BLOCKS.register("deepslate_nickel_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> NICKEL_SLATE_ORE_ITEM = ITEMS.register("deepslate_nickel_ore", () -> basicToolTipBlockItem(NICKEL_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_NICKEL_ORE = BLOCKS.register("other_nickel_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_NICKEL_ORE_ITEM = ITEMS.register("other_nickel_ore", () -> basicToolTipBlockItem(OTHER_NICKEL_ORE.get()));
+    public static final DeferredBlock<Block> NICKEL_OTHER_ORE = BLOCKS.register("other_nickel_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> NICKEL_OTHER_ORE_ITEM = ITEMS.register("other_nickel_ore", () -> basicToolTipBlockItem(NICKEL_OTHER_ORE.get()));
     public static final DeferredBlock<Block> NICKEL_NETHER_ORE = BLOCKS.register("nether_nickel_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> NICKEL_NETHER_ORE_ITEM = ITEMS.register("nether_nickel_ore", () -> basicToolTipBlockItem(NICKEL_NETHER_ORE.get()));
     public static final DeferredBlock<Block> NICKEL_END_ORE = BLOCKS.register("end_nickel_ore", EndOreBlock::new);
     public static final DeferredItem<Item> NICKEL_END_ORE_ITEM = ITEMS.register("end_nickel_ore", () -> basicToolTipBlockItem(NICKEL_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_NICKEL_BLOCK = BLOCKS.register("raw_nickel_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_NICKEL_BLOCK_ITEM = ITEMS.register("raw_nickel_block", () -> basicBlockItem(RAW_NICKEL_BLOCK.get()));
+    public static final DeferredBlock<Block> NICKEL_RAW_BLOCK = BLOCKS.register("raw_nickel_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> NICKEL_RAW_BLOCK_ITEM = ITEMS.register("raw_nickel_block", () -> basicBlockItem(NICKEL_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> NICKEL_NUGGET = ITEMS.register("nickel_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> NICKEL_INGOT = ITEMS.register("nickel_ingot", BlockList::basicItem);
@@ -131,15 +130,15 @@ public class BlockList {
     public static final DeferredItem<Item> OSMIUM_ORE_ITEM = ITEMS.register("osmium_ore", () -> basicToolTipBlockItem(OSMIUM_ORE.get()));
     public static final DeferredBlock<Block> OSMIUM_SLATE_ORE = BLOCKS.register("deepslate_osmium_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> OSMIUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_osmium_ore", () -> basicToolTipBlockItem(OSMIUM_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_OSMIUM_ORE = BLOCKS.register("other_osmium_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_OSMIUM_ORE_ITEM = ITEMS.register("other_osmium_ore", () -> basicToolTipBlockItem(OTHER_OSMIUM_ORE.get()));
+    public static final DeferredBlock<Block> OSMIUM_OTHER_ORE = BLOCKS.register("other_osmium_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> OSMIUM_OTHER_ORE_ITEM = ITEMS.register("other_osmium_ore", () -> basicToolTipBlockItem(OSMIUM_OTHER_ORE.get()));
     public static final DeferredBlock<Block> OSMIUM_NETHER_ORE = BLOCKS.register("nether_osmium_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> OSMIUM_NETHER_ORE_ITEM = ITEMS.register("nether_osmium_ore", () -> basicToolTipBlockItem(OSMIUM_NETHER_ORE.get()));
     public static final DeferredBlock<Block> OSMIUM_END_ORE = BLOCKS.register("end_osmium_ore", EndOreBlock::new);
     public static final DeferredItem<Item> OSMIUM_END_ORE_ITEM = ITEMS.register("end_osmium_ore", () -> basicToolTipBlockItem(OSMIUM_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_OSMIUM_BLOCK = BLOCKS.register("raw_osmium_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_OSMIUM_BLOCK_ITEM = ITEMS.register("raw_osmium_block", () -> basicBlockItem(RAW_OSMIUM_BLOCK.get()));
+    public static final DeferredBlock<Block> OSMIUM_RAW_BLOCK = BLOCKS.register("raw_osmium_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> OSMIUM_RAW_BLOCK_ITEM = ITEMS.register("raw_osmium_block", () -> basicBlockItem(OSMIUM_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> OSMIUM_NUGGET = ITEMS.register("osmium_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> OSMIUM_INGOT = ITEMS.register("osmium_ingot", BlockList::basicItem);
@@ -159,15 +158,15 @@ public class BlockList {
     public static final DeferredItem<Item> PLATINUM_ORE_ITEM = ITEMS.register("platinum_ore", () -> basicToolTipBlockItem(PLATINUM_ORE.get()));
     public static final DeferredBlock<Block> PLATINUM_SLATE_ORE = BLOCKS.register("deepslate_platinum_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> PLATINUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_platinum_ore", () -> basicToolTipBlockItem(PLATINUM_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_PLATINUM_ORE = BLOCKS.register("other_platinum_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_PLATINUM_ORE_ITEM = ITEMS.register("other_platinum_ore", () -> basicToolTipBlockItem(OTHER_PLATINUM_ORE.get()));
+    public static final DeferredBlock<Block> PLATINUM_OTHER_ORE = BLOCKS.register("other_platinum_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> PLATINUM_OTHER_ORE_ITEM = ITEMS.register("other_platinum_ore", () -> basicToolTipBlockItem(PLATINUM_OTHER_ORE.get()));
     public static final DeferredBlock<Block> PLATINUM_NETHER_ORE = BLOCKS.register("nether_platinum_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> PLATINUM_NETHER_ORE_ITEM = ITEMS.register("nether_platinum_ore", () -> basicToolTipBlockItem(PLATINUM_NETHER_ORE.get()));
     public static final DeferredBlock<Block> PLATINUM_END_ORE = BLOCKS.register("end_platinum_ore", EndOreBlock::new);
     public static final DeferredItem<Item> PLATINUM_END_ORE_ITEM = ITEMS.register("end_platinum_ore", () -> basicToolTipBlockItem(PLATINUM_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_PLATINUM_BLOCK = BLOCKS.register("raw_platinum_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_PLATINUM_BLOCK_ITEM = ITEMS.register("raw_platinum_block", () -> basicBlockItem(RAW_PLATINUM_BLOCK.get()));
+    public static final DeferredBlock<Block> PLATINUM_RAW_BLOCK = BLOCKS.register("raw_platinum_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> PLATINUM_RAW_BLOCK_ITEM = ITEMS.register("raw_platinum_block", () -> basicBlockItem(PLATINUM_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> PLATINUM_NUGGET = ITEMS.register("platinum_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot", BlockList::basicItem);
@@ -187,15 +186,15 @@ public class BlockList {
     public static final DeferredItem<Item> SILVER_ORE_ITEM = ITEMS.register("silver_ore", () -> basicToolTipBlockItem(SILVER_ORE.get()));
     public static final DeferredBlock<Block> SILVER_SLATE_ORE = BLOCKS.register("deepslate_silver_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> SILVER_SLATE_ORE_ITEM = ITEMS.register("deepslate_silver_ore", () -> basicToolTipBlockItem(SILVER_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_SILVER_ORE = BLOCKS.register("other_silver_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_SILVER_ORE_ITEM = ITEMS.register("other_silver_ore", () -> basicToolTipBlockItem(OTHER_SILVER_ORE.get()));
+    public static final DeferredBlock<Block> SILVER_OTHER_ORE = BLOCKS.register("other_silver_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> SILVER_OTHER_ORE_ITEM = ITEMS.register("other_silver_ore", () -> basicToolTipBlockItem(SILVER_OTHER_ORE.get()));
     public static final DeferredBlock<Block> SILVER_NETHER_ORE = BLOCKS.register("nether_silver_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> SILVER_NETHER_ORE_ITEM = ITEMS.register("nether_silver_ore", () -> basicToolTipBlockItem(SILVER_NETHER_ORE.get()));
     public static final DeferredBlock<Block> SILVER_END_ORE = BLOCKS.register("end_silver_ore", EndOreBlock::new);
     public static final DeferredItem<Item> SILVER_END_ORE_ITEM = ITEMS.register("end_silver_ore", () -> basicToolTipBlockItem(SILVER_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_SILVER_BLOCK = BLOCKS.register("raw_silver_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_SILVER_BLOCK_ITEM = ITEMS.register("raw_silver_block", () -> basicBlockItem(RAW_SILVER_BLOCK.get()));
+    public static final DeferredBlock<Block> SILVER_RAW_BLOCK = BLOCKS.register("raw_silver_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> SILVER_RAW_BLOCK_ITEM = ITEMS.register("raw_silver_block", () -> basicBlockItem(SILVER_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> SILVER_INGOT = ITEMS.register("silver_ingot", BlockList::basicItem);
@@ -215,15 +214,15 @@ public class BlockList {
     public static final DeferredItem<Item> TIN_ORE_ITEM = ITEMS.register("tin_ore", () -> basicToolTipBlockItem(TIN_ORE.get()));
     public static final DeferredBlock<Block> TIN_SLATE_ORE = BLOCKS.register("deepslate_tin_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> TIN_SLATE_ORE_ITEM = ITEMS.register("deepslate_tin_ore", () -> basicToolTipBlockItem(TIN_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_TIN_ORE = BLOCKS.register("other_tin_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_TIN_ORE_ITEM = ITEMS.register("other_tin_ore", () -> basicToolTipBlockItem(OTHER_TIN_ORE.get()));
+    public static final DeferredBlock<Block> TIN_OTHER_ORE = BLOCKS.register("other_tin_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> TIN_OTHER_ORE_ITEM = ITEMS.register("other_tin_ore", () -> basicToolTipBlockItem(TIN_OTHER_ORE.get()));
     public static final DeferredBlock<Block> TIN_NETHER_ORE = BLOCKS.register("nether_tin_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> TIN_NETHER_ORE_ITEM = ITEMS.register("nether_tin_ore", () -> basicToolTipBlockItem(TIN_NETHER_ORE.get()));
     public static final DeferredBlock<Block> TIN_END_ORE = BLOCKS.register("end_tin_ore", EndOreBlock::new);
     public static final DeferredItem<Item> TIN_END_ORE_ITEM = ITEMS.register("end_tin_ore", () -> basicToolTipBlockItem(TIN_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_TIN_BLOCK = BLOCKS.register("raw_tin_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_TIN_BLOCK_ITEM = ITEMS.register("raw_tin_block", () -> basicBlockItem(RAW_TIN_BLOCK.get()));
+    public static final DeferredBlock<Block> TIN_RAW_BLOCK = BLOCKS.register("raw_tin_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> TIN_RAW_BLOCK_ITEM = ITEMS.register("raw_tin_block", () -> basicBlockItem(TIN_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> TIN_NUGGET = ITEMS.register("tin_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> TIN_INGOT = ITEMS.register("tin_ingot", BlockList::basicItem);
@@ -243,15 +242,15 @@ public class BlockList {
     public static final DeferredItem<Item> URANIUM_ORE_ITEM = ITEMS.register("uranium_ore", () -> basicToolTipBlockItem(URANIUM_ORE.get()));
     public static final DeferredBlock<Block> URANIUM_SLATE_ORE = BLOCKS.register("deepslate_uranium_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> URANIUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_uranium_ore", () -> basicToolTipBlockItem(URANIUM_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_URANIUM_ORE = BLOCKS.register("other_uranium_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_URANIUM_ORE_ITEM = ITEMS.register("other_uranium_ore", () -> basicToolTipBlockItem(OTHER_URANIUM_ORE.get()));
+    public static final DeferredBlock<Block> URANIUM_OTHER_ORE = BLOCKS.register("other_uranium_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> URANIUM_OTHER_ORE_ITEM = ITEMS.register("other_uranium_ore", () -> basicToolTipBlockItem(URANIUM_OTHER_ORE.get()));
     public static final DeferredBlock<Block> URANIUM_NETHER_ORE = BLOCKS.register("nether_uranium_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> URANIUM_NETHER_ORE_ITEM = ITEMS.register("nether_uranium_ore", () -> basicToolTipBlockItem(URANIUM_NETHER_ORE.get()));
     public static final DeferredBlock<Block> URANIUM_END_ORE = BLOCKS.register("end_uranium_ore", EndOreBlock::new);
     public static final DeferredItem<Item> URANIUM_END_ORE_ITEM = ITEMS.register("end_uranium_ore", () -> basicToolTipBlockItem(URANIUM_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_URANIUM_BLOCK = BLOCKS.register("raw_uranium_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_URANIUM_BLOCK_ITEM = ITEMS.register("raw_uranium_block", () -> basicBlockItem(RAW_URANIUM_BLOCK.get()));
+    public static final DeferredBlock<Block> URANIUM_RAW_BLOCK = BLOCKS.register("raw_uranium_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> URANIUM_RAW_BLOCK_ITEM = ITEMS.register("raw_uranium_block", () -> basicBlockItem(URANIUM_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> URANIUM_NUGGET = ITEMS.register("uranium_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot", BlockList::basicItem);
@@ -271,15 +270,15 @@ public class BlockList {
     public static final DeferredItem<Item> ZINC_ORE_ITEM = ITEMS.register("zinc_ore", () -> basicToolTipBlockItem(ZINC_ORE.get()));
     public static final DeferredBlock<Block> ZINC_SLATE_ORE = BLOCKS.register("deepslate_zinc_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> ZINC_SLATE_ORE_ITEM = ITEMS.register("deepslate_zinc_ore", () -> basicToolTipBlockItem(ZINC_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_ZINC_ORE = BLOCKS.register("other_zinc_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_ZINC_ORE_ITEM = ITEMS.register("other_zinc_ore", () -> basicToolTipBlockItem(OTHER_ZINC_ORE.get()));
+    public static final DeferredBlock<Block> ZINC_OTHER_ORE = BLOCKS.register("other_zinc_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> ZINC_OTHER_ORE_ITEM = ITEMS.register("other_zinc_ore", () -> basicToolTipBlockItem(ZINC_OTHER_ORE.get()));
     public static final DeferredBlock<Block> ZINC_NETHER_ORE = BLOCKS.register("nether_zinc_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> ZINC_NETHER_ORE_ITEM = ITEMS.register("nether_zinc_ore", () -> basicToolTipBlockItem(ZINC_NETHER_ORE.get()));
     public static final DeferredBlock<Block> ZINC_END_ORE = BLOCKS.register("end_zinc_ore", EndOreBlock::new);
     public static final DeferredItem<Item> ZINC_END_ORE_ITEM = ITEMS.register("end_zinc_ore", () -> basicToolTipBlockItem(ZINC_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_ZINC_BLOCK = BLOCKS.register("raw_zinc_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_ZINC_BLOCK_ITEM = ITEMS.register("raw_zinc_block", () -> basicBlockItem(RAW_ZINC_BLOCK.get()));
+    public static final DeferredBlock<Block> ZINC_RAW_BLOCK = BLOCKS.register("raw_zinc_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> ZINC_RAW_BLOCK_ITEM = ITEMS.register("raw_zinc_block", () -> basicBlockItem(ZINC_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> ZINC_NUGGET = ITEMS.register("zinc_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> ZINC_INGOT = ITEMS.register("zinc_ingot", BlockList::basicItem);
@@ -299,15 +298,15 @@ public class BlockList {
     public static final DeferredItem<Item> IRIDIUM_ORE_ITEM = ITEMS.register("iridium_ore", () -> basicToolTipBlockItem(IRIDIUM_ORE.get()));
     public static final DeferredBlock<Block> IRIDIUM_SLATE_ORE = BLOCKS.register("deepslate_iridium_ore", SlateOreBlock::new);
     public static final DeferredItem<Item> IRIDIUM_SLATE_ORE_ITEM = ITEMS.register("deepslate_iridium_ore", () -> basicToolTipBlockItem(IRIDIUM_SLATE_ORE.get()));
-    public static final DeferredBlock<Block> OTHER_IRIDIUM_ORE = BLOCKS.register("other_iridium_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_IRIDIUM_ORE_ITEM = ITEMS.register("other_iridium_ore", () -> basicToolTipBlockItem(OTHER_IRIDIUM_ORE.get()));
+    public static final DeferredBlock<Block> IRIDIUM_OTHER_ORE = BLOCKS.register("other_iridium_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> IRIDIUM_OTHER_ORE_ITEM = ITEMS.register("other_iridium_ore", () -> basicToolTipBlockItem(IRIDIUM_OTHER_ORE.get()));
     public static final DeferredBlock<Block> IRIDIUM_NETHER_ORE = BLOCKS.register("nether_iridium_ore", NetherOreBlock::new);
     public static final DeferredItem<Item> IRIDIUM_NETHER_ORE_ITEM = ITEMS.register("nether_iridium_ore", () -> basicToolTipBlockItem(IRIDIUM_NETHER_ORE.get()));
     public static final DeferredBlock<Block> IRIDIUM_END_ORE = BLOCKS.register("end_iridium_ore", EndOreBlock::new);
     public static final DeferredItem<Item> IRIDIUM_END_ORE_ITEM = ITEMS.register("end_iridium_ore", () -> basicToolTipBlockItem(IRIDIUM_END_ORE.get()));
 
-    public static final DeferredBlock<Block> RAW_IRIDIUM_BLOCK = BLOCKS.register("raw_iridium_block", BlockList::rawBlock);
-    public static final DeferredItem<Item> RAW_IRIDIUM_BLOCK_ITEM = ITEMS.register("raw_iridium_block", () -> basicBlockItem(RAW_IRIDIUM_BLOCK.get()));
+    public static final DeferredBlock<Block> IRIDIUM_RAW_BLOCK = BLOCKS.register("raw_iridium_block", BlockList::rawBlock);
+    public static final DeferredItem<Item> IRIDIUM_RAW_BLOCK_ITEM = ITEMS.register("raw_iridium_block", () -> basicBlockItem(IRIDIUM_RAW_BLOCK.get()));
 
     public static final DeferredItem<Item> IRIDIUM_NUGGET = ITEMS.register("iridium_nugget", BlockList::basicItem);
     public static final DeferredItem<Item> IRIDIUM_INGOT = ITEMS.register("iridium_ingot", BlockList::basicItem);
@@ -444,6 +443,8 @@ public class BlockList {
     public static final DeferredItem<Item> RUBY_NETHER_ORE_ITEM = ITEMS.register("nether_ruby_ore", () -> basicToolTipBlockItem(RUBY_NETHER_ORE.get()));
     public static final DeferredBlock<Block> RUBY_END_ORE = BLOCKS.register("end_ruby_ore", EndOreBlock::new);
     public static final DeferredItem<Item> RUBY_END_ORE_ITEM = ITEMS.register("end_ruby_ore", () -> basicToolTipBlockItem(RUBY_END_ORE.get()));
+    public static final DeferredBlock<Block> RUBY_OTHER_ORE = BLOCKS.register("other_ruby_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> RUBY_OTHER_ORE_ITEM = ITEMS.register("other_ruby_ore", () -> basicToolTipBlockItem(RUBY_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> RUBY = ITEMS.register("ruby", BlockList::basicItem);
 
@@ -462,6 +463,8 @@ public class BlockList {
     public static final DeferredItem<Item> PERIDOT_NETHER_ORE_ITEM = ITEMS.register("nether_peridot_ore", () -> basicToolTipBlockItem(PERIDOT_NETHER_ORE.get()));
     public static final DeferredBlock<Block> PERIDOT_END_ORE = BLOCKS.register("end_peridot_ore", EndOreBlock::new);
     public static final DeferredItem<Item> PERIDOT_END_ORE_ITEM = ITEMS.register("end_peridot_ore", () -> basicToolTipBlockItem(PERIDOT_END_ORE.get()));
+    public static final DeferredBlock<Block> PERIDOT_OTHER_ORE = BLOCKS.register("other_peridot_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> PERIDOT_OTHER_ORE_ITEM = ITEMS.register("other_peridot_ore", () -> basicToolTipBlockItem(PERIDOT_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> PERIDOT = ITEMS.register("peridot", BlockList::basicItem);
 
@@ -480,6 +483,8 @@ public class BlockList {
     public static final DeferredItem<Item> SAPPHIRE_NETHER_ORE_ITEM = ITEMS.register("nether_sapphire_ore", () -> basicToolTipBlockItem(SAPPHIRE_NETHER_ORE.get()));
     public static final DeferredBlock<Block> SAPPHIRE_END_ORE = BLOCKS.register("end_sapphire_ore", EndOreBlock::new);
     public static final DeferredItem<Item> SAPPHIRE_END_ORE_ITEM = ITEMS.register("end_sapphire_ore", () -> basicToolTipBlockItem(SAPPHIRE_END_ORE.get()));
+    public static final DeferredBlock<Block> SAPPHIRE_OTHER_ORE = BLOCKS.register("other_sapphire_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> SAPPHIRE_OTHER_ORE_ITEM = ITEMS.register("other_sapphire_ore", () -> basicToolTipBlockItem(SAPPHIRE_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> SAPPHIRE = ITEMS.register("sapphire", BlockList::basicItem);
 
@@ -498,6 +503,8 @@ public class BlockList {
     public static final DeferredItem<Item> CINNABAR_NETHER_ORE_ITEM = ITEMS.register("nether_cinnabar_ore", () -> basicToolTipBlockItem(CINNABAR_NETHER_ORE.get()));
     public static final DeferredBlock<Block> CINNABAR_END_ORE = BLOCKS.register("end_cinnabar_ore", EndOreBlock::new);
     public static final DeferredItem<Item> CINNABAR_END_ORE_ITEM = ITEMS.register("end_cinnabar_ore", () -> basicToolTipBlockItem(CINNABAR_END_ORE.get()));
+    public static final DeferredBlock<Block> CINNABAR_OTHER_ORE = BLOCKS.register("other_cinnabar_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> CINNABAR_OTHER_ORE_ITEM = ITEMS.register("other_cinnabar_ore", () -> basicToolTipBlockItem(CINNABAR_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> CINNABAR = ITEMS.register("cinnabar", BlockList::basicItem);
 
@@ -516,6 +523,8 @@ public class BlockList {
     public static final DeferredItem<Item> FLUORITE_NETHER_ORE_ITEM = ITEMS.register("nether_fluorite_ore", () -> basicToolTipBlockItem(FLUORITE_NETHER_ORE.get()));
     public static final DeferredBlock<Block> FLUORITE_END_ORE = BLOCKS.register("end_fluorite_ore", EndOreBlock::new);
     public static final DeferredItem<Item> FLUORITE_END_ORE_ITEM = ITEMS.register("end_fluorite_ore", () -> basicToolTipBlockItem(FLUORITE_END_ORE.get()));
+    public static final DeferredBlock<Block> FLUORITE_OTHER_ORE = BLOCKS.register("other_fluorite_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> FLUORITE_OTHER_ORE_ITEM = ITEMS.register("other_fluorite_ore", () -> basicToolTipBlockItem(FLUORITE_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> FLUORITE = ITEMS.register("fluorite", BlockList::basicItem);
 
@@ -534,6 +543,8 @@ public class BlockList {
     public static final DeferredItem<Item> SALT_NETHER_ORE_ITEM = ITEMS.register("nether_salt_ore", () -> basicToolTipBlockItem(SALT_NETHER_ORE.get()));
     public static final DeferredBlock<Block> SALT_END_ORE = BLOCKS.register("end_salt_ore", EndOreBlock::new);
     public static final DeferredItem<Item> SALT_END_ORE_ITEM = ITEMS.register("end_salt_ore", () -> basicToolTipBlockItem(SALT_END_ORE.get()));
+    public static final DeferredBlock<Block> SALT_OTHER_ORE = BLOCKS.register("other_salt_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> SALT_OTHER_ORE_ITEM = ITEMS.register("other_salt_ore", () -> basicToolTipBlockItem(SALT_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> SALT = ITEMS.register("salt", BlockList::basicItem);
 
@@ -550,6 +561,8 @@ public class BlockList {
     public static final DeferredItem<Item> SULFUR_NETHER_ORE_ITEM = ITEMS.register("nether_sulfur_ore", () -> basicToolTipBlockItem(SULFUR_NETHER_ORE.get()));
     public static final DeferredBlock<Block> SULFUR_END_ORE = BLOCKS.register("end_sulfur_ore", EndOreBlock::new);
     public static final DeferredItem<Item> SULFUR_END_ORE_ITEM = ITEMS.register("end_sulfur_ore", () -> basicToolTipBlockItem(SULFUR_END_ORE.get()));
+    public static final DeferredBlock<Block> SULFUR_OTHER_ORE = BLOCKS.register("other_sulfur_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> SULFUR_OTHER_ORE_ITEM = ITEMS.register("other_sulfur_ore", () -> basicToolTipBlockItem(SULFUR_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> SULFUR = ITEMS.register("sulfur", BlockList::basicItem);
 
@@ -568,33 +581,55 @@ public class BlockList {
 
     // *********************** COAL
 
-    public static final DeferredBlock<Block> OTHER_COAL_ORE = BLOCKS.register("other_coal_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_COAL_ORE_ITEM = ITEMS.register("other_coal_ore", () -> basicToolTipBlockItem(OTHER_COAL_ORE.get()));
+    public static final DeferredBlock<Block> COAL_NETHER_ORE = BLOCKS.register("nether_coal_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> COAL_NETHER_ORE_ITEM = ITEMS.register("nether_coal_ore", () -> basicToolTipBlockItem(COAL_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> COAL_END_ORE = BLOCKS.register("end_coal_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> COAL_END_ORE_ITEM = ITEMS.register("end_coal_ore", () -> basicToolTipBlockItem(COAL_END_ORE.get()));
+    public static final DeferredBlock<Block> COAL_OTHER_ORE = BLOCKS.register("other_coal_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> COAL_OTHER_ORE_ITEM = ITEMS.register("other_coal_ore", () -> basicToolTipBlockItem(COAL_OTHER_ORE.get()));
 
     // *********************** LAPIS
 
-    public static final DeferredBlock<Block> OTHER_LAPIS_ORE = BLOCKS.register("other_lapis_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_LAPIS_ORE_ITEM = ITEMS.register("other_lapis_ore", () -> basicToolTipBlockItem(OTHER_LAPIS_ORE.get()));
+    public static final DeferredBlock<Block> LAPIS_NETHER_ORE = BLOCKS.register("nether_lapis_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> LAPIS_NETHER_ORE_ITEM = ITEMS.register("nether_lapis_ore", () -> basicToolTipBlockItem(LAPIS_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> LAPIS_END_ORE = BLOCKS.register("end_lapis_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> LAPIS_END_ORE_ITEM = ITEMS.register("end_lapis_ore", () -> basicToolTipBlockItem(LAPIS_END_ORE.get()));
+    public static final DeferredBlock<Block> LAPIS_OTHER_ORE = BLOCKS.register("other_lapis_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> LAPIS_OTHER_ORE_ITEM = ITEMS.register("other_lapis_ore", () -> basicToolTipBlockItem(LAPIS_OTHER_ORE.get()));
 
     // *********************** REDSTONE
 
-    public static final DeferredBlock<Block> OTHER_REDSTONE_ORE = BLOCKS.register("other_redstone_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_REDSTONE_ORE_ITEM = ITEMS.register("other_redstone_ore", () -> basicToolTipBlockItem(OTHER_REDSTONE_ORE.get()));
+    public static final DeferredBlock<Block> REDSTONE_NETHER_ORE = BLOCKS.register("nether_redstone_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> REDSTONE_NETHER_ORE_ITEM = ITEMS.register("nether_redstone_ore", () -> basicToolTipBlockItem(REDSTONE_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> REDSTONE_END_ORE = BLOCKS.register("end_redstone_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> REDSTONE_END_ORE_ITEM = ITEMS.register("end_redstone_ore", () -> basicToolTipBlockItem(REDSTONE_END_ORE.get()));
+    public static final DeferredBlock<Block> REDSTONE_OTHER_ORE = BLOCKS.register("other_redstone_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> REDSTONE_OTHER_ORE_ITEM = ITEMS.register("other_redstone_ore", () -> basicToolTipBlockItem(REDSTONE_OTHER_ORE.get()));
 
     // *********************** EMERALD
 
-    public static final DeferredBlock<Block> OTHER_EMERALD_ORE = BLOCKS.register("other_emerald_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_EMERALD_ORE_ITEM = ITEMS.register("other_emerald_ore", () -> basicToolTipBlockItem(OTHER_EMERALD_ORE.get()));
+    public static final DeferredBlock<Block> EMERALD_NETHER_ORE = BLOCKS.register("nether_emerald_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> EMERALD_NETHER_ORE_ITEM = ITEMS.register("nether_emerald_ore", () -> basicToolTipBlockItem(EMERALD_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> EMERALD_END_ORE = BLOCKS.register("end_emerald_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> EMERALD_END_ORE_ITEM = ITEMS.register("end_emerald_ore", () -> basicToolTipBlockItem(EMERALD_END_ORE.get()));
+    public static final DeferredBlock<Block> EMERALD_OTHER_ORE = BLOCKS.register("other_emerald_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> EMERALD_OTHER_ORE_ITEM = ITEMS.register("other_emerald_ore", () -> basicToolTipBlockItem(EMERALD_OTHER_ORE.get()));
 
     // *********************** QUARTZ
 
-    public static final DeferredBlock<Block> OTHER_QUARTZ_ORE = BLOCKS.register("other_quartz_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_QUARTZ_ORE_ITEM = ITEMS.register("other_quartz_ore", () -> basicBlockItem(OTHER_QUARTZ_ORE.get()));
+    public static final DeferredBlock<Block> QUARTZ_END_ORE = BLOCKS.register("end_quartz_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> QUARTZ_END_ORE_ITEM = ITEMS.register("end_quartz_ore", () -> basicToolTipBlockItem(QUARTZ_END_ORE.get()));
+    public static final DeferredBlock<Block> QUARTZ_OTHER_ORE = BLOCKS.register("other_quartz_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> QUARTZ_OTHER_ORE_ITEM = ITEMS.register("other_quartz_ore", () -> basicToolTipBlockItem(QUARTZ_OTHER_ORE.get()));
 
     // *********************** IRON
 
-    public static final DeferredBlock<Block> OTHER_IRON_ORE = BLOCKS.register("other_iron_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_IRON_ORE_ITEM = ITEMS.register("other_iron_ore", () -> basicToolTipBlockItem(OTHER_IRON_ORE.get()));
+    public static final DeferredBlock<Block> IRON_NETHER_ORE = BLOCKS.register("nether_iron_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> IRON_NETHER_ORE_ITEM = ITEMS.register("nether_iron_ore", () -> basicToolTipBlockItem(IRON_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> IRON_END_ORE = BLOCKS.register("end_iron_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> IRON_END_ORE_ITEM = ITEMS.register("end_iron_ore", () -> basicToolTipBlockItem(IRON_END_ORE.get()));
+    public static final DeferredBlock<Block> IRON_OTHER_ORE = BLOCKS.register("other_iron_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> IRON_OTHER_ORE_ITEM = ITEMS.register("other_iron_ore", () -> basicToolTipBlockItem(IRON_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> IRON_DUST = ITEMS.register("iron_dust", BlockList::basicItem);
     public static final DeferredItem<Item> IRON_ROD = ITEMS.register("iron_rod", BlockList::basicItem);
@@ -603,8 +638,12 @@ public class BlockList {
 
     // *********************** COPPER
 
-    public static final DeferredBlock<Block> OTHER_COPPER_ORE = BLOCKS.register("other_copper_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_COPPER_ORE_ITEM = ITEMS.register("other_copper_ore", () -> basicToolTipBlockItem(OTHER_COPPER_ORE.get()));
+    public static final DeferredBlock<Block> COPPER_NETHER_ORE = BLOCKS.register("nether_copper_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> COPPER_NETHER_ORE_ITEM = ITEMS.register("nether_copper_ore", () -> basicToolTipBlockItem(COPPER_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> COPPER_END_ORE = BLOCKS.register("end_copper_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> COPPER_END_ORE_ITEM = ITEMS.register("end_copper_ore", () -> basicToolTipBlockItem(COPPER_END_ORE.get()));
+    public static final DeferredBlock<Block> COPPER_OTHER_ORE = BLOCKS.register("other_copper_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> COPPER_OTHER_ORE_ITEM = ITEMS.register("other_copper_ore", () -> basicToolTipBlockItem(COPPER_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> COPPER_NUGGET = ITEMS.register("copper_nugget", BlockList::basicItem);
 
@@ -615,8 +654,10 @@ public class BlockList {
 
     // *********************** GOLD
 
-    public static final DeferredBlock<Block> OTHER_GOLD_ORE = BLOCKS.register("other_gold_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_GOLD_ORE_ITEM = ITEMS.register("other_gold_ore", () -> basicToolTipBlockItem(OTHER_GOLD_ORE.get()));
+    public static final DeferredBlock<Block> GOLD_END_ORE = BLOCKS.register("end_gold_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> GOLD_END_ORE_ITEM = ITEMS.register("end_gold_ore", () -> basicToolTipBlockItem(GOLD_END_ORE.get()));
+    public static final DeferredBlock<Block> GOLD_OTHER_ORE = BLOCKS.register("other_gold_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> GOLD_OTHER_ORE_ITEM = ITEMS.register("other_gold_ore", () -> basicToolTipBlockItem(GOLD_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> GOLD_DUST = ITEMS.register("gold_dust", BlockList::basicItem);
     public static final DeferredItem<Item> GOLD_ROD = ITEMS.register("gold_rod", BlockList::basicItem);
@@ -625,8 +666,12 @@ public class BlockList {
 
     // *********************** DIAMOND
 
-    public static final DeferredBlock<Block> OTHER_DIAMOND_ORE = BLOCKS.register("other_diamond_ore", OtherOreBlock::new);
-    public static final DeferredItem<Item> OTHER_DIAMOND_ORE_ITEM = ITEMS.register("other_diamond_ore", () -> basicToolTipBlockItem(OTHER_DIAMOND_ORE.get()));
+    public static final DeferredBlock<Block> DIAMOND_NETHER_ORE = BLOCKS.register("nether_diamond_ore", NetherOreBlock::new);
+    public static final DeferredItem<Item> DIAMOND_NETHER_ORE_ITEM = ITEMS.register("nether_diamond_ore", () -> basicToolTipBlockItem(DIAMOND_NETHER_ORE.get()));
+    public static final DeferredBlock<Block> DIAMOND_END_ORE = BLOCKS.register("end_diamond_ore", EndOreBlock::new);
+    public static final DeferredItem<Item> DIAMOND_END_ORE_ITEM = ITEMS.register("end_diamond_ore", () -> basicToolTipBlockItem(DIAMOND_END_ORE.get()));
+    public static final DeferredBlock<Block> DIAMOND_OTHER_ORE = BLOCKS.register("other_diamond_ore", OtherOreBlock::new);
+    public static final DeferredItem<Item> DIAMOND_OTHER_ORE_ITEM = ITEMS.register("other_diamond_ore", () -> basicToolTipBlockItem(DIAMOND_OTHER_ORE.get()));
 
     public static final DeferredItem<Item> DIAMOND_DUST = ITEMS.register("diamond_dust", BlockList::basicItem);
     public static final DeferredItem<Item> DIAMOND_ROD = ITEMS.register("diamond_rod", BlockList::basicItem);
@@ -639,8 +684,6 @@ public class BlockList {
     public static final DeferredItem<Item> NETHERITE_ROD = ITEMS.register("netherite_rod", BlockList::basicItem);
     public static final DeferredItem<Item> NETHERITE_GEAR = ITEMS.register("netherite_gear", BlockList::basicItem);
     public static final DeferredItem<Item> NETHERITE_PLATE = ITEMS.register("netherite_plate", BlockList::basicItem);
-
-
 
     // ###################### HELPER METHODS
 

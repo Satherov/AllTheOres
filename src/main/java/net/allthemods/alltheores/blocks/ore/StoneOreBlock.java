@@ -9,4 +9,5 @@ public class StoneOreBlock extends OreBlock {
     public StoneOreBlock() {
         super(0,7, properties);
     }
+
 }

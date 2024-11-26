@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.blocks.ore;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class EndOreBlock extends OreBlock {

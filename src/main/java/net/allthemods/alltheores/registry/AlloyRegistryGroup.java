@@ -24,7 +24,9 @@ public class AlloyRegistryGroup {
     public final TagKey<Item> INGOT_TAG;
     public final TagKey<Item> NUGGET_TAG;
     public final TagKey<Item> DUST_TAG;
-
+    public final TagKey<Item> ROD_TAG;
+    public final TagKey<Item> GEAR_TAG;
+    public final TagKey<Item> PLATE_TAG;
 
     // Blocks
     public final DeferredHolder<Block, Block> BLOCK;
@@ -50,6 +52,9 @@ public class AlloyRegistryGroup {
         INGOT_TAG = ItemTags.create(Reference.ingot(name));
         NUGGET_TAG = ItemTags.create(Reference.nugget(name));
         DUST_TAG = ItemTags.create(Reference.dust(name));
+        ROD_TAG = ItemTags.create(Reference.rod(name));
+        GEAR_TAG = ItemTags.create(Reference.gear(name));
+        PLATE_TAG = ItemTags.create(Reference.plate(name));
 
         BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name),
                 () -> new Block(Block.Properties.of()

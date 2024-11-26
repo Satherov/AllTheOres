@@ -34,6 +34,12 @@ public class OreRegistryGroup extends AlloyRegistryGroup {
     public final TagKey<Block> ORE_TAG;
     public final TagKey<Item> ORE_ITEM_TAG;
 
+    public final TagKey<Block> RAW_BLOCK_TAG;
+
+    public final TagKey<Item> CRYSTAL_TAG;
+    public final TagKey<Item> SHARD_TAG;
+    public final TagKey<Item> CLUMP_TAG;
+    public final TagKey<Item> DIRTY_DUST_TAG;
 
     // Blocks
     public final DeferredHolder<Block, Block> ORE;
@@ -74,6 +80,13 @@ public class OreRegistryGroup extends AlloyRegistryGroup {
         ORE_TAG = BlockTags.create(Reference.ore(name));
         ORE_ITEM_TAG = ItemTags.create(Reference.ore(name));
 
+        RAW_BLOCK_TAG = BlockTags.create(Reference.block("raw_" + name));
+
+        CRYSTAL_TAG = ItemTags.create(Reference.crystal(name));
+        SHARD_TAG = ItemTags.create(Reference.shard(name));
+        CLUMP_TAG = ItemTags.create(Reference.clump(name));
+        DIRTY_DUST_TAG = ItemTags.create(Reference.dirty_dust(name));
+
         ORE = BlockList.ORE.register(String.format("%s_ore", name), StoneOreBlock::new);
         SLATE_ORE = BlockList.ORE.register(String.format("%s_deepslate_ore", name), SlateOreBlock::new);
         NETHER_ORE = BlockList.ORE.register(String.format("%s_nether_ore", name), NetherOreBlock::new);
@@ -108,6 +121,6 @@ public class OreRegistryGroup extends AlloyRegistryGroup {
     }
 
     private BaseFlowingFluid.Properties makeMoltenProperties() {
-        return new BaseFlowingFluid.Properties(MOLTEN_TYPE, MOLTEN, MOLTEN_FLOWING);
+        return new BaseFlowingFluid.Properties(MOLTEN_TYPE, MOLTEN, MOLTEN_FLOWING).bucket(MOLTEN_BUCKET).block(MOLTEN_BLOCK);
     }
 }

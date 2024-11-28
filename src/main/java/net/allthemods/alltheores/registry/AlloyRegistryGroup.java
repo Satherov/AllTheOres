@@ -14,13 +14,14 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import static net.allthemods.alltheores.blocks.BlockList.*;
 
 
-public class AlloyRegistryGroup {
+public class AlloyRegistryGroup{
 
     public final String name;
 
     // Tags
     public final TagKey<Block> BLOCK_TAG;
     public final TagKey<Item> BLOCK_ITEM_TAG;
+
     public final TagKey<Item> INGOT_TAG;
     public final TagKey<Item> NUGGET_TAG;
     public final TagKey<Item> DUST_TAG;
@@ -71,5 +72,4 @@ public class AlloyRegistryGroup {
         GEAR = material(String.format("%s_gear", name));
         PLATE = material(String.format("%s_plate", name));
     }
-
 }

@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -26,7 +27,7 @@ public class ShapedBlockBuilder {
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> ingot;
     private final TagKey<Item> hammer = ItemTagRegistry.ORE_HAMMERS;
-    private final TagKey<Item> nugget = ItemTagRegistry.IRON_NUGGET;
+    private final TagKey<Item> nugget =  ItemTags.create(Reference.nugget("iron"));
 
     public ShapedBlockBuilder(TagKey<Item> ingot) {
         this.ingot = ingot;

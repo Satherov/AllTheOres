@@ -1,14 +1,25 @@
 package net.allthemods.alltheores.datagen.server;
 
 import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.registry.AlloyRegistryGroup;
-import net.allthemods.alltheores.registry.OreRegistryGroup;
-import net.allthemods.alltheores.registry.VanillaRegistryGroup;
+import net.allthemods.alltheores.registry.*;
 
 import java.util.function.Consumer;
 
 public class GroupHelper {
+
     public static void applyToOre(Consumer<OreRegistryGroup> consumer) {
+        applyToMaterial(group -> {
+            consumer.accept(group.ORE_REGISTRY_GROUP);
+        });
+        applyToDust(group -> {
+            consumer.accept(group.ORE_REGISTRY_GROUP);
+        });
+        applyToGem(group -> {
+            consumer.accept(group.ORE_REGISTRY_GROUP);
+        });
+    }
+
+    public static void applyToMaterial(Consumer<MaterialRegistryGroup> consumer) {
         consumer.accept(BlockList.ALUMINUM);
         consumer.accept(BlockList.LEAD);
         consumer.accept(BlockList.NICKEL);
@@ -36,5 +47,18 @@ public class GroupHelper {
         consumer.accept(BlockList.GOLD);
         consumer.accept(BlockList.COPPER);
         consumer.accept(BlockList.DIAMOND);
+    }
+
+    public static void applyToGem(Consumer<GemRegistryGroup> consumer) {
+        consumer.accept(BlockList.RUBY);
+        consumer.accept(BlockList.PERIDOT);
+        consumer.accept(BlockList.SAPPHIRE);
+        consumer.accept(BlockList.CINNABAR);
+        consumer.accept(BlockList.FLUORITE);
+    }
+
+    public static void applyToDust(Consumer<DustRegistryGroup> consumer) {
+        consumer.accept(BlockList.SALT);
+        consumer.accept(BlockList.SULFUR);
     }
 }

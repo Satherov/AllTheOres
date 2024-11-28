@@ -1,10 +1,12 @@
 package net.allthemods.alltheores.blocks;
 
+import mekanism.api.MekanismAPI;
+import mekanism.api.chemical.Chemical;
+import mekanism.common.registration.impl.ChemicalDeferredRegister;
+import net.allthemods.alltheores.blocks.mek_reg.SlurryRegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.items.OreHammer;
-import net.allthemods.alltheores.registry.AlloyRegistryGroup;
-import net.allthemods.alltheores.registry.OreRegistryGroup;
-import net.allthemods.alltheores.registry.VanillaRegistryGroup;
+import net.allthemods.alltheores.registry.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,20 +23,23 @@ public class BlockList {
     public static final DeferredRegister<Block> ORE = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);
+    public static final SlurryRegistry SLURRY_STILL = new SlurryRegistry(Reference.MOD_ID);
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
 
     // ###################### ALL THE ORES
 
-    public static final OreRegistryGroup ALUMINUM = new OreRegistryGroup("aluminum", 0xFFE3E3E3);
-    public static final OreRegistryGroup LEAD = new OreRegistryGroup("lead", 0xFF7C8CC6);
-    public static final OreRegistryGroup NICKEL = new OreRegistryGroup("nickel", 0xFFA9A984);
-    public static final OreRegistryGroup OSMIUM = new OreRegistryGroup("osmium", 0xFFC0C9DD);
-    public static final OreRegistryGroup PLATINUM = new OreRegistryGroup("platinum", 0xFFB5B5FF);
-    public static final OreRegistryGroup SILVER = new OreRegistryGroup("silver", 0xFFA4E0E7);
-    public static final OreRegistryGroup TIN = new OreRegistryGroup("tin", 0xFF787878);
-    public static final OreRegistryGroup URANIUM = new OreRegistryGroup("uranium", 0xFF7EE778);
-    public static final OreRegistryGroup ZINC = new OreRegistryGroup("zinc", 0xFFB5B5B5);
+    public static final DeferredHolder<Item, Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item(new Item.Properties()));
+
+    public static final MaterialRegistryGroup ALUMINUM = new MaterialRegistryGroup("aluminum", 0xFFE3E3E3);
+    public static final MaterialRegistryGroup LEAD = new MaterialRegistryGroup("lead", 0xFF7C8CC6);
+    public static final MaterialRegistryGroup NICKEL = new MaterialRegistryGroup("nickel", 0xFFA9A984);
+    public static final MaterialRegistryGroup OSMIUM = new MaterialRegistryGroup("osmium", 0xFFC0C9DD);
+    public static final MaterialRegistryGroup PLATINUM = new MaterialRegistryGroup("platinum", 0xFFB5B5FF);
+    public static final MaterialRegistryGroup SILVER = new MaterialRegistryGroup("silver", 0xFFA4E0E7);
+    public static final MaterialRegistryGroup TIN = new MaterialRegistryGroup("tin", 0xFF787878);
+    public static final MaterialRegistryGroup URANIUM = new MaterialRegistryGroup("uranium", 0xFF7EE778);
+    public static final MaterialRegistryGroup ZINC = new MaterialRegistryGroup("zinc", 0xFFB5B5B5);
 
     public static final AlloyRegistryGroup STEEL = new AlloyRegistryGroup("steel");
     public static final AlloyRegistryGroup INVAR = new AlloyRegistryGroup("invar");
@@ -49,6 +54,15 @@ public class BlockList {
     public static final VanillaRegistryGroup IRON = new VanillaRegistryGroup("iron", Tags.Items.INGOTS_IRON);
     public static final VanillaRegistryGroup GOLD = new VanillaRegistryGroup("gold", Tags.Items.INGOTS_GOLD);
     public static final VanillaRegistryGroup COPPER = new VanillaRegistryGroup("copper", Tags.Items.INGOTS_COPPER);
+
+    public static final GemRegistryGroup RUBY = new GemRegistryGroup("ruby");
+    public static final GemRegistryGroup PERIDOT = new GemRegistryGroup("peridot");
+    public static final GemRegistryGroup SAPPHIRE = new GemRegistryGroup("sapphire");
+    public static final GemRegistryGroup CINNABAR = new GemRegistryGroup("cinnabar");
+    public static final GemRegistryGroup FLUORITE = new GemRegistryGroup("fluorite");
+
+    public static final DustRegistryGroup SALT = new DustRegistryGroup("salt");
+    public static final DustRegistryGroup SULFUR = new DustRegistryGroup("sulfur");
 
     public static final DeferredHolder<Item, Item> COPPER_ORE_HAMMER = ITEMS.register("copper_ore_hammer", () -> new OreHammer(new Item.Properties(), 64));
     public static final DeferredHolder<Item, Item> IRON_ORE_HAMMER = ITEMS.register("iron_ore_hammer", () -> new OreHammer(new Item.Properties(), 96));

@@ -7,19 +7,7 @@ import java.util.function.Consumer;
 
 public class GroupHelper {
 
-    public static void applyToOre(Consumer<OreRegistryGroup> consumer) {
-        applyToMaterial(group -> {
-            consumer.accept(group.ORE_REGISTRY_GROUP);
-        });
-        applyToDust(group -> {
-            consumer.accept(group.ORE_REGISTRY_GROUP);
-        });
-        applyToGem(group -> {
-            consumer.accept(group.ORE_REGISTRY_GROUP);
-        });
-    }
-
-    public static void applyToMaterial(Consumer<MaterialRegistryGroup> consumer) {
+    public static void applyToOre(Consumer<MaterialRegistryGroup> consumer) {
         consumer.accept(BlockList.ALUMINUM);
         consumer.accept(BlockList.LEAD);
         consumer.accept(BlockList.NICKEL);

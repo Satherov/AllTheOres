@@ -1,16 +1,12 @@
 package net.allthemods.alltheores.datagen.server;
 
-import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.blocks.ore.OreBlock;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.allthemods.alltheores.infos.Reference;
-import net.allthemods.alltheores.registry.OreRegistryGroup;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -130,7 +126,7 @@ public class CraftingRecipes extends RecipeProvider {
 
         });
 
-        GroupHelper.applyToMaterial(group -> {
+        GroupHelper.applyToOre(group -> {
 
             // Ore -> Ingot
             SimpleCookingRecipeBuilder
@@ -140,50 +136,43 @@ public class CraftingRecipes extends RecipeProvider {
 
             // Raw -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.RAW_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
+                    .blasting(Ingredient.of(group.ORE_REGISTRY_GROUP.RAW_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
                     .unlockedBy(hasCondition, RecipeProvider.has(group.ORE_REGISTRY_GROUP.ORE.get()))
                     .save(consumer, blastingRecipeDir(String.format("%s_ingot", group.name), "ore"));
 
             // Raw Block -> 9x Raw
             ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.RAW.get(), 9)
+                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 9)
                     .requires(group.RAW_BLOCK_ITEM_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.RAW_TAG))
+                    .unlockedBy(hasCondition, RecipeProvider.has(group.ORE_REGISTRY_GROUP.RAW_TAG))
                     .save(consumer, shapelessRecipeDir(String.format("raw_%s", group.name), "block"));
 
             // 9x Raw -> Raw Block
-            block(group.ORE_REGISTRY_GROUP.RAW_BLOCK_ITEM.get(), group.RAW_TAG)
-                    .define('#', group.RAW_TAG)
-                    .unlockedBy(String.format("has_raw_%s", group.name), has(group.RAW_TAG))
+            block(group.ORE_REGISTRY_GROUP.RAW_BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
+                    .define('#', group.ORE_REGISTRY_GROUP.RAW_TAG)
+                    .unlockedBy(String.format("has_raw_%s", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
                     .save(consumer);
 
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
                     .requires(ItemTagRegistry.ORE_HAMMERS)
-                    .requires(group.RAW_TAG)
+                    .requires(group.ORE_REGISTRY_GROUP.RAW_TAG)
                     .unlockedBy(hasCondition, RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ItemTagRegistry.ORE_HAMMERS).build()))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
 
         GroupHelper.applyToGem(group -> {
-            // Block -> 9x Ingot
-            ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.GEM.get(), 9)
-                    .requires(group.BLOCK_ITEM_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.BLOCK_ITEM_TAG))
-                    .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "block"));
-
             // 9x Ingot -> Block
-            block(group.BLOCK_ITEM.get(), group.GEM_TAG)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.GEM_TAG))
+            block(group.BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
                     .save(consumer);
 
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
                     .requires(ItemTagRegistry.ORE_HAMMERS)
-                    .requires(group.GEM_TAG)
+                    .requires(group.ORE_REGISTRY_GROUP.RAW_TAG)
                     .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
@@ -191,19 +180,19 @@ public class CraftingRecipes extends RecipeProvider {
         GroupHelper.applyToDust(group -> {
             // Block -> 9x Ingot
             ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.DUST.get(), 9)
+                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 9)
                     .requires(group.BLOCK_ITEM_TAG)
                     .unlockedBy(String.format("has_%s", group.name), has(group.BLOCK_ITEM_TAG))
                     .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "block"));
 
             // 9x Ingot -> Block
-            block(group.BLOCK_ITEM.get(), group.DUST_TAG)
-                    .unlockedBy(String.format("has_%s", group.name), has(group.DUST_TAG))
+            block(group.BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
+                    .unlockedBy(String.format("has_%s", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
                     .save(consumer);
 
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
+                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 2)
                     .requires(ItemTagRegistry.ORE_HAMMERS)
                     .requires(group.ORE_REGISTRY_GROUP.ORE_ITEM_TAG)
                     .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))

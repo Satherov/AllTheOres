@@ -1,7 +1,6 @@
 package net.allthemods.alltheores.datagen.server;
 
 import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.blocks.mek_reg.MekRegistry;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.HolderLookup;
@@ -9,7 +8,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
@@ -44,7 +42,7 @@ public class ItemTags extends ItemTagsProvider {
             tag(group.PLATE_TAG).add(group.PLATE.get());
         });
 
-        GroupHelper.applyToMaterial(group -> {
+        GroupHelper.applyToOre(group -> {
             tag(group.CRYSTAL_TAG).add(group.CRYSTAL.get());
             tag(group.SHARD_TAG).add(group.SHARD.get());
             tag(group.CLUMP_TAG).add(group.CLUMP.get());
@@ -52,12 +50,12 @@ public class ItemTags extends ItemTagsProvider {
         });
 
         GroupHelper.applyToDust(group -> {
-            tag(group.DUST_TAG).add(group.DUST.get());
+            tag(group.ORE_REGISTRY_GROUP.RAW_TAG).add(group.ORE_REGISTRY_GROUP.RAW.get());
             tag(group.BLOCK_ITEM_TAG).add(group.BLOCK_ITEM.get());
         });
 
         GroupHelper.applyToGem(group -> {
-            tag(group.GEM_TAG).add(group.GEM.get());
+            tag(group.ORE_REGISTRY_GROUP.RAW_TAG).add(group.ORE_REGISTRY_GROUP.RAW.get());
             tag(group.DUST_TAG).add(group.DUST.get());
             tag(group.BLOCK_ITEM_TAG).add(group.BLOCK_ITEM.get());
         });

@@ -18,171 +18,22 @@ public class LootTables extends VanillaBlockLoot {
 
     @Override
     public void generate() {
-        getKnownBlocks().forEach(this::dropRaw);
+        GroupHelper.applyToOre(group -> {
+            this.add(group.ORE.get(), (block) -> {
+                return createOreDrop(block, group.RAW.get());
+            });
+        });
+        getKnownBlocks().forEach(this::dropSelf);
     }
-
-    private void dropRaw(Block block) {
-        if (block instanceof OreBlock) {
-            String oretype = block.getName().toString();
-
-            // ************ ALL THE ORES
-
-            if (oretype.contains("aluminum")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.ALUMINUM_RAW.get());
-                });
-            }
-            if (oretype.contains("lead")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.LEAD_RAW.get());
-                });
-            }
-            if (oretype.contains("nickel")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.NICKEL_RAW.get());
-                });
-            }
-            if (oretype.contains("osmium")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.OSMIUM_RAW.get());
-                });
-            }
-            if (oretype.contains("platinum")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.PLATINUM_RAW.get());
-                });
-            }
-            if (oretype.contains("silver")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.SILVER_RAW.get());
-                });
-            }
-            if (oretype.contains("tin")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.TIN_RAW.get());
-                });
-            }
-            if (oretype.contains("uranium")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.URANIUM_RAW.get());
-                });
-            }
-            if (oretype.contains("zinc")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.ZINC_RAW.get());
-                });
-            }
-            if (oretype.contains("iridium")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.IRIDIUM_RAW.get());
-                });
-            }
-
-            // ************ ALL THE GEMS
-
-            if (oretype.contains("ruby")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.RUBY.get());
-                });
-            }
-            if (oretype.contains("peridot")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.PERIDOT.get());
-                });
-            }
-            if (oretype.contains("sapphire")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.SAPPHIRE.get());
-                });
-            }
-            if (oretype.contains("cinnabar")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.CINNABAR.get());
-                });
-            }
-            if (oretype.contains("fluorite")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.FLUORITE.get());
-                });
-            }
-            if (oretype.contains("salt")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.SALT.get());
-                });
-            }
-            if (oretype.contains("sulfur")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, BlockList.SULFUR.get());
-                });
-            }
-
-            // ************ VANILLA MATERIALS
-
-            if (oretype.contains("coal")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.COAL);
-                });
-            }
-            if (oretype.contains("lapis")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.LAPIS_LAZULI);
-                });
-            }
-            if (oretype.contains("redstone")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.REDSTONE);
-                });
-            }
-            if (oretype.contains("emerald")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.EMERALD);
-                });
-            }
-            if (oretype.contains("quartz")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.QUARTZ);
-                });
-            }
-            if (oretype.contains("iron")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.RAW_IRON);
-                });
-            }
-
-            // ************ VANILLA ORES
-
-            if (oretype.contains("copper")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.RAW_COPPER);
-                });
-            }
-            if (oretype.contains("gold")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.RAW_GOLD);
-                });
-            }
-            if (oretype.contains("diamond")) {
-                this.add(block, (block1) -> {
-                    return createOreDrop(block1, Items.DIAMOND);
-                });
-            }
-
-        } else {
-            this.dropSelf(block);
-        }
-    }
-
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return BlockList.BLOCKS.getEntries()
                 .stream().map(DeferredHolder::get)
-                .filter(block -> !(block instanceof LiquidBlock))
+                .filter(block -> !(block instanceof LiquidBlock || block instanceof OreBlock))
                 .collect(Collectors.toList());
 
     }
-
-
 }
 
 

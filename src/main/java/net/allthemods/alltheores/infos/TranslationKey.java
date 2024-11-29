@@ -29,7 +29,7 @@ public class TranslationKey {
 
 
     public static String tab2() {
-        return String.format("itemGroup.%s", Reference.MOD_ID_MEK);
+        return String.format("itemGroup.%s", Reference.MOD_ID + "_mek");
     }
 
     public static String jei(String key) {

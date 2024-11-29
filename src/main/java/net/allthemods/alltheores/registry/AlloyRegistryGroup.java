@@ -14,14 +14,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import static net.allthemods.alltheores.blocks.BlockList.*;
 
 
-public class AlloyRegistryGroup{
+public class AlloyRegistryGroup {
 
     public final String name;
 
-    // Tags
-    public final TagKey<Block> BLOCK_TAG;
-    public final TagKey<Item> BLOCK_ITEM_TAG;
-
+    // Item Tags
     public final TagKey<Item> INGOT_TAG;
     public final TagKey<Item> NUGGET_TAG;
     public final TagKey<Item> DUST_TAG;
@@ -29,27 +26,32 @@ public class AlloyRegistryGroup{
     public final TagKey<Item> GEAR_TAG;
     public final TagKey<Item> PLATE_TAG;
 
-    // Blocks
-    public final DeferredHolder<Block, Block> BLOCK;
+    // Block Tags
+    public final TagKey<Block> BLOCK_TAG;
 
-    // BlockItems
-    public final DeferredHolder<Item, BlockItem> BLOCK_ITEM;
+    // BlockItem Tags
+    public final TagKey<Item> BLOCK_ITEM_TAG;
+
 
     // Items
     public final DeferredHolder<Item, Item> DUST;
     public final DeferredHolder<Item, Item> INGOT;
     public final DeferredHolder<Item, Item> NUGGET;
 
-    // Parts
     public final DeferredHolder<Item, Item> ROD;
     public final DeferredHolder<Item, Item> GEAR;
     public final DeferredHolder<Item, Item> PLATE;
 
+    // Blocks
+    public final DeferredHolder<Block, Block> BLOCK;
+
+    // BlockItems
+    public final DeferredHolder<Item, BlockItem> BLOCK_ITEM;
+
     public AlloyRegistryGroup(String name) {
         this.name = name;
 
-        BLOCK_TAG = BlockTags.create(Reference.block(name));
-        BLOCK_ITEM_TAG = ItemTags.create(Reference.block(name));
+        // Item Tags
         INGOT_TAG = ItemTags.create(Reference.ingot(name));
         NUGGET_TAG = ItemTags.create(Reference.nugget(name));
         DUST_TAG = ItemTags.create(Reference.dust(name));
@@ -57,13 +59,14 @@ public class AlloyRegistryGroup{
         GEAR_TAG = ItemTags.create(Reference.gear(name));
         PLATE_TAG = ItemTags.create(Reference.plate(name));
 
-        BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name),
-                () -> new Block(Block.Properties.of()
-                        .strength(3.0f, 3.0f)
-                        .sound(SoundType.METAL)));
+        // Block Tags
+        BLOCK_TAG = BlockTags.create(Reference.block(name));
 
-        BLOCK_ITEM = blockItem(BLOCK);
+        // BlockItem Tags
+        BLOCK_ITEM_TAG = ItemTags.create(Reference.block(name));
 
+
+        // Items
         INGOT = material(String.format("%s_ingot", name));
         NUGGET = material(String.format("%s_nugget", name));
         DUST = material(String.format("%s_dust", name));
@@ -71,5 +74,14 @@ public class AlloyRegistryGroup{
         ROD = material(String.format("%s_rod", name));
         GEAR = material(String.format("%s_gear", name));
         PLATE = material(String.format("%s_plate", name));
+
+        // Blocks
+        BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name),
+                () -> new Block(Block.Properties.of()
+                        .strength(3.0f, 3.0f)
+                        .sound(SoundType.METAL)));
+
+        // BlockItems
+        BLOCK_ITEM = blockItem(BLOCK);
     }
 }

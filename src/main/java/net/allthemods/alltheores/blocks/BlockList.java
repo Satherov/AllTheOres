@@ -1,9 +1,6 @@
 package net.allthemods.alltheores.blocks;
 
-import mekanism.api.MekanismAPI;
-import mekanism.api.chemical.Chemical;
 import mekanism.common.registration.impl.ChemicalDeferredRegister;
-import net.allthemods.alltheores.blocks.mek_reg.SlurryRegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.items.OreHammer;
 import net.allthemods.alltheores.registry.*;
@@ -23,7 +20,7 @@ public class BlockList {
     public static final DeferredRegister<Block> ORE = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);
-    public static final SlurryRegistry SLURRY_STILL = new SlurryRegistry(Reference.MOD_ID);
+    public static final ChemicalDeferredRegister SLURRY_STILL = new ChemicalDeferredRegister(Reference.MOD_ID);
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
 

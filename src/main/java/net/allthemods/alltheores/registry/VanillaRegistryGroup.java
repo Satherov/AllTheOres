@@ -8,27 +8,29 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.allthemods.alltheores.blocks.BlockList.material;
 
-public class VanillaRegistryGroup {
+public class VanillaRegistryGroup extends RegistryGroup{
     public final String name;
 
-    // Tags
+    // Item Tags
     public final TagKey<Item> DUST_TAG;
+
+    public final TagKey<Item> MATERIAL_TAG;
 
     // Items
     public final DeferredHolder<Item, Item> DUST;
 
-    // Parts
     public final DeferredHolder<Item, Item> ROD;
     public final DeferredHolder<Item, Item> GEAR;
     public final DeferredHolder<Item, Item> PLATE;
-
-    public final TagKey<Item> MATERIAL_TAG;
 
     public VanillaRegistryGroup(String name, TagKey<Item> materialTag) {
         this.name = name;
         this.MATERIAL_TAG = materialTag;
 
+        // Item Tags
         DUST_TAG = ItemTags.create(Reference.dust(name));
+
+        // Items
         DUST = material(String.format("%s_dust", name));
 
         ROD = material(String.format("%s_rod", name));

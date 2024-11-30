@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:nuggets/steel]_nugget": {
+    "has_steel_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:nuggets/steel"
+            "items": "#c:ingots/steel"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:nuggets/steel]_nugget"
+      "has_steel_ingot"
     ]
   ],
   "rewards": {

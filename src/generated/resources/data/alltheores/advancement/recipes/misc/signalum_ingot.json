@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:nuggets/signalum]_nugget": {
+    "has_signalum_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:nuggets/signalum"
+            "items": "#c:ingots/signalum"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:nuggets/signalum]_nugget"
+      "has_signalum_ingot"
     ]
   ],
   "rewards": {

@@ -1,14 +1,20 @@
 {
   "values": [
-    "alltheores:end_aluminum_ore",
-    "alltheores:end_iridium_ore",
-    "alltheores:end_lead_ore",
-    "alltheores:end_osmium_ore",
-    "alltheores:end_nickel_ore",
-    "alltheores:end_platinum_ore",
-    "alltheores:end_silver_ore",
-    "alltheores:end_tin_ore",
-    "alltheores:end_uranium_ore",
-    "alltheores:end_zinc_ore"
+    "alltheores:aluminum_end_ore",
+    "alltheores:lead_end_ore",
+    "alltheores:nickel_end_ore",
+    "alltheores:osmium_end_ore",
+    "alltheores:platinum_end_ore",
+    "alltheores:silver_end_ore",
+    "alltheores:tin_end_ore",
+    "alltheores:uranium_end_ore",
+    "alltheores:zinc_end_ore",
+    "alltheores:ruby_end_ore",
+    "alltheores:peridot_end_ore",
+    "alltheores:sapphire_end_ore",
+    "alltheores:cinnabar_end_ore",
+    "alltheores:fluorite_end_ore",
+    "alltheores:salt_end_ore",
+    "alltheores:sulfur_end_ore"
   ]
 }

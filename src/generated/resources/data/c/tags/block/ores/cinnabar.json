@@ -1,5 +1,9 @@
 {
   "values": [
-    "alltheores:cinnabar_ore"
+    "alltheores:cinnabar_ore",
+    "alltheores:cinnabar_deepslate_ore",
+    "alltheores:cinnabar_nether_ore",
+    "alltheores:cinnabar_end_ore",
+    "alltheores:cinnabar_other_ore"
   ]
 }

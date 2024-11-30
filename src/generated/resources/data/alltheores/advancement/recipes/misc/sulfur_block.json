@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:dusts/sulfur]_ingot": {
+    "has_raw_sulfur": {
       "conditions": {
         "items": [
           {
-            "items": "#c:dusts/sulfur"
+            "items": "#c:raw_materials/sulfur"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:dusts/sulfur]_ingot"
+      "has_raw_sulfur"
     ]
   ],
   "rewards": {

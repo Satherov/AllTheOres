@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:gems/cinnabar]_ingot": {
+    "has_raw_cinnabar": {
       "conditions": {
         "items": [
           {
-            "items": "#c:gems/cinnabar"
+            "items": "#c:raw_materials/cinnabar"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:gems/cinnabar]_ingot"
+      "has_raw_cinnabar"
     ]
   ],
   "rewards": {

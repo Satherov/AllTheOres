@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "alltheores",
   "key": {
     "a": {
-      "tag": "c:gems/sapphire"
+      "tag": "c:raw_materials/sapphire"
     }
   },
   "pattern": [

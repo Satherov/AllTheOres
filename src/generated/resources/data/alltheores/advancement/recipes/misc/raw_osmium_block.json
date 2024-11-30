@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_TagKey[minecraft:item / c:raw_materials/osmium]": {
+    "has_raw_osmium": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_TagKey[minecraft:item / c:raw_materials/osmium]"
+      "has_raw_osmium"
     ]
   ],
   "rewards": {

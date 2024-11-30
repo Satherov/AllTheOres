@@ -1,19 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "alltheores",
   "key": {
     "a": {
       "tag": "c:ingots/constantan"
     },
-    "i": {
+    "n": {
       "tag": "c:nuggets/iron"
     }
   },
   "pattern": [
-    " a ",
-    "aia",
-    " a "
+    "aaa",
+    "ana",
+    "aaa"
   ],
   "result": {
     "count": 1,

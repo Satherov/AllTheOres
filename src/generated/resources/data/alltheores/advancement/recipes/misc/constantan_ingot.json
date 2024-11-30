@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:nuggets/constantan]_nugget": {
+    "has_constantan_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:nuggets/constantan"
+            "items": "#c:ingots/constantan"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:nuggets/constantan]_nugget"
+      "has_constantan_ingot"
     ]
   ],
   "rewards": {

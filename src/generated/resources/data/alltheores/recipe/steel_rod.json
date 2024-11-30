@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "alltheores",
   "key": {
     "a": {
       "tag": "c:ingots/steel"
@@ -11,9 +10,9 @@
     }
   },
   "pattern": [
+    "   ",
     "  a",
-    "ha ",
-    "   "
+    "ha "
   ],
   "result": {
     "count": 1,

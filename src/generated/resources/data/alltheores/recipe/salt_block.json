@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "alltheores",
   "key": {
     "a": {
-      "tag": "c:dusts/salt"
+      "tag": "c:raw_materials/salt"
     }
   },
   "pattern": [

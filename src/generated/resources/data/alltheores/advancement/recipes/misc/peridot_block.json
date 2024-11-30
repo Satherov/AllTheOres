@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:gems/peridot]_ingot": {
+    "has_raw_peridot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:gems/peridot"
+            "items": "#c:raw_materials/peridot"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:gems/peridot]_ingot"
+      "has_raw_peridot"
     ]
   ],
   "rewards": {

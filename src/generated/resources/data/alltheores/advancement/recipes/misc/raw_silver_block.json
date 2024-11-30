@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_TagKey[minecraft:item / c:raw_materials/silver]": {
+    "has_raw_silver": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_TagKey[minecraft:item / c:raw_materials/silver]"
+      "has_raw_silver"
     ]
   ],
   "rewards": {

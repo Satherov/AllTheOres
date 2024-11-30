@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "alltheores",
   "key": {
     "a": {
       "tag": "c:ingots/lumium"
@@ -11,9 +10,9 @@
     }
   },
   "pattern": [
+    "   ",
     "ha ",
-    "a  ",
-    "   "
+    "a  "
   ],
   "result": {
     "count": 1,

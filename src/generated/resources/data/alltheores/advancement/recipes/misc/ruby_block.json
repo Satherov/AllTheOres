@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:gems/ruby]_ingot": {
+    "has_raw_ruby": {
       "conditions": {
         "items": [
           {
-            "items": "#c:gems/ruby"
+            "items": "#c:raw_materials/ruby"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:gems/ruby]_ingot"
+      "has_raw_ruby"
     ]
   ],
   "rewards": {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:nuggets/lumium]_nugget": {
+    "has_lumium_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:nuggets/lumium"
+            "items": "#c:ingots/lumium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:nuggets/lumium]_nugget"
+      "has_lumium_ingot"
     ]
   ],
   "rewards": {

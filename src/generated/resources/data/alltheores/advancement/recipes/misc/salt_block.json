@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:dusts/salt]_ingot": {
+    "has_raw_salt": {
       "conditions": {
         "items": [
           {
-            "items": "#c:dusts/salt"
+            "items": "#c:raw_materials/salt"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:dusts/salt]_ingot"
+      "has_raw_salt"
     ]
   ],
   "rewards": {

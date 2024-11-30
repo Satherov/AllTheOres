@@ -1,4 +1,4 @@
-package net.allthemods.alltheores.registry;
+package net.allthemods.alltheores.registry.groups;
 
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.ItemTags;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.allthemods.alltheores.blocks.BlockList.material;
 
-public class VanillaRegistryGroup {
+public class RegistryGroupVanilla {
     public final String name;
 
     // Item Tags
@@ -23,7 +23,7 @@ public class VanillaRegistryGroup {
     public final DeferredHolder<Item, Item> GEAR;
     public final DeferredHolder<Item, Item> PLATE;
 
-    public VanillaRegistryGroup(String name, TagKey<Item> materialTag) {
+    public RegistryGroupVanilla(String name, TagKey<Item> materialTag) {
         this.name = name;
         this.MATERIAL_TAG = materialTag;
 

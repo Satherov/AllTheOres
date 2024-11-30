@@ -1,8 +1,8 @@
-package net.allthemods.alltheores.datagen.server;
+package net.allthemods.alltheores.datagen.data.recipe;
 
-import net.allthemods.alltheores.infos.ItemTagRegistry;
+import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -15,9 +15,9 @@ import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CraftingRecipes extends RecipeProvider {
+public class VanillaRecipeProvider extends RecipeProvider {
 
-    public CraftingRecipes(PackOutput packOutput, CompletableFuture<Provider> provider) {
+    public VanillaRecipeProvider(PackOutput packOutput, CompletableFuture<Provider> provider) {
         super(packOutput, provider);
     }
 
@@ -61,7 +61,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("  a")
                 .pattern("ha ")
                 .define('a', tag)
-                .define('h', ItemTagRegistry.ORE_HAMMERS);
+                .define('h', TagRegistry.ORE_HAMMERS);
     }
     private ShapedRecipeBuilder plate(Item provider, TagKey<Item> tag) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
@@ -69,7 +69,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("ha ")
                 .pattern("a  ")
                 .define('a', tag)
-                .define('h', ItemTagRegistry.ORE_HAMMERS);
+                .define('h', TagRegistry.ORE_HAMMERS);
     }
 
     @Override
@@ -155,9 +155,9 @@ public class CraftingRecipes extends RecipeProvider {
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
-                    .requires(ItemTagRegistry.ORE_HAMMERS)
+                    .requires(TagRegistry.ORE_HAMMERS)
                     .requires(group.ORES.DROP_TAG)
-                    .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))
+                    .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
 
@@ -165,9 +165,9 @@ public class CraftingRecipes extends RecipeProvider {
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.ORES.DROP.get(), 2)
-                    .requires(ItemTagRegistry.ORE_HAMMERS)
+                    .requires(TagRegistry.ORE_HAMMERS)
                     .requires(group.ORES.ORE_BLOCK_ITEM_TAG)
-                    .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))
+                    .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
     }

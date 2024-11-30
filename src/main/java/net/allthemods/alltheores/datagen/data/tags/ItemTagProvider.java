@@ -1,7 +1,8 @@
-package net.allthemods.alltheores.datagen.server;
+package net.allthemods.alltheores.datagen.data.tags;
 
 import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.infos.ItemTagRegistry;
+import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -12,15 +13,15 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ItemTags extends ItemTagsProvider {
-    public ItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
+public class ItemTagProvider extends ItemTagsProvider {
+    public ItemTagProvider(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
         super(packOutPut, lookupProvider, tagLookup, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        tag(ItemTagRegistry.COPPER_NUGGET).add(BlockList.COPPER_NUGGET.get());
+        tag(TagRegistry.COPPER_NUGGET).add(BlockList.COPPER_NUGGET.get());
 
         GroupHelper.applyToOre(group -> {
             tag(group.ORE_BLOCK_ITEM_TAG)

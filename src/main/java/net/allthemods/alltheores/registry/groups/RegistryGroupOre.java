@@ -1,8 +1,11 @@
-package net.allthemods.alltheores.registry;
+package net.allthemods.alltheores.registry.groups;
 
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.blocks.ore.*;
 import net.allthemods.alltheores.infos.Reference;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -10,15 +13,24 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.fml.ModList;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.OreFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.allthemods.alltheores.blocks.BlockList.*;
 import static net.allthemods.alltheores.blocks.BlockList.blockItem;
 
-public class OreRegistryGroup {
+public class RegistryGroupOre {
 
     public final String name;
+
+    //Feature
+    public final DeferredHolder<Feature<?>, Feature<?>> ORE_FEATURE;
+    public final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_ORE_FEATURE;
+    public final ResourceKey<PlacedFeature> PLACED_ORE_FEATURE;
 
     //Item Tags
     public final TagKey<Item> DROP_TAG;
@@ -52,9 +64,14 @@ public class OreRegistryGroup {
 
     public final DeferredHolder<Item, BlockItem> DROP_BLOCK_ITEM;
 
-    public OreRegistryGroup(String name, String type) {
+    public RegistryGroupOre(String name, String type) {
 
         this.name = name;
+
+        //Feature
+        ORE_FEATURE = FEATURES.register(String.format("ore_%s", name), () -> new OreFeature(OreConfiguration.CODEC));
+        CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s", name)));
+        PLACED_ORE_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_placed", name)));
 
         //Block Tags
         ORE_BLOCK_TAG = BlockTags.create(Reference.ore(name));
@@ -63,11 +80,11 @@ public class OreRegistryGroup {
         ORE_BLOCK_ITEM_TAG = ItemTags.create(Reference.ore(name));
 
         // Blocks
-        STONE_ORE_BLOCK = BLOCKS.register(String.format("%s_ore", name), StoneOreBlock::new);
-        SLATE_ORE_BLOCK = BLOCKS.register(String.format("%s_deepslate_ore", name), SlateOreBlock::new);
-        NETHER_ORE_BLOCK = BLOCKS.register(String.format("%s_nether_ore", name), NetherOreBlock::new);
-        END_ORE_BLOCK = BLOCKS.register(String.format("%s_end_ore", name), EndOreBlock::new);
-        OTHER_ORE_BLOCK = BLOCKS.register(String.format("%s_other_ore", name), OtherOreBlock::new);
+        STONE_ORE_BLOCK = BLOCKS.register(String.format("%s_ore", name), OreBlockStone::new);
+        SLATE_ORE_BLOCK = BLOCKS.register(String.format("%s_deepslate_ore", name), OreBlockSlate::new);
+        NETHER_ORE_BLOCK = BLOCKS.register(String.format("%s_nether_ore", name), OreBlockNether::new);
+        END_ORE_BLOCK = BLOCKS.register(String.format("%s_end_ore", name), OreBlockEnd::new);
+        OTHER_ORE_BLOCK = BLOCKS.register(String.format("%s_other_ore", name), OreBlockOther::new);
 
         // BlockItems
         STONE_ORE_BLOCK_ITEM = blockItem(STONE_ORE_BLOCK);

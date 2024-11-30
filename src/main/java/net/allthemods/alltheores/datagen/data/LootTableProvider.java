@@ -1,7 +1,8 @@
-package net.allthemods.alltheores.datagen.server;
+package net.allthemods.alltheores.datagen.data;
 
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.blocks.ore.OreBlock;
+import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.block.Block;
@@ -12,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LootTables extends VanillaBlockLoot {
-    public LootTables(Provider provider) {
+public class LootTableProvider extends VanillaBlockLoot {
+    public LootTableProvider(Provider provider) {
         super(provider);
     }
 
@@ -27,7 +28,6 @@ public class LootTables extends VanillaBlockLoot {
                     group.END_ORE_BLOCK,
                     group.OTHER_ORE_BLOCK
             ).forEach(blockHolder -> {
-                System.out.println("Generating Loot Table for " + blockHolder);
                 this.add(blockHolder.get(), block -> createOreDrop(block, group.DROP.get()));
             });
         });
@@ -49,6 +49,3 @@ public class LootTables extends VanillaBlockLoot {
         dropSelf(block);
     }
 }
-
-
-

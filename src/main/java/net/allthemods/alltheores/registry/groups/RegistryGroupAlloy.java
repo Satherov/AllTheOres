@@ -1,4 +1,4 @@
-package net.allthemods.alltheores.registry;
+package net.allthemods.alltheores.registry.groups;
 
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.infos.Reference;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import static net.allthemods.alltheores.blocks.BlockList.*;
 
 
-public class AlloyRegistryGroup {
+public class RegistryGroupAlloy {
 
     public final String name;
 
@@ -48,7 +48,7 @@ public class AlloyRegistryGroup {
     // BlockItems
     public final DeferredHolder<Item, BlockItem> BLOCK_ITEM;
 
-    public AlloyRegistryGroup(String name) {
+    public RegistryGroupAlloy(String name) {
         this.name = name;
 
         // Item Tags

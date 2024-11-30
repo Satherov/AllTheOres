@@ -1,27 +1,18 @@
-package net.allthemods.alltheores.datagen.client;
+package net.allthemods.alltheores.datagen.assets;
 
-import com.google.gson.JsonObject;
 import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.datagen.server.GroupHelper;
+import net.allthemods.alltheores.registry.GroupHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BucketItem;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import java.nio.file.Path;
+public class ItemModelProvider extends net.neoforged.neoforge.client.model.generators.ItemModelProvider {
 
-public class ItemModels extends ItemModelProvider {
-
-    public ItemModels(DataGenerator generator, ExistingFileHelper fileHelper) {
+    public ItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator.getPackOutput(), Reference.MOD_ID, fileHelper);
     }
 

@@ -1,13 +1,13 @@
-package net.allthemods.alltheores.datagen.server;
+package net.allthemods.alltheores.registry;
 
 import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.registry.*;
+import net.allthemods.alltheores.registry.groups.*;
 
 import java.util.function.Consumer;
 
 public class GroupHelper {
 
-    public static void applyToOre(Consumer<OreRegistryGroup> consumer) {
+    public static void applyToOre(Consumer<RegistryGroupOre> consumer) {
         applyToMaterial(group -> {
             consumer.accept(group.ORES);
         });
@@ -19,7 +19,7 @@ public class GroupHelper {
         });
     }
 
-    public static void applyToAlloy(Consumer<AlloyRegistryGroup> consumer) {
+    public static void applyToAlloy(Consumer<RegistryGroupAlloy> consumer) {
         consumer.accept(BlockList.BRONZE);
         consumer.accept(BlockList.CONSTANTAN);
         consumer.accept(BlockList.ELECTRUM);
@@ -30,7 +30,7 @@ public class GroupHelper {
         consumer.accept(BlockList.STEEL);
     }
 
-    public static void applyToMaterial(Consumer<MaterialRegistryGroup> consumer) {
+    public static void applyToMaterial(Consumer<RegistryGroupMaterial> consumer) {
         consumer.accept(BlockList.ALUMINUM);
         consumer.accept(BlockList.LEAD);
         consumer.accept(BlockList.NICKEL);
@@ -42,7 +42,7 @@ public class GroupHelper {
         consumer.accept(BlockList.ZINC);
     }
 
-    public static void applyToGem(Consumer<GemRegistryGroup> consumer) {
+    public static void applyToGem(Consumer<RegistryGroupGem> consumer) {
         consumer.accept(BlockList.RUBY);
         consumer.accept(BlockList.PERIDOT);
         consumer.accept(BlockList.SAPPHIRE);
@@ -50,12 +50,12 @@ public class GroupHelper {
         consumer.accept(BlockList.FLUORITE);
     }
 
-    public static void applyToDust(Consumer<DustRegistryGroup> consumer) {
+    public static void applyToDust(Consumer<RegistryGroupDust> consumer) {
         consumer.accept(BlockList.SALT);
         consumer.accept(BlockList.SULFUR);
     }
 
-    public static void applyToVanilla(Consumer<VanillaRegistryGroup> consumer) {
+    public static void applyToVanilla(Consumer<RegistryGroupVanilla> consumer) {
         consumer.accept(BlockList.IRON);
         consumer.accept(BlockList.GOLD);
         consumer.accept(BlockList.COPPER);

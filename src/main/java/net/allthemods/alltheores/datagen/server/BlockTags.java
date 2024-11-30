@@ -19,61 +19,31 @@ public class BlockTags extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        GroupHelper.applyToOre(group -> {
+            tag(group.ORE_BLOCK_TAG)
+                    .add(group.STONE_ORE_BLOCK.get())
+                    .add(group.SLATE_ORE_BLOCK.get())
+                    .add(group.NETHER_ORE_BLOCK.get())
+                    .add(group.END_ORE_BLOCK.get())
+                    .add(group.OTHER_ORE_BLOCK.get());
+
+            tag(ItemTagRegistry.IN_STONE).add(group.STONE_ORE_BLOCK.get());
+            tag(ItemTagRegistry.IN_DEEPSLATE).add(group.SLATE_ORE_BLOCK.get());
+            tag(ItemTagRegistry.IN_NETHERRACK).add(group.NETHER_ORE_BLOCK.get());
+            tag(ItemTagRegistry.IN_END_STONE).add(group.END_ORE_BLOCK.get());
+            tag(ItemTagRegistry.IN_ANCIENT_STONE).add(group.OTHER_ORE_BLOCK.get());
+
+            tag(group.DROP_BLOCK_TAG).add(group.DROP_BLOCK.get());
+
+            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
+                    .addTag(group.ORE_BLOCK_TAG)
+                    .addTag(group.DROP_BLOCK_TAG);
+        });
 
         GroupHelper.applyToAlloy(group -> {
             tag(group.BLOCK_TAG).add(group.BLOCK.get());
-
             tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).addTag(group.BLOCK_TAG);
         });
 
-        GroupHelper.applyToOre(group -> {
-            tag(group.ORE_TAG)
-                    .add(group.ORE.get())
-                    .add(group.SLATE_ORE.get())
-                    .add(group.NETHER_ORE.get())
-                    .add(group.END_ORE.get())
-                    .add(group.OTHER_ORE.get());
-
-            tag(group.BLOCK_TAG).add(group.BLOCK.get());
-
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
-                    .addTag(group.ORE_TAG)
-                    .addTag(group.BLOCK_TAG);
-        });
-
-        GroupHelper.applyToGem(group -> {
-            tag(group.ORE_TAG)
-                    .add(group.ORE.get())
-                    .add(group.SLATE_ORE.get())
-                    .add(group.NETHER_ORE.get())
-                    .add(group.END_ORE.get())
-                    .add(group.OTHER_ORE.get());
-
-            tag(group.BLOCK_TAG).add(group.BLOCK.get());
-
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
-                    .addTag(group.ORE_TAG)
-                    .addTag(group.BLOCK_TAG);
-        });
-
-        GroupHelper.applyToDust(group -> {
-            tag(group.ORE_TAG)
-                    .add(group.ORE.get())
-                    .add(group.SLATE_ORE.get())
-                    .add(group.NETHER_ORE.get())
-                    .add(group.END_ORE.get())
-                    .add(group.OTHER_ORE.get());
-
-            tag(ItemTagRegistry.IN_STONE).add(group.ORE.get());
-            tag(ItemTagRegistry.IN_DEEPSLATE).add(group.SLATE_ORE.get());
-            tag(ItemTagRegistry.IN_NETHERRACK).add(group.NETHER_ORE.get());
-            tag(ItemTagRegistry.IN_END_STONE).add(group.END_ORE.get());
-
-            tag(group.BLOCK_TAG).add(group.BLOCK.get());
-
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
-                    .addTag(group.ORE_TAG)
-                    .addTag(group.BLOCK_TAG);
-        });
     }
 }

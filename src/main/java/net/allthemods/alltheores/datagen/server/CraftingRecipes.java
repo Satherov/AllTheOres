@@ -17,8 +17,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class CraftingRecipes extends RecipeProvider {
 
-    final String hasCondition = "has_item";
-
     public CraftingRecipes(PackOutput packOutput, CompletableFuture<Provider> provider) {
         super(packOutput, provider);
     }
@@ -77,26 +75,41 @@ public class CraftingRecipes extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
 
+        GroupHelper.applyToOre(group -> {
+            // Raw Block -> 9x Raw
+            ShapelessRecipeBuilder
+                    .shapeless(RecipeCategory.MISC, group.DROP.get(), 9)
+                    .requires(group.DROP_BLOCK_ITEM_TAG)
+                    .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
+                    .save(consumer, shapelessRecipeDir(String.format("raw_%s", group.name), "raw"));
+
+            // 9x Raw -> Raw Block
+            block(group.DROP_BLOCK_ITEM.get(), group.DROP_TAG)
+                    .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
+                    .save(consumer);
+
+        });
+
         GroupHelper.applyToAlloy(group -> {
 
             // Ingot -> 9x Nugget
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.NUGGET.get(), 9)
                     .requires(group.INGOT_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.INGOT_TAG))
-                    .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "block"));
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
+                    .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "nugget"));
 
             // 9x Nugget -> Ingot
             block(group.INGOT.get(), group.NUGGET_TAG)
-                    .unlockedBy(String.format("has_%s_nugget", group.name), has(group.NUGGET_TAG))
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
                     .save(consumer);
 
             // Block -> 9x Ingot
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.INGOT.get(), 9)
                     .requires(group.BLOCK_ITEM_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.BLOCK_ITEM_TAG))
-                    .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "block"));
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
+                    .save(consumer, shapelessRecipeDir(String.format("%s_block", group.name), "ingot"));
 
             // 9x Ingot -> Block
             block(group.BLOCK_ITEM.get(), group.INGOT_TAG)
@@ -106,8 +119,8 @@ public class CraftingRecipes extends RecipeProvider {
             // Dust -> Ingot
             SimpleCookingRecipeBuilder
                     .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 100)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.DUST_TAG))
-                    .save(consumer, smeltingRecipeDir(String.format("%s_ingot", group.name), "dust"));
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.DUST_TAG))
+                    .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
 
             // Gear
             gear(group.GEAR.get(), group.INGOT_TAG)
@@ -126,75 +139,34 @@ public class CraftingRecipes extends RecipeProvider {
 
         });
 
-        GroupHelper.applyToOre(group -> {
-
+        GroupHelper.applyToMaterial(group -> {
             // Ore -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.ORE_REGISTRY_GROUP.ORE_ITEM_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.ORE_REGISTRY_GROUP.ORE.get()))
-                    .save(consumer, smeltingRecipeDir(String.format("%s_ingot", group.name), "ore"));
+                    .blasting(Ingredient.of(group.ORES.ORE_BLOCK_ITEM_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORES.ORE_BLOCK_ITEM_TAG))
+                    .save(consumer, smeltingRecipeDir(String.format("%s_ore", group.name), "ingot"));
 
             // Raw -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.ORE_REGISTRY_GROUP.RAW_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.ORE_REGISTRY_GROUP.ORE.get()))
-                    .save(consumer, blastingRecipeDir(String.format("%s_ingot", group.name), "ore"));
-
-            // Raw Block -> 9x Raw
-            ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 9)
-                    .requires(group.RAW_BLOCK_ITEM_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.has(group.ORE_REGISTRY_GROUP.RAW_TAG))
-                    .save(consumer, shapelessRecipeDir(String.format("raw_%s", group.name), "block"));
-
-            // 9x Raw -> Raw Block
-            block(group.ORE_REGISTRY_GROUP.RAW_BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
-                    .define('#', group.ORE_REGISTRY_GROUP.RAW_TAG)
-                    .unlockedBy(String.format("has_raw_%s", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
-                    .save(consumer);
+                    .blasting(Ingredient.of(group.ORES.DROP_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORES.ORE_BLOCK_ITEM_TAG))
+                    .save(consumer, blastingRecipeDir(String.format("raw_%s", group.name), "ingot"));
 
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
                     .requires(ItemTagRegistry.ORE_HAMMERS)
-                    .requires(group.ORE_REGISTRY_GROUP.RAW_TAG)
-                    .unlockedBy(hasCondition, RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ItemTagRegistry.ORE_HAMMERS).build()))
-                    .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
-        });
-
-        GroupHelper.applyToGem(group -> {
-            // 9x Ingot -> Block
-            block(group.BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
-                    .save(consumer);
-
-            // Hammer + Ore -> Dust
-            ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.DUST.get(), 2)
-                    .requires(ItemTagRegistry.ORE_HAMMERS)
-                    .requires(group.ORE_REGISTRY_GROUP.RAW_TAG)
+                    .requires(group.ORES.DROP_TAG)
                     .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
 
         GroupHelper.applyToDust(group -> {
-            // Block -> 9x Ingot
-            ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 9)
-                    .requires(group.BLOCK_ITEM_TAG)
-                    .unlockedBy(String.format("has_%s", group.name), has(group.BLOCK_ITEM_TAG))
-                    .save(consumer, shapelessRecipeDir(String.format("%s_ingot", group.name), "block"));
-
-            // 9x Ingot -> Block
-            block(group.BLOCK_ITEM.get(), group.ORE_REGISTRY_GROUP.RAW_TAG)
-                    .unlockedBy(String.format("has_%s", group.name), has(group.ORE_REGISTRY_GROUP.RAW_TAG))
-                    .save(consumer);
-
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.ORE_REGISTRY_GROUP.RAW.get(), 2)
+                    .shapeless(RecipeCategory.MISC, group.ORES.DROP.get(), 2)
                     .requires(ItemTagRegistry.ORE_HAMMERS)
-                    .requires(group.ORE_REGISTRY_GROUP.ORE_ITEM_TAG)
+                    .requires(group.ORES.ORE_BLOCK_ITEM_TAG)
                     .unlockedBy("has_hammer", has(ItemTagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });

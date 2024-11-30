@@ -108,6 +108,8 @@ tasks.withType(ProcessResources).configureEach {
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties
     }
+
+    duplicatesStrategy = 'exclude'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

@@ -1,10 +1,15 @@
 package net.allthemods.alltheores.datagen.client;
 
 import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.blocks.ore.*;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -17,10 +22,14 @@ public class BlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        List<DeferredHolder<Block, ? extends Block>> entries = BlockList.BLOCKS.getEntries()
-                .stream()
-                .toList();
+    List<DeferredHolder<Block, ? extends Block>> entries = BlockList.BLOCKS.getEntries()
+            .stream()
+            .filter(block -> !(block.get() instanceof LiquidBlock))
+            .toList();
 
-        entries.forEach(block -> simpleBlockWithItem(block.get(), cubeAll(block.get())));
-    }
+        entries.forEach(block -> {
+            simpleBlockWithItem(block.get(), cubeAll(block.get()));
+        });
+    };
+
 }

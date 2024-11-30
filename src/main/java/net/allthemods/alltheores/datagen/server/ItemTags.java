@@ -23,12 +23,15 @@ public class ItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.COPPER_NUGGET).add(BlockList.COPPER_NUGGET.get());
 
         GroupHelper.applyToOre(group -> {
-            tag(group.ORE_ITEM_TAG)
-                    .add(group.ORE_ITEM.get())
-                    .add(group.SLATE_ORE_ITEM.get())
-                    .add(group.NETHER_ORE_ITEM.get())
-                    .add(group.END_ORE_ITEM.get())
-                    .add(group.OTHER_ORE_ITEM.get());
+            tag(group.ORE_BLOCK_ITEM_TAG)
+                    .add(group.STONE_ORE_BLOCK_ITEM.get())
+                    .add(group.SLATE_ORE_BLOCK_ITEM.get())
+                    .add(group.NETHER_ORE_BLOCK_ITEM.get())
+                    .add(group.END_ORE_BLOCK_ITEM.get())
+                    .add(group.OTHER_ORE_BLOCK_ITEM.get());
+
+            tag(group.DROP_TAG).add(group.DROP.get());
+            tag(group.DROP_BLOCK_ITEM_TAG).add(group.DROP_BLOCK_ITEM.get());
         });
 
         GroupHelper.applyToAlloy(group -> {
@@ -42,22 +45,11 @@ public class ItemTags extends ItemTagsProvider {
             tag(group.PLATE_TAG).add(group.PLATE.get());
         });
 
-        GroupHelper.applyToOre(group -> {
+        GroupHelper.applyToMaterial(group -> {
             tag(group.CRYSTAL_TAG).add(group.CRYSTAL.get());
             tag(group.SHARD_TAG).add(group.SHARD.get());
             tag(group.CLUMP_TAG).add(group.CLUMP.get());
             tag(group.DIRTY_DUST_TAG).add(group.DIRTY_DUST.get());
-        });
-
-        GroupHelper.applyToDust(group -> {
-            tag(group.ORE_REGISTRY_GROUP.RAW_TAG).add(group.ORE_REGISTRY_GROUP.RAW.get());
-            tag(group.BLOCK_ITEM_TAG).add(group.BLOCK_ITEM.get());
-        });
-
-        GroupHelper.applyToGem(group -> {
-            tag(group.ORE_REGISTRY_GROUP.RAW_TAG).add(group.ORE_REGISTRY_GROUP.RAW.get());
-            tag(group.DUST_TAG).add(group.DUST.get());
-            tag(group.BLOCK_ITEM_TAG).add(group.BLOCK_ITEM.get());
         });
     }
 }

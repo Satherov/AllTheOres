@@ -7,16 +7,16 @@ import java.util.function.Consumer;
 
 public class GroupHelper {
 
-    public static void applyToOre(Consumer<MaterialRegistryGroup> consumer) {
-        consumer.accept(BlockList.ALUMINUM);
-        consumer.accept(BlockList.LEAD);
-        consumer.accept(BlockList.NICKEL);
-        consumer.accept(BlockList.OSMIUM);
-        consumer.accept(BlockList.PLATINUM);
-        consumer.accept(BlockList.SILVER);
-        consumer.accept(BlockList.TIN);
-        consumer.accept(BlockList.URANIUM);
-        consumer.accept(BlockList.ZINC);
+    public static void applyToOre(Consumer<OreRegistryGroup> consumer) {
+        applyToMaterial(group -> {
+            consumer.accept(group.ORES);
+        });
+        applyToGem(group -> {
+            consumer.accept(group.ORES);
+        });
+        applyToDust(group -> {
+            consumer.accept(group.ORES);
+        });
     }
 
     public static void applyToAlloy(Consumer<AlloyRegistryGroup> consumer) {
@@ -30,11 +30,16 @@ public class GroupHelper {
         consumer.accept(BlockList.STEEL);
     }
 
-    public static void applyToVanilla(Consumer<VanillaRegistryGroup> consumer) {
-        consumer.accept(BlockList.IRON);
-        consumer.accept(BlockList.GOLD);
-        consumer.accept(BlockList.COPPER);
-        consumer.accept(BlockList.DIAMOND);
+    public static void applyToMaterial(Consumer<MaterialRegistryGroup> consumer) {
+        consumer.accept(BlockList.ALUMINUM);
+        consumer.accept(BlockList.LEAD);
+        consumer.accept(BlockList.NICKEL);
+        consumer.accept(BlockList.OSMIUM);
+        consumer.accept(BlockList.PLATINUM);
+        consumer.accept(BlockList.SILVER);
+        consumer.accept(BlockList.TIN);
+        consumer.accept(BlockList.URANIUM);
+        consumer.accept(BlockList.ZINC);
     }
 
     public static void applyToGem(Consumer<GemRegistryGroup> consumer) {
@@ -48,5 +53,12 @@ public class GroupHelper {
     public static void applyToDust(Consumer<DustRegistryGroup> consumer) {
         consumer.accept(BlockList.SALT);
         consumer.accept(BlockList.SULFUR);
+    }
+
+    public static void applyToVanilla(Consumer<VanillaRegistryGroup> consumer) {
+        consumer.accept(BlockList.IRON);
+        consumer.accept(BlockList.GOLD);
+        consumer.accept(BlockList.COPPER);
+        consumer.accept(BlockList.DIAMOND);
     }
 }

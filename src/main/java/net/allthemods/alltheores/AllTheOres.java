@@ -15,15 +15,12 @@ public class AllTheOres {
 
     public AllTheOres(IEventBus modEventBus, ModContainer modContainer) {
         //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.COMMON_SPEC);
-        //BlockList.FLUIDS.register(modEventBus);
+        BlockList.FLUID_TYPES.register(modEventBus);
+        BlockList.FLUIDS.register(modEventBus);
         BlockList.BLOCKS.register(modEventBus);
-        BlockList.CREATIVE_TABS.register(modEventBus);
         BlockList.ITEMS.register(modEventBus);
-//        if (ModList.get().isLoaded("mekanism")) {
-//            MekRegistry.ITEMS.register(modEventBus);
-//            ATOSlurries.SLURRIES.register(modEventBus);
-//            MekRegistry.CREATIVE_TABS.register(modEventBus);
-//        }
+        BlockList.SLURRYS.register(modEventBus);
+        Reference.CREATIVE_TABS.register(modEventBus);
         setupLogFilter();
     }
 

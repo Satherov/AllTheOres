@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.allthemods.alltheores.blocks.BlockList.material;
 
-public class VanillaRegistryGroup extends RegistryGroup{
+public class VanillaRegistryGroup {
     public final String name;
 
     // Item Tags

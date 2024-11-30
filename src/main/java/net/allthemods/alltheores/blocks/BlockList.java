@@ -5,24 +5,24 @@ import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.items.OreHammer;
 import net.allthemods.alltheores.registry.*;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.*;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class BlockList {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
-    public static final DeferredRegister<Block> ORE = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);
-    public static final ChemicalDeferredRegister SLURRY_STILL = new ChemicalDeferredRegister(Reference.MOD_ID);
-
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, Reference.MOD_ID);
+    public static final ChemicalDeferredRegister SLURRYS = new ChemicalDeferredRegister(Reference.MOD_ID);
 
     // ###################### ALL THE ORES
 
@@ -69,9 +69,9 @@ public class BlockList {
 
     // ###################### HELPER METHODS
 
-    public static DeferredHolder<Item, BlockItem> blockItem(DeferredHolder<Block, Block> registryObject) {
-        return BlockList.ITEMS.register(registryObject.getId().getPath(),
-                () -> new BlockItem(registryObject.get(), new Item.Properties()));
+    public static DeferredHolder<Item, BlockItem> blockItem(DeferredHolder<Block, Block> block) {
+        return BlockList.ITEMS.register(block.getId().getPath(),
+                () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static DeferredHolder<Item, Item> material(String path) {

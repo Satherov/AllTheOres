@@ -1,12 +1,23 @@
 package net.allthemods.alltheores.datagen.client;
 
+import com.google.gson.JsonObject;
 import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.datagen.server.GroupHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import java.nio.file.Path;
 
 public class ItemModels extends ItemModelProvider {
 
@@ -32,5 +43,11 @@ public class ItemModels extends ItemModelProvider {
 
                     }
                 });
+
+        GroupHelper.applyToMaterial(group -> {
+            withExistingParent(group.MOLTEN_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket_drip"))
+                    .customLoader(DynamicFluidContainerModelBuilder::begin)
+                    .fluid(group.MOLTEN.get());
+        });
     }
 }

@@ -24,11 +24,14 @@ public class BlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
     List<DeferredHolder<Block, ? extends Block>> entries = BlockList.BLOCKS.getEntries()
             .stream()
-            .filter(block -> !(block.get() instanceof LiquidBlock))
             .toList();
 
         entries.forEach(block -> {
-            simpleBlockWithItem(block.get(), cubeAll(block.get()));
+            if ((block.get() instanceof LiquidBlock)){
+                simpleBlockWithItem(block.get(), models().cubeAll(block.getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal")));
+            } else {
+                simpleBlockWithItem(block.get(), cubeAll(block.get()));
+            }
         });
     };
 

@@ -8,6 +8,8 @@ import net.allthemods.alltheores.items.mekanism.Clump;
 import net.allthemods.alltheores.items.mekanism.Crystal;
 import net.allthemods.alltheores.items.mekanism.DirtyDust;
 import net.allthemods.alltheores.items.mekanism.Shard;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BucketItem;
@@ -39,8 +41,9 @@ public class MaterialRegistryGroup extends AlloyRegistryGroup{
 
     public final DeferredHolder<Fluid, BaseFlowingFluid.Source> MOLTEN;
     public final DeferredHolder<Fluid, BaseFlowingFluid.Flowing> MOLTEN_FLOWING;
-    public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
     public final DeferredHolder<Item, BucketItem> MOLTEN_BUCKET;
+    public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
+
 
     // Mekanism
     public final DeferredHolder<Chemical, Chemical> DIRTY_SLURRY;
@@ -69,10 +72,10 @@ public class MaterialRegistryGroup extends AlloyRegistryGroup{
                 .viscosity(6000)
                 .temperature(1300)));
 
-        MOLTEN = BlockList.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties()));
-        MOLTEN_FLOWING = BlockList.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties()));
-        MOLTEN_BLOCK = BlockList.BLOCKS.register(String.format("molten_%s", name), () -> new LiquidBlock(MOLTEN.get(), Block.Properties.of().noCollission().strength(100.0F)));
+        MOLTEN = BlockList.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties(name)));
+        MOLTEN_FLOWING = BlockList.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties(name)));
         MOLTEN_BUCKET = BlockList.ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+        MOLTEN_BLOCK = BlockList.BLOCKS.register(String.format("molten_%s", name), () -> new LiquidBlock(MOLTEN.get(), Block.Properties.of().noCollission().strength(100.0F)));
 
 
         // Mekanism
@@ -85,7 +88,13 @@ public class MaterialRegistryGroup extends AlloyRegistryGroup{
         DIRTY_DUST = BlockList.ITEMS.register(String.format("dirty_%s_dust", name), () -> new DirtyDust(new Item.Properties()));
     }
 
-    private BaseFlowingFluid.Properties makeMoltenProperties() {
-        return new BaseFlowingFluid.Properties(MOLTEN_TYPE, MOLTEN, MOLTEN_FLOWING);
+    private BaseFlowingFluid.Properties makeMoltenProperties(String name) {
+        return new BaseFlowingFluid.Properties(
+                MOLTEN_TYPE,
+                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s", name))),
+                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("flowing_molten_%s", name)))
+        ).bucket(DeferredHolder.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s_bucket", name))))
+                .block(DeferredHolder.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s", name))));
     }
+
 }

@@ -11,12 +11,17 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.allthemods.alltheores.blocks.BlockList.*;
 
 
 public class RegistryGroupAlloy {
 
     public final String name;
+
+    private static final List<RegistryGroupAlloy> instances = new ArrayList<>();
 
     // Item Tags
     public final TagKey<Item> INGOT_TAG;
@@ -51,6 +56,8 @@ public class RegistryGroupAlloy {
     public RegistryGroupAlloy(String name) {
         this.name = name;
 
+        instances.add(this);
+
         // Item Tags
         INGOT_TAG = ItemTags.create(Reference.ingot(name));
         NUGGET_TAG = ItemTags.create(Reference.nugget(name));
@@ -83,5 +90,9 @@ public class RegistryGroupAlloy {
 
         // BlockItems
         BLOCK_ITEM = blockItem(BLOCK);
+    }
+
+    public static List<RegistryGroupAlloy> getAlloyInstances() {
+        return instances;
     }
 }

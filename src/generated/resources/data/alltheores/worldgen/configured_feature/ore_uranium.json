@@ -50,7 +50,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "allthemods:ancient_stone"
+          "tag": "allthemodium:ancient_stone"
         }
       },
       {
@@ -95,7 +95,7 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "allthemods:ancient_stone"
+          "tag": "allthemodium:ancient_stone"
         }
       }
     ]

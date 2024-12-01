@@ -20,45 +20,22 @@ public class GroupHelper {
     }
 
     public static void applyToAlloy(Consumer<RegistryGroupAlloy> consumer) {
-        consumer.accept(BlockList.BRONZE);
-        consumer.accept(BlockList.CONSTANTAN);
-        consumer.accept(BlockList.ELECTRUM);
-        consumer.accept(BlockList.ENDERIUM);
-        consumer.accept(BlockList.INVAR);
-        consumer.accept(BlockList.LUMIUM);
-        consumer.accept(BlockList.SIGNALUM);
-        consumer.accept(BlockList.STEEL);
+        RegistryGroupAlloy.getAlloyInstances().forEach(consumer);
     }
 
     public static void applyToMaterial(Consumer<RegistryGroupMaterial> consumer) {
-        consumer.accept(BlockList.ALUMINUM);
-        consumer.accept(BlockList.LEAD);
-        consumer.accept(BlockList.NICKEL);
-        consumer.accept(BlockList.OSMIUM);
-        consumer.accept(BlockList.PLATINUM);
-        consumer.accept(BlockList.SILVER);
-        consumer.accept(BlockList.TIN);
-        consumer.accept(BlockList.URANIUM);
-        consumer.accept(BlockList.ZINC);
+        RegistryGroupMaterial.getMaterialInstances().forEach(consumer);
     }
 
     public static void applyToGem(Consumer<RegistryGroupGem> consumer) {
-        consumer.accept(BlockList.RUBY);
-        consumer.accept(BlockList.PERIDOT);
-        consumer.accept(BlockList.SAPPHIRE);
-        consumer.accept(BlockList.CINNABAR);
-        consumer.accept(BlockList.FLUORITE);
+        RegistryGroupGem.getGemInstances().forEach(consumer);
     }
 
     public static void applyToDust(Consumer<RegistryGroupDust> consumer) {
-        consumer.accept(BlockList.SALT);
-        consumer.accept(BlockList.SULFUR);
+        RegistryGroupDust.getDustInstances().forEach(consumer);
     }
 
     public static void applyToVanilla(Consumer<RegistryGroupVanilla> consumer) {
-        consumer.accept(BlockList.IRON);
-        consumer.accept(BlockList.GOLD);
-        consumer.accept(BlockList.COPPER);
-        consumer.accept(BlockList.DIAMOND);
+        RegistryGroupVanilla.getVanillaInstances().forEach(consumer);
     }
 }

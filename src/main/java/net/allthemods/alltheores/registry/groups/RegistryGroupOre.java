@@ -2,6 +2,7 @@ package net.allthemods.alltheores.registry.groups;
 
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.blocks.ore.*;
+import net.allthemods.alltheores.datagen.data.BiomeModiferProvider;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -18,7 +19,12 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.allthemods.alltheores.blocks.BlockList.*;
 import static net.allthemods.alltheores.blocks.BlockList.blockItem;
@@ -27,10 +33,23 @@ public class RegistryGroupOre {
 
     public final String name;
 
+    private static final List<RegistryGroupOre> instances = new ArrayList<>();
+
+    public final int veinSize;
+    public final int minY;
+    public final int maxY;
+    public final int count;
+
     //Feature
     public final DeferredHolder<Feature<?>, Feature<?>> ORE_FEATURE;
     public final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_ORE_FEATURE;
     public final ResourceKey<PlacedFeature> PLACED_ORE_FEATURE;
+
+    // Biome Modifier
+    public final ResourceKey<BiomeModifier> OVERWORLD_BIOME_MODIFIER;
+    public final ResourceKey<BiomeModifier> NETHER_BIOME_MODIFIER;
+    public final ResourceKey<BiomeModifier> END_MODIFIER;
+    public final ResourceKey<BiomeModifier> OTHER_MODIFIER;
 
     //Item Tags
     public final TagKey<Item> DROP_TAG;
@@ -64,14 +83,27 @@ public class RegistryGroupOre {
 
     public final DeferredHolder<Item, BlockItem> DROP_BLOCK_ITEM;
 
-    public RegistryGroupOre(String name, String type) {
+    public RegistryGroupOre(String name, String type, int veinSize, int minY, int maxY, int count) {
 
         this.name = name;
 
-        //Feature
+        instances.add(this);
+
+        this.veinSize = veinSize;
+        this.minY = minY;
+        this.maxY = maxY;
+        this.count = count;
+
+        // Feature
         ORE_FEATURE = FEATURES.register(String.format("ore_%s", name), () -> new OreFeature(OreConfiguration.CODEC));
         CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s", name)));
         PLACED_ORE_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_placed", name)));
+
+        // Biome Modifier
+        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+        NETHER_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_nether", name)));
+        END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
+        OTHER_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_other", name)));
 
         //Block Tags
         ORE_BLOCK_TAG = BlockTags.create(Reference.ore(name));
@@ -127,5 +159,9 @@ public class RegistryGroupOre {
             }
             case null, default -> throw new IllegalArgumentException("Invalid type: " + type);
         }
+    }
+
+    public static List<RegistryGroupOre> getOreInstances() {
+        return instances;
     }
 }

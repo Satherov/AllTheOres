@@ -23,6 +23,13 @@ public class ItemTagProvider extends ItemTagsProvider {
 
         tag(TagRegistry.COPPER_NUGGET).add(BlockList.COPPER_NUGGET.get());
 
+        tag(TagRegistry.ORE_HAMMERS)
+                .add(BlockList.COPPER_ORE_HAMMER.get())
+                .add(BlockList.IRON_ORE_HAMMER.get())
+                .add(BlockList.BRONZE_ORE_HAMMER.get())
+                .add(BlockList.INVAR_ORE_HAMMER.get())
+                .add(BlockList.PLATINUM_ORE_HAMMER.get());
+
         GroupHelper.applyToOre(group -> {
             tag(group.ORE_BLOCK_ITEM_TAG)
                     .add(group.STONE_ORE_BLOCK_ITEM.get())

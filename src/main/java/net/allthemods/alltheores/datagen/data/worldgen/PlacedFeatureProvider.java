@@ -22,11 +22,11 @@ public class PlacedFeatureProvider {
                     group.PLACED_ORE_FEATURE,
                     features.getOrThrow(
                             group.CONFIGURED_ORE_FEATURE),
-                    List.of(CountPlacement.of(4),
+                    List.of(CountPlacement.of(group.count),
                             InSquarePlacement.spread(),
                             HeightRangePlacement.triangle(
-                                    VerticalAnchor.absolute(-64),
-                                    VerticalAnchor.absolute(320)
+                                    VerticalAnchor.absolute(group.minY),
+                                    VerticalAnchor.absolute(group.maxY)
                     ),
                     BiomeFilter.biome()
             ));

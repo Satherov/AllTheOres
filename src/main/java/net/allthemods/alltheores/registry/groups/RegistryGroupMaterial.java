@@ -24,9 +24,13 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class RegistryGroupMaterial extends RegistryGroupAlloy {
+
+    private static final List<RegistryGroupMaterial> instances = new ArrayList<>();
 
     public final int fluidColor;
     public final RegistryGroupOre ORES;
@@ -56,11 +60,13 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
     public final DeferredHolder<Item, Item> CLUMP;
     public final DeferredHolder<Item, Item> DIRTY_DUST;
 
-    public RegistryGroupMaterial(String name, int fluidColor) {
+    public RegistryGroupMaterial(String name, int fluidColor, int veinSize, int minY, int maxY, int count) {
         super(name);
         this.fluidColor = fluidColor;
 
-        ORES = new RegistryGroupOre(name, "ore");
+        instances.add(this);
+
+        ORES = new RegistryGroupOre(name, "ore", veinSize, minY, maxY, count);
 
         //Item Tags
         CRYSTAL_TAG = ItemTags.create(Reference.crystal(name));
@@ -117,4 +123,7 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
                 .levelDecreasePerBlock(2);
     }
 
+    public static List<RegistryGroupMaterial> getMaterialInstances() {
+        return instances;
+    }
 }

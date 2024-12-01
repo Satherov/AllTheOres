@@ -2,18 +2,18 @@ package net.allthemods.alltheores.registry;
 
 
 import net.allthemods.alltheores.infos.Reference;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 
 public class TagRegistry {
-
-    // ###################### ALL THE MODIUM
-
-    public static final TagKey<Block> ANCIENT_STONE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemods", "ancient_stone"));
 
     // ###################### MEKANISM
 
@@ -43,5 +43,4 @@ public class TagRegistry {
     public static final TagKey<Item> ORE_HAMMERS = ItemTags.create(Reference.ato("ore_hammers"));
 
     public static final TagKey<Item> COPPER_NUGGET = ItemTags.create(Reference.ato("copper_nugget"));
-
 }

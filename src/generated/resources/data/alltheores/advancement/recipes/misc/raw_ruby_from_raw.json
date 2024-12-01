@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:raw_materials/ruby"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "alltheores:raw_ruby_from_raw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_ruby"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "alltheores:raw_ruby_from_raw"
+    ]
+  }
+}

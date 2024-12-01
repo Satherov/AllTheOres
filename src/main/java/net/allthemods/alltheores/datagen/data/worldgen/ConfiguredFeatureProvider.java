@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.datagen.data.worldgen;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -38,7 +39,7 @@ public class ConfiguredFeatureProvider {
                             group.ORES.DROP_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
-                            new TagMatchTest(com.thevortex.allthemodium.registry.TagRegistry.ANCIENT_STONE),
+                            new RandomBlockMatchTest(ModRegistry.ANCIENT_STONE.get(), 0.1f),
                             group.ORES.DROP_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(

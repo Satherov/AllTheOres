@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.datagen.data.recipe;
 
+import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
@@ -9,6 +10,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -88,6 +90,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
                     .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
                     .save(consumer);
 
+            // Hammer + Ore -> Drop
+            ShapelessRecipeBuilder
+                    .shapeless(RecipeCategory.MISC, group.DROP.get(), 2)
+                    .requires(TagRegistry.ORE_HAMMERS)
+                    .requires(group.ORE_BLOCK_ITEM_TAG)
+                    .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                    .save(consumer, shapelessRecipeDir(String.format("%s_ore", group.name), "hammer_crushing"));
+
+
         });
 
         GroupHelper.applyToAlloy(group -> {
@@ -104,6 +115,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
                     .save(consumer);
 
+
             // Block -> 9x Ingot
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.INGOT.get(), 9)
@@ -115,6 +127,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
             block(group.BLOCK_ITEM.get(), group.INGOT_TAG)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
                     .save(consumer);
+
 
             // Dust -> Ingot
             SimpleCookingRecipeBuilder
@@ -139,6 +152,30 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
         });
 
+        GroupHelper.applyToVanilla( group -> {
+
+            // Dust -> Ingot
+            SimpleCookingRecipeBuilder
+                    .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.MATERIAL, 0.15f, 100)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.DUST_TAG))
+                    .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
+
+            // Gear
+            gear(group.GEAR.get(), group.MATERIAL_TAG)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.MATERIAL_TAG))
+                    .save(consumer);
+
+            // Rod
+            rod(group.ROD.get(), group.MATERIAL_TAG)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.MATERIAL_TAG))
+                    .save(consumer);
+
+            // Plate
+            plate(group.PLATE.get(), group.MATERIAL_TAG)
+                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.MATERIAL_TAG))
+                    .save(consumer);
+        });
+
         GroupHelper.applyToMaterial(group -> {
             // Ore -> Ingot
             SimpleCookingRecipeBuilder
@@ -158,17 +195,90 @@ public class VanillaRecipeProvider extends RecipeProvider {
                     .requires(TagRegistry.ORE_HAMMERS)
                     .requires(group.ORES.DROP_TAG)
                     .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
-                    .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
+                    .save(consumer, shapelessRecipeDir(String.format("raw_%s", group.name), "hammer_crushing"));
         });
 
-        GroupHelper.applyToDust(group -> {
+
+        GroupHelper.applyToGem( group -> {
+
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.MISC, group.ORES.DROP.get(), 2)
+                    .shapeless(RecipeCategory.MISC, group.DUST.get(), 1)
                     .requires(TagRegistry.ORE_HAMMERS)
-                    .requires(group.ORES.ORE_BLOCK_ITEM_TAG)
+                    .requires(group.ORES.DROP_TAG)
                     .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
         });
+
+        // ALLOY BLENDING
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, BlockList.INVAR.DUST.get(),3)
+                .requires(BlockList.IRON.DUST.get(),2)
+                .requires(BlockList.NICKEL.DUST_TAG)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("invar_dust","alloy_blending"));
+
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.STEEL.DUST.get(),1)
+                .requires(BlockList.IRON.DUST.get(),1)
+                .requires(Items.COAL,4)
+                .requires(TagRegistry.ORE_HAMMERS)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("steel_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.ELECTRUM.DUST.get(),2)
+                .requires(BlockList.GOLD.DUST.get())
+                .requires(BlockList.SILVER.DUST_TAG)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("electrum_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.BRONZE.DUST.get(),4)
+                .requires(BlockList.COPPER.DUST.get(),3)
+                .requires(BlockList.TIN.DUST_TAG)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("bronze_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.BRASS.DUST.get(),4)
+                .requires(BlockList.COPPER.DUST.get(),3)
+                .requires(BlockList.ZINC.DUST_TAG)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("brass_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.LUMIUM.DUST.get(),4)
+                .requires(Items.GLOWSTONE_DUST,4)
+                .requires(BlockList.SILVER.DUST_TAG)
+                .requires(BlockList.TIN.DUST.get(),3)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("lumium_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.CONSTANTAN.DUST.get(),2)
+                .requires(BlockList.COPPER.DUST.get())
+                .requires(BlockList.NICKEL.DUST_TAG)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("constantan_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.SIGNALUM.DUST.get(),4)
+                .requires(BlockList.COPPER.DUST.get(),3)
+                .requires(BlockList.SILVER.DUST_TAG)
+                .requires(Items.REDSTONE,4)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("signalum_dust","alloy_blending"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,BlockList.ENDERIUM.DUST.get(),4)
+                .requires(BlockList.LEAD.DUST.get(),3)
+                .requires(BlockList.PLATINUM.DUST_TAG)
+                .requires(Items.ENDER_PEARL,2)
+                .requires(TagRegistry.ORE_HAMMERS)
+                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessRecipeDir("enderium_dust","alloy_blending"));
     }
 }

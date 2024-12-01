@@ -1,6 +1,5 @@
 package net.allthemods.alltheores.datagen.data;
 
-import com.thevortex.allthemodium.registry.TagRegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -32,11 +31,6 @@ public class BiomeModiferProvider {
             ));
             context.register(group.END_MODIFIER, new AddFeaturesBiomeModifier(
                     biomes.getOrThrow(Tags.Biomes.IS_END),
-                    HolderSet.direct(placedFeatures.getOrThrow(group.PLACED_ORE_FEATURE)),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            ));
-            context.register(group.OTHER_MODIFIER, new AddFeaturesBiomeModifier(
-                    biomes.getOrThrow(TagRegistry.OTHER_BIOMES),
                     HolderSet.direct(placedFeatures.getOrThrow(group.PLACED_ORE_FEATURE)),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ));

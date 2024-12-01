@@ -25,6 +25,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static net.allthemods.alltheores.blocks.BlockList.*;
 import static net.allthemods.alltheores.blocks.BlockList.blockItem;
@@ -49,7 +50,6 @@ public class RegistryGroupOre {
     public final ResourceKey<BiomeModifier> OVERWORLD_BIOME_MODIFIER;
     public final ResourceKey<BiomeModifier> NETHER_BIOME_MODIFIER;
     public final ResourceKey<BiomeModifier> END_MODIFIER;
-    public final ResourceKey<BiomeModifier> OTHER_MODIFIER;
 
     //Item Tags
     public final TagKey<Item> DROP_TAG;
@@ -103,7 +103,6 @@ public class RegistryGroupOre {
         OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
         NETHER_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_nether", name)));
         END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
-        OTHER_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_other", name)));
 
         //Block Tags
         ORE_BLOCK_TAG = BlockTags.create(Reference.ore(name));
@@ -129,10 +128,10 @@ public class RegistryGroupOre {
         DROP_TAG = ItemTags.create(Reference.raw_materials(name));
 
         //Block Tags
-        DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
+        DROP_BLOCK_TAG = BlockTags.create(Reference.block(String.format("raw_%s", name)));
 
         //BlockItem Tags
-        DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block( name));
+        DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block(String.format("raw_%s", name)));
 
         switch (type) {
             case "ore" -> {

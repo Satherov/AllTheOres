@@ -17,15 +17,10 @@ import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VanillaRecipeProvider extends RecipeProvider {
+public class ATOVanillaRecipeProvider extends RecipeProvider {
 
-    public VanillaRecipeProvider(PackOutput packOutput, CompletableFuture<Provider> provider) {
+    public ATOVanillaRecipeProvider(PackOutput packOutput, CompletableFuture<Provider> provider) {
         super(packOutput, provider);
-    }
-
-    private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
-                .group(Reference.MOD_ID);
     }
 
     private ResourceLocation blastingRecipeDir(String typeIn, String typeOut) {
@@ -133,7 +128,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
             SimpleCookingRecipeBuilder
                     .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.7f, 100)
                     .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                    .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
+                    .save(consumer, smeltingRecipeDir(String.format("%s_dust_blasting", group.name), "ingot"));
+
+            // Dust -> Ingot
+            SimpleCookingRecipeBuilder
+                    .smelting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.7f, 200)
+                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                    .save(consumer, smeltingRecipeDir(String.format("%s_dust_smelting", group.name), "ingot"));
 
             // Gear
             gear(group.GEAR.get(), group.INGOT_TAG)
@@ -159,7 +160,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
                 SimpleCookingRecipeBuilder
                         .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.MATERIAL, 0.7f, 100)
                         .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                        .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
+                        .save(consumer, smeltingRecipeDir(String.format("%s_dust_blasting", group.name), "ingot"));
+
+                SimpleCookingRecipeBuilder
+                        .smelting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.MATERIAL, 0.7f, 200)
+                        .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                        .save(consumer, smeltingRecipeDir(String.format("%s_dust_smelting", group.name), "ingot"));
             }
 
             // Hammer + Ingot -> Dust

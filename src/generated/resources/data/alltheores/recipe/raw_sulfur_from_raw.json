@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "c:storage_blocks/raw_sulfur"
+      "tag": "c:storage_blocks/sulfur"
     }
   ],
   "result": {

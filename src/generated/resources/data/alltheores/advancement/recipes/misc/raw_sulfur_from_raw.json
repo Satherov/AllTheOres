@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:raw_materials/sulfur"
+            "items": "#c:dusts/sulfur"
           }
         ]
       },

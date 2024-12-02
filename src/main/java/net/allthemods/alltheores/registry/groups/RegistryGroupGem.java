@@ -19,12 +19,7 @@ public class RegistryGroupGem {
 
     public final RegistryGroupOre ORES;
 
-    //Item Tags
-    public final TagKey<Item> DUST_TAG;
 
-
-    //Items
-    public final DeferredHolder<Item, Item> DUST;
 
     public RegistryGroupGem(String name, int veinSize, int minY, int maxY, int count) {
         this.name = name;

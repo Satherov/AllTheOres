@@ -10,9 +10,9 @@ import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContai
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 
-public class ItemModelProvider extends net.neoforged.neoforge.client.model.generators.ItemModelProvider {
+public class ATOItemModelProvider extends net.neoforged.neoforge.client.model.generators.ItemModelProvider {
 
-    public ItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
+    public ATOItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator.getPackOutput(), Reference.MOD_ID, fileHelper);
     }
 

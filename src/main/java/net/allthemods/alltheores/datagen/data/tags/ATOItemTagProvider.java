@@ -13,8 +13,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ItemTagProvider extends ItemTagsProvider {
-    public ItemTagProvider(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
+public class ATOItemTagProvider extends ItemTagsProvider {
+    public ATOItemTagProvider(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
         super(packOutPut, lookupProvider, tagLookup, Reference.MOD_ID, existingFileHelper);
     }
 

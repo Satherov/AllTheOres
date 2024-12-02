@@ -1,7 +1,6 @@
 {
   "values": [
     "alltheores:aluminum_nether_ore",
-    "alltheores:iridium_nether_ore",
     "alltheores:lead_nether_ore",
     "alltheores:nickel_nether_ore",
     "alltheores:osmium_nether_ore",
@@ -10,11 +9,12 @@
     "alltheores:tin_nether_ore",
     "alltheores:uranium_nether_ore",
     "alltheores:zinc_nether_ore",
+    "alltheores:iridium_nether_ore",
+    "alltheores:ruby_nether_ore",
+    "alltheores:peridot_nether_ore",
+    "alltheores:sapphire_nether_ore",
     "alltheores:cinnabar_nether_ore",
     "alltheores:fluorite_nether_ore",
-    "alltheores:peridot_nether_ore",
-    "alltheores:ruby_nether_ore",
-    "alltheores:sapphire_nether_ore",
     "alltheores:salt_nether_ore",
     "alltheores:sulfur_nether_ore"
   ]

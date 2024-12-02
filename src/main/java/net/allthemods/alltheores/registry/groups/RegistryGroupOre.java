@@ -2,7 +2,6 @@ package net.allthemods.alltheores.registry.groups;
 
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.blocks.ore.*;
-import net.allthemods.alltheores.datagen.data.BiomeModiferProvider;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -25,7 +24,6 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static net.allthemods.alltheores.blocks.BlockList.*;
 import static net.allthemods.alltheores.blocks.BlockList.blockItem;
@@ -53,6 +51,8 @@ public class RegistryGroupOre {
 
     //Item Tags
     public final TagKey<Item> DROP_TAG;
+    public final TagKey<Item> MATERIAL_TAG;
+    public final TagKey<Item> DUST_TAG;
 
     // Block Tags
     public final TagKey<Block> ORE_BLOCK_TAG;
@@ -64,6 +64,8 @@ public class RegistryGroupOre {
 
     // Items
     public final DeferredHolder<Item, Item> DROP;
+    public final DeferredHolder<Item, Item> MATERIAL;
+    public final DeferredHolder<Item, Item> DUST;
 
     // Blocks
     public final DeferredHolder<Block, Block> STONE_ORE_BLOCK;
@@ -83,7 +85,7 @@ public class RegistryGroupOre {
 
     public final DeferredHolder<Item, BlockItem> DROP_BLOCK_ITEM;
 
-    public RegistryGroupOre(String name, String type, int veinSize, int minY, int maxY, int count) {
+    public RegistryGroupOre(String name, String type, DeferredHolder<Item, Item> material, TagKey<Item> material_tag, DeferredHolder<Item, Item> dust, TagKey<Item> dust_tag, int veinSize, int minY, int maxY, int count) {
 
         this.name = name;
 
@@ -129,6 +131,8 @@ public class RegistryGroupOre {
 
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.raw_materials(name));
+                this.MATERIAL_TAG = material_tag;
+                this.DUST_TAG = dust_tag;
 
                 //Block Tags
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(String.format("raw_%s", name)));
@@ -138,6 +142,8 @@ public class RegistryGroupOre {
 
                 // Items
                 DROP = material(String.format("raw_%s", name));
+                this.MATERIAL = material;
+                this.DUST = dust;
 
                 // Block
                 DROP_BLOCK = BlockList.BLOCKS.register(String.format("raw_%s_block", name), () -> new Block(Blocks.STONE.properties().strength(3.0f, 3.0f)));
@@ -149,6 +155,7 @@ public class RegistryGroupOre {
 
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.dust(name));
+                MATERIAL_TAG = DROP_TAG;
 
                 //Block Tags
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
@@ -158,6 +165,7 @@ public class RegistryGroupOre {
 
                 // Items
                 DROP = material(name);
+                MATERIAL = DROP;
 
                 // Block
                 DROP_BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
@@ -169,6 +177,7 @@ public class RegistryGroupOre {
 
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.gem(name));
+                MATERIAL_TAG = DROP_TAG;
 
                 //Block Tags
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
@@ -178,6 +187,7 @@ public class RegistryGroupOre {
 
                 // Items
                 DROP = material(name);
+                MATERIAL = DROP;
 
                 // Block
                 DROP_BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));

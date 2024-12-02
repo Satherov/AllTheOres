@@ -11,8 +11,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
-public class BlockStateProvider extends net.neoforged.neoforge.client.model.generators.BlockStateProvider {
-    public BlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
+public class ATOBlockStateProvider extends net.neoforged.neoforge.client.model.generators.BlockStateProvider {
+    public ATOBlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator.getPackOutput(), Reference.MOD_ID, fileHelper);
     }
 

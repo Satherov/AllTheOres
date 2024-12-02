@@ -67,7 +67,7 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
         this.fluidColor = fluidColor;
 
-        ORES = new RegistryGroupOre(name, "ore", veinSize, minY, maxY, count);
+        ORES = new RegistryGroupOre(name, INGOT, INGOT_TAG, "ore", veinSize, minY, maxY, count);
 
         //Item Tags
         CRYSTAL_TAG = ItemTags.create(Reference.crystal(name));

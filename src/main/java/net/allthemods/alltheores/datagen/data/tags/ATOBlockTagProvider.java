@@ -11,9 +11,9 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class BlockTagProvider extends BlockTagsProvider {
+public class ATOBlockTagProvider extends BlockTagsProvider {
 
-    public BlockTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+    public ATOBlockTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 

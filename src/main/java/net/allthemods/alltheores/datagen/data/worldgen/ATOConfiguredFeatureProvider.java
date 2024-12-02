@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
-public class ConfiguredFeatureProvider {
+public class ATOConfiguredFeatureProvider {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 

@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LootTableProvider extends VanillaBlockLoot {
-    public LootTableProvider(Provider provider) {
+public class ATOLootTableProvider extends VanillaBlockLoot {
+    public ATOLootTableProvider(Provider provider) {
         super(provider);
     }
 

@@ -7,9 +7,9 @@ import net.allthemods.alltheores.registry.groups.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -43,15 +43,11 @@ public class BlockList {
     public static final RegistryGroupAlloy INVAR = new RegistryGroupAlloy("invar");
     public static final RegistryGroupAlloy ELECTRUM = new RegistryGroupAlloy("electrum");
     public static final RegistryGroupAlloy BRONZE = new RegistryGroupAlloy("bronze");
+    public static final RegistryGroupAlloy BRASS = new RegistryGroupAlloy("brass");
     public static final RegistryGroupAlloy ENDERIUM = new RegistryGroupAlloy("enderium");
     public static final RegistryGroupAlloy LUMIUM = new RegistryGroupAlloy("lumium");
     public static final RegistryGroupAlloy SIGNALUM = new RegistryGroupAlloy("signalum");
     public static final RegistryGroupAlloy CONSTANTAN = new RegistryGroupAlloy("constantan");
-
-    public static final RegistryGroupVanilla DIAMOND = new RegistryGroupVanilla("diamond", Tags.Items.GEMS_DIAMOND);
-    public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", Tags.Items.INGOTS_IRON);
-    public static final RegistryGroupVanilla GOLD = new RegistryGroupVanilla("gold", Tags.Items.INGOTS_GOLD);
-    public static final RegistryGroupVanilla COPPER = new RegistryGroupVanilla("copper", Tags.Items.INGOTS_COPPER);
 
     public static final RegistryGroupGem RUBY = new RegistryGroupGem("ruby", 7,-64, 228, 3);
     public static final RegistryGroupGem PERIDOT = new RegistryGroupGem("peridot", 7, -64, 196, 3);
@@ -61,6 +57,12 @@ public class BlockList {
 
     public static final RegistryGroupDust SALT = new RegistryGroupDust("salt", 27, -64, 228, 3);
     public static final RegistryGroupDust SULFUR = new RegistryGroupDust("sulfur",17, -64, 25, 1);
+
+    public static final RegistryGroupVanilla COPPER = new RegistryGroupVanilla("copper", "ingot", Tags.Items.INGOTS_COPPER, Items.COPPER_INGOT);
+    public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", "ingot", Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
+    public static final RegistryGroupVanilla GOLD = new RegistryGroupVanilla("gold", "ingot", Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
+    public static final RegistryGroupVanilla DIAMOND = new RegistryGroupVanilla("diamond", "gem", Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
+    //public static final RegistryGroupVanilla NETHERITE = new RegistryGroupVanilla("netherite", "ingot", Tags.Items.INGOTS_NETHERITE, Items.NETHERITE_INGOT);
 
     public static final DeferredHolder<Item, Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item(new Item.Properties()));
 

@@ -62,9 +62,10 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
     public RegistryGroupMaterial(String name, int fluidColor, int veinSize, int minY, int maxY, int count) {
         super(name);
-        this.fluidColor = fluidColor;
 
         instances.add(this);
+
+        this.fluidColor = fluidColor;
 
         ORES = new RegistryGroupOre(name, "ore", veinSize, minY, maxY, count);
 

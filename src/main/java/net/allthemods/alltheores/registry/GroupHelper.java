@@ -1,6 +1,5 @@
 package net.allthemods.alltheores.registry;
 
-import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.registry.groups.*;
 
 import java.util.function.Consumer;

@@ -124,17 +124,17 @@ public class RegistryGroupOre {
         END_ORE_BLOCK_ITEM = blockItem(END_ORE_BLOCK);
         OTHER_ORE_BLOCK_ITEM = blockItem(OTHER_ORE_BLOCK);
 
-        // Item Tags
-        DROP_TAG = ItemTags.create(Reference.raw_materials(name));
-
-        //Block Tags
-        DROP_BLOCK_TAG = BlockTags.create(Reference.block(String.format("raw_%s", name)));
-
-        //BlockItem Tags
-        DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block(String.format("raw_%s", name)));
-
         switch (type) {
             case "ore" -> {
+
+                // Item Tags
+                DROP_TAG = ItemTags.create(Reference.raw_materials(name));
+
+                //Block Tags
+                DROP_BLOCK_TAG = BlockTags.create(Reference.block(String.format("raw_%s", name)));
+
+                //BlockItem Tags
+                DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block(String.format("raw_%s", name)));
 
                 // Items
                 DROP = material(String.format("raw_%s", name));
@@ -145,7 +145,36 @@ public class RegistryGroupOre {
                 // BlockItem
                 DROP_BLOCK_ITEM = blockItem(DROP_BLOCK);
             }
-            case "dust", "gem" -> {
+            case "dust" -> {
+
+                // Item Tags
+                DROP_TAG = ItemTags.create(Reference.dust(name));
+
+                //Block Tags
+                DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
+
+                //BlockItem Tags
+                DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block(name));
+
+                // Items
+                DROP = material(name);
+
+                // Block
+                DROP_BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
+
+                // BlockItem
+                DROP_BLOCK_ITEM = blockItem(DROP_BLOCK);
+            }
+            case "gem" -> {
+
+                // Item Tags
+                DROP_TAG = ItemTags.create(Reference.gem(name));
+
+                //Block Tags
+                DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
+
+                //BlockItem Tags
+                DROP_BLOCK_ITEM_TAG = ItemTags.create(Reference.block(name));
 
                 // Items
                 DROP = material(name);

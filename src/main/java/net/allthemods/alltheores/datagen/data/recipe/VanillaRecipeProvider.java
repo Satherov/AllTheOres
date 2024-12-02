@@ -78,6 +78,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
     protected void buildRecipes(RecipeOutput consumer) {
 
         GroupHelper.applyToOre(group -> {
+
             // Raw Block -> 9x Raw
             ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.MISC, group.DROP.get(), 9)
@@ -97,7 +98,6 @@ public class VanillaRecipeProvider extends RecipeProvider {
                     .requires(group.ORE_BLOCK_ITEM_TAG)
                     .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
                     .save(consumer, shapelessRecipeDir(String.format("%s_ore", group.name), "hammer_crushing"));
-
 
         });
 
@@ -131,8 +131,8 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
             // Dust -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 100)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.DUST_TAG))
+                    .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.7f, 100)
+                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
                     .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
 
             // Gear
@@ -155,10 +155,20 @@ public class VanillaRecipeProvider extends RecipeProvider {
         GroupHelper.applyToVanilla( group -> {
 
             // Dust -> Ingot
-            SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.MATERIAL, 0.15f, 100)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.DUST_TAG))
-                    .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
+            if (group.type.equals("ingot")) {
+                SimpleCookingRecipeBuilder
+                        .blasting(Ingredient.of(group.DUST_TAG), RecipeCategory.MISC, group.MATERIAL, 0.7f, 100)
+                        .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                        .save(consumer, smeltingRecipeDir(String.format("%s_dust", group.name), "ingot"));
+            }
+
+            // Hammer + Ingot -> Dust
+            ShapelessRecipeBuilder
+                    .shapeless(RecipeCategory.MISC, group.DUST.get(), 1)
+                    .requires(TagRegistry.ORE_HAMMERS)
+                    .requires(group.MATERIAL_TAG)
+                    .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                    .save(consumer, shapelessRecipeDir(group.name, "hammer_crushing"));
 
             // Gear
             gear(group.GEAR.get(), group.MATERIAL_TAG)
@@ -177,15 +187,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
         });
 
         GroupHelper.applyToMaterial(group -> {
+
             // Ore -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.ORES.ORE_BLOCK_ITEM_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
+                    .blasting(Ingredient.of(group.ORES.ORE_BLOCK_ITEM_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.7f, 200)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORES.ORE_BLOCK_ITEM_TAG))
                     .save(consumer, smeltingRecipeDir(String.format("%s_ore", group.name), "ingot"));
 
             // Raw -> Ingot
             SimpleCookingRecipeBuilder
-                    .blasting(Ingredient.of(group.ORES.DROP_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.15f, 200)
+                    .blasting(Ingredient.of(group.ORES.DROP_TAG), RecipeCategory.MISC, group.INGOT.get(), 0.7f, 200)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORES.ORE_BLOCK_ITEM_TAG))
                     .save(consumer, blastingRecipeDir(String.format("raw_%s", group.name), "ingot"));
 
@@ -200,6 +211,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 
         GroupHelper.applyToGem( group -> {
+
+            // Raw -> Gem
+            SimpleCookingRecipeBuilder
+                    .blasting(Ingredient.of(group.ORES.DROP_TAG), RecipeCategory.MISC, group.ORES.DROP.get(), 0.7f, 200)
+                    .unlockedBy(String.format("has_%s_gem", group.name), has(group.ORES.ORE_BLOCK_ITEM_TAG))
+                    .save(consumer, blastingRecipeDir(group.name, "gem"));
 
             // Hammer + Ore -> Dust
             ShapelessRecipeBuilder

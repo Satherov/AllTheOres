@@ -1,7 +1,7 @@
 package net.allthemods.alltheores.infos;
 
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +21,7 @@ public class Reference {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
     public static final DeferredHolder<CreativeModeTab,CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable(TranslationKey.tab()))
-            .icon(() -> BlockList.ALUMINUM.ORES.STONE_ORE_BLOCK_ITEM.get().asItem().getDefaultInstance())
+            .icon(() -> ATORegistry.ALUMINUM.ORES.STONE_ORE_BLOCK_ITEM.get().asItem().getDefaultInstance())
             .build()
     );
 

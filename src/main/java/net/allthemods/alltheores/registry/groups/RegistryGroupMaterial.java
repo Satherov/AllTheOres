@@ -2,12 +2,12 @@ package net.allthemods.alltheores.registry.groups;
 
 import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalBuilder;
-import net.allthemods.alltheores.blocks.BlockList;
-import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.items.mekanism.Clump;
 import net.allthemods.alltheores.items.mekanism.Crystal;
 import net.allthemods.alltheores.items.mekanism.DirtyDust;
 import net.allthemods.alltheores.items.mekanism.Shard;
+import net.allthemods.alltheores.registry.ATORegistry;
+import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -50,8 +50,6 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
     public final DeferredHolder<Item, BucketItem> MOLTEN_BUCKET;
     public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
 
-
-    // Mekanism
     public final DeferredHolder<Chemical, Chemical> DIRTY_SLURRY;
     public final DeferredHolder<Chemical, Chemical> CLEAN_SLURRY;
 
@@ -67,7 +65,7 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
         this.fluidColor = fluidColor;
 
-        ORES = new RegistryGroupOre(name, INGOT, INGOT_TAG, "ore", veinSize, minY, maxY, count);
+        ORES = new RegistryGroupOre(name, "ingot", INGOT, INGOT_TAG, DUST, DUST_TAG, veinSize, minY, maxY, count);
 
         //Item Tags
         CRYSTAL_TAG = ItemTags.create(Reference.crystal(name));
@@ -76,7 +74,7 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
         DIRTY_DUST_TAG = ItemTags.create(Reference.dirty_dust(name));
 
         // Fluids
-        MOLTEN_TYPE = BlockList.FLUID_TYPES.register(String.format("molten_%s_type", name), () -> new FluidType(FluidType.Properties.create()
+        MOLTEN_TYPE = ATORegistry.FLUID_TYPES.register(String.format("molten_%s_type", name), () -> new FluidType(FluidType.Properties.create()
                 .canSwim(false)
                 .canDrown(false)
                 .canConvertToSource(false)
@@ -90,10 +88,10 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
                 .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.LAVA_EXTINGUISH)
         ));
 
-        MOLTEN = BlockList.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties(name)));
-        MOLTEN_FLOWING = BlockList.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties(name)));
-        MOLTEN_BUCKET = BlockList.ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-        MOLTEN_BLOCK = BlockList.BLOCKS.register(String.format("molten_%s", name), () -> new LiquidBlock(MOLTEN.get(), Block.Properties.of()
+        MOLTEN = ATORegistry.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties(name)));
+        MOLTEN_FLOWING = ATORegistry.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties(name)));
+        MOLTEN_BUCKET = ATORegistry.ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+        MOLTEN_BLOCK = ATORegistry.BLOCKS.register(String.format("molten_%s", name), () -> new LiquidBlock(MOLTEN.get(), Block.Properties.of()
                 .strength(100.0F)
                 .speedFactor(0.7F)
                 .noCollission()
@@ -101,24 +99,22 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
                 .replaceable()
         ));
 
+        DIRTY_SLURRY = ATORegistry.SLURRYS.register(String.format("dirty_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
+        CLEAN_SLURRY = ATORegistry.SLURRYS.register(String.format("clean_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
 
-        // Mekanism
-        DIRTY_SLURRY = BlockList.SLURRYS.register(String.format("dirty_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
-        CLEAN_SLURRY = BlockList.SLURRYS.register(String.format("clean_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
-
-        CRYSTAL = BlockList.ITEMS.register(String.format("%s_crystal", name), () -> new Crystal(new Item.Properties()));
-        SHARD = BlockList.ITEMS.register(String.format("%s_shard", name), () -> new Shard(new Item.Properties()));
-        CLUMP = BlockList.ITEMS.register(String.format("%s_clump", name), () -> new Clump(new Item.Properties()));
-        DIRTY_DUST = BlockList.ITEMS.register(String.format("dirty_%s_dust", name), () -> new DirtyDust(new Item.Properties()));
+        CRYSTAL = ATORegistry.ITEMS.register(String.format("%s_crystal", name), () -> new Crystal(new Item.Properties()));
+        SHARD = ATORegistry.ITEMS.register(String.format("%s_shard", name), () -> new Shard(new Item.Properties()));
+        CLUMP = ATORegistry.ITEMS.register(String.format("%s_clump", name), () -> new Clump(new Item.Properties()));
+        DIRTY_DUST = ATORegistry.ITEMS.register(String.format("dirty_%s_dust", name), () -> new DirtyDust(new Item.Properties()));
     }
 
     private BaseFlowingFluid.Properties makeMoltenProperties(String name) {
         return new BaseFlowingFluid.Properties(
                 MOLTEN_TYPE,
-                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s", name))),
-                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("flowing_molten_%s", name)))
-        ).bucket(DeferredHolder.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s_bucket", name))))
-                .block(DeferredHolder.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(BlockList.FLUIDS.getNamespace(), String.format("molten_%s", name))))
+                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(ATORegistry.FLUIDS.getNamespace(), String.format("molten_%s", name))),
+                DeferredHolder.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(ATORegistry.FLUIDS.getNamespace(), String.format("flowing_molten_%s", name)))
+        ).bucket(DeferredHolder.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ATORegistry.FLUIDS.getNamespace(), String.format("molten_%s_bucket", name))))
+                .block(DeferredHolder.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(ATORegistry.FLUIDS.getNamespace(), String.format("molten_%s", name))))
                 .tickRate(30)
                 .slopeFindDistance(4)
                 .levelDecreasePerBlock(2);

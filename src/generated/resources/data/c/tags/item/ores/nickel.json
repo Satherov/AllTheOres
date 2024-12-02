@@ -4,6 +4,11 @@
     "alltheores:nickel_deepslate_ore",
     "alltheores:nickel_nether_ore",
     "alltheores:nickel_end_ore",
+    "alltheores:nickel_other_ore",
+    "alltheores:nickel_ore",
+    "alltheores:nickel_deepslate_ore",
+    "alltheores:nickel_nether_ore",
+    "alltheores:nickel_end_ore",
     "alltheores:nickel_other_ore"
   ]
 }

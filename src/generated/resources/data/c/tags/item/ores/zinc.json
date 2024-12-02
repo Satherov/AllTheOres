@@ -4,6 +4,11 @@
     "alltheores:zinc_deepslate_ore",
     "alltheores:zinc_nether_ore",
     "alltheores:zinc_end_ore",
+    "alltheores:zinc_other_ore",
+    "alltheores:zinc_ore",
+    "alltheores:zinc_deepslate_ore",
+    "alltheores:zinc_nether_ore",
+    "alltheores:zinc_end_ore",
     "alltheores:zinc_other_ore"
   ]
 }

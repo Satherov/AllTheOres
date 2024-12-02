@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.registry.groups;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.blocks.ore.*;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.registries.Registries;
@@ -25,12 +25,13 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.blocks.BlockList.*;
-import static net.allthemods.alltheores.blocks.BlockList.blockItem;
+import static net.allthemods.alltheores.registry.ATORegistry.*;
+import static net.allthemods.alltheores.registry.ATORegistry.blockItem;
 
 public class RegistryGroupOre {
 
     public final String name;
+    public final String type;
 
     private static final List<RegistryGroupOre> instances = new ArrayList<>();
 
@@ -88,6 +89,7 @@ public class RegistryGroupOre {
     public RegistryGroupOre(String name, String type, DeferredHolder<Item, Item> material, TagKey<Item> material_tag, DeferredHolder<Item, Item> dust, TagKey<Item> dust_tag, int veinSize, int minY, int maxY, int count) {
 
         this.name = name;
+        this.type = type;
 
         instances.add(this);
 
@@ -127,7 +129,7 @@ public class RegistryGroupOre {
         OTHER_ORE_BLOCK_ITEM = blockItem(OTHER_ORE_BLOCK);
 
         switch (type) {
-            case "ore" -> {
+            case "ingot" -> {
 
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.raw_materials(name));
@@ -146,16 +148,64 @@ public class RegistryGroupOre {
                 this.DUST = dust;
 
                 // Block
-                DROP_BLOCK = BlockList.BLOCKS.register(String.format("raw_%s_block", name), () -> new Block(Blocks.STONE.properties().strength(3.0f, 3.0f)));
+                DROP_BLOCK = ATORegistry.BLOCKS.register(String.format("raw_%s_block", name), () -> new Block(Blocks.STONE.properties().strength(3.0f, 3.0f)));
 
                 // BlockItem
                 DROP_BLOCK_ITEM = blockItem(DROP_BLOCK);
             }
+            case null, default -> throw new IllegalArgumentException("Invalid type: " + type);
+        }
+    }
+
+    public RegistryGroupOre(String name, String type, int veinSize, int minY, int maxY, int count) {
+
+        this.name = name;
+        this.type = type;
+
+        instances.add(this);
+
+        this.veinSize = veinSize;
+        this.minY = minY;
+        this.maxY = maxY;
+        this.count = count;
+
+        // Feature
+        ORE_FEATURE = FEATURES.register(String.format("ore_%s", name), () -> new OreFeature(OreConfiguration.CODEC));
+        CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s", name)));
+        PLACED_ORE_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_placed", name)));
+
+        // Biome Modifier
+        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+        NETHER_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_nether", name)));
+        END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
+
+        //Block Tags
+        ORE_BLOCK_TAG = BlockTags.create(Reference.ore(name));
+
+        //BlockItem Tags
+        ORE_BLOCK_ITEM_TAG = ItemTags.create(Reference.ore(name));
+
+        // Blocks
+        STONE_ORE_BLOCK = BLOCKS.register(String.format("%s_ore", name), OreBlockStone::new);
+        SLATE_ORE_BLOCK = BLOCKS.register(String.format("%s_deepslate_ore", name), OreBlockSlate::new);
+        NETHER_ORE_BLOCK = BLOCKS.register(String.format("%s_nether_ore", name), OreBlockNether::new);
+        END_ORE_BLOCK = BLOCKS.register(String.format("%s_end_ore", name), OreBlockEnd::new);
+        OTHER_ORE_BLOCK = BLOCKS.register(String.format("%s_other_ore", name), OreBlockOther::new);
+
+        // BlockItems
+        STONE_ORE_BLOCK_ITEM = blockItem(STONE_ORE_BLOCK);
+        SLATE_ORE_BLOCK_ITEM = blockItem(SLATE_ORE_BLOCK);
+        NETHER_ORE_BLOCK_ITEM = blockItem(NETHER_ORE_BLOCK);
+        END_ORE_BLOCK_ITEM = blockItem(END_ORE_BLOCK);
+        OTHER_ORE_BLOCK_ITEM = blockItem(OTHER_ORE_BLOCK);
+
+        switch (type) {
             case "dust" -> {
 
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.dust(name));
                 MATERIAL_TAG = DROP_TAG;
+                DUST_TAG = MATERIAL_TAG;
 
                 //Block Tags
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
@@ -166,9 +216,10 @@ public class RegistryGroupOre {
                 // Items
                 DROP = material(name);
                 MATERIAL = DROP;
+                DUST = MATERIAL;
 
                 // Block
-                DROP_BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
+                DROP_BLOCK = ATORegistry.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
 
                 // BlockItem
                 DROP_BLOCK_ITEM = blockItem(DROP_BLOCK);
@@ -178,6 +229,7 @@ public class RegistryGroupOre {
                 // Item Tags
                 DROP_TAG = ItemTags.create(Reference.gem(name));
                 MATERIAL_TAG = DROP_TAG;
+                DUST_TAG = ItemTags.create(Reference.dust(name));
 
                 //Block Tags
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
@@ -188,9 +240,10 @@ public class RegistryGroupOre {
                 // Items
                 DROP = material(name);
                 MATERIAL = DROP;
+                DUST = material(String.format("%s_dust", name));
 
                 // Block
-                DROP_BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
+                DROP_BLOCK = ATORegistry.BLOCKS.register(String.format("%s_block", name), () -> new Block(Blocks.AMETHYST_BLOCK.properties().strength(3.0f, 3.0f)));
 
                 // BlockItem
                 DROP_BLOCK_ITEM = blockItem(DROP_BLOCK);

@@ -1,4 +1,4 @@
-package net.allthemods.alltheores.blocks;
+package net.allthemods.alltheores.registry;
 
 import mekanism.common.registration.impl.ChemicalDeferredRegister;
 import net.allthemods.alltheores.infos.Reference;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.*;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class BlockList {
+public class ATORegistry {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
@@ -49,14 +49,15 @@ public class BlockList {
     public static final RegistryGroupAlloy SIGNALUM = new RegistryGroupAlloy("signalum");
     public static final RegistryGroupAlloy CONSTANTAN = new RegistryGroupAlloy("constantan");
 
-    public static final RegistryGroupGem RUBY = new RegistryGroupGem("ruby", 7,-64, 228, 3);
-    public static final RegistryGroupGem PERIDOT = new RegistryGroupGem("peridot", 7, -64, 196, 3);
-    public static final RegistryGroupGem SAPPHIRE = new RegistryGroupGem("sapphire", 7, -64, 296, 3);
-    public static final RegistryGroupGem CINNABAR = new RegistryGroupGem("cinnabar", 27, -64, 228, 3);
-    public static final RegistryGroupGem FLUORITE = new RegistryGroupGem("fluorite", 27, -64, 228, 3);
+    //We don't need to set anything here as it gets automatically generated, this only exists
+    public static final RegistryGroupOre RUBY = new RegistryGroupOre("ruby", "gem", 7, -64, 228, 3);
+    public static final RegistryGroupOre PERIDOT = new RegistryGroupOre("peridot", "gem",7, -64, 196, 3);
+    public static final RegistryGroupOre SAPPHIRE = new RegistryGroupOre("sapphire", "gem",7, -64, 296, 3);
+    public static final RegistryGroupOre CINNABAR = new RegistryGroupOre("cinnabar", "gem",27, -64, 228, 3);
+    public static final RegistryGroupOre FLUORITE = new RegistryGroupOre("fluorite", "gem",27, -64, 228, 3);
 
-    public static final RegistryGroupDust SALT = new RegistryGroupDust("salt", 27, -64, 228, 3);
-    public static final RegistryGroupDust SULFUR = new RegistryGroupDust("sulfur",17, -64, 25, 1);
+    public static final RegistryGroupOre SALT = new RegistryGroupOre("salt", "dust",27, -64, 228, 3);
+    public static final RegistryGroupOre SULFUR = new RegistryGroupOre("sulfur","dust",17, -64, 25, 1);
 
     public static final RegistryGroupVanilla COPPER = new RegistryGroupVanilla("copper", "ingot", Tags.Items.INGOTS_COPPER, Items.COPPER_INGOT);
     public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", "ingot", Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
@@ -75,12 +76,12 @@ public class BlockList {
     // ###################### HELPER METHODS
 
     public static DeferredHolder<Item, BlockItem> blockItem(DeferredHolder<Block, Block> block) {
-        return BlockList.ITEMS.register(block.getId().getPath(),
+        return ATORegistry.ITEMS.register(block.getId().getPath(),
                 () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static DeferredHolder<Item, Item> material(String path) {
-        return BlockList.ITEMS.register(path, () -> new Item(new Item.Properties()));
+        return ATORegistry.ITEMS.register(path, () -> new Item(new Item.Properties()));
     }
 
 }

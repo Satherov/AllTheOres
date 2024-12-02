@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.assets;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
@@ -24,7 +24,7 @@ public class ATOItemModelProvider extends net.neoforged.neoforge.client.model.ge
     protected void registerModels() {
         ResourceLocation generated = ResourceLocation.withDefaultNamespace("item/generated");
 
-        BlockList.ITEMS.getEntries().stream()
+        ATORegistry.ITEMS.getEntries().stream()
                 .filter(item -> !(item.get() instanceof BlockItem))
                 .forEach(item -> {
                     String name = item.getId().getPath();

@@ -2,7 +2,7 @@ package net.allthemods.alltheores.events;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.client.Camera;
@@ -29,7 +29,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void creativeTab(BuildCreativeModeTabContentsEvent event){
         if (event.getTabKey().equals(Reference.CREATIVE_TAB.getKey())){
-            for (DeferredHolder<Item, ? extends Item> item: BlockList.ITEMS.getEntries()){
+            for (DeferredHolder<Item, ? extends Item> item: ATORegistry.ITEMS.getEntries()){
                 event.accept(item.get());
             }
         }

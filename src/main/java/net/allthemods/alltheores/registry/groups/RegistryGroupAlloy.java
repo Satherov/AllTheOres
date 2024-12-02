@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.registry.groups;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.blocks.BlockList.*;
+import static net.allthemods.alltheores.registry.ATORegistry.*;
 
 
 public class RegistryGroupAlloy {
@@ -83,7 +83,7 @@ public class RegistryGroupAlloy {
         PLATE = material(String.format("%s_plate", name));
 
         // Blocks
-        BLOCK = BlockList.BLOCKS.register(String.format("%s_block", name),
+        BLOCK = ATORegistry.BLOCKS.register(String.format("%s_block", name),
                 () -> new Block(Block.Properties.of()
                         .strength(3.0f, 3.0f)
                         .sound(SoundType.METAL)));

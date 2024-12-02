@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.assets;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ public class ATOBlockStateProvider extends net.neoforged.neoforge.client.model.g
 
     @Override
     protected void registerStatesAndModels() {
-    List<DeferredHolder<Block, ? extends Block>> entries = BlockList.BLOCKS.getEntries()
+    List<DeferredHolder<Block, ? extends Block>> entries = ATORegistry.BLOCKS.getEntries()
             .stream()
             .toList();
 

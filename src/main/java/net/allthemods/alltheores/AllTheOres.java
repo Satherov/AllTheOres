@@ -1,10 +1,11 @@
 package net.allthemods.alltheores;
 
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,11 +16,13 @@ public class AllTheOres {
 
     public AllTheOres(IEventBus modEventBus, ModContainer modContainer) {
         //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.COMMON_SPEC);
-        BlockList.FLUID_TYPES.register(modEventBus);
-        BlockList.FLUIDS.register(modEventBus);
-        BlockList.BLOCKS.register(modEventBus);
-        BlockList.ITEMS.register(modEventBus);
-        BlockList.SLURRYS.register(modEventBus);
+        ATORegistry.FLUID_TYPES.register(modEventBus);
+        ATORegistry.FLUIDS.register(modEventBus);
+        ATORegistry.BLOCKS.register(modEventBus);
+        ATORegistry.ITEMS.register(modEventBus);
+        if (ModList.get().isLoaded("mekanism")) {
+            ATORegistry.SLURRYS.register(modEventBus);
+        }
         Reference.CREATIVE_TABS.register(modEventBus);
         setupLogFilter();
     }

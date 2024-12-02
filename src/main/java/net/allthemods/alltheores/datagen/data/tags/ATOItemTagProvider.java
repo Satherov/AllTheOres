@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.data.tags;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
@@ -21,14 +21,14 @@ public class ATOItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        tag(TagRegistry.COPPER_NUGGET).add(BlockList.COPPER_NUGGET.get());
+        tag(TagRegistry.COPPER_NUGGET).add(ATORegistry.COPPER_NUGGET.get());
 
         tag(TagRegistry.ORE_HAMMERS)
-                .add(BlockList.COPPER_ORE_HAMMER.get())
-                .add(BlockList.IRON_ORE_HAMMER.get())
-                .add(BlockList.BRONZE_ORE_HAMMER.get())
-                .add(BlockList.INVAR_ORE_HAMMER.get())
-                .add(BlockList.PLATINUM_ORE_HAMMER.get());
+                .add(ATORegistry.COPPER_ORE_HAMMER.get())
+                .add(ATORegistry.IRON_ORE_HAMMER.get())
+                .add(ATORegistry.BRONZE_ORE_HAMMER.get())
+                .add(ATORegistry.INVAR_ORE_HAMMER.get())
+                .add(ATORegistry.PLATINUM_ORE_HAMMER.get());
 
         GroupHelper.applyToOre(group -> {
             tag(group.ORE_BLOCK_ITEM_TAG)
@@ -40,6 +40,9 @@ public class ATOItemTagProvider extends ItemTagsProvider {
 
             tag(group.DROP_TAG).add(group.DROP.get());
             tag(group.DROP_BLOCK_ITEM_TAG).add(group.DROP_BLOCK_ITEM.get());
+
+            tag(group.MATERIAL_TAG).add(group.MATERIAL.get());
+            tag(group.DUST_TAG).add(group.DUST.get());
         });
 
         GroupHelper.applyToAlloy(group -> {

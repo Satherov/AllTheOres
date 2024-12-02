@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.blocks.BlockList.material;
+import static net.allthemods.alltheores.registry.ATORegistry.material;
 
 public class RegistryGroupVanilla {
 

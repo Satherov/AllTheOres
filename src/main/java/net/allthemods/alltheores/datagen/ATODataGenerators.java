@@ -3,14 +3,15 @@ package net.allthemods.alltheores.datagen;
 import net.allthemods.alltheores.datagen.assets.ATOBlockStateProvider;
 import net.allthemods.alltheores.datagen.assets.ATOItemModelProvider;
 import net.allthemods.alltheores.datagen.data.ATODatapackGenerators;
+import net.allthemods.alltheores.datagen.data.ATORecipeProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOBlockTagProvider;
-import net.allthemods.alltheores.datagen.data.recipe.ATOVanillaRecipeProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOItemTagProvider;
 import net.allthemods.alltheores.datagen.data.ATOLootTableProvider;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -37,9 +38,9 @@ public final class ATODataGenerators {
             ATOBlockTagProvider blockTags = new ATOBlockTagProvider(packOutput, event.getLookupProvider(), fileHelper);
             generator.addProvider(true, blockTags);
             generator.addProvider(true, new ATOItemTagProvider(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), fileHelper));
-            generator.addProvider(true, new ATOVanillaRecipeProvider(packOutput, event.getLookupProvider()));
-            generator.addProvider(true, new net.minecraft.data.loot.LootTableProvider(packOutput, Collections.emptySet(),
-                    List.of(new net.minecraft.data.loot.LootTableProvider.SubProviderEntry(ATOLootTableProvider::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
+            generator.addProvider(true, new ATORecipeProvider(packOutput, event.getLookupProvider()));
+            generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
+                    List.of(new LootTableProvider.SubProviderEntry(ATOLootTableProvider::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
             generator.addProvider(true, new ATODatapackGenerators(packOutput, lookupProvider));
         }
         if (event.includeClient()) {

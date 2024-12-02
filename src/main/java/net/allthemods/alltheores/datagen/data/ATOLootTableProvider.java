@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.data;
 
-import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.blocks.ore.OreBlock;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup.Provider;
@@ -36,7 +36,7 @@ public class ATOLootTableProvider extends VanillaBlockLoot {
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {
-        return BlockList.BLOCKS.getEntries()
+        return ATORegistry.BLOCKS.getEntries()
                 .stream()
                 .map(DeferredHolder::get)
                 .filter(block -> !(block instanceof LiquidBlock))

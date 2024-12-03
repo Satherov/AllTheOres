@@ -1,7 +1,7 @@
 package net.allthemods.alltheores.registry.groups;
 
-import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -14,7 +14,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.registry.ATORegistry.*;
+import static net.allthemods.alltheores.registry.ATORegistry.blockItem;
+import static net.allthemods.alltheores.registry.ATORegistry.material;
 
 
 public class RegistryGroupAlloy {

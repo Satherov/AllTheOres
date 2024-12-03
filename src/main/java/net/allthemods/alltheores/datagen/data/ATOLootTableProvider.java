@@ -1,7 +1,7 @@
 package net.allthemods.alltheores.datagen.data;
 
-import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.blocks.ore.OreBlock;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;

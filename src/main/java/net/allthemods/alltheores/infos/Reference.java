@@ -19,17 +19,13 @@ public class Reference {
     public static final String MOD_ID = "alltheores";
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
-    public static final DeferredHolder<CreativeModeTab,CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable(TranslationKey.tab()))
             .icon(() -> ATORegistry.ALUMINUM.ORES.STONE_ORE_BLOCK_ITEM.get().asItem().getDefaultInstance())
             .build()
     );
 
-    public static List<Block> WORLDGEN_BLACKLIST = new ArrayList<Block>();
-
-    public static ResourceLocation location(String pathIn) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, pathIn);
-    }
+    public static List<Block> WORLDGEN_BLACKLIST = new ArrayList<>();
 
     public static ResourceLocation ato(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
@@ -42,6 +38,7 @@ public class Reference {
     public static ResourceLocation ore(String path) {
         return forge("ores/" + path);
     }
+
     public static ResourceLocation ores_in_ground(String path) {
         return forge("ores_in_ground/" + path);
     }
@@ -80,10 +77,6 @@ public class Reference {
 
     public static ResourceLocation rod(String path) {
         return forge("rods/" + path);
-    }
-
-    public static ResourceLocation mek(String path) {
-        return ResourceLocation.fromNamespaceAndPath("mekanism", path);
     }
 
     public static ResourceLocation crystal(String path) {

@@ -1,7 +1,7 @@
 package net.allthemods.alltheores.datagen.assets;
 
-import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -18,17 +18,16 @@ public class ATOBlockStateProvider extends net.neoforged.neoforge.client.model.g
 
     @Override
     protected void registerStatesAndModels() {
-    List<DeferredHolder<Block, ? extends Block>> entries = ATORegistry.BLOCKS.getEntries()
-            .stream()
-            .toList();
+        List<DeferredHolder<Block, ? extends Block>> entries = ATORegistry.BLOCKS.getEntries()
+                .stream()
+                .toList();
 
         entries.forEach(block -> {
-            if ((block.get() instanceof LiquidBlock)){
+            if ((block.get() instanceof LiquidBlock)) {
                 simpleBlockWithItem(block.get(), models().cubeAll(block.getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal")));
             } else {
                 simpleBlockWithItem(block.get(), cubeAll(block.get()));
             }
         });
-    };
-
+    }
 }

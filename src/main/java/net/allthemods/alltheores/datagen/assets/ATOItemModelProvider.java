@@ -1,8 +1,8 @@
 package net.allthemods.alltheores.datagen.assets;
 
+import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
-import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -35,10 +35,8 @@ public class ATOItemModelProvider extends net.neoforged.neoforge.client.model.ge
                     }
                 });
 
-        GroupHelper.applyToMaterial(group -> {
-            withExistingParent(group.MOLTEN_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket_drip"))
-                    .customLoader(DynamicFluidContainerModelBuilder::begin)
-                    .fluid(group.MOLTEN.get());
-        });
+        GroupHelper.applyToMaterial(group -> withExistingParent(group.MOLTEN_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket_drip"))
+                .customLoader(DynamicFluidContainerModelBuilder::begin)
+                .fluid(group.MOLTEN.get()));
     }
 }

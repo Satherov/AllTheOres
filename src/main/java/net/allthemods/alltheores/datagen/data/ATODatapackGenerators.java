@@ -1,6 +1,7 @@
 package net.allthemods.alltheores.datagen.data;
 
-import net.allthemods.alltheores.datagen.data.worldgen.*;
+import net.allthemods.alltheores.datagen.data.worldgen.ATOConfiguredFeatureProvider;
+import net.allthemods.alltheores.datagen.data.worldgen.ATOPlacedFeatureProvider;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;

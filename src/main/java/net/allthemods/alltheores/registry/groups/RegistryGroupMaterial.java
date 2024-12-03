@@ -1,24 +1,17 @@
 package net.allthemods.alltheores.registry.groups;
 
-import mekanism.api.chemical.Chemical;
-import mekanism.api.chemical.ChemicalBuilder;
-import net.allthemods.alltheores.items.mekanism.Clump;
-import net.allthemods.alltheores.items.mekanism.Crystal;
-import net.allthemods.alltheores.items.mekanism.DirtyDust;
-import net.allthemods.alltheores.items.mekanism.Shard;
+import net.allthemods.alltheores.fluids.MoltenBlock;
 import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -34,13 +27,7 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
     public final int fluidColor;
     public final RegistryGroupOre ORES;
-
-    //Item Tags
-    public final TagKey<Item> CRYSTAL_TAG;
-    public final TagKey<Item> SHARD_TAG;
-    public final TagKey<Item> CLUMP_TAG;
-    public final TagKey<Item> DIRTY_DUST_TAG;
-
+    public final RegistryGroupMekanism MEK;
 
     // Fluids
     public final Supplier<FluidType> MOLTEN_TYPE;
@@ -49,14 +36,6 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
     public final DeferredHolder<Fluid, BaseFlowingFluid.Flowing> MOLTEN_FLOWING;
     public final DeferredHolder<Item, BucketItem> MOLTEN_BUCKET;
     public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
-
-    public final DeferredHolder<Chemical, Chemical> DIRTY_SLURRY;
-    public final DeferredHolder<Chemical, Chemical> CLEAN_SLURRY;
-
-    public final DeferredHolder<Item, Item> CRYSTAL;
-    public final DeferredHolder<Item, Item> SHARD;
-    public final DeferredHolder<Item, Item> CLUMP;
-    public final DeferredHolder<Item, Item> DIRTY_DUST;
 
     public RegistryGroupMaterial(String name, int fluidColor, int veinSize, int minY, int maxY, int count) {
         super(name);
@@ -67,11 +46,11 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
         ORES = new RegistryGroupOre(name, "ingot", INGOT, INGOT_TAG, DUST, DUST_TAG, veinSize, minY, maxY, count);
 
-        //Item Tags
-        CRYSTAL_TAG = ItemTags.create(Reference.crystal(name));
-        SHARD_TAG = ItemTags.create(Reference.shard(name));
-        CLUMP_TAG = ItemTags.create(Reference.clump(name));
-        DIRTY_DUST_TAG = ItemTags.create(Reference.dirty_dust(name));
+        if (ModList.get().isLoaded("mekanism")) {
+            MEK = new RegistryGroupMekanism(name, fluidColor, BLOCK);
+        } else {
+            MEK = null;
+        }
 
         // Fluids
         MOLTEN_TYPE = ATORegistry.FLUID_TYPES.register(String.format("molten_%s_type", name), () -> new FluidType(FluidType.Properties.create()
@@ -91,21 +70,13 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
         MOLTEN = ATORegistry.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties(name)));
         MOLTEN_FLOWING = ATORegistry.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties(name)));
         MOLTEN_BUCKET = ATORegistry.ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-        MOLTEN_BLOCK = ATORegistry.BLOCKS.register(String.format("molten_%s", name), () -> new LiquidBlock(MOLTEN.get(), Block.Properties.of()
+        MOLTEN_BLOCK = ATORegistry.BLOCKS.register(String.format("molten_%s", name), () -> new MoltenBlock(MOLTEN.get(), Block.Properties.of()
                 .strength(100.0F)
                 .speedFactor(0.7F)
                 .noCollission()
                 .liquid()
                 .replaceable()
         ));
-
-        DIRTY_SLURRY = ATORegistry.SLURRYS.register(String.format("dirty_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
-        CLEAN_SLURRY = ATORegistry.SLURRYS.register(String.format("clean_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(BLOCK.getId())));
-
-        CRYSTAL = ATORegistry.ITEMS.register(String.format("%s_crystal", name), () -> new Crystal(new Item.Properties()));
-        SHARD = ATORegistry.ITEMS.register(String.format("%s_shard", name), () -> new Shard(new Item.Properties()));
-        CLUMP = ATORegistry.ITEMS.register(String.format("%s_clump", name), () -> new Clump(new Item.Properties()));
-        DIRTY_DUST = ATORegistry.ITEMS.register(String.format("dirty_%s_dust", name), () -> new DirtyDust(new Item.Properties()));
     }
 
     private BaseFlowingFluid.Properties makeMoltenProperties(String name) {

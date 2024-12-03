@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "alltheores:ore_hammers"
+    },
+    {
+      "tag": "c:ores/tin"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "alltheores:tin_dust"
+  }
+}

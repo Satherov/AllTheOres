@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "tag": "c:ingots/nickel"
+    },
+    "n": {
+      "tag": "c:nuggets/iron"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "ana",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "alltheores:nickel_gear"
+  }
+}

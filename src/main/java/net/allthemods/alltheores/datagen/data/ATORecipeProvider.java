@@ -5,26 +5,28 @@ import mekanism.api.datagen.recipe.builder.*;
 import mekanism.api.providers.IChemicalProvider;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import mekanism.common.registries.MekanismChemicals;
-import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
-import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATORegistry;
+import net.allthemods.alltheores.registry.ATOTagRegistry;
+import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ATORecipeProvider extends RecipeProvider {
+public class ATORecipeProvider extends RecipeProvider implements IConditionBuilder {
 
     public ATORecipeProvider(PackOutput packOutput, CompletableFuture<Provider> provider) {
         super(packOutput, provider);
@@ -34,6 +36,7 @@ public class ATORecipeProvider extends RecipeProvider {
     private ResourceLocation smeltingRecipeDir(String type, String name) {
         return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/smelting/" + type + "_smelting");
     }
+
     private ResourceLocation blastingRecipeDir(String type, String name) {
         return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/smelting/" + type + "_blasting");
     }
@@ -91,6 +94,7 @@ public class ATORecipeProvider extends RecipeProvider {
                 .pattern("aaa")
                 .define('a', tag);
     }
+
     private ShapelessRecipeBuilder uncompress(Item output, TagKey<Item> tag) {
         return ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, output, 9)
@@ -105,32 +109,36 @@ public class ATORecipeProvider extends RecipeProvider {
                 .define('a', tag)
                 .define('n', Tags.Items.NUGGETS_IRON);
     }
+
     private ShapedRecipeBuilder rod(Item output, TagKey<Item> tag) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
                 .pattern("   ")
                 .pattern("  a")
                 .pattern("ha ")
                 .define('a', tag)
-                .define('h', TagRegistry.ORE_HAMMERS);
+                .define('h', ATOTagRegistry.ORE_HAMMERS);
     }
+
     private ShapedRecipeBuilder plate(Item output, TagKey<Item> tag) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
                 .pattern("   ")
                 .pattern("ha ")
                 .pattern("a  ")
                 .define('a', tag)
-                .define('h', TagRegistry.ORE_HAMMERS);
+                .define('h', ATOTagRegistry.ORE_HAMMERS);
     }
+
     private ShapelessRecipeBuilder hammer(Item output, int amount, TagKey<Item> tag) {
         return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, amount)
-                .requires(TagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .requires(tag)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS));
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS));
     }
 
     private SimpleCookingRecipeBuilder blasting(Item output, TagKey<Item> tag) {
         return SimpleCookingRecipeBuilder.blasting(Ingredient.of(tag), RecipeCategory.MISC, output, 0.7f, 100);
     }
+
     private SimpleCookingRecipeBuilder smelting(Item output, TagKey<Item> tag) {
         return SimpleCookingRecipeBuilder.smelting(Ingredient.of(tag), RecipeCategory.MISC, output, 0.7f, 200);
     }
@@ -194,36 +202,44 @@ public class ATORecipeProvider extends RecipeProvider {
 
             // ##### Mekanism #####
 
-           if(ModList.get().isLoaded("mekanism")) {
-               // Raw -> Stone Ore
-               CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_NORMAL), new ItemStack(group.STONE_ORE_BLOCK_ITEM))
-                       .build(consumer, combiningRecipeDir("raw", group.name, "stone_ore"));
-               // Raw -> Deepslate Ore
-               CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_DEEPSLATE), new ItemStack(group.SLATE_ORE_BLOCK_ITEM))
-                       .build(consumer, combiningRecipeDir("raw", group.name, "deepslate_ore"));
-               // Raw -> Nether Ore
-               CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.NETHERRACKS), new ItemStack(group.NETHER_ORE_BLOCK_ITEM))
-                       .build(consumer, combiningRecipeDir("raw", group.name, "nether_ore"));
-               // Raw -> End Ore
-               CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.END_STONES), new ItemStack(group.END_ORE_BLOCK_ITEM))
-                       .build(consumer, combiningRecipeDir("raw", group.name, "end_ore"));
-               // Raw -> Other Ore
-               CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(com.thevortex.allthemodium.registry.TagRegistry.ANCIENT_STONE_ITEM), new ItemStack(group.OTHER_ORE_BLOCK_ITEM.get()))
-                       .build(consumer, combiningRecipeDir("raw", group.name, "other_ore"));
+            // Raw -> Stone Ore
+            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_NORMAL), new ItemStack(group.STONE_ORE_BLOCK_ITEM))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, combiningRecipeDir("raw", group.name, "stone_ore"));
+            // Raw -> Deepslate Ore
+            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_DEEPSLATE), new ItemStack(group.SLATE_ORE_BLOCK_ITEM))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, combiningRecipeDir("raw", group.name, "deepslate_ore"));
+            // Raw -> Nether Ore
+            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.NETHERRACKS), new ItemStack(group.NETHER_ORE_BLOCK_ITEM))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, combiningRecipeDir("raw", group.name, "nether_ore"));
+            // Raw -> End Ore
+            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.END_STONES), new ItemStack(group.END_ORE_BLOCK_ITEM))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, combiningRecipeDir("raw", group.name, "end_ore"));
+            // Raw -> Other Ore
+            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))), new ItemStack(group.OTHER_ORE_BLOCK_ITEM))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .addCondition(new ModLoadedCondition("allthemodium"))
+                    .build(consumer, combiningRecipeDir("raw", group.name, "other_ore"));
 
-               // Ingot -> Dust
-               ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
-                       .build(consumer, crushingRecipeDir("material", group.name, "dust"));
-               // Ore -> Dust
-               ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 2))
-                       .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
-               // Raw Block -> Dust
-               ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 12))
-                       .build(consumer, crushingRecipeDir("raw_block", group.name, "dust"));
-               // Raw -> Dust
-               ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_TAG, 3), new ItemStack(group.DUST.get(), 4))
-                       .build(consumer, crushingRecipeDir("raw", group.name, "dust"));
-           }
+            // Ingot -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("material", group.name, "dust"));
+            // Ore -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 2))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
+            // Raw Block -> Dust
+            ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 12))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("raw_block", group.name, "dust"));
+            // Raw -> Dust
+            ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_TAG, 3), new ItemStack(group.DUST.get(), 4))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("raw", group.name, "dust"));
 
         });
 
@@ -260,62 +276,78 @@ public class ATORecipeProvider extends RecipeProvider {
                     .save(consumer, shapelessRecipeDir(group.name, "plate"));
         });
 
-        GroupHelper.applyToMaterial( group -> {
-            if (ModList.get().isLoaded("mekanism")) {
-                // Ore -> Dirty Slurry
-                ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.DIRTY_SLURRY, 1000), true)
-                        .build(consumer, dissolutionRecipeDir("ore", group.name, "material"));
-                // Raw Block -> Dirty Slurry
-                ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 2), new ChemicalStack(group.DIRTY_SLURRY, 6000), true)
-                        .build(consumer, dissolutionRecipeDir("raw_block", group.name, "material"));
-                // Raw -> Dirty Slurry
-                ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.DIRTY_SLURRY, 2000), true)
-                        .build(consumer, dissolutionRecipeDir("raw", group.name, "material"));
+        GroupHelper.applyToMaterial(group -> {
 
-                // Dirty Dust -> Clean Slurry
-                FluidChemicalToChemicalRecipeBuilder.washing(IngredientCreatorAccess.fluid().from(FluidTags.WATER, 5), IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.DIRTY_SLURRY, 1), new ChemicalStack(group.CLEAN_SLURRY, 1))
-                        .build(consumer, washingRecipeDir("dirty_dust", group.name, "clean_slurry"));
+            // ##### Mekanism ####
 
-                // Clean Slurry -> Crystal
-                ChemicalCrystallizerRecipeBuilder.crystallizing(IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.CLEAN_SLURRY, 200), new ItemStack(group.CRYSTAL.get()))
-                        .build(consumer, crystallizingRecipeDir("clean_slurry", group.name, "crystal"));
+            // Ore -> Dirty Slurry
+            ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 1000), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, dissolutionRecipeDir("ore", group.name, "material"));
+            // Raw Block -> Dirty Slurry
+            ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 2), new ChemicalStack(group.MEK.DIRTY_SLURRY, 6000), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, dissolutionRecipeDir("raw_block", group.name, "material"));
+            // Raw -> Dirty Slurry
+            ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 2000), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, dissolutionRecipeDir("raw", group.name, "material"));
 
-                // Ore -> Shard
-                ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.SHARD.get(), 4), true)
-                        .build(consumer, injectingRecipeDir("ore", group.name, "shard"));
-                // Raw Block -> Shard
-                ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.SHARD.get(), 24), true)
-                        .build(consumer, injectingRecipeDir("raw_block", group.name, "shard"));
-                // Raw -> Shard
-                ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.SHARD.get(), 8), true)
-                        .build(consumer, injectingRecipeDir("raw", group.name, "shard"));
-                // Crystal -> Shard
-                ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.SHARD.get()), true)
-                        .build(consumer, injectingRecipeDir("crystal", group.name, "shard"));
+            // Dirty Dust -> Clean Slurry
+            FluidChemicalToChemicalRecipeBuilder.washing(IngredientCreatorAccess.fluid().from(FluidTags.WATER, 5), IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.DIRTY_SLURRY, 1), new ChemicalStack(group.MEK.CLEAN_SLURRY, 1))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, washingRecipeDir("dirty_dust", group.name, "clean_slurry"));
 
-                // Ore -> Clump
-                ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.CLUMP.get(), 3), true)
-                        .build(consumer, purifyingRecipeDir("ore", group.name, "clump"));
-                // Raw Block -> Clump
-                ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.CLUMP.get(), 18), true)
-                        .build(consumer, purifyingRecipeDir("raw_block", group.name, "clump"));
-                // Raw -> Clump
-                ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.CLUMP.get(), 2), true)
-                        .build(consumer, purifyingRecipeDir("raw", group.name, "clump"));
-                // Shard -> Clump
-                ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.SHARD_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.CLUMP.get()), true)
-                        .build(consumer, purifyingRecipeDir("shard", group.name, "clump"));
+            // Clean Slurry -> Crystal
+            ChemicalCrystallizerRecipeBuilder.crystallizing(IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.CLEAN_SLURRY, 200), new ItemStack(group.MEK.CRYSTAL.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crystallizingRecipeDir("clean_slurry", group.name, "crystal"));
 
-                // Clumps -> Dirty Dust
-                ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.CLUMP_TAG), new ItemStack(group.DIRTY_DUST.get()))
-                        .build(consumer, crushingRecipeDir("clump", group.name, "dirty_dust"));
-                // Dirty Dust -> Dust
-                ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DIRTY_DUST_TAG), new ItemStack(group.DUST.get()))
-                        .build(consumer, enrichingRecipeDir("dirty_dust", group.name, "dust"));
-            }
+            // Ore -> Shard
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, injectingRecipeDir("ore", group.name, "shard"));
+            // Raw Block -> Shard
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.MEK.SHARD.get(), 24), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, injectingRecipeDir("raw_block", group.name, "shard"));
+            // Raw -> Shard
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 8), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, injectingRecipeDir("raw", group.name, "shard"));
+            // Crystal -> Shard
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.MEK.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get()), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, injectingRecipeDir("crystal", group.name, "shard"));
+
+            // Ore -> Clump
+            ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get(), 3), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, purifyingRecipeDir("ore", group.name, "clump"));
+            // Raw Block -> Clump
+            ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.MEK.CLUMP.get(), 18), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, purifyingRecipeDir("raw_block", group.name, "clump"));
+            // Raw -> Clump
+            ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get(), 2), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, purifyingRecipeDir("raw", group.name, "clump"));
+            // Shard -> Clump
+            ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.MEK.SHARD_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get()), true)
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, purifyingRecipeDir("shard", group.name, "clump"));
+
+            // Clumps -> Dirty Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MEK.CLUMP_TAG), new ItemStack(group.MEK.DIRTY_DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("clump", group.name, "dirty_dust"));
+            // Dirty Dust -> Dust
+            ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.MEK.DIRTY_DUST_TAG), new ItemStack(group.DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, enrichingRecipeDir("dirty_dust", group.name, "dust"));
         });
 
-        GroupHelper.applyToVanilla( group -> {
+        GroupHelper.applyToVanilla(group -> {
 
             // Dust -> Ingot
             if (group.type.equals("ingot")) {
@@ -344,72 +376,72 @@ public class ATORecipeProvider extends RecipeProvider {
         // ALLOY BLENDING
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.INVAR.DUST.get(),3)
-                .requires(ATORegistry.IRON.DUST.get(),2)
+                .shapeless(RecipeCategory.MISC, ATORegistry.INVAR.DUST.get(), 3)
+                .requires(ATORegistry.IRON.DUST.get(), 2)
                 .requires(ATORegistry.NICKEL.DUST_TAG)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
-                .save(consumer, shapelessIORecipeDir("dust", "invar","alloy_blending"));
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessIORecipeDir("dust", "invar", "alloy_blending"));
 
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.STEEL.DUST.get(),1)
-                .requires(ATORegistry.IRON.DUST.get(),1)
-                .requires(Items.COAL,4)
-                .requires(TagRegistry.ORE_HAMMERS)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
-                .save(consumer, shapelessIORecipeDir("dust", "steel","alloy_blending"));
+                .shapeless(RecipeCategory.MISC, ATORegistry.STEEL.DUST.get(), 1)
+                .requires(ATORegistry.IRON.DUST.get(), 1)
+                .requires(Items.COAL, 4)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
+                .save(consumer, shapelessIORecipeDir("dust", "steel", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.ELECTRUM.DUST.get(),2)
+                .shapeless(RecipeCategory.MISC, ATORegistry.ELECTRUM.DUST.get(), 2)
                 .requires(ATORegistry.GOLD.DUST.get())
                 .requires(ATORegistry.SILVER.DUST_TAG)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "electrum", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.BRONZE.DUST.get(),4)
-                .requires(ATORegistry.COPPER.DUST.get(),3)
+                .shapeless(RecipeCategory.MISC, ATORegistry.BRONZE.DUST.get(), 4)
+                .requires(ATORegistry.COPPER.DUST.get(), 3)
                 .requires(ATORegistry.TIN.DUST_TAG)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "bronze", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.BRASS.DUST.get(),4)
-                .requires(ATORegistry.COPPER.DUST.get(),3)
+                .shapeless(RecipeCategory.MISC, ATORegistry.BRASS.DUST.get(), 4)
+                .requires(ATORegistry.COPPER.DUST.get(), 3)
                 .requires(ATORegistry.ZINC.DUST_TAG)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "brass", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.LUMIUM.DUST.get(),4)
-                .requires(Items.GLOWSTONE_DUST,4)
+                .shapeless(RecipeCategory.MISC, ATORegistry.LUMIUM.DUST.get(), 4)
+                .requires(Items.GLOWSTONE_DUST, 4)
                 .requires(ATORegistry.SILVER.DUST_TAG)
-                .requires(ATORegistry.TIN.DUST.get(),3)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .requires(ATORegistry.TIN.DUST.get(), 3)
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "lumium", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.CONSTANTAN.DUST.get(),2)
+                .shapeless(RecipeCategory.MISC, ATORegistry.CONSTANTAN.DUST.get(), 2)
                 .requires(ATORegistry.COPPER.DUST.get())
                 .requires(ATORegistry.NICKEL.DUST_TAG)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "constantan", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.SIGNALUM.DUST.get(),4)
-                .requires(ATORegistry.COPPER.DUST.get(),3)
+                .shapeless(RecipeCategory.MISC, ATORegistry.SIGNALUM.DUST.get(), 4)
+                .requires(ATORegistry.COPPER.DUST.get(), 3)
                 .requires(ATORegistry.SILVER.DUST_TAG)
-                .requires(Items.REDSTONE,4)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .requires(Items.REDSTONE, 4)
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "signalum", "alloy_blending"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC, ATORegistry.ENDERIUM.DUST.get(),4)
-                .requires(ATORegistry.LEAD.DUST.get(),3)
+                .shapeless(RecipeCategory.MISC, ATORegistry.ENDERIUM.DUST.get(), 4)
+                .requires(ATORegistry.LEAD.DUST.get(), 3)
                 .requires(ATORegistry.PLATINUM.DUST_TAG)
-                .requires(Items.ENDER_PEARL,2)
-                .requires(TagRegistry.ORE_HAMMERS)
-                .unlockedBy("has_hammer", has(TagRegistry.ORE_HAMMERS))
+                .requires(Items.ENDER_PEARL, 2)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
+                .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "enderium", "alloy_blending"));
     }
 }

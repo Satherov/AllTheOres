@@ -1,8 +1,9 @@
 package net.allthemods.alltheores;
 
 
-import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATOMekanismRegistry;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -21,7 +22,7 @@ public class AllTheOres {
         ATORegistry.BLOCKS.register(modEventBus);
         ATORegistry.ITEMS.register(modEventBus);
         if (ModList.get().isLoaded("mekanism")) {
-            ATORegistry.SLURRYS.register(modEventBus);
+            ATOMekanismRegistry.SLURRYS.register(modEventBus);
         }
         Reference.CREATIVE_TABS.register(modEventBus);
         setupLogFilter();

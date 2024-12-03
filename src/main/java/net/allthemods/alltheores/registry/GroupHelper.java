@@ -21,4 +21,8 @@ public class GroupHelper {
     public static void applyToVanilla(Consumer<RegistryGroupVanilla> consumer) {
         RegistryGroupVanilla.getVanillaInstances().forEach(consumer);
     }
+
+    public static void applyToMekanism(Consumer<RegistryGroupMekanism> consumer) {
+        RegistryGroupMekanism.getMekanismInstances().forEach(consumer);
+    }
 }

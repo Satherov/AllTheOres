@@ -16,20 +16,18 @@ public class ATOPlacedFeatureProvider {
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        GroupHelper.applyToOre( group -> {
-            PlacementUtils.register(
-                    context,
-                    group.PLACED_ORE_FEATURE,
-                    features.getOrThrow(
-                            group.CONFIGURED_ORE_FEATURE),
-                    List.of(CountPlacement.of(group.count),
-                            InSquarePlacement.spread(),
-                            HeightRangePlacement.triangle(
-                                    VerticalAnchor.absolute(group.minY),
-                                    VerticalAnchor.absolute(group.maxY)
-                    ),
-                    BiomeFilter.biome()
-            ));
-        });
+        GroupHelper.applyToOre(group -> PlacementUtils.register(
+                context,
+                group.PLACED_ORE_FEATURE,
+                features.getOrThrow(
+                        group.CONFIGURED_ORE_FEATURE),
+                List.of(CountPlacement.of(group.count),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(
+                                VerticalAnchor.absolute(group.minY),
+                                VerticalAnchor.absolute(group.maxY)
+                        ),
+                        BiomeFilter.biome()
+                )));
     }
 }

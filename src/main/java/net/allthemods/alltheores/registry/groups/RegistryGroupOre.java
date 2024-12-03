@@ -1,8 +1,8 @@
 package net.allthemods.alltheores.registry.groups;
 
-import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.blocks.ore.*;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,9 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.OreFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.allthemods.alltheores.registry.ATORegistry.*;
-import static net.allthemods.alltheores.registry.ATORegistry.blockItem;
 
 public class RegistryGroupOre {
 
@@ -41,8 +37,8 @@ public class RegistryGroupOre {
     public final int count;
 
     //Feature
-    public final DeferredHolder<Feature<?>, Feature<?>> ORE_FEATURE;
     public final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_ORE_FEATURE;
+    public final ResourceKey<ConfiguredFeature<?, ?>> OTHER_CONFIGURED_ORE_FEATURE;
     public final ResourceKey<PlacedFeature> PLACED_ORE_FEATURE;
 
     // Biome Modifier
@@ -99,12 +95,13 @@ public class RegistryGroupOre {
         this.count = count;
 
         // Feature
-        ORE_FEATURE = FEATURES.register(String.format("ore_%s", name), () -> new OreFeature(OreConfiguration.CODEC));
         CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s", name)));
         PLACED_ORE_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_placed", name)));
+        OTHER_CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_other", name)));
+
 
         // Biome Modifier
-        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_overworld", name)));
         NETHER_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_nether", name)));
         END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
 
@@ -170,12 +167,13 @@ public class RegistryGroupOre {
         this.count = count;
 
         // Feature
-        ORE_FEATURE = FEATURES.register(String.format("ore_%s", name), () -> new OreFeature(OreConfiguration.CODEC));
         CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s", name)));
         PLACED_ORE_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_placed", name)));
+        OTHER_CONFIGURED_ORE_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("ore_%s_other", name)));
+
 
         // Biome Modifier
-        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+        OVERWORLD_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_overworld", name)));
         NETHER_BIOME_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_nether", name)));
         END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
 

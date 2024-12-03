@@ -1,15 +1,16 @@
 package net.allthemods.alltheores.datagen.data.tags;
 
-import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
-import net.allthemods.alltheores.registry.TagRegistry;
 import net.allthemods.alltheores.infos.Reference;
+import net.allthemods.alltheores.registry.ATORegistry;
+import net.allthemods.alltheores.registry.ATOTagRegistry;
+import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,11 +20,11 @@ public class ATOItemTagProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
 
-        tag(TagRegistry.COPPER_NUGGET).add(ATORegistry.COPPER_NUGGET.get());
+        tag(ATOTagRegistry.COPPER_NUGGET).add(ATORegistry.COPPER_NUGGET.get());
 
-        tag(TagRegistry.ORE_HAMMERS)
+        tag(ATOTagRegistry.ORE_HAMMERS)
                 .add(ATORegistry.COPPER_ORE_HAMMER.get())
                 .add(ATORegistry.IRON_ORE_HAMMER.get())
                 .add(ATORegistry.BRONZE_ORE_HAMMER.get())
@@ -56,7 +57,7 @@ public class ATOItemTagProvider extends ItemTagsProvider {
             tag(group.PLATE_TAG).add(group.PLATE.get());
         });
 
-        GroupHelper.applyToMaterial(group -> {
+        GroupHelper.applyToMekanism(group -> {
             tag(group.CRYSTAL_TAG).add(group.CRYSTAL.get());
             tag(group.SHARD_TAG).add(group.SHARD.get());
             tag(group.CLUMP_TAG).add(group.CLUMP.get());

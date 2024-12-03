@@ -1,9 +1,9 @@
 package net.allthemods.alltheores.datagen.data.worldgen;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -19,7 +19,8 @@ public class ATOConfiguredFeatureProvider {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
-        GroupHelper.applyToOre( group -> {
+        // Ore generation
+        GroupHelper.applyToOre(group -> {
 
             List<OreConfiguration.TargetBlockState> ores = List.of(
                     OreConfiguration.target(
@@ -39,10 +40,6 @@ public class ATOConfiguredFeatureProvider {
                             group.DROP_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
-                            new RandomBlockMatchTest(ModRegistry.ANCIENT_STONE.get(), 0.1f),
-                            group.DROP_BLOCK.get().defaultBlockState()
-                    ),
-                    OreConfiguration.target(
                             new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES),
                             group.STONE_ORE_BLOCK.get().defaultBlockState()
                     ),
@@ -57,17 +54,21 @@ public class ATOConfiguredFeatureProvider {
                     OreConfiguration.target(
                             new BlockMatchTest(Blocks.END_STONE),
                             group.END_ORE_BLOCK.get().defaultBlockState()
+                    ), OreConfiguration.target(
+                            new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
+                            group.DROP_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
-                            new TagMatchTest(com.thevortex.allthemodium.registry.TagRegistry.ANCIENT_STONE),
+                            new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
                             group.OTHER_ORE_BLOCK.get().defaultBlockState()
-                    ));
+                    )
+            );
 
             FeatureUtils.register(
                     context,
                     group.CONFIGURED_ORE_FEATURE,
                     Feature.ORE,
-                    new OreConfiguration( ores, group.veinSize)
+                    new OreConfiguration(ores, group.veinSize)
             );
         });
     }

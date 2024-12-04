@@ -170,7 +170,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             }
             if (group.type.equals("ingot")) {
                 // Hammer + Raw -> Dust
-                hammer(group.DUST.get(), 2, group.DROP_TAG)
+                hammer(group.DUST.get(), 1, group.DROP_TAG)
                         .save(consumer, hammerRecipeDir("raw", group.name, "dust"));
             }
 

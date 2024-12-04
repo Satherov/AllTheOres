@@ -6,19 +6,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Reference {
 
     public static final String MOD_ID = "alltheores";
-    public static final boolean enableFluids = ModList.get().isLoaded("tconstruct");
+    public static boolean enableFluids = ModList.get().isLoaded("tconstruct") || !FMLLoader.isProduction();
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
@@ -26,8 +22,6 @@ public class Reference {
             .icon(() -> ATORegistry.ALUMINUM.ORES.STONE_ORE_BLOCK_ITEM.get().asItem().getDefaultInstance())
             .build()
     );
-
-    public static List<Block> WORLDGEN_BLACKLIST = new ArrayList<>();
 
     public static ResourceLocation ato(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);

@@ -6,46 +6,6 @@
     "targets": [
       {
         "state": {
-          "Name": "alltheores:raw_iridium_block"
-        },
-        "target": {
-          "block": "minecraft:stone",
-          "predicate_type": "minecraft:random_block_match",
-          "probability": 0.005
-        }
-      },
-      {
-        "state": {
-          "Name": "alltheores:raw_iridium_block"
-        },
-        "target": {
-          "block": "minecraft:deepslate",
-          "predicate_type": "minecraft:random_block_match",
-          "probability": 0.03
-        }
-      },
-      {
-        "state": {
-          "Name": "alltheores:raw_iridium_block"
-        },
-        "target": {
-          "block": "minecraft:netherrack",
-          "predicate_type": "minecraft:random_block_match",
-          "probability": 0.05
-        }
-      },
-      {
-        "state": {
-          "Name": "alltheores:raw_iridium_block"
-        },
-        "target": {
-          "block": "minecraft:end_stone",
-          "predicate_type": "minecraft:random_block_match",
-          "probability": 0.1
-        }
-      },
-      {
-        "state": {
           "Name": "alltheores:iridium_ore"
         },
         "target": {
@@ -82,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:raw_iridium_block"
+          "Name": "alltheores:iridium_other_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -91,7 +51,47 @@
       },
       {
         "state": {
-          "Name": "alltheores:iridium_other_ore"
+          "Name": "alltheores:raw_iridium_block"
+        },
+        "target": {
+          "block": "minecraft:stone",
+          "predicate_type": "minecraft:random_block_match",
+          "probability": 0.005
+        }
+      },
+      {
+        "state": {
+          "Name": "alltheores:raw_iridium_block"
+        },
+        "target": {
+          "block": "minecraft:deepslate",
+          "predicate_type": "minecraft:random_block_match",
+          "probability": 0.03
+        }
+      },
+      {
+        "state": {
+          "Name": "alltheores:raw_iridium_block"
+        },
+        "target": {
+          "block": "minecraft:netherrack",
+          "predicate_type": "minecraft:random_block_match",
+          "probability": 0.01
+        }
+      },
+      {
+        "state": {
+          "Name": "alltheores:raw_iridium_block"
+        },
+        "target": {
+          "block": "minecraft:end_stone",
+          "predicate_type": "minecraft:random_block_match",
+          "probability": 0.01
+        }
+      },
+      {
+        "state": {
+          "Name": "alltheores:raw_iridium_block"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

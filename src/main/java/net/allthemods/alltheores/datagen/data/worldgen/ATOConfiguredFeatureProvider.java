@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMa
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ATOConfiguredFeatureProvider {
 
@@ -22,23 +23,7 @@ public class ATOConfiguredFeatureProvider {
         // Ore generation
         GroupHelper.applyToOre(group -> {
 
-            List<OreConfiguration.TargetBlockState> ores = List.of(
-                    OreConfiguration.target(
-                            new RandomBlockMatchTest(Blocks.STONE, 0.005f),
-                            group.DROP_BLOCK.get().defaultBlockState()
-                    ),
-                    OreConfiguration.target(
-                            new RandomBlockMatchTest(Blocks.DEEPSLATE, 0.03f),
-                            group.DROP_BLOCK.get().defaultBlockState()
-                    ),
-                    OreConfiguration.target(
-                            new RandomBlockMatchTest(Blocks.NETHERRACK, 0.05f),
-                            group.DROP_BLOCK.get().defaultBlockState()
-                    ),
-                    OreConfiguration.target(
-                            new RandomBlockMatchTest(Blocks.END_STONE, 0.1f),
-                            group.DROP_BLOCK.get().defaultBlockState()
-                    ),
+            List<OreConfiguration.TargetBlockState> ores = new java.util.ArrayList<>(List.of(
                     OreConfiguration.target(
                             new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES),
                             group.STONE_ORE_BLOCK.get().defaultBlockState()
@@ -54,15 +39,35 @@ public class ATOConfiguredFeatureProvider {
                     OreConfiguration.target(
                             new BlockMatchTest(Blocks.END_STONE),
                             group.END_ORE_BLOCK.get().defaultBlockState()
-                    ), OreConfiguration.target(
-                            new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
-                            group.DROP_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
                             new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
                             group.OTHER_ORE_BLOCK.get().defaultBlockState()
                     )
-            );
+            ));
+
+            if (Objects.equals(group.type, "ingot")) {
+                ores.add(OreConfiguration.target(
+                                new RandomBlockMatchTest(Blocks.STONE, 0.005f),
+                                group.DROP_BLOCK.get().defaultBlockState()
+                        ));
+                ores.add(OreConfiguration.target(
+                                new RandomBlockMatchTest(Blocks.DEEPSLATE, 0.03f),
+                                group.DROP_BLOCK.get().defaultBlockState()
+                        ));
+                ores.add(OreConfiguration.target(
+                                new RandomBlockMatchTest(Blocks.NETHERRACK, 0.01f),
+                                group.DROP_BLOCK.get().defaultBlockState()
+                        ));
+                ores.add(OreConfiguration.target(
+                                new RandomBlockMatchTest(Blocks.END_STONE, 0.01f),
+                                group.DROP_BLOCK.get().defaultBlockState()
+                        ));
+                ores.add(OreConfiguration.target(
+                        new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
+                        group.DROP_BLOCK.get().defaultBlockState()
+                ));
+            }
 
             FeatureUtils.register(
                     context,

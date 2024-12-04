@@ -1,5 +1,9 @@
 {
   "values": [
+    "#c:plates/copper",
+    "#c:plates/iron",
+    "#c:plates/gold",
+    "#c:plates/diamond",
     "#c:plates/aluminum",
     "#c:plates/lead",
     "#c:plates/nickel",

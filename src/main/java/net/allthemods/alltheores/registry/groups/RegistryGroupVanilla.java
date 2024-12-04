@@ -22,6 +22,9 @@ public class RegistryGroupVanilla {
     public final TagKey<Item> MATERIAL_TAG;
 
     public final TagKey<Item> DUST_TAG;
+    public final TagKey<Item> ROD_TAG;
+    public final TagKey<Item> GEAR_TAG;
+    public final TagKey<Item> PLATE_TAG;
 
     // Items
     public final Item MATERIAL;
@@ -37,10 +40,13 @@ public class RegistryGroupVanilla {
 
         instances.add(this);
 
+        // Item Tags
         this.MATERIAL_TAG = materialTag;
 
-        // Item Tags
         DUST_TAG = ItemTags.create(Reference.dust(name));
+        ROD_TAG = ItemTags.create(Reference.rod(name));
+        GEAR_TAG = ItemTags.create(Reference.gear(name));
+        PLATE_TAG = ItemTags.create(Reference.plate(name));
 
         // Items
         this.MATERIAL = material;

@@ -56,6 +56,17 @@ public class ATOItemTagProvider extends ItemTagsProvider {
             tag(group.DUST_TAG).add(group.DUST.get());
         });
 
+        GroupHelper.applyToVanilla(group -> {
+            tag(Tags.Items.DUSTS).addTag(group.DUST_TAG);
+            tag(group.DUST_TAG).add(group.DUST.get());
+            tag(Tags.Items.RODS).addTag(group.ROD_TAG);
+            tag(group.ROD_TAG).add(group.ROD.get());
+            tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "gears"))).addTag(group.GEAR_TAG);
+            tag(group.GEAR_TAG).add(group.GEAR.get());
+            tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "plates"))).addTag(group.PLATE_TAG);
+            tag(group.PLATE_TAG).add(group.PLATE.get());
+        });
+
         GroupHelper.applyToAlloy(group -> {
             tag(Tags.Items.INGOTS).addTag(group.INGOT_TAG);
             tag(group.INGOT_TAG).add(group.INGOT.get());

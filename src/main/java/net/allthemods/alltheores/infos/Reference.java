@@ -1,13 +1,13 @@
 package net.allthemods.alltheores.infos;
 
 
-import net.allthemods.alltheores.ATOConfig;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -18,6 +18,7 @@ import java.util.List;
 public class Reference {
 
     public static final String MOD_ID = "alltheores";
+    public static final boolean enableFluids = true;
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()

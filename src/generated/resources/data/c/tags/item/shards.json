@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#c:shards/aluminum",
+    "#c:shards/lead",
+    "#c:shards/nickel",
+    "#c:shards/osmium",
+    "#c:shards/platinum",
+    "#c:shards/silver",
+    "#c:shards/tin",
+    "#c:shards/uranium",
+    "#c:shards/zinc",
+    "#c:shards/iridium"
+  ]
+}

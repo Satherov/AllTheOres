@@ -16,10 +16,9 @@ public class AllTheOres {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
     public AllTheOres(IEventBus modEventBus, ModContainer modContainer) {
-        ATOConfig.register(modContainer);
         ATORegistry.BLOCKS.register(modEventBus);
         ATORegistry.ITEMS.register(modEventBus);
-        if (ATOConfig.atoConfig.startup.enableFluids.get()) {
+        if (Reference.enableFluids) {
             ATORegistry.FLUID_ITEMS.register(modEventBus);
             ATORegistry.FLUID_BLOCKS.register(modEventBus);
             ATORegistry.FLUID_TYPES.register(modEventBus);

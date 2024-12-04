@@ -11,6 +11,7 @@ import org.apache.logging.log4j.core.filter.AbstractFilter;
 /**
  * Blocks the log spam from worldgen in 1.17.1
  * TODO remove when this bug is fixed
+ *
  * @see WorldGenRegion#ensureCanWrite(net.minecraft.core.BlockPos)
  * @see <a href="https://bugs.mojang.com/browse/MC-125007">MC-125007</a>
  * @see <a href="https://bugs.mojang.com/browse/MC-230004">MC-230004</a>
@@ -20,7 +21,7 @@ public class SetBlockMessageFilter extends AbstractFilter {
     @Override
     public Filter.Result filter(LogEvent event) {
         var message = event.getMessage();
-        if(StringUtils.startsWith(message.getFormat(), "Exception loading blockstate definition: 'allthemodium:blockstates/soul_lava.json")) {
+        if (StringUtils.startsWith(message.getFormat(), "Exception loading blockstate definition: 'allthemodium:blockstates/soul_lava.json")) {
             return Result.DENY;
         }
         if (StringUtils.startsWith(message.getFormat(), "Detected setBlock in a far chunk")) {

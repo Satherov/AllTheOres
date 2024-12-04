@@ -1,6 +1,9 @@
 {
   "values": [
     "alltheores:peridot_ore",
-    "alltheores:deepslate_peridot_ore"
+    "alltheores:peridot_deepslate_ore",
+    "alltheores:peridot_nether_ore",
+    "alltheores:peridot_end_ore",
+    "alltheores:peridot_other_ore"
   ]
 }

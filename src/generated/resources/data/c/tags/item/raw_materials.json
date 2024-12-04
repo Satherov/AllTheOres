@@ -1,16 +1,21 @@
 {
   "values": [
-    "alltheores:raw_aluminum",
-    "alltheores:raw_iridium",
-    "alltheores:raw_lead",
-    "alltheores:raw_nickel",
-    "alltheores:raw_osmium",
-    "alltheores:raw_platinum",
-    "alltheores:raw_silver",
-    "alltheores:raw_tin",
-    "alltheores:raw_uranium",
-    "alltheores:raw_zinc",
-    "alltheores:salt",
-    "alltheores:sulfur"
+    "#c:ingots/aluminum",
+    "#c:ingots/lead",
+    "#c:ingots/nickel",
+    "#c:ingots/osmium",
+    "#c:ingots/platinum",
+    "#c:ingots/silver",
+    "#c:ingots/tin",
+    "#c:ingots/uranium",
+    "#c:ingots/zinc",
+    "#c:ingots/iridium",
+    "#c:gems/ruby",
+    "#c:gems/peridot",
+    "#c:gems/sapphire",
+    "#c:gems/cinnabar",
+    "#c:gems/fluorite",
+    "#c:dusts/salt",
+    "#c:dusts/sulfur"
   ]
 }

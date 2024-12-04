@@ -14,7 +14,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -81,11 +80,6 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
     private ResourceLocation enrichingRecipeDir(String typeIn, String name, String typeOut) {
         return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/enriching/" + typeOut + "_from_" + typeIn);
     }
-
-    private ResourceLocation combiningRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/combining/" + typeOut + "_from_" + typeIn);
-    }
-
 
     private ShapedRecipeBuilder compress(Item output, TagKey<Item> tag) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
@@ -201,28 +195,6 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             }
 
             // ##### Mekanism #####
-
-            // Raw -> Stone Ore
-            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_NORMAL), new ItemStack(group.STONE_ORE_BLOCK_ITEM))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, combiningRecipeDir("raw", group.name, "stone_ore"));
-            // Raw -> Deepslate Ore
-            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.COBBLESTONES_DEEPSLATE), new ItemStack(group.SLATE_ORE_BLOCK_ITEM))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, combiningRecipeDir("raw", group.name, "deepslate_ore"));
-            // Raw -> Nether Ore
-            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.NETHERRACKS), new ItemStack(group.NETHER_ORE_BLOCK_ITEM))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, combiningRecipeDir("raw", group.name, "nether_ore"));
-            // Raw -> End Ore
-            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(Tags.Items.END_STONES), new ItemStack(group.END_ORE_BLOCK_ITEM))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, combiningRecipeDir("raw", group.name, "end_ore"));
-            // Raw -> Other Ore
-            CombinerRecipeBuilder.combining(IngredientCreatorAccess.item().from(group.DROP_TAG, 8), IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))), new ItemStack(group.OTHER_ORE_BLOCK_ITEM))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .addCondition(new ModLoadedCondition("allthemodium"))
-                    .build(consumer, combiningRecipeDir("raw", group.name, "other_ore"));
 
             // Ingot -> Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))

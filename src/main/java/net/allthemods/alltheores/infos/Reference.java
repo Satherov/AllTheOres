@@ -1,6 +1,7 @@
 package net.allthemods.alltheores.infos;
 
 
+import net.allthemods.alltheores.ATOConfig;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

@@ -1,14 +1,9 @@
 package net.allthemods.alltheores.datagen.assets.lang;
 
 import net.allthemods.alltheores.datagen.assets.ATOLanguageProvider;
-import net.allthemods.alltheores.items.OreHammer;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
-import java.util.Map;
 
 public class EN_USProvider extends ATOLanguageProvider {
     public EN_USProvider(PackOutput output) {

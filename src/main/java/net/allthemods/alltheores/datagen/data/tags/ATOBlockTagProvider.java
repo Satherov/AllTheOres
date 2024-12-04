@@ -5,6 +5,7 @@ import net.allthemods.alltheores.registry.ATOTagRegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +23,13 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
         GroupHelper.applyToOre(group -> {
+            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(group.DROP_BLOCK_TAG);
+            tag(Tags.Blocks.ORES).addTag(group.ORE_BLOCK_TAG);
+
+            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
+                    .addTag(group.ORE_BLOCK_TAG)
+                    .addTag(group.DROP_BLOCK_TAG);
+
             tag(group.ORE_BLOCK_TAG)
                     .add(group.STONE_ORE_BLOCK.get())
                     .add(group.SLATE_ORE_BLOCK.get())
@@ -36,15 +44,13 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
             tag(ATOTagRegistry.IN_ANCIENT_STONE).add(group.OTHER_ORE_BLOCK.get());
 
             tag(group.DROP_BLOCK_TAG).add(group.DROP_BLOCK.get());
-
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
-                    .addTag(group.ORE_BLOCK_TAG)
-                    .addTag(group.DROP_BLOCK_TAG);
         });
 
         GroupHelper.applyToAlloy(group -> {
-            tag(group.BLOCK_TAG).add(group.BLOCK.get());
+            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(group.BLOCK_TAG);
             tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).addTag(group.BLOCK_TAG);
+
+            tag(group.BLOCK_TAG).add(group.BLOCK.get());
         });
 
     }

@@ -2,7 +2,6 @@ package net.allthemods.alltheores.events;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.allthemods.alltheores.ATOConfig;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
@@ -38,7 +37,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerItemColors(RegisterClientExtensionsEvent event) {
-        if (ATOConfig.atoConfig.startup.enableFluids.get()) {
+        if (Reference.enableFluids) {
             GroupHelper.applyToMaterial(group -> event.registerFluidType(new IClientFluidTypeExtensions() {
                 @Override
                 public @NotNull ResourceLocation getStillTexture() {
@@ -93,7 +92,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        if (ATOConfig.atoConfig.startup.enableFluids.get()) {
+        if (Reference.enableFluids) {
             GroupHelper.applyToMaterial(group -> event.register(new DynamicFluidContainerModel.Colors(), group.MOLTEN_BUCKET.get()));
         }
     }

@@ -8,6 +8,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.config.ModConfigs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,11 +18,13 @@ public class AllTheOres {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
     public AllTheOres(IEventBus modEventBus, ModContainer modContainer) {
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.COMMON_SPEC);
-        ATORegistry.FLUID_TYPES.register(modEventBus);
-        ATORegistry.FLUIDS.register(modEventBus);
+        ATOConfig.register(modContainer);
         ATORegistry.BLOCKS.register(modEventBus);
         ATORegistry.ITEMS.register(modEventBus);
+        if (ATOConfig.atoConfig.startup.enableFluids.get()) {
+            ATORegistry.FLUID_TYPES.register(modEventBus);
+            ATORegistry.FLUIDS.register(modEventBus);
+        }
         if (ModList.get().isLoaded("mekanism")) {
             ATOMekanismRegistry.SLURRYS.register(modEventBus);
         }

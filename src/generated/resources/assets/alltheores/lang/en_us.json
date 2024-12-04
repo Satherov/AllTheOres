@@ -366,5 +366,6 @@
   "item.alltheores.zinc_nugget": "Zinc Nugget",
   "item.alltheores.zinc_plate": "Zinc Plate",
   "item.alltheores.zinc_rod": "Zinc Rod",
-  "item.alltheores.zinc_shard": "Zinc Shard"
+  "item.alltheores.zinc_shard": "Zinc Shard",
+  "itemGroup.alltheores": "All The Ores"
 }

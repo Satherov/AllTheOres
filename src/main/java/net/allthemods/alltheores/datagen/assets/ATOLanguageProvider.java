@@ -10,9 +10,7 @@ public class ATOLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    protected void addTranslations() {
-        add("itemGroup.alltheores", "All The Ores");
-    }
+    protected void addTranslations() {}
 
     protected String format(String string) {
         return string.substring(0, 1).toUpperCase() + string.substring(1);

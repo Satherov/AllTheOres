@@ -13,6 +13,8 @@ public class EN_USProvider extends ATOLanguageProvider {
     @Override
     protected void addTranslations() {
 
+        add("itemGroup.alltheores", "All The Ores");
+
         add(ATORegistry.COPPER_ORE_HAMMER.get(), "Copper Ore Hammer");
         add(ATORegistry.IRON_ORE_HAMMER.get(), "Iron Ore Hammer");
         add(ATORegistry.BRONZE_ORE_HAMMER.get(), "Bronze Ore Hammer");

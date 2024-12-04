@@ -8,8 +8,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.config.ModConfigs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +20,8 @@ public class AllTheOres {
         ATORegistry.BLOCKS.register(modEventBus);
         ATORegistry.ITEMS.register(modEventBus);
         if (ATOConfig.atoConfig.startup.enableFluids.get()) {
+            ATORegistry.FLUID_ITEMS.register(modEventBus);
+            ATORegistry.FLUID_BLOCKS.register(modEventBus);
             ATORegistry.FLUID_TYPES.register(modEventBus);
             ATORegistry.FLUIDS.register(modEventBus);
         }

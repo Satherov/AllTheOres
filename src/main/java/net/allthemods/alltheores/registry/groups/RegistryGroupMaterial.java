@@ -69,8 +69,8 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
 
         MOLTEN = ATORegistry.FLUIDS.register(String.format("molten_%s", name), () -> new BaseFlowingFluid.Source(makeMoltenProperties(name)));
         MOLTEN_FLOWING = ATORegistry.FLUIDS.register(String.format("flowing_molten_%s", name), () -> new BaseFlowingFluid.Flowing(makeMoltenProperties(name)));
-        MOLTEN_BUCKET = ATORegistry.ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-        MOLTEN_BLOCK = ATORegistry.BLOCKS.register(String.format("molten_%s", name), () -> new MoltenBlock(MOLTEN.get(), Block.Properties.of()
+        MOLTEN_BUCKET = ATORegistry.FLUID_ITEMS.register(String.format("molten_%s_bucket", name), () -> new BucketItem(MOLTEN.get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+        MOLTEN_BLOCK = ATORegistry.FLUID_BLOCKS.register(String.format("molten_%s", name), () -> new MoltenBlock(MOLTEN.get(), Block.Properties.of()
                 .strength(100.0F)
                 .speedFactor(0.7F)
                 .noCollission()

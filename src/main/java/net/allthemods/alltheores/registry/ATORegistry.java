@@ -22,6 +22,9 @@ public class ATORegistry {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
+
+    public static final DeferredRegister<Block> FLUID_BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
+    public static final DeferredRegister<Item> FLUID_ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, Reference.MOD_ID);
 

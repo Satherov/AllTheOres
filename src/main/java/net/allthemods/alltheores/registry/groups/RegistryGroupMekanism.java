@@ -53,8 +53,8 @@ public class RegistryGroupMekanism {
         DIRTY_DUST_TAG = ItemTags.create(Reference.dirty_dust(name));
 
         // Chemicals
-        DIRTY_SLURRY = ATOMekanismRegistry.SLURRYS.register(String.format("dirty_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(block.getId())));
-        CLEAN_SLURRY = ATOMekanismRegistry.SLURRYS.register(String.format("clean_%s_slurry", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(block.getId())));
+        DIRTY_SLURRY = ATOMekanismRegistry.SLURRYS.register(String.format("dirty_%s", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(block.getId())));
+        CLEAN_SLURRY = ATOMekanismRegistry.SLURRYS.register(String.format("clean_%s_", name), () -> new Chemical(ChemicalBuilder.builder().tint(fluidColor).ore(block.getId())));
 
         // Items
         CRYSTAL = ATORegistry.ITEMS.register(String.format("%s_crystal", name), () -> new Crystal(new Item.Properties()));

@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 1000,
-    "id": "alltheores:dirty_lead_slurry"
+    "id": "alltheores:dirty_lead"
   },
   "per_tick_usage": true
 }

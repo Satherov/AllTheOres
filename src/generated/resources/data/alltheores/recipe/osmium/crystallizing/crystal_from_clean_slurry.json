@@ -8,7 +8,7 @@
   "type": "mekanism:crystallizing",
   "input": {
     "amount": 200,
-    "chemical": "alltheores:clean_osmium_slurry"
+    "chemical": "alltheores:clean_osmium_"
   },
   "output": {
     "count": 1,

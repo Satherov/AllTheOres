@@ -8,7 +8,7 @@
   "type": "mekanism:washing",
   "chemical_input": {
     "amount": 1,
-    "chemical": "alltheores:dirty_silver_slurry"
+    "chemical": "alltheores:dirty_silver"
   },
   "fluid_input": {
     "amount": 5,
@@ -16,6 +16,6 @@
   },
   "output": {
     "amount": 1,
-    "id": "alltheores:clean_silver_slurry"
+    "id": "alltheores:clean_silver"
   }
 }

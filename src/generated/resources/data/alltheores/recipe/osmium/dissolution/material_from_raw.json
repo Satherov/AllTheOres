@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 2000,
-    "id": "alltheores:dirty_osmium_slurry"
+    "id": "alltheores:dirty_osmium"
   },
   "per_tick_usage": true
 }

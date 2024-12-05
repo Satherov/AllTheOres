@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 6000,
-    "id": "alltheores:dirty_zinc_slurry"
+    "id": "alltheores:dirty_zinc"
   },
   "per_tick_usage": true
 }

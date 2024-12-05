@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 2000,
-    "id": "alltheores:dirty_aluminum_slurry"
+    "id": "alltheores:dirty_aluminum"
   },
   "per_tick_usage": true
 }

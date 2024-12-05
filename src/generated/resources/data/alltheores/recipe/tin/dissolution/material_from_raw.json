@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 2000,
-    "id": "alltheores:dirty_tin_slurry"
+    "id": "alltheores:dirty_tin"
   },
   "per_tick_usage": true
 }

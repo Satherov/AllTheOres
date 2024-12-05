@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 6000,
-    "id": "alltheores:dirty_iridium_slurry"
+    "id": "alltheores:dirty_iridium"
   },
   "per_tick_usage": true
 }

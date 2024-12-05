@@ -166,7 +166,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
             // Hammer + Ore Block -> Raw
             hammer(group.DUST.get(), 2, group.ORE_BLOCK_ITEM_TAG)
-                    .save(consumer, hammerRecipeDir("ore", group.name, "raw"));
+                    .save(consumer, hammerRecipeDir("ore", group.name, "dust"));
             if (group.type.equals("gem")) {
                 // Hammer + Material -> Dust
                 hammer(group.DUST.get(), 1, group.MATERIAL_TAG)
@@ -233,7 +233,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
             // Hammer + Material -> Dust
             hammer(group.DUST.get(), 1, group.INGOT_TAG)
-                    .save(consumer, hammerRecipeDir("material", group.name, "dust"));
+                    .save(consumer, hammerRecipeDir("ingot", group.name, "dust"));
 
             // Dust -> Ingot
             smelting(group.INGOT.get(), group.DUST_TAG)
@@ -349,9 +349,18 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
         GroupHelper.applyToVanilla(group -> {
 
+            // Ore -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name)))), new ItemStack(group.DUST.get(), 2))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
+            // Ingot -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("ingot", group.name, "dust"));
+
             // Hammer + Ore Block -> Raw
             hammer(group.DUST.get(), 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name))))
-                    .save(consumer, hammerRecipeDir("ore", group.name, "raw"));
+                    .save(consumer, hammerRecipeDir("ore", group.name, "dust"));
             if (!group.type.equals("dust")) {
                 // Hammer + Material -> Dust
                 hammer(group.DUST.get(), 1, group.MATERIAL_TAG)

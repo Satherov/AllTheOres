@@ -279,6 +279,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
             // ##### Mekanism ####
 
+            assert group.MEK != null;
             // Ore -> Dirty Slurry
             ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 1000), true)
                     .addCondition(new ModLoadedCondition("mekanism"))

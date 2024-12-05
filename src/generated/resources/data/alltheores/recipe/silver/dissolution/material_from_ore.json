@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 1000,
-    "id": "alltheores:dirty_silver_slurry"
+    "id": "alltheores:dirty_silver"
   },
   "per_tick_usage": true
 }

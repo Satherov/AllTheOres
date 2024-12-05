@@ -16,7 +16,7 @@
   },
   "output": {
     "amount": 2000,
-    "id": "alltheores:dirty_nickel_slurry"
+    "id": "alltheores:dirty_nickel"
   },
   "per_tick_usage": true
 }

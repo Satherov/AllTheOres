@@ -65,7 +65,7 @@ public class ATORegistry {
     public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", "ingot", Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
     public static final RegistryGroupVanilla GOLD = new RegistryGroupVanilla("gold", "ingot", Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
     public static final RegistryGroupVanilla DIAMOND = new RegistryGroupVanilla("diamond", "gem", Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
-    //public static final RegistryGroupVanilla NETHERITE = new RegistryGroupVanilla("netherite", "ingot", Tags.Items.INGOTS_NETHERITE, Items.NETHERITE_INGOT);
+    public static final RegistryGroupVanilla NETHERITE = new RegistryGroupVanilla("netherite", "netherite", Tags.Items.INGOTS_NETHERITE, Items.NETHERITE_INGOT);
 
     public static final DeferredHolder<Item, Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item(new Item.Properties()));
 

@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:salt_deepslate_ore"
+          "Name": "alltheores:deepslate_salt_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:salt_nether_ore"
+          "Name": "alltheores:nether_salt_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:salt_end_ore"
+          "Name": "alltheores:end_salt_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:salt_other_ore"
+          "Name": "alltheores:other_salt_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

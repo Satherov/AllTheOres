@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sulfur_ingot": {
+    "has_sulfur_ore": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_sulfur_ingot"
+      "has_sulfur_ore"
     ]
   ],
   "rewards": {

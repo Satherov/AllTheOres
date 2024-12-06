@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:silver_deepslate_ore"
+          "Name": "alltheores:deepslate_silver_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:silver_nether_ore"
+          "Name": "alltheores:nether_silver_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:silver_end_ore"
+          "Name": "alltheores:end_silver_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:silver_other_ore"
+          "Name": "alltheores:other_silver_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

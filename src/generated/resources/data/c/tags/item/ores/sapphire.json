@@ -1,9 +1,9 @@
 {
   "values": [
     "alltheores:sapphire_ore",
-    "alltheores:sapphire_deepslate_ore",
-    "alltheores:sapphire_nether_ore",
-    "alltheores:sapphire_end_ore",
-    "alltheores:sapphire_other_ore"
+    "alltheores:deepslate_sapphire_ore",
+    "alltheores:nether_sapphire_ore",
+    "alltheores:end_sapphire_ore",
+    "alltheores:other_sapphire_ore"
   ]
 }

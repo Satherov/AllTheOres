@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "aaa",
+    " a ",
     "ana",
-    "aaa"
+    " a "
   ],
   "result": {
     "count": 1,

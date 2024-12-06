@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:lead_deepslate_ore"
+          "Name": "alltheores:deepslate_lead_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:lead_nether_ore"
+          "Name": "alltheores:nether_lead_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:lead_end_ore"
+          "Name": "alltheores:end_lead_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:lead_other_ore"
+          "Name": "alltheores:other_lead_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

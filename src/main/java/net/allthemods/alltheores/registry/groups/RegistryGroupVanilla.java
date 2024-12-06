@@ -33,6 +33,7 @@ public class RegistryGroupVanilla {
     public final DeferredHolder<Item, Item> ROD;
     public final DeferredHolder<Item, Item> GEAR;
     public final DeferredHolder<Item, Item> PLATE;
+    public final TagKey<Item> DROP_TAG;
 
     public RegistryGroupVanilla(String name, String type, TagKey<Item> materialTag, Item material) {
         this.name = name;
@@ -47,6 +48,20 @@ public class RegistryGroupVanilla {
         ROD_TAG = ItemTags.create(Reference.rod(name));
         GEAR_TAG = ItemTags.create(Reference.gear(name));
         PLATE_TAG = ItemTags.create(Reference.plate(name));
+
+        switch (type) {
+            case "ingot" :
+                DROP_TAG = ItemTags.create(Reference.raw_materials(name));
+                break;
+            case "gem" :
+                DROP_TAG = ItemTags.create(Reference.gem(name));
+                break;
+            case "netherite" :
+                DROP_TAG = ItemTags.create(Reference.ore(String.format("%s_scrap", name)));
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Type: " + name);
+        }
 
         // Items
         this.MATERIAL = material;

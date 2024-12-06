@@ -113,10 +113,10 @@ public class RegistryGroupOre {
 
         // Blocks
         STONE_ORE_BLOCK = BLOCKS.register(String.format("%s_ore", name), OreBlockStone::new);
-        SLATE_ORE_BLOCK = BLOCKS.register(String.format("%s_deepslate_ore", name), OreBlockSlate::new);
-        NETHER_ORE_BLOCK = BLOCKS.register(String.format("%s_nether_ore", name), OreBlockNether::new);
-        END_ORE_BLOCK = BLOCKS.register(String.format("%s_end_ore", name), OreBlockEnd::new);
-        OTHER_ORE_BLOCK = BLOCKS.register(String.format("%s_other_ore", name), OreBlockOther::new);
+        SLATE_ORE_BLOCK = BLOCKS.register(String.format("deepslate_%s_ore", name), OreBlockSlate::new);
+        NETHER_ORE_BLOCK = BLOCKS.register(String.format("nether_%s_ore", name), OreBlockNether::new);
+        END_ORE_BLOCK = BLOCKS.register(String.format("end_%s_ore", name), OreBlockEnd::new);
+        OTHER_ORE_BLOCK = BLOCKS.register(String.format("other_%s_ore", name), OreBlockOther::new);
 
         // BlockItems
         STONE_ORE_BLOCK_ITEM = blockItem(STONE_ORE_BLOCK);
@@ -185,10 +185,10 @@ public class RegistryGroupOre {
 
         // Blocks
         STONE_ORE_BLOCK = BLOCKS.register(String.format("%s_ore", name), OreBlockStone::new);
-        SLATE_ORE_BLOCK = BLOCKS.register(String.format("%s_deepslate_ore", name), OreBlockSlate::new);
-        NETHER_ORE_BLOCK = BLOCKS.register(String.format("%s_nether_ore", name), OreBlockNether::new);
-        END_ORE_BLOCK = BLOCKS.register(String.format("%s_end_ore", name), OreBlockEnd::new);
-        OTHER_ORE_BLOCK = BLOCKS.register(String.format("%s_other_ore", name), OreBlockOther::new);
+        SLATE_ORE_BLOCK = BLOCKS.register(String.format("deepslate_%s_ore", name), OreBlockSlate::new);
+        NETHER_ORE_BLOCK = BLOCKS.register(String.format("nether_%s_ore", name), OreBlockNether::new);
+        END_ORE_BLOCK = BLOCKS.register(String.format("end_%s_ore", name), OreBlockEnd::new);
+        OTHER_ORE_BLOCK = BLOCKS.register(String.format("other_%s_ore", name), OreBlockOther::new);
 
         // BlockItems
         STONE_ORE_BLOCK_ITEM = blockItem(STONE_ORE_BLOCK);

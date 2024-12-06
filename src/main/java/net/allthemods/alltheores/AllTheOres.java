@@ -31,7 +31,6 @@ public class AllTheOres {
         setupLogFilter();
     }
 
-
     private static void setupLogFilter() {
         var rootLogger = LogManager.getRootLogger();
         if (rootLogger instanceof org.apache.logging.log4j.core.Logger logger) {

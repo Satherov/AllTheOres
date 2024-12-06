@@ -39,7 +39,13 @@ public class ATOItemTagProvider extends ItemTagsProvider {
         GroupHelper.applyToOre(group -> {
             tag(Tags.Items.ORES).addTag(group.ORE_BLOCK_ITEM_TAG);
             tag(Tags.Items.STORAGE_BLOCKS).addTag(group.DROP_BLOCK_ITEM_TAG);
-            tag(Tags.Items.RAW_MATERIALS).addTag(group.DROP_TAG);
+
+            if (group.type.equals("gem")) {
+                tag(Tags.Items.GEMS).addTag(group.DROP_TAG);
+            } else if (group.type.equals("ingot")) {
+                tag(Tags.Items.RAW_MATERIALS).addTag(group.DROP_TAG);
+            }
+
             tag(Tags.Items.DUSTS).addTag(group.DUST_TAG);
 
             tag(group.ORE_BLOCK_ITEM_TAG)

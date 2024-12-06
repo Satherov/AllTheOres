@@ -7,7 +7,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_uranium_ingot": {
+    "has_uranium_ore": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_uranium_ingot"
+      "has_uranium_ore"
     ]
   ],
   "rewards": {

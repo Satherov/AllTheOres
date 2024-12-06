@@ -41,7 +41,7 @@ public class EN_USProvider extends ATOLanguageProvider {
             }
 
             add(group.STONE_ORE_BLOCK.get(), String.format("%s Ore", format(group.name)));
-            add(group.SLATE_ORE_BLOCK.get(), String.format("%s Deepslate Ore", format(group.name)));
+            add(group.SLATE_ORE_BLOCK.get(), String.format("Deepslate %s Ore", format(group.name)));
             add(group.NETHER_ORE_BLOCK.get(), String.format("Nether %s Ore", format(group.name)));
             add(group.END_ORE_BLOCK.get(), String.format("End %s Ore", format(group.name)));
             add(group.OTHER_ORE_BLOCK.get(), String.format("Other %s Ore", format(group.name)));
@@ -72,8 +72,8 @@ public class EN_USProvider extends ATOLanguageProvider {
         });
 
         GroupHelper.applyToMekanism( group -> {
-            add(group.CLEAN_SLURRY.get().getTranslationKey(), String.format("Clean %s", format(group.name)));
-            add(group.DIRTY_SLURRY.get().getTranslationKey(), String.format("Dirty %s", format(group.name)));
+            add(group.CLEAN_SLURRY.get().getTranslationKey(), String.format("Clean %s Slurry", format(group.name)));
+            add(group.DIRTY_SLURRY.get().getTranslationKey(), String.format("Dirty %s Slurry", format(group.name)));
 
             add(group.CRYSTAL.get(), String.format("%s Crystal", format(group.name)));
             add(group.SHARD.get(), String.format("%s Shard", format(group.name)));

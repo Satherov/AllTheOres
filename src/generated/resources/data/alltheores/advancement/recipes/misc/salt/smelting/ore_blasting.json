@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_salt_ingot": {
+    "has_salt_ore": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_salt_ingot"
+      "has_salt_ore"
     ]
   ],
   "rewards": {

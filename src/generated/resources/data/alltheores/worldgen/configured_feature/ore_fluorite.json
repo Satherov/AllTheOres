@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:fluorite_deepslate_ore"
+          "Name": "alltheores:deepslate_fluorite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:fluorite_nether_ore"
+          "Name": "alltheores:nether_fluorite_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:fluorite_end_ore"
+          "Name": "alltheores:end_fluorite_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:fluorite_other_ore"
+          "Name": "alltheores:other_fluorite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

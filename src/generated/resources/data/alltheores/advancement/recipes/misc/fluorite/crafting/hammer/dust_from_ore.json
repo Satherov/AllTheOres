@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_fluorite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ores/fluorite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_hammer": {
       "conditions": {
         "items": [
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_hammer"
+      "has_hammer",
+      "has_fluorite_ore"
     ]
   ],
   "rewards": {

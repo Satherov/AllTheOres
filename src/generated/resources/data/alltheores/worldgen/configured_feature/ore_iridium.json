@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:iridium_deepslate_ore"
+          "Name": "alltheores:deepslate_iridium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:iridium_nether_ore"
+          "Name": "alltheores:nether_iridium_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:iridium_end_ore"
+          "Name": "alltheores:end_iridium_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:iridium_other_ore"
+          "Name": "alltheores:other_iridium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:aluminum_deepslate_ore"
+          "Name": "alltheores:deepslate_aluminum_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:aluminum_nether_ore"
+          "Name": "alltheores:nether_aluminum_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:aluminum_end_ore"
+          "Name": "alltheores:end_aluminum_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:aluminum_other_ore"
+          "Name": "alltheores:other_aluminum_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:nickel_deepslate_ore"
+          "Name": "alltheores:deepslate_nickel_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:nickel_nether_ore"
+          "Name": "alltheores:nether_nickel_ore"
         },
         "target": {
           "block": "minecraft:netherrack",
@@ -33,7 +33,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:nickel_end_ore"
+          "Name": "alltheores:end_nickel_ore"
         },
         "target": {
           "block": "minecraft:end_stone",
@@ -42,7 +42,7 @@
       },
       {
         "state": {
-          "Name": "alltheores:nickel_other_ore"
+          "Name": "alltheores:other_nickel_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

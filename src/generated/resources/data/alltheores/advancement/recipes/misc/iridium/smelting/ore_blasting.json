@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iridium_ingot": {
+    "has_iridium_ore": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iridium_ingot"
+      "has_iridium_ore"
     ]
   ],
   "rewards": {

@@ -98,9 +98,9 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
     private ShapedRecipeBuilder gear(Item output, TagKey<Item> tag) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
-                .pattern("aaa")
+                .pattern(" a ")
                 .pattern("ana")
-                .pattern("aaa")
+                .pattern(" a ")
                 .define('a', tag)
                 .define('n', Tags.Items.NUGGETS_IRON);
     }
@@ -153,7 +153,10 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
         GroupHelper.applyToOre(group -> {
 
-            // ##### AllTheOres #####
+            // ############### AllTheOres ###############
+
+
+            // ##### Compressing #####
 
             // Raw Block -> 9x Raw
             uncompress(group.DROP.get(), group.DROP_BLOCK_ITEM_TAG)
@@ -164,84 +167,95 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
                     .save(consumer, shapelessIORecipeDir("raw", group.name, "raw_block"));
 
-            // Hammer + Ore Block -> Raw
+
+            // ##### Hammer #####
+
+            switch (group.type) {
+                case "gem" :
+                    // Hammer + Gem -> Dust
+                    hammer(group.DUST.get(), 1, group.DROP_TAG)
+                            .unlockedBy(String.format("has_%s", group.name), has(group.DROP_TAG))
+                            .save(consumer, hammerRecipeDir("gem", group.name, "dust"));
+                    break;
+                case "ingot" :
+                    // Hammer + Raw -> 2x Dust
+                    hammer(group.DUST.get(), 2, group.DROP_TAG)
+                            .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
+                            .save(consumer, hammerRecipeDir("raw", group.name, "dust"));
+                    break;
+            }
+
             hammer(group.DUST.get(), 2, group.ORE_BLOCK_ITEM_TAG)
+                    .unlockedBy(String.format("has_%s_ore", group.name), has(group.ORE_BLOCK_ITEM_TAG))
                     .save(consumer, hammerRecipeDir("ore", group.name, "dust"));
-            if (group.type.equals("gem")) {
-                // Hammer + Material -> Dust
-                hammer(group.DUST.get(), 1, group.MATERIAL_TAG)
-                        .save(consumer, hammerRecipeDir("material", group.name, "dust"));
+
+
+            // ##### Smelting #####
+
+            switch (group.type) {
+                case "gem" :
+                    // Dust -> Gem
+                    smelting(group.MATERIAL.get(), group.DUST_TAG)
+                            .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                            .save(consumer, smeltingRecipeDir("dust", group.name));
+                    blasting(group.MATERIAL.get(), group.DUST_TAG)
+                            .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                            .save(consumer, blastingRecipeDir("dust", group.name));
+                    break;
+                case "ingot" :
+                    // Raw -> Ingot
+                    smelting(group.MATERIAL.get(), group.DROP_TAG)
+                            .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
+                            .save(consumer, smeltingRecipeDir("raw", group.name));
+                    blasting(group.MATERIAL.get(), group.DROP_TAG)
+                            .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
+                            .save(consumer, blastingRecipeDir("raw", group.name));
+                    break;
             }
 
             // Ore -> Material
             smelting(group.MATERIAL.get(), group.ORE_BLOCK_ITEM_TAG)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORE_BLOCK_ITEM_TAG))
+                    .unlockedBy(String.format("has_%s_ore", group.name), has(group.ORE_BLOCK_ITEM_TAG))
                     .save(consumer, smeltingRecipeDir("ore", group.name));
             blasting(group.MATERIAL.get(), group.ORE_BLOCK_ITEM_TAG)
-                    .unlockedBy(String.format("has_%s_ingot", group.name), has(group.ORE_BLOCK_ITEM_TAG))
+                    .unlockedBy(String.format("has_%s_ore", group.name), has(group.ORE_BLOCK_ITEM_TAG))
                     .save(consumer, blastingRecipeDir("ore", group.name));
-            if (group.type.equals("gem")) {
-                // Dust -> Material
-                smelting(group.MATERIAL.get(), group.DUST_TAG)
-                        .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                        .save(consumer, smeltingRecipeDir("dust", group.name));
-                blasting(group.MATERIAL.get(), group.DUST_TAG)
-                        .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                        .save(consumer, blastingRecipeDir("dust", group.name));
-            }
-            if (group.type.equals("ingot")) {
-                // Raw -> Material
-                smelting(group.MATERIAL.get(), group.DROP_TAG)
-                        .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
-                        .save(consumer, smeltingRecipeDir("raw", group.name));
-                blasting(group.MATERIAL.get(), group.DROP_TAG)
-                        .unlockedBy(String.format("has_raw_%s", group.name), has(group.DROP_TAG))
-                        .save(consumer, blastingRecipeDir("raw", group.name));
+
+
+            // ############### Mekanism ###############
+
+
+            switch (group.type) {
+                case "gem":
+                    // Gem -> Dust
+                    ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, crushingRecipeDir("gem", group.name, "dust"));
+                    break;
+                case "ingot":
+                    // Raw Block -> 12x Dust
+                    ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 12))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, crushingRecipeDir("raw_block", group.name, "dust"));
+                    // Raw -> 4x Dust
+                    ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_TAG, 3), new ItemStack(group.DUST.get(), 4))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, crushingRecipeDir("raw", group.name, "dust"));
+                    break;
             }
 
-            // ##### Mekanism #####
-
-            if (group.type.equals("gem")) {
-                // Material -> Dust
-                ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
-                        .addCondition(new ModLoadedCondition("mekanism"))
-                        .build(consumer, crushingRecipeDir("material", group.name, "dust"));
-            }
-            // Ore -> Dust
+            // Ore -> 2x Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 2))
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
-            if (group.type.equals("ingot")) {
-                // Raw Block -> Dust
-                ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 12))
-                        .addCondition(new ModLoadedCondition("mekanism"))
-                        .build(consumer, crushingRecipeDir("raw_block", group.name, "dust"));
-                // Raw -> Dust
-                ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_TAG, 3), new ItemStack(group.DUST.get(), 4))
-                        .addCondition(new ModLoadedCondition("mekanism"))
-                        .build(consumer, crushingRecipeDir("raw", group.name, "dust"));
-            }
-
         });
 
         GroupHelper.applyToAlloy(group -> {
 
-            // Ingot -> Dust
-            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.INGOT_TAG), new ItemStack(group.DUST.get()))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("ingot", group.name, "dust"));
+            // ############# AllTheOres ###############
 
-            // Hammer + Material -> Dust
-            hammer(group.DUST.get(), 1, group.INGOT_TAG)
-                    .save(consumer, hammerRecipeDir("ingot", group.name, "dust"));
 
-            // Dust -> Ingot
-            smelting(group.INGOT.get(), group.DUST_TAG)
-                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                    .save(consumer, smeltingRecipeDir("dust", group.name));
-            blasting(group.INGOT.get(), group.DUST_TAG)
-                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
-                    .save(consumer, blastingRecipeDir("dust", group.name));
+            // ##### Compressing #####
 
             // Ingot -> 9x Nugget
             uncompress(group.NUGGET.get(), group.INGOT_TAG)
@@ -261,6 +275,27 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
                     .save(consumer, shapelessIORecipeDir("ingot", group.name, "block"));
 
+
+            // ##### Hammer #####
+
+            // Hammer + Ingot -> Dust
+            hammer(group.DUST.get(), 1, group.INGOT_TAG)
+                    .save(consumer, hammerRecipeDir("ingot", group.name, "dust"));
+
+
+            // ##### Smelting #####
+
+            // Dust -> Ingot
+            smelting(group.INGOT.get(), group.DUST_TAG)
+                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                    .save(consumer, smeltingRecipeDir("dust", group.name));
+            blasting(group.INGOT.get(), group.DUST_TAG)
+                    .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
+                    .save(consumer, blastingRecipeDir("dust", group.name));
+
+
+            // ##### Crafting #####
+
             // Gear
             gear(group.GEAR.get(), group.INGOT_TAG)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
@@ -273,13 +308,27 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             plate(group.PLATE.get(), group.INGOT_TAG)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.INGOT_TAG))
                     .save(consumer, shapelessRecipeDir(group.name, "plate"));
+
+
+            // ############### Mekanism ###############
+
+
+            // ##### Crushing ####
+
+            // Ingot -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.INGOT_TAG), new ItemStack(group.DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("ingot", group.name, "dust"));
         });
 
         GroupHelper.applyToMaterial(group -> {
 
-            // ##### Mekanism ####
+            // ############# Mekanism #############
 
             assert group.MEK != null;
+
+            // ##### Dissolution #####
+
             // Ore -> Dirty Slurry
             ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 1000), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
@@ -293,15 +342,24 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, dissolutionRecipeDir("raw", group.name, "material"));
 
+
+            // ##### Washing #####
+
             // Dirty Dust -> Clean Slurry
             FluidChemicalToChemicalRecipeBuilder.washing(IngredientCreatorAccess.fluid().from(FluidTags.WATER, 5), IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.DIRTY_SLURRY, 1), new ChemicalStack(group.MEK.CLEAN_SLURRY, 1))
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, washingRecipeDir("dirty_dust", group.name, "clean_slurry"));
 
+
+            // ##### Crystallizing #####
+
             // Clean Slurry -> Crystal
             ChemicalCrystallizerRecipeBuilder.crystallizing(IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.CLEAN_SLURRY, 200), new ItemStack(group.MEK.CRYSTAL.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, crystallizingRecipeDir("clean_slurry", group.name, "crystal"));
+
+
+            // ##### Injecting #####
 
             // Ore -> Shard
             ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
@@ -320,6 +378,9 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, injectingRecipeDir("crystal", group.name, "shard"));
 
+
+            // ##### Purifying #####
+
             // Ore -> Clump
             ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get(), 3), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
@@ -337,10 +398,17 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, purifyingRecipeDir("shard", group.name, "clump"));
 
+
+            // ##### Crushing #####
+
             // Clumps -> Dirty Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MEK.CLUMP_TAG), new ItemStack(group.MEK.DIRTY_DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, crushingRecipeDir("clump", group.name, "dirty_dust"));
+
+
+            // ##### Enriching #####
+
             // Dirty Dust -> Dust
             ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.MEK.DIRTY_DUST_TAG), new ItemStack(group.DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
@@ -349,28 +417,34 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
         GroupHelper.applyToVanilla(group -> {
 
-            // Ore -> Dust
-            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name)))), new ItemStack(group.DUST.get(), 2))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
-            // Ingot -> Dust
-            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("ingot", group.name, "dust"));
+            // ############# AllTheOres ###############
 
-            // Hammer + Ore Block -> Raw
-            hammer(group.DUST.get(), 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name))))
-                    .save(consumer, hammerRecipeDir("ore", group.name, "dust"));
-            if (!group.type.equals("dust")) {
-                // Hammer + Material -> Dust
-                hammer(group.DUST.get(), 1, group.MATERIAL_TAG)
-                        .save(consumer, hammerRecipeDir("material", group.name, "dust"));
+            // ##### Hammer #####
+
+            switch (group.type) {
+                case "netherite" :
+                    // Hammer + Scrap -> 2x Dust
+                    hammer(group.DUST.get(), 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s_scrap", group.name))))
+                            .save(consumer, hammerRecipeDir("scrap", group.name, "dust"));
+                    break;
+                case "ingot" :
+                    // Hammer + Raw -> 2x Dust
+                    hammer(group.DUST.get(), 2, group.DROP_TAG)
+                            .save(consumer, hammerRecipeDir("raw", group.name, "dust"));
+                    break;
             }
-            if (group.type.equals("ingot")) {
-                // Hammer + Raw -> Dust
-                hammer(group.DUST.get(), 1, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("raw_materials/%s", group.name))))
-                        .save(consumer, hammerRecipeDir("raw", group.name, "dust"));
+
+            if (!group.type.equals("netherite")) {
+                // Hammer + Ore -> 2x Dust
+                hammer(group.DUST.get(), 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name))))
+                        .save(consumer, hammerRecipeDir("ore", group.name, "dust"));
             }
+
+            // Hammer + Material -> Dust
+            hammer(group.DUST.get(), 1, group.MATERIAL_TAG)
+                    .save(consumer, hammerRecipeDir("material", group.name, "dust"));
+
+            // ##### Smelting #####
 
             // Dust -> Ingot
             if (!group.type.equals("dust")) {
@@ -381,6 +455,9 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy(String.format("has_%s_dust", group.name), has(group.DUST_TAG))
                         .save(consumer, smeltingRecipeDir("dust", group.name));
             }
+
+
+            // ##### Crafting #####
 
             // Gear
             gear(group.GEAR.get(), group.MATERIAL_TAG)
@@ -394,9 +471,32 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             plate(group.PLATE.get(), group.MATERIAL_TAG)
                     .unlockedBy(String.format("has_%s_ingot", group.name), has(group.MATERIAL_TAG))
                     .save(consumer, shapelessRecipeDir(group.name, "plate"));
+
+
+            // ############# Mekanism ###############
+
+            // ##### Crushing #####
+
+            // Ore -> Dust
+            if (!group.type.equals("netherite")) {
+                ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name)))), new ItemStack(group.DUST.get(), 2))
+                        .addCondition(new ModLoadedCondition("mekanism"))
+                        .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
+            }
+            else {
+                ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s_scrap", group.name)))), new ItemStack(group.DUST.get(), 2))
+                        .addCondition(new ModLoadedCondition("mekanism"))
+                        .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
+            }
+            // Material -> Dust
+            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
+                    .addCondition(new ModLoadedCondition("mekanism"))
+                    .build(consumer, crushingRecipeDir("material", group.name, "dust"));
         });
 
-        // Copper
+        // ############# AllTheOres ###############
+
+        // ##### Copper #####
 
         // 9x Nugget -> Ingot
         compress(Items.COPPER_INGOT, ATOTagRegistry.COPPER_NUGGET)
@@ -407,25 +507,30 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
                 .save(consumer, shapelessIORecipeDir("ingot", "copper", "nugget"));
 
-        // Hammer
+        // ##### Hammer #####
 
+        // Copper Ore Hammer
         hammerBuilder(ATORegistry.COPPER_ORE_HAMMER.get(), Tags.Items.STORAGE_BLOCKS_COPPER)
                 .unlockedBy("has_copper_ingot", has(Tags.Items.INGOTS_COPPER))
                 .save(consumer);
+        // Iron Ore Hammer
         hammerBuilder(ATORegistry.IRON_ORE_HAMMER.get(), Tags.Items.STORAGE_BLOCKS_IRON)
                 .unlockedBy("has_iron", has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
+        // Bronze Ore Hammer
         hammerBuilder(ATORegistry.BRONZE_ORE_HAMMER.get(), ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/bronze")))
                 .unlockedBy("has_bronze_ingot", has(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/bronze"))))
                 .save(consumer);
+        // Invar Ore Hammer
         hammerBuilder(ATORegistry.INVAR_ORE_HAMMER.get(), ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/invar")))
                 .unlockedBy("has_invar_ingot", has(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/invar"))))
                 .save(consumer);
+        // Platinum Ore Hammer
         hammerBuilder(ATORegistry.PLATINUM_ORE_HAMMER.get(), ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/platinum")))
                 .unlockedBy("has_platinum_ingot", has(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/platinum"))))
                 .save(consumer);
 
-        // ALLOY BLENDING
+        // ##### Alloy Blending #####
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ATORegistry.INVAR.DUST.get(), 3)
@@ -495,5 +600,12 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy("has_hammer", has(ATOTagRegistry.ORE_HAMMERS))
                 .save(consumer, shapelessIORecipeDir("dust", "enderium", "alloy_blending"));
+
+        // ############# Mekanism ###############
+
+        ItemStackToChemicalRecipeBuilder
+                .chemicalConversion(IngredientCreatorAccess.item().from(ATORegistry.SULFUR.DROP_BLOCK_ITEM_TAG), new ChemicalStack(MekanismChemicals.SULFURIC_ACID, 18))
+                .addCondition(new ModLoadedCondition("mekanism"))
+                .build(consumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "sulfur/chemical_conversion/sulfuric_acid_from_block"));
     }
 }

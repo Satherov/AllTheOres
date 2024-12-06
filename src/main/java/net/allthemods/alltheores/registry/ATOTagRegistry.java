@@ -19,5 +19,5 @@ public class ATOTagRegistry {
 
     public static final TagKey<Item> ORE_HAMMERS = ItemTags.create(Reference.ato("ore_hammers"));
 
-    public static final TagKey<Item> COPPER_NUGGET = ItemTags.create(Reference.ato("copper_nugget"));
+    public static final TagKey<Item> COPPER_NUGGET = ItemTags.create(Reference.nugget("copper"));
 }

@@ -424,8 +424,8 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             switch (group.type) {
                 case "netherite" :
                     // Hammer + Scrap -> 2x Dust
-                    hammer(group.DUST.get(), 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s_scrap", group.name))))
-                            .save(consumer, hammerRecipeDir("scrap", group.name, "dust"));
+                    hammer(Items.NETHERITE_SCRAP, 2, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s_scrap", group.name))))
+                            .save(consumer, hammerRecipeDir("debris", group.name, "scrap"));
                     break;
                 case "ingot" :
                     // Hammer + Raw -> 2x Dust
@@ -480,11 +480,6 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Ore -> Dust
             if (!group.type.equals("netherite")) {
                 ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name)))), new ItemStack(group.DUST.get(), 2))
-                        .addCondition(new ModLoadedCondition("mekanism"))
-                        .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
-            }
-            else {
-                ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s_scrap", group.name)))), new ItemStack(group.DUST.get(), 2))
                         .addCondition(new ModLoadedCondition("mekanism"))
                         .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
             }

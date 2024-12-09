@@ -362,19 +362,19 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // ##### Injecting #####
 
             // Ore -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, injectingRecipeDir("ore", group.name, "shard"));
             // Raw Block -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.MEK.SHARD.get(), 24), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 2), new ItemStack(group.MEK.SHARD.get(), 24), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, injectingRecipeDir("raw_block", group.name, "shard"));
             // Raw -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 8), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get(), 8), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, injectingRecipeDir("raw", group.name, "shard"));
             // Crystal -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.MEK.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get()), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.MEK.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get()), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, injectingRecipeDir("crystal", group.name, "shard"));
 

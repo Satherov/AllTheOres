@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_fluorite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:gems/fluorite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "alltheores:crafting/fluorite/raw_block_from_raw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_fluorite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "alltheores:crafting/fluorite/raw_block_from_raw"
+    ]
+  }
+}

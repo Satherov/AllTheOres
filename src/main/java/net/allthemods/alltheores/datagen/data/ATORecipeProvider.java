@@ -34,52 +34,59 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
     // AllTheOres
     private ResourceLocation smeltingRecipeDir(String type, String name) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/smelting/" + type + "_smelting");
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" +  type + "_smelting");
     }
 
     private ResourceLocation blastingRecipeDir(String type, String name) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/smelting/" + type + "_blasting");
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" +  type + "_blasting");
     }
 
     private ResourceLocation shapelessIORecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/crafting/" + typeOut + "_from_" + typeIn);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" +  typeOut + "_from_" + typeIn);
     }
 
     private ResourceLocation shapelessRecipeDir(String name, String type) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/crafting/" + type);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" +  type);
     }
 
     private ResourceLocation hammerRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/crafting/hammer/" + typeOut + "_from_" + typeIn);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/hammer/" + name + "/" + typeOut + "_from_" + typeIn);
     }
 
-    // Mekanism
-    private ResourceLocation dissolutionRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/dissolution/" + typeOut + "_from_" + typeIn);
+    // ##### Mekanism Prcoessing #####
+
+    private ResourceLocation dirtySlurryRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/slurry/from_" + typeIn);
     }
 
-    private ResourceLocation washingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/washing/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation cleanSlurryRecipeDir(String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/slurry/dirty/from_clean");
     }
 
-    private ResourceLocation crystallizingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/crystallizing/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation crystalRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/crystal/from_" + typeIn);
     }
 
-    private ResourceLocation injectingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/injecting/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation shardRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/shard/from_" + typeIn);
     }
 
-    private ResourceLocation purifyingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/purifying/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation dustRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/dust/from_" + typeIn);
     }
+
+    private ResourceLocation dirtyDustRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/dirty_dust/from_" + typeIn);
+    }
+
+    // ##### Mekanism #####
 
     private ResourceLocation crushingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/crushing/" + typeOut + "_from_" + typeIn);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crushing/" + name + "/" + typeOut + "_from_" + typeIn);
     }
 
     private ResourceLocation enrichingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name + "/enriching/" + typeOut + "_from_" + typeIn);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "enriching/" + name + "/" + typeOut + "_from_" + typeIn);
     }
 
     private ShapedRecipeBuilder compress(Item output, TagKey<Item> tag) {
@@ -332,15 +339,15 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Ore -> Dirty Slurry
             ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 1000), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, dissolutionRecipeDir("ore", group.name, "material"));
+                    .build(consumer, dirtySlurryRecipeDir("ore", group.name));
             // Raw Block -> Dirty Slurry
             ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG, 1), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 2), new ChemicalStack(group.MEK.DIRTY_SLURRY, 6000), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, dissolutionRecipeDir("raw_block", group.name, "material"));
+                    .build(consumer, dirtySlurryRecipeDir("raw_block", group.name));
             // Raw -> Dirty Slurry
             ChemicalDissolutionRecipeBuilder.dissolution(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.SULFURIC_ACID, 1), new ChemicalStack(group.MEK.DIRTY_SLURRY, 2000), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, dissolutionRecipeDir("raw", group.name, "material"));
+                    .build(consumer, dirtySlurryRecipeDir("raw", group.name));
 
 
             // ##### Washing #####
@@ -348,7 +355,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Dirty Dust -> Clean Slurry
             FluidChemicalToChemicalRecipeBuilder.washing(IngredientCreatorAccess.fluid().from(FluidTags.WATER, 5), IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.DIRTY_SLURRY, 1), new ChemicalStack(group.MEK.CLEAN_SLURRY, 1))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, washingRecipeDir("dirty_dust", group.name, "clean_slurry"));
+                    .build(consumer, cleanSlurryRecipeDir(group.name));
 
 
             // ##### Crystallizing #####
@@ -356,27 +363,27 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Clean Slurry -> Crystal
             ChemicalCrystallizerRecipeBuilder.crystallizing(IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.CLEAN_SLURRY, 200), new ItemStack(group.MEK.CRYSTAL.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crystallizingRecipeDir("clean_slurry", group.name, "crystal"));
+                    .build(consumer, crystalRecipeDir("slurry", group.name));
 
 
             // ##### Injecting #####
 
             // Ore -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get(), 4), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, injectingRecipeDir("ore", group.name, "shard"));
+                    .build(consumer, shardRecipeDir("ore", group.name));
             // Raw Block -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.MEK.SHARD.get(), 24), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 2), new ItemStack(group.MEK.SHARD.get(), 24), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, injectingRecipeDir("raw_block", group.name, "shard"));
+                    .build(consumer, shardRecipeDir("raw_block", group.name));
             // Raw -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get(), 8), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG, 3), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get(), 8), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, injectingRecipeDir("raw", group.name, "shard"));
+                    .build(consumer, shardRecipeDir("raw", group.name));
             // Crystal -> Shard
-            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.MEK.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.SHARD.get()), true)
+            ItemStackChemicalToItemStackRecipeBuilder.injecting(IngredientCreatorAccess.item().from(group.MEK.CRYSTAL_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.HYDROGEN_CHLORIDE, 1), new ItemStack(group.MEK.SHARD.get()), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, injectingRecipeDir("crystal", group.name, "shard"));
+                    .build(consumer, shardRecipeDir("crystal", group.name));
 
 
             // ##### Purifying #####
@@ -384,19 +391,19 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Ore -> Clump
             ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.ORE_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get(), 3), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, purifyingRecipeDir("ore", group.name, "clump"));
+                    .build(consumer, dustRecipeDir("ore", group.name));
             // Raw Block -> Clump
             ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_BLOCK_ITEM_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 2), new ItemStack(group.MEK.CLUMP.get(), 18), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, purifyingRecipeDir("raw_block", group.name, "clump"));
+                    .build(consumer, dustRecipeDir("raw_block", group.name));
             // Raw -> Clump
             ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.ORES.DROP_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get(), 2), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, purifyingRecipeDir("raw", group.name, "clump"));
+                    .build(consumer, dustRecipeDir("raw", group.name));
             // Shard -> Clump
             ItemStackChemicalToItemStackRecipeBuilder.purifying(IngredientCreatorAccess.item().from(group.MEK.SHARD_TAG), IngredientCreatorAccess.chemicalStack().from(MekanismChemicals.OXYGEN, 1), new ItemStack(group.MEK.CLUMP.get()), true)
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, purifyingRecipeDir("shard", group.name, "clump"));
+                    .build(consumer, dustRecipeDir("shard", group.name));
 
 
             // ##### Crushing #####
@@ -404,7 +411,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Clumps -> Dirty Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MEK.CLUMP_TAG), new ItemStack(group.MEK.DIRTY_DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("clump", group.name, "dirty_dust"));
+                    .build(consumer, dirtyDustRecipeDir("clump", group.name));
 
 
             // ##### Enriching #####

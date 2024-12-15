@@ -352,7 +352,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
             // ##### Washing #####
 
-            // Dirty Dust -> Clean Slurry
+            // Dirty Slurry -> Clean Slurry
             FluidChemicalToChemicalRecipeBuilder.washing(IngredientCreatorAccess.fluid().from(FluidTags.WATER, 5), IngredientCreatorAccess.chemicalStack().from((IChemicalProvider) group.MEK.DIRTY_SLURRY, 1), new ChemicalStack(group.MEK.CLEAN_SLURRY, 1))
                     .addCondition(new ModLoadedCondition("mekanism"))
                     .build(consumer, cleanSlurryRecipeDir(group.name));

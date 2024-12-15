@@ -55,6 +55,12 @@ public class ATOItemTagProvider extends ItemTagsProvider {
                     .add(group.END_ORE_BLOCK_ITEM.get())
                     .add(group.OTHER_ORE_BLOCK_ITEM.get());
 
+            tag(ATOTagRegistry.IN_STONE_ITEM).add(group.STONE_ORE_BLOCK_ITEM.get());
+            tag(ATOTagRegistry.IN_DEEPSLATE_ITEM).add(group.SLATE_ORE_BLOCK_ITEM.get());
+            tag(ATOTagRegistry.IN_NETHERRACK_ITEM).add(group.NETHER_ORE_BLOCK_ITEM.get());
+            tag(ATOTagRegistry.IN_END_STONE_ITEM).add(group.END_ORE_BLOCK_ITEM.get());
+            tag(ATOTagRegistry.IN_ANCIENT_STONE_ITEM).add(group.OTHER_ORE_BLOCK_ITEM.get());
+
             tag(group.DROP_TAG).add(group.DROP.get());
             tag(group.DROP_BLOCK_ITEM_TAG).add(group.DROP_BLOCK_ITEM.get());
 

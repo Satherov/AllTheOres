@@ -64,7 +64,7 @@ neoForge {
     }
 
     mods {
-        industrialforegoing {
+        "${mod_id}" {
             sourceSet sourceSets.main
         }
     }

@@ -5,6 +5,7 @@ import net.allthemods.alltheores.registry.ATOTagRegistry;
 import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -30,6 +31,21 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
                     .addTag(group.ORE_BLOCK_TAG)
                     .addTag(group.DROP_BLOCK_TAG);
 
+            switch (group.hardness) {
+                case "stone":
+                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(group.ORE_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    break;
+                case "iron":
+                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(group.ORE_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    break;
+                case "diamond":
+                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(group.ORE_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    break;
+            }
+
             tag(group.ORE_BLOCK_TAG)
                     .add(group.STONE_ORE_BLOCK.get())
                     .add(group.SLATE_ORE_BLOCK.get())
@@ -48,7 +64,7 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
 
         GroupHelper.applyToAlloy(group -> {
             tag(Tags.Blocks.STORAGE_BLOCKS).addTag(group.BLOCK_TAG);
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).addTag(group.BLOCK_TAG);
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(group.BLOCK_TAG);
 
             tag(group.BLOCK_TAG).add(group.BLOCK.get());
         });

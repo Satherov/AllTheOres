@@ -37,14 +37,14 @@ public class RegistryGroupMaterial extends RegistryGroupAlloy {
     public final DeferredHolder<Item, BucketItem> MOLTEN_BUCKET;
     public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
 
-    public RegistryGroupMaterial(String name, int fluidColor, int veinSize, int minY, int maxY, int count) {
+    public RegistryGroupMaterial(String name, int fluidColor, String hardness, int veinSize, int minY, int maxY, int count) {
         super(name);
 
         instances.add(this);
 
         this.fluidColor = fluidColor;
 
-        ORES = new RegistryGroupOre(name, "ingot", INGOT, INGOT_TAG, DUST, DUST_TAG, veinSize, minY, maxY, count);
+        ORES = new RegistryGroupOre(name, "ingot", hardness, INGOT, INGOT_TAG, DUST, DUST_TAG, veinSize, minY, maxY, count);
 
         if (ModList.get().isLoaded("mekanism")) {
             MEK = new RegistryGroupMekanism(name, fluidColor, BLOCK);

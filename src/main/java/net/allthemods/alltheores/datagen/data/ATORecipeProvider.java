@@ -79,14 +79,20 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
         return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/dirty_dust/from_" + typeIn);
     }
 
-    // ##### Mekanism #####
-
-    private ResourceLocation crushingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crushing/" + name + "/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation dustRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/dust/from_" + typeIn);
     }
 
-    private ResourceLocation enrichingRecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "enriching/" + name + "/" + typeOut + "_from_" + typeIn);
+    private ResourceLocation enrichingRecipeDir(String typeIn, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/from_" + typeIn);
+    }
+
+    private ResourceLocation crushingRecipeDir(String typeOut, String name) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "processing/" + name + "/to_" + typeOut);
+    }
+
+    private ResourceLocation chemicalConversionRecipeDir(String typeIn, String typeOut) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "chemical_conversion/" + typeIn + "_to_" + typeOut);
     }
 
     private ShapedRecipeBuilder compress(Item output, TagKey<Item> tag) {
@@ -237,24 +243,33 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
                     // Gem -> Dust
                     ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
                             .addCondition(new ModLoadedCondition("mekanism"))
-                            .build(consumer, crushingRecipeDir("gem", group.name, "dust"));
+                            .build(consumer, crushingRecipeDir("gem", group.name));
+                    // Ore -> 6x Material
+                    ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.MATERIAL.get(), 6))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, enrichingRecipeDir("ore", group.name));
+                    break;
+                case "dust":
+                    // Ore -> 2x Dust
+                    ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 6))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, enrichingRecipeDir("ore", group.name));
                     break;
                 case "ingot":
                     // Raw Block -> 12x Dust
                     ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 12))
                             .addCondition(new ModLoadedCondition("mekanism"))
-                            .build(consumer, crushingRecipeDir("raw_block", group.name, "dust"));
+                            .build(consumer, dustRecipeDir("raw_block", group.name));
                     // Raw -> 4x Dust
                     ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.DROP_TAG, 3), new ItemStack(group.DUST.get(), 4))
                             .addCondition(new ModLoadedCondition("mekanism"))
-                            .build(consumer, crushingRecipeDir("raw", group.name, "dust"));
+                            .build(consumer, dustRecipeDir("raw", group.name));
+                    // Ore -> 2x Dust
+                    ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 2))
+                            .addCondition(new ModLoadedCondition("mekanism"))
+                            .build(consumer, dustRecipeDir("ore", group.name));
                     break;
             }
-
-            // Ore -> 2x Dust
-            ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.ORE_BLOCK_ITEM_TAG), new ItemStack(group.DUST.get(), 2))
-                    .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
         });
 
         GroupHelper.applyToAlloy(group -> {
@@ -319,13 +334,12 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
             // ############### Mekanism ###############
 
-
             // ##### Crushing ####
 
             // Ingot -> Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.INGOT_TAG), new ItemStack(group.DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("ingot", group.name, "dust"));
+                    .build(consumer, dustRecipeDir("ingot", group.name));
         });
 
         GroupHelper.applyToMaterial(group -> {
@@ -419,7 +433,7 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             // Dirty Dust -> Dust
             ItemStackToItemStackRecipeBuilder.enriching(IngredientCreatorAccess.item().from(group.MEK.DIRTY_DUST_TAG), new ItemStack(group.DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, enrichingRecipeDir("dirty_dust", group.name, "dust"));
+                    .build(consumer, dustRecipeDir("dirty_dust", group.name));
         });
 
         GroupHelper.applyToVanilla(group -> {
@@ -488,12 +502,12 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
             if (!group.type.equals("netherite")) {
                 ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", String.format("ores/%s", group.name)))), new ItemStack(group.DUST.get(), 2))
                         .addCondition(new ModLoadedCondition("mekanism"))
-                        .build(consumer, crushingRecipeDir("ore", group.name, "dust"));
+                        .build(consumer, dustRecipeDir("ore", group.name));
             }
             // Material -> Dust
             ItemStackToItemStackRecipeBuilder.crushing(IngredientCreatorAccess.item().from(group.MATERIAL_TAG), new ItemStack(group.DUST.get()))
                     .addCondition(new ModLoadedCondition("mekanism"))
-                    .build(consumer, crushingRecipeDir("material", group.name, "dust"));
+                    .build(consumer, dustRecipeDir("material", group.name));
         });
 
         // ############# AllTheOres ###############
@@ -608,6 +622,6 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
         ItemStackToChemicalRecipeBuilder
                 .chemicalConversion(IngredientCreatorAccess.item().from(ATORegistry.SULFUR.DROP_BLOCK_ITEM_TAG), new ChemicalStack(MekanismChemicals.SULFURIC_ACID, 18))
                 .addCondition(new ModLoadedCondition("mekanism"))
-                .build(consumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "sulfur/chemical_conversion/sulfuric_acid_from_block"));
+                .build(consumer, chemicalConversionRecipeDir("sulfur_block", "sulfuric_acid"));
     }
 }

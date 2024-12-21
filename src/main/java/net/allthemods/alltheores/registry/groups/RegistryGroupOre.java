@@ -28,6 +28,7 @@ public class RegistryGroupOre {
 
     public final String name;
     public final String type;
+    public final String hardness;
 
     private static final List<RegistryGroupOre> instances = new ArrayList<>();
 
@@ -82,10 +83,11 @@ public class RegistryGroupOre {
 
     public final DeferredHolder<Item, BlockItem> DROP_BLOCK_ITEM;
 
-    public RegistryGroupOre(String name, String type, DeferredHolder<Item, Item> material, TagKey<Item> material_tag, DeferredHolder<Item, Item> dust, TagKey<Item> dust_tag, int veinSize, int minY, int maxY, int count) {
+    public RegistryGroupOre(String name, String type, String hardness, DeferredHolder<Item, Item> material, TagKey<Item> material_tag, DeferredHolder<Item, Item> dust, TagKey<Item> dust_tag, int veinSize, int minY, int maxY, int count) {
 
         this.name = name;
         this.type = type;
+        this.hardness = hardness;
 
         instances.add(this);
 
@@ -154,10 +156,11 @@ public class RegistryGroupOre {
         }
     }
 
-    public RegistryGroupOre(String name, String type, int veinSize, int minY, int maxY, int count) {
+    public RegistryGroupOre(String name, String type, String hardness, int veinSize, int minY, int maxY, int count) {
 
         this.name = name;
         this.type = type;
+        this.hardness = hardness;
 
         instances.add(this);
 

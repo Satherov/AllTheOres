@@ -1,0 +1,22 @@
+{
+  "values": [
+    "#c:ores/aluminum",
+    "#c:storage_blocks/raw_aluminum",
+    "#c:ores/lead",
+    "#c:storage_blocks/raw_lead",
+    "#c:ores/silver",
+    "#c:storage_blocks/raw_silver",
+    "#c:ores/tin",
+    "#c:storage_blocks/raw_tin",
+    "#c:ores/zinc",
+    "#c:storage_blocks/raw_zinc",
+    "#c:ores/ruby",
+    "#c:storage_blocks/ruby",
+    "#c:ores/peridot",
+    "#c:storage_blocks/peridot",
+    "#c:ores/sapphire",
+    "#c:storage_blocks/sapphire",
+    "#c:ores/salt",
+    "#c:storage_blocks/salt"
+  ]
+}

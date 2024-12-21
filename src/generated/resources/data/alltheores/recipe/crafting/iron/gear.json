@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "tag": "c:ingots/iron"
+    },
+    "n": {
+      "tag": "c:nuggets/iron"
+    }
+  },
+  "pattern": [
+    " a ",
+    "ana",
+    " a "
+  ],
+  "result": {
+    "count": 1,
+    "id": "alltheores:iron_gear"
+  }
+}

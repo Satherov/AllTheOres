@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#c:ores/osmium",
+    "#c:storage_blocks/raw_osmium",
+    "#c:ores/platinum",
+    "#c:storage_blocks/raw_platinum",
+    "#c:ores/iridium",
+    "#c:storage_blocks/raw_iridium"
+  ]
+}

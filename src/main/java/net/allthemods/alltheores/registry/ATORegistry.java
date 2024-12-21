@@ -30,16 +30,16 @@ public class ATORegistry {
 
     // ###################### ALL THE ORES
 
-    public static final RegistryGroupMaterial ALUMINUM = new RegistryGroupMaterial("aluminum", 0xFFE3E3E3, 24, -64, 320, 4);
-    public static final RegistryGroupMaterial LEAD = new RegistryGroupMaterial("lead", 0xFF7C8CC6, 24, -64, 56, 3);
-    public static final RegistryGroupMaterial NICKEL = new RegistryGroupMaterial("nickel", 0xFFA9A984, 24, -64, 56, 3);
-    public static final RegistryGroupMaterial OSMIUM = new RegistryGroupMaterial("osmium", 0xFFC0C9DD, 24, -64, 56, 3);
-    public static final RegistryGroupMaterial PLATINUM = new RegistryGroupMaterial("platinum", 0xFFB5B5FF, 24, -64, 36, 1);
-    public static final RegistryGroupMaterial SILVER = new RegistryGroupMaterial("silver", 0xFFA4E0E7, 24, -64, 56, 3);
-    public static final RegistryGroupMaterial TIN = new RegistryGroupMaterial("tin", 0xFF787878, 24, -64, 196, 4);
-    public static final RegistryGroupMaterial URANIUM = new RegistryGroupMaterial("uranium", 0xFF7EE778, 24, -64, 16, 2);
-    public static final RegistryGroupMaterial ZINC = new RegistryGroupMaterial("zinc", 0xFFB5B5B5, 24, -64, 126, 3);
-    public static final RegistryGroupMaterial IRIDIUM = new RegistryGroupMaterial("iridium", 0xFFC0C0C0, 10, -64, 32, 4);
+    public static final RegistryGroupMaterial ALUMINUM = new RegistryGroupMaterial("aluminum", 0xFFE3E3E3, "stone", 24, -64, 320, 4);
+    public static final RegistryGroupMaterial LEAD = new RegistryGroupMaterial("lead", 0xFF7C8CC6, "stone", 24, -64, 56, 3);
+    public static final RegistryGroupMaterial NICKEL = new RegistryGroupMaterial("nickel", 0xFFA9A984, "iron", 24, -64, 56, 3);
+    public static final RegistryGroupMaterial OSMIUM = new RegistryGroupMaterial("osmium", 0xFFC0C9DD, "diamond", 24, -64, 56, 3);
+    public static final RegistryGroupMaterial PLATINUM = new RegistryGroupMaterial("platinum", 0xFFB5B5FF,"diamond", 24, -64, 36, 1);
+    public static final RegistryGroupMaterial SILVER = new RegistryGroupMaterial("silver", 0xFFA4E0E7,"stone", 24, -64, 56, 3);
+    public static final RegistryGroupMaterial TIN = new RegistryGroupMaterial("tin", 0xFF787878,"stone", 24, -64, 196, 4);
+    public static final RegistryGroupMaterial URANIUM = new RegistryGroupMaterial("uranium", 0xFF7EE778,"iron",24, -64, 16, 2);
+    public static final RegistryGroupMaterial ZINC = new RegistryGroupMaterial("zinc", 0xFFB5B5B5, "stone",24, -64, 126, 3);
+    public static final RegistryGroupMaterial IRIDIUM = new RegistryGroupMaterial("iridium", 0xFFC0C0C0,"diamond", 10, -64, 32, 4);
 
     public static final RegistryGroupAlloy STEEL = new RegistryGroupAlloy("steel");
     public static final RegistryGroupAlloy INVAR = new RegistryGroupAlloy("invar");
@@ -52,14 +52,14 @@ public class ATORegistry {
     public static final RegistryGroupAlloy CONSTANTAN = new RegistryGroupAlloy("constantan");
 
     //We don't need to set anything here as it gets automatically generated, this only exists
-    public static final RegistryGroupOre RUBY = new RegistryGroupOre("ruby", "gem", 7, -64, 228, 3);
-    public static final RegistryGroupOre PERIDOT = new RegistryGroupOre("peridot", "gem", 7, -64, 196, 3);
-    public static final RegistryGroupOre SAPPHIRE = new RegistryGroupOre("sapphire", "gem", 7, -64, 296, 3);
-    public static final RegistryGroupOre CINNABAR = new RegistryGroupOre("cinnabar", "gem", 27, -64, 228, 3);
-    public static final RegistryGroupOre FLUORITE = new RegistryGroupOre("fluorite", "gem", 27, -64, 228, 3);
+    public static final RegistryGroupOre RUBY = new RegistryGroupOre("ruby", "gem", "stone", 7, -64, 228, 3);
+    public static final RegistryGroupOre PERIDOT = new RegistryGroupOre("peridot", "gem", "stone", 7, -64, 196, 3);
+    public static final RegistryGroupOre SAPPHIRE = new RegistryGroupOre("sapphire", "gem", "stone", 7, -64, 296, 3);
+    public static final RegistryGroupOre CINNABAR = new RegistryGroupOre("cinnabar", "gem", "iron", 27, -64, 228, 3);
+    public static final RegistryGroupOre FLUORITE = new RegistryGroupOre("fluorite", "gem", "iron", 27, -64, 228, 3);
 
-    public static final RegistryGroupOre SALT = new RegistryGroupOre("salt", "dust", 27, -64, 228, 3);
-    public static final RegistryGroupOre SULFUR = new RegistryGroupOre("sulfur", "dust", 17, -64, 25, 1);
+    public static final RegistryGroupOre SALT = new RegistryGroupOre("salt", "dust", "stone", 27, -64, 228, 3);
+    public static final RegistryGroupOre SULFUR = new RegistryGroupOre("sulfur", "dust", "iron", 17, -64, 25, 1);
 
     public static final RegistryGroupVanilla COPPER = new RegistryGroupVanilla("copper", "ingot", Tags.Items.INGOTS_COPPER, Items.COPPER_INGOT);
     public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", "ingot", Tags.Items.INGOTS_IRON, Items.IRON_INGOT);

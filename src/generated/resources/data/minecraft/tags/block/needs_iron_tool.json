@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#c:ores/nickel",
+    "#c:storage_blocks/raw_nickel",
+    "#c:ores/uranium",
+    "#c:storage_blocks/raw_uranium",
+    "#c:ores/cinnabar",
+    "#c:storage_blocks/cinnabar",
+    "#c:ores/fluorite",
+    "#c:storage_blocks/fluorite",
+    "#c:ores/sulfur",
+    "#c:storage_blocks/sulfur"
+  ]
+}

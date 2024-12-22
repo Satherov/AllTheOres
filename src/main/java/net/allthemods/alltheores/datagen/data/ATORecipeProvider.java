@@ -344,6 +344,18 @@ public class ATORecipeProvider extends RecipeProvider implements IConditionBuild
 
         GroupHelper.applyToMaterial(group -> {
 
+            // ############# AllTheOres ###############
+
+            // ##### Smelting #####
+
+            // Raw Block -> Block
+            smelting(group.BLOCK_ITEM.get(), group.ORES.DROP_BLOCK_ITEM_TAG)
+                    .unlockedBy(String.format("has_raw_%s_block", group.name), has(group.ORES.DROP_BLOCK_ITEM_TAG))
+                    .save(consumer, smeltingRecipeDir("raw_block", group.name));
+            blasting(group.BLOCK_ITEM.get(), group.ORES.DROP_BLOCK_ITEM_TAG)
+                    .unlockedBy(String.format("has_raw_%s_block", group.name), has(group.ORES.DROP_BLOCK_ITEM_TAG))
+                    .save(consumer, blastingRecipeDir("raw_block", group.name));
+
             // ############# Mekanism #############
 
             assert group.MEK != null;

@@ -28,7 +28,14 @@ public class ATORegistry {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, Reference.MOD_ID);
 
-    // ###################### ALL THE ORES
+    /*
+    * Checklist for adding new Resources:
+    * For all: Textures obviously :D
+    * For Ingots: Go to ATOSagMillRecipeProvider and add a byproduct to the map (if not added it will datagen a recipe without byproduct)
+    * For Alloys: Go to ATOAlloyRecipeProvider and add a recipe (if not added it just won't have a recipe in the alloy smelter)
+    * For Gems: Nothing, a new entry does everything for you
+    * For Dusts: Nothing, a new entry does everything for you
+    * */
 
     public static final ATOIngotSet ALUMINUM = new ATOIngotSet("aluminum", 0xFFE3E3E3, "stone", 24, -64, 320, 4);
     public static final ATOIngotSet LEAD = new ATOIngotSet("lead", 0xFF7C8CC6, "stone", 24, -64, 56, 3);

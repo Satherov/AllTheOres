@@ -23,7 +23,8 @@ public class ATOBlockStateProvider extends net.neoforged.neoforge.client.model.g
                 .toList();
 
         entries.forEach(block -> {
-            if ((block.get() instanceof LiquidBlock)) {
+
+            if (block.get() instanceof LiquidBlock) {
                 simpleBlockWithItem(block.get(), models().cubeAll(block.getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal")));
             } else {
                 simpleBlockWithItem(block.get(), cubeAll(block.get()));

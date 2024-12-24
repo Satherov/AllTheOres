@@ -1,10 +1,5 @@
 {
   "values": [
-    "#c:plates/copper",
-    "#c:plates/iron",
-    "#c:plates/gold",
-    "#c:plates/diamond",
-    "#c:plates/netherite",
     "#c:plates/aluminum",
     "#c:plates/lead",
     "#c:plates/nickel",
@@ -23,6 +18,11 @@
     "#c:plates/enderium",
     "#c:plates/lumium",
     "#c:plates/signalum",
-    "#c:plates/constantan"
+    "#c:plates/constantan",
+    "#c:plates/copper",
+    "#c:plates/iron",
+    "#c:plates/gold",
+    "#c:plates/diamond",
+    "#c:plates/netherite"
   ]
 }

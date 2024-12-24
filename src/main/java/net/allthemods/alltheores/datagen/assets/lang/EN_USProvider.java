@@ -2,7 +2,7 @@ package net.allthemods.alltheores.datagen.assets.lang;
 
 import net.allthemods.alltheores.datagen.assets.ATOLanguageProvider;
 import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.data.PackOutput;
 
 public class EN_USProvider extends ATOLanguageProvider {
@@ -23,23 +23,7 @@ public class EN_USProvider extends ATOLanguageProvider {
         add(ATORegistry.INVAR_ORE_HAMMER.get(), "Invar Ore Hammer");
         add(ATORegistry.PLATINUM_ORE_HAMMER.get(), "Platinum Ore Hammer");
 
-        GroupHelper.applyToOre( group -> {
-            switch (group.type) {
-                case "ingot" :
-                    add(group.DROP.get(), String.format("Raw %s", format(group.name)));
-                    add(group.DROP_BLOCK.get(), String.format("Raw %s Block", format(group.name)));
-                    break;
-                case "dust" :
-                    add(group.DROP.get(), format(group.name));
-                    add(group.DROP_BLOCK.get(), String.format("%s Block", format(group.name)));
-                    break;
-                case "gem" :
-                    add(group.DROP.get(), format(group.name));
-                    add(group.DUST.get(), String.format("%s Dust", format(group.name)));
-                    add(group.DROP_BLOCK.get(), String.format("%s Block", format(group.name)));
-                    break;
-            }
-
+        ATOSetHelper.applyToOre(group -> {
             add(group.STONE_ORE_BLOCK.get(), String.format("%s Ore", format(group.name)));
             add(group.SLATE_ORE_BLOCK.get(), String.format("Deepslate %s Ore", format(group.name)));
             add(group.NETHER_ORE_BLOCK.get(), String.format("Nether %s Ore", format(group.name)));
@@ -47,31 +31,42 @@ public class EN_USProvider extends ATOLanguageProvider {
             add(group.OTHER_ORE_BLOCK.get(), String.format("Other %s Ore", format(group.name)));
         });
 
-        GroupHelper.applyToAlloy( group -> {
-            add(group.NUGGET.get(), String.format("%s Nugget", format(group.name)));
-            add(group.INGOT.get(), String.format("%s Ingot", format(group.name)));
-            add(group.BLOCK.get(), String.format("%s Block", format(group.name)));
+        ATOSetHelper.applyToMaterial( set -> add(set.BLOCK.get(), String.format("%s Block", format(set.name))));
 
-            add(group.DUST.get(), String.format("%s Dust", format(group.name)));
-            add(group.ROD.get(), String.format("%s Rod", format(group.name)));
-            add(group.GEAR.get(), String.format("%s Gear", format(group.name)));
-            add(group.PLATE.get(), String.format("%s Plate", format(group.name)));
+        ATOSetHelper.applyToAlloy(set -> {
+            add(set.NUGGET.get(), String.format("%s Nugget", format(set.name)));
+            add(set.INGOT.get(), String.format("%s Ingot", format(set.name)));
+
+            add(set.DUST.get(), String.format("%s Dust", format(set.name)));
+            add(set.ROD.get(), String.format("%s Rod", format(set.name)));
+            add(set.GEAR.get(), String.format("%s Gear", format(set.name)));
+            add(set.PLATE.get(), String.format("%s Plate", format(set.name)));
         });
 
-        GroupHelper.applyToVanilla( group -> {
-            add(group.DUST.get(), String.format("%s Dust", format(group.name)));
-            add(group.ROD.get(), String.format("%s Rod", format(group.name)));
-            add(group.GEAR.get(), String.format("%s Gear", format(group.name)));
-            add(group.PLATE.get(), String.format("%s Plate", format(group.name)));
+        ATOSetHelper.applyToIngot(set -> {
+            add(set.RAW.get(), String.format("Raw %s", format(set.name)));
+            add(set.RAW_BLOCK.get(), String.format("Raw %s Block", format(set.name)));
+
+            add(set.MOLTEN_BLOCK.get(), String.format("Molten %s", format(set.name)));
+            add(set.MOLTEN_TYPE.get().getDescriptionId(), String.format("Molten %s", format(set.name)));
+            add(set.MOLTEN_BUCKET.get(), String.format("Bucket of Molten %s", format(set.name)));
         });
 
-        GroupHelper.applyToMaterial( group -> {
-            add(group.MOLTEN_BLOCK.get(), String.format("Molten %s", format(group.name)));
-            add(group.MOLTEN_TYPE.get().getDescriptionId(), String.format("Molten %s", format(group.name)));
-            add(group.MOLTEN_BUCKET.get(), String.format("Bucket of Molten %s", format(group.name)));
+        ATOSetHelper.applyToGem(set -> {
+            add(set.GEM.get(), format(set.name));
+            add(set.DUST.get(), String.format("%s Dust", format(set.name)));
         });
 
-        GroupHelper.applyToMekanism( group -> {
+        ATOSetHelper.applyToDust(set -> add(set.DUST.get(), format(set.name)));
+
+        ATOSetHelper.applyToVanilla(set -> {
+            add(set.DUST.get(), String.format("%s Dust", format(set.name)));
+            add(set.ROD.get(), String.format("%s Rod", format(set.name)));
+            add(set.GEAR.get(), String.format("%s Gear", format(set.name)));
+            add(set.PLATE.get(), String.format("%s Plate", format(set.name)));
+        });
+
+        ATOSetHelper.applyToMekanism(group -> {
             add(group.CLEAN_SLURRY.get().getTranslationKey(), String.format("Clean %s Slurry", format(group.name)));
             add(group.DIRTY_SLURRY.get().getTranslationKey(), String.format("Dirty %s Slurry", format(group.name)));
 

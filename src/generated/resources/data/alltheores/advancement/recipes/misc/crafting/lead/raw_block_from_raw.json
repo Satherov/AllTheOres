@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_lead": {
+    "has_lead_raw_block": {
       "conditions": {
         "items": [
           {
-            "items": "#c:raw_materials/lead"
+            "items": "#c:storage_blocks/raw_lead"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_lead"
+      "has_lead_raw_block"
     ]
   ],
   "rewards": {

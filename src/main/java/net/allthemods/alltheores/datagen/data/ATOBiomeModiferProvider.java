@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.data;
 
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +18,7 @@ public class ATOBiomeModiferProvider {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
-        GroupHelper.applyToOre(group -> {
+        ATOSetHelper.applyToOre(group -> {
             context.register(group.OVERWORLD_BIOME_MODIFIER, new AddFeaturesBiomeModifier(
                     biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                     HolderSet.direct(placedFeatures.getOrThrow(group.PLACED_ORE_FEATURE)),

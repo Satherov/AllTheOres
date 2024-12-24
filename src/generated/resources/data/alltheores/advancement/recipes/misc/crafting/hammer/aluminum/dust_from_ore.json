@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aluminum_ore": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#c:ores/aluminum"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_hammer": {
       "conditions": {
         "items": [
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_hammer",
-      "has_aluminum_ore"
+      "has_hammer"
     ]
   ],
   "rewards": {

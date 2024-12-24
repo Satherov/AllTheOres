@@ -5,7 +5,7 @@
       "modid": "mekanism"
     }
   ],
-  "type": "mekanism:crushing",
+  "type": "mekanism:enriching",
   "input": {
     "count": 1,
     "tag": "c:ores/gold"

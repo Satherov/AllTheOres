@@ -1,10 +1,5 @@
 {
   "values": [
-    "#c:rods/copper",
-    "#c:rods/iron",
-    "#c:rods/gold",
-    "#c:rods/diamond",
-    "#c:rods/netherite",
     "#c:rods/aluminum",
     "#c:rods/lead",
     "#c:rods/nickel",
@@ -23,6 +18,11 @@
     "#c:rods/enderium",
     "#c:rods/lumium",
     "#c:rods/signalum",
-    "#c:rods/constantan"
+    "#c:rods/constantan",
+    "#c:rods/copper",
+    "#c:rods/iron",
+    "#c:rods/gold",
+    "#c:rods/diamond",
+    "#c:rods/netherite"
   ]
 }

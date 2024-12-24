@@ -9,6 +9,9 @@
     "#c:crystals/tin",
     "#c:crystals/uranium",
     "#c:crystals/zinc",
-    "#c:crystals/iridium"
+    "#c:crystals/iridium",
+    "#c:crystals/copper",
+    "#c:crystals/iron",
+    "#c:crystals/gold"
   ]
 }

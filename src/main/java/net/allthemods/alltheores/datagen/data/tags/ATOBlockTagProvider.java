@@ -2,7 +2,7 @@ package net.allthemods.alltheores.datagen.data.tags;
 
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATOTagRegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -23,51 +23,58 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
-        GroupHelper.applyToOre(group -> {
-            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(group.DROP_BLOCK_TAG);
-            tag(Tags.Blocks.ORES).addTag(group.ORE_BLOCK_TAG);
+        ATOSetHelper.applyToOre(set -> {
+            tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                    .addTag(set.ORE_BLOCK_TAG)
+                    .addTag(set.DROP_BLOCK_TAG);
+            tag(Tags.Blocks.ORES).addTag(set.ORE_BLOCK_TAG);
+            tag(set.ORE_BLOCK_TAG)
+                    .add(set.STONE_ORE_BLOCK.get())
+                    .add(set.SLATE_ORE_BLOCK.get())
+                    .add(set.NETHER_ORE_BLOCK.get())
+                    .add(set.END_ORE_BLOCK.get())
+                    .add(set.OTHER_ORE_BLOCK.get());
 
-            tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
-                    .addTag(group.ORE_BLOCK_TAG)
-                    .addTag(group.DROP_BLOCK_TAG);
-
-            switch (group.hardness) {
+            switch (set.hardness) {
                 case "stone":
-                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(group.ORE_BLOCK_TAG);
-                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(set.ORE_BLOCK_TAG);
                     break;
                 case "iron":
-                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(group.ORE_BLOCK_TAG);
-                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(set.ORE_BLOCK_TAG);
                     break;
                 case "diamond":
-                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(group.ORE_BLOCK_TAG);
-                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(group.DROP_BLOCK_TAG);
+                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(set.ORE_BLOCK_TAG);
                     break;
             }
 
-            tag(group.ORE_BLOCK_TAG)
-                    .add(group.STONE_ORE_BLOCK.get())
-                    .add(group.SLATE_ORE_BLOCK.get())
-                    .add(group.NETHER_ORE_BLOCK.get())
-                    .add(group.END_ORE_BLOCK.get())
-                    .add(group.OTHER_ORE_BLOCK.get());
+            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(set.DROP_BLOCK_TAG);
+            tag(set.DROP_BLOCK_TAG).add(set.DROP_BLOCK.get());
 
-            tag(ATOTagRegistry.IN_STONE).add(group.STONE_ORE_BLOCK.get());
-            tag(ATOTagRegistry.IN_DEEPSLATE).add(group.SLATE_ORE_BLOCK.get());
-            tag(ATOTagRegistry.IN_NETHERRACK).add(group.NETHER_ORE_BLOCK.get());
-            tag(ATOTagRegistry.IN_END_STONE).add(group.END_ORE_BLOCK.get());
-            tag(ATOTagRegistry.IN_ANCIENT_STONE).add(group.OTHER_ORE_BLOCK.get());
-
-            tag(group.DROP_BLOCK_TAG).add(group.DROP_BLOCK.get());
+            tag(ATOTagRegistry.IN_STONE).add(set.STONE_ORE_BLOCK.get());
+            tag(ATOTagRegistry.IN_DEEPSLATE).add(set.SLATE_ORE_BLOCK.get());
+            tag(ATOTagRegistry.IN_NETHERRACK).add(set.NETHER_ORE_BLOCK.get());
+            tag(ATOTagRegistry.IN_END_STONE).add(set.END_ORE_BLOCK.get());
+            tag(ATOTagRegistry.IN_ANCIENT_STONE).add(set.OTHER_ORE_BLOCK.get());
+        });
+        
+        ATOSetHelper.applyToMaterial( set -> {
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(set.BLOCK_TAG);
+            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(set.BLOCK_TAG);
+            tag(set.BLOCK_TAG).add(set.BLOCK.get());
         });
 
-        GroupHelper.applyToAlloy(group -> {
-            tag(Tags.Blocks.STORAGE_BLOCKS).addTag(group.BLOCK_TAG);
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(group.BLOCK_TAG);
-
-            tag(group.BLOCK_TAG).add(group.BLOCK.get());
+        ATOSetHelper.applyToIngot( set -> {
+            switch (set.ORES.hardness) {
+                case "stone":
+                    tag(BlockTags.NEEDS_STONE_TOOL).addTag(set.RAW_BLOCK_TAG);
+                    break;
+                case "iron":
+                    tag(BlockTags.NEEDS_IRON_TOOL).addTag(set.RAW_BLOCK_TAG);
+                    break;
+                case "diamond":
+                    tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(set.RAW_BLOCK_TAG);
+                    break;
+            }
         });
-
     }
 }

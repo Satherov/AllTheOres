@@ -9,6 +9,9 @@
     "#c:clumps/tin",
     "#c:clumps/uranium",
     "#c:clumps/zinc",
-    "#c:clumps/iridium"
+    "#c:clumps/iridium",
+    "#c:clumps/copper",
+    "#c:clumps/iron",
+    "#c:clumps/gold"
   ]
 }

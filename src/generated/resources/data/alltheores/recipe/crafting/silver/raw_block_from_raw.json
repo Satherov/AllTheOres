@@ -1,18 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "a": {
-      "tag": "c:raw_materials/silver"
+  "ingredients": [
+    {
+      "tag": "c:storage_blocks/raw_silver"
     }
-  },
-  "pattern": [
-    "aaa",
-    "aaa",
-    "aaa"
   ],
   "result": {
-    "count": 1,
-    "id": "alltheores:raw_silver_block"
+    "count": 9,
+    "id": "alltheores:raw_silver"
   }
 }

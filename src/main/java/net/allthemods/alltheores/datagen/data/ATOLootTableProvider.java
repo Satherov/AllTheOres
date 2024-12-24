@@ -1,8 +1,8 @@
 package net.allthemods.alltheores.datagen.data;
 
-import net.allthemods.alltheores.blocks.ore.OreBlock;
+import net.allthemods.alltheores.content.blocks.ore.OreBlock;
 import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.block.Block;
@@ -20,17 +20,13 @@ public class ATOLootTableProvider extends VanillaBlockLoot {
 
     @Override
     public void generate() {
-        GroupHelper.applyToOre(group -> {
-            List.of(
-                    group.STONE_ORE_BLOCK,
-                    group.SLATE_ORE_BLOCK,
-                    group.NETHER_ORE_BLOCK,
-                    group.END_ORE_BLOCK,
-                    group.OTHER_ORE_BLOCK
-            ).forEach(blockHolder -> {
-                this.add(blockHolder.get(), block -> createOreDrop(block, group.DROP.get()));
-            });
-        });
+        ATOSetHelper.applyToOre(set -> List.of(
+                set.STONE_ORE_BLOCK,
+                set.SLATE_ORE_BLOCK,
+                set.NETHER_ORE_BLOCK,
+                set.END_ORE_BLOCK,
+                set.OTHER_ORE_BLOCK
+        ).forEach(blockHolder -> this.add(blockHolder.get(), block -> createOreDrop(block, set.DROP.get()))));
         getKnownBlocks().forEach(this::dropBlock);
     }
 

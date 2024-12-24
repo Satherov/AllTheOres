@@ -11,16 +11,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_raw_platinum": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#c:raw_materials/platinum"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "alltheores:crafting/hammer/platinum/dust_from_raw"
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_hammer",
-      "has_raw_platinum"
+      "has_hammer"
     ]
   ],
   "rewards": {

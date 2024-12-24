@@ -52,6 +52,13 @@
     "#c:storage_blocks/enderium",
     "#c:storage_blocks/lumium",
     "#c:storage_blocks/signalum",
-    "#c:storage_blocks/constantan"
+    "#c:storage_blocks/constantan",
+    "#c:storage_blocks/ruby",
+    "#c:storage_blocks/peridot",
+    "#c:storage_blocks/sapphire",
+    "#c:storage_blocks/cinnabar",
+    "#c:storage_blocks/fluorite",
+    "#c:storage_blocks/salt",
+    "#c:storage_blocks/sulfur"
   ]
 }

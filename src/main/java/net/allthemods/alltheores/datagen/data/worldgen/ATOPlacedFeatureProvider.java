@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.data.worldgen;
 
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -16,7 +16,7 @@ public class ATOPlacedFeatureProvider {
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        GroupHelper.applyToOre(group -> PlacementUtils.register(
+        ATOSetHelper.applyToOre(group -> PlacementUtils.register(
                 context,
                 group.PLACED_ORE_FEATURE,
                 features.getOrThrow(

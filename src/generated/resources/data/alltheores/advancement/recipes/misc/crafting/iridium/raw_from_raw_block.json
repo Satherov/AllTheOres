@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_iridium": {
+    "has_raw_iridiumt": {
       "conditions": {
         "items": [
           {
-            "items": "#c:storage_blocks/raw_iridium"
+            "items": "#c:raw_materials/iridium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_iridium"
+      "has_raw_iridiumt"
     ]
   ],
   "rewards": {

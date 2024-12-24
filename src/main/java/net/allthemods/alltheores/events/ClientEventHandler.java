@@ -2,9 +2,9 @@ package net.allthemods.alltheores.events;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.registry.GroupHelper;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -38,7 +38,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerItemColors(RegisterClientExtensionsEvent event) {
         if (Reference.enableFluids) {
-            GroupHelper.applyToMaterial(group -> event.registerFluidType(new IClientFluidTypeExtensions() {
+            ATOSetHelper.applyToIngot(set -> event.registerFluidType(new IClientFluidTypeExtensions() {
                 @Override
                 public @NotNull ResourceLocation getStillTexture() {
                     return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal");
@@ -56,12 +56,12 @@ public class ClientEventHandler {
 
                 @Override
                 public int getTintColor() {
-                    return group.fluidColor;
+                    return set.fluidColor;
                 }
 
                 @Override
                 public @NotNull Vector3f modifyFogColor(@NotNull Camera camera, float partialTick, @NotNull ClientLevel level, int renderDistance, float darkenWorldAmount, @NotNull Vector3f fluidFogColor) {
-                    return new Vector3f(group.fluidColor >> 16 & 255, group.fluidColor >> 8 & 255, group.fluidColor & 255).div(255.0F).mul(0.2f);
+                    return new Vector3f(set.fluidColor >> 16 & 255, set.fluidColor >> 8 & 255, set.fluidColor & 255).div(255.0F).mul(0.2f);
                 }
 
                 @Override
@@ -86,14 +86,14 @@ public class ClientEventHandler {
                     RenderSystem.setShaderFogShape(shape);
                 }
 
-            }, group.MOLTEN_TYPE.get()));
+            }, set.MOLTEN_TYPE.get()));
         }
     }
 
     @SubscribeEvent
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         if (Reference.enableFluids) {
-            GroupHelper.applyToMaterial(group -> event.register(new DynamicFluidContainerModel.Colors(), group.MOLTEN_BUCKET.get()));
+            ATOSetHelper.applyToIngot(set -> event.register(new DynamicFluidContainerModel.Colors(), set.MOLTEN_BUCKET.get()));
         }
     }
 }

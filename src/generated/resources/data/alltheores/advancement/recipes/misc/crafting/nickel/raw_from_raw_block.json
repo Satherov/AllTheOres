@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_nickel": {
+    "has_raw_nickelt": {
       "conditions": {
         "items": [
           {
-            "items": "#c:storage_blocks/raw_nickel"
+            "items": "#c:raw_materials/nickel"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_nickel"
+      "has_raw_nickelt"
     ]
   ],
   "rewards": {

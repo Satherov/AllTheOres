@@ -16,23 +16,12 @@
         "recipe": "alltheores:crafting/hammer/zinc/dust_from_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_zinc_ore": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#c:ores/zinc"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_hammer",
-      "has_zinc_ore"
+      "has_hammer"
     ]
   ],
   "rewards": {

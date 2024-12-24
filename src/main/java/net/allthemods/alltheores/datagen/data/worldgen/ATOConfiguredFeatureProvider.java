@@ -1,6 +1,7 @@
 package net.allthemods.alltheores.datagen.data.worldgen;
 
-import net.allthemods.alltheores.registry.GroupHelper;
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
+import net.allthemods.alltheores.content.blocks.sets.ESetTypes;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -21,59 +22,59 @@ public class ATOConfiguredFeatureProvider {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
         // Ore generation
-        GroupHelper.applyToOre(group -> {
+        ATOSetHelper.applyToOre(set -> {
 
             List<OreConfiguration.TargetBlockState> ores = new java.util.ArrayList<>(List.of(
                     OreConfiguration.target(
                             new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES),
-                            group.STONE_ORE_BLOCK.get().defaultBlockState()
+                            set.STONE_ORE_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
                             new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES),
-                            group.SLATE_ORE_BLOCK.get().defaultBlockState()
+                            set.SLATE_ORE_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
                             new BlockMatchTest(Blocks.NETHERRACK),
-                            group.NETHER_ORE_BLOCK.get().defaultBlockState()
+                            set.NETHER_ORE_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
                             new BlockMatchTest(Blocks.END_STONE),
-                            group.END_ORE_BLOCK.get().defaultBlockState()
+                            set.END_ORE_BLOCK.get().defaultBlockState()
                     ),
                     OreConfiguration.target(
                             new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
-                            group.OTHER_ORE_BLOCK.get().defaultBlockState()
+                            set.OTHER_ORE_BLOCK.get().defaultBlockState()
                     )
             ));
 
-            if (Objects.equals(group.type, "ingot")) {
+            if (Objects.equals(set.type, ESetTypes.INGOT)) {
                 ores.add(OreConfiguration.target(
-                                new RandomBlockMatchTest(Blocks.STONE, 0.005f),
-                                group.DROP_BLOCK.get().defaultBlockState()
-                        ));
+                        new RandomBlockMatchTest(Blocks.STONE, 0.005f),
+                        set.DROP_BLOCK.get().defaultBlockState()
+                ));
                 ores.add(OreConfiguration.target(
-                                new RandomBlockMatchTest(Blocks.DEEPSLATE, 0.03f),
-                                group.DROP_BLOCK.get().defaultBlockState()
-                        ));
+                        new RandomBlockMatchTest(Blocks.DEEPSLATE, 0.03f),
+                        set.DROP_BLOCK.get().defaultBlockState()
+                ));
                 ores.add(OreConfiguration.target(
-                                new RandomBlockMatchTest(Blocks.NETHERRACK, 0.01f),
-                                group.DROP_BLOCK.get().defaultBlockState()
-                        ));
+                        new RandomBlockMatchTest(Blocks.NETHERRACK, 0.01f),
+                        set.DROP_BLOCK.get().defaultBlockState()
+                ));
                 ores.add(OreConfiguration.target(
-                                new RandomBlockMatchTest(Blocks.END_STONE, 0.01f),
-                                group.DROP_BLOCK.get().defaultBlockState()
-                        ));
+                        new RandomBlockMatchTest(Blocks.END_STONE, 0.01f),
+                        set.DROP_BLOCK.get().defaultBlockState()
+                ));
                 ores.add(OreConfiguration.target(
                         new TagMatchTest(BlockTags.create(ResourceLocation.fromNamespaceAndPath("allthemodium", "ancient_stone"))),
-                        group.DROP_BLOCK.get().defaultBlockState()
+                        set.DROP_BLOCK.get().defaultBlockState()
                 ));
             }
 
             FeatureUtils.register(
                     context,
-                    group.CONFIGURED_ORE_FEATURE,
+                    set.CONFIGURED_ORE_FEATURE,
                     Feature.ORE,
-                    new OreConfiguration(ores, group.veinSize)
+                    new OreConfiguration(ores, set.veinSize)
             );
         });
     }

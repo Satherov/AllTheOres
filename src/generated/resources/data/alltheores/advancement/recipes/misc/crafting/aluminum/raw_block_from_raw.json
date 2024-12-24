@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_aluminum": {
+    "has_aluminum_raw_block": {
       "conditions": {
         "items": [
           {
-            "items": "#c:raw_materials/aluminum"
+            "items": "#c:storage_blocks/raw_aluminum"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_aluminum"
+      "has_aluminum_raw_block"
     ]
   ],
   "rewards": {

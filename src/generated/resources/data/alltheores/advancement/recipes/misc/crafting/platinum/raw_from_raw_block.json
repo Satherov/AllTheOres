@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_platinum": {
+    "has_raw_platinumt": {
       "conditions": {
         "items": [
           {
-            "items": "#c:storage_blocks/raw_platinum"
+            "items": "#c:raw_materials/platinum"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_platinum"
+      "has_raw_platinumt"
     ]
   ],
   "rewards": {

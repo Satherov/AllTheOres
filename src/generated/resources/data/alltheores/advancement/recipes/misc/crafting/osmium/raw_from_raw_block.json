@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_osmium": {
+    "has_raw_osmiumt": {
       "conditions": {
         "items": [
           {
-            "items": "#c:storage_blocks/raw_osmium"
+            "items": "#c:raw_materials/osmium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_osmium"
+      "has_raw_osmiumt"
     ]
   ],
   "rewards": {

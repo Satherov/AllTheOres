@@ -1,18 +1,18 @@
 package net.allthemods.alltheores.registry;
 
+import net.allthemods.alltheores.content.blocks.sets.ato_sets.*;
+import net.allthemods.alltheores.content.blocks.sets.vanilla_sets.VanillaDebrisSet;
+import net.allthemods.alltheores.content.blocks.sets.vanilla_sets.VanillaGemSet;
+import net.allthemods.alltheores.content.blocks.sets.vanilla_sets.VanillaIngotSet;
 import net.allthemods.alltheores.infos.Reference;
-import net.allthemods.alltheores.items.OreHammer;
-import net.allthemods.alltheores.registry.groups.RegistryGroupAlloy;
-import net.allthemods.alltheores.registry.groups.RegistryGroupMaterial;
-import net.allthemods.alltheores.registry.groups.RegistryGroupOre;
-import net.allthemods.alltheores.registry.groups.RegistryGroupVanilla;
+import net.allthemods.alltheores.content.items.OreHammer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,44 +30,43 @@ public class ATORegistry {
 
     // ###################### ALL THE ORES
 
-    public static final RegistryGroupMaterial ALUMINUM = new RegistryGroupMaterial("aluminum", 0xFFE3E3E3, "stone", 24, -64, 320, 4);
-    public static final RegistryGroupMaterial LEAD = new RegistryGroupMaterial("lead", 0xFF7C8CC6, "stone", 24, -64, 56, 3);
-    public static final RegistryGroupMaterial NICKEL = new RegistryGroupMaterial("nickel", 0xFFA9A984, "iron", 24, -64, 56, 3);
-    public static final RegistryGroupMaterial OSMIUM = new RegistryGroupMaterial("osmium", 0xFFC0C9DD, "diamond", 24, -64, 56, 3);
-    public static final RegistryGroupMaterial PLATINUM = new RegistryGroupMaterial("platinum", 0xFFB5B5FF,"diamond", 24, -64, 36, 1);
-    public static final RegistryGroupMaterial SILVER = new RegistryGroupMaterial("silver", 0xFFA4E0E7,"stone", 24, -64, 56, 3);
-    public static final RegistryGroupMaterial TIN = new RegistryGroupMaterial("tin", 0xFF787878,"stone", 24, -64, 196, 4);
-    public static final RegistryGroupMaterial URANIUM = new RegistryGroupMaterial("uranium", 0xFF7EE778,"iron",24, -64, 16, 2);
-    public static final RegistryGroupMaterial ZINC = new RegistryGroupMaterial("zinc", 0xFFB5B5B5, "stone",24, -64, 126, 3);
-    public static final RegistryGroupMaterial IRIDIUM = new RegistryGroupMaterial("iridium", 0xFFC0C0C0,"diamond", 10, -64, 32, 4);
+    public static final ATOIngotSet ALUMINUM = new ATOIngotSet("aluminum", 0xFFE3E3E3, "stone", 24, -64, 320, 4);
+    public static final ATOIngotSet LEAD = new ATOIngotSet("lead", 0xFF7C8CC6, "stone", 24, -64, 56, 3);
+    public static final ATOIngotSet NICKEL = new ATOIngotSet("nickel", 0xFFA9A984, "iron", 24, -64, 56, 3);
+    public static final ATOIngotSet OSMIUM = new ATOIngotSet("osmium", 0xFFC0C9DD, "diamond", 24, -64, 56, 3);
+    public static final ATOIngotSet PLATINUM = new ATOIngotSet("platinum", 0xFFB5B5FF,"diamond", 24, -64, 36, 1);
+    public static final ATOIngotSet SILVER = new ATOIngotSet("silver", 0xFFA4E0E7,"stone", 24, -64, 56, 3);
+    public static final ATOIngotSet TIN = new ATOIngotSet("tin", 0xFF787878,"stone", 24, -64, 196, 4);
+    public static final ATOIngotSet URANIUM = new ATOIngotSet("uranium", 0xFF7EE778,"iron",24, -64, 16, 2);
+    public static final ATOIngotSet ZINC = new ATOIngotSet("zinc", 0xFFB5B5B5, "stone",24, -64, 126, 3);
+    public static final ATOIngotSet IRIDIUM = new ATOIngotSet("iridium", 0xFFC0C0C0,"diamond", 10, -64, 32, 4);
 
-    public static final RegistryGroupAlloy STEEL = new RegistryGroupAlloy("steel");
-    public static final RegistryGroupAlloy INVAR = new RegistryGroupAlloy("invar");
-    public static final RegistryGroupAlloy ELECTRUM = new RegistryGroupAlloy("electrum");
-    public static final RegistryGroupAlloy BRONZE = new RegistryGroupAlloy("bronze");
-    public static final RegistryGroupAlloy BRASS = new RegistryGroupAlloy("brass");
-    public static final RegistryGroupAlloy ENDERIUM = new RegistryGroupAlloy("enderium");
-    public static final RegistryGroupAlloy LUMIUM = new RegistryGroupAlloy("lumium");
-    public static final RegistryGroupAlloy SIGNALUM = new RegistryGroupAlloy("signalum");
-    public static final RegistryGroupAlloy CONSTANTAN = new RegistryGroupAlloy("constantan");
+    public static final ATOAlloySet STEEL = new ATOAlloySet("steel");
+    public static final ATOAlloySet INVAR = new ATOAlloySet("invar");
+    public static final ATOAlloySet ELECTRUM = new ATOAlloySet("electrum");
+    public static final ATOAlloySet BRONZE = new ATOAlloySet("bronze");
+    public static final ATOAlloySet BRASS = new ATOAlloySet("brass");
+    public static final ATOAlloySet ENDERIUM = new ATOAlloySet("enderium");
+    public static final ATOAlloySet LUMIUM = new ATOAlloySet("lumium");
+    public static final ATOAlloySet SIGNALUM = new ATOAlloySet("signalum");
+    public static final ATOAlloySet CONSTANTAN = new ATOAlloySet("constantan");
 
-    //We don't need to set anything here as it gets automatically generated, this only exists
-    public static final RegistryGroupOre RUBY = new RegistryGroupOre("ruby", "gem", "stone", 7, -64, 228, 3);
-    public static final RegistryGroupOre PERIDOT = new RegistryGroupOre("peridot", "gem", "stone", 7, -64, 196, 3);
-    public static final RegistryGroupOre SAPPHIRE = new RegistryGroupOre("sapphire", "gem", "stone", 7, -64, 296, 3);
-    public static final RegistryGroupOre CINNABAR = new RegistryGroupOre("cinnabar", "gem", "iron", 27, -64, 228, 3);
-    public static final RegistryGroupOre FLUORITE = new RegistryGroupOre("fluorite", "gem", "iron", 27, -64, 228, 3);
+    public static final ATOGemSet RUBY = new ATOGemSet("ruby",  "stone", 7, -64, 228, 3);
+    public static final ATOGemSet PERIDOT = new ATOGemSet("peridot",  "stone", 7, -64, 196, 3);
+    public static final ATOGemSet SAPPHIRE = new ATOGemSet("sapphire",  "stone", 7, -64, 296, 3);
+    public static final ATOGemSet CINNABAR = new ATOGemSet("cinnabar",  "iron", 27, -64, 228, 3);
+    public static final ATOGemSet FLUORITE = new ATOGemSet("fluorite",  "iron", 27, -64, 228, 3);
 
-    public static final RegistryGroupOre SALT = new RegistryGroupOre("salt", "dust", "stone", 27, -64, 228, 3);
-    public static final RegistryGroupOre SULFUR = new RegistryGroupOre("sulfur", "dust", "iron", 17, -64, 25, 1);
-
-    public static final RegistryGroupVanilla COPPER = new RegistryGroupVanilla("copper", "ingot", Tags.Items.INGOTS_COPPER, Items.COPPER_INGOT);
-    public static final RegistryGroupVanilla IRON = new RegistryGroupVanilla("iron", "ingot", Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
-    public static final RegistryGroupVanilla GOLD = new RegistryGroupVanilla("gold", "ingot", Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
-    public static final RegistryGroupVanilla DIAMOND = new RegistryGroupVanilla("diamond", "gem", Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
-    public static final RegistryGroupVanilla NETHERITE = new RegistryGroupVanilla("netherite", "netherite", Tags.Items.INGOTS_NETHERITE, Items.NETHERITE_INGOT);
+    public static final ATODustSet SALT = new ATODustSet("salt", "stone", 27, -64, 228, 3);
+    public static final ATODustSet SULFUR = new ATODustSet("sulfur", "iron", 17, -64, 25, 1);
 
     public static final DeferredHolder<Item, Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item(new Item.Properties()));
+
+    public static final VanillaIngotSet COPPER = new VanillaIngotSet("copper", 0xFFC66740, Items.RAW_COPPER, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
+    public static final VanillaIngotSet IRON = new VanillaIngotSet("iron", 0xFFC49C6D, Items.RAW_IRON, Items.IRON_INGOT, Blocks.IRON_BLOCK);
+    public static final VanillaIngotSet GOLD = new VanillaIngotSet("gold", 0xFFE2B928, Items.RAW_GOLD, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
+    public static final VanillaGemSet DIAMOND = new VanillaGemSet("diamond",  Items.DIAMOND, Blocks.DIAMOND_BLOCK);
+    public static final VanillaDebrisSet NETHERITE = new VanillaDebrisSet("netherite", Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);
 
     public static final DeferredHolder<Item, Item> COPPER_ORE_HAMMER = ITEMS.register("copper_ore_hammer", () -> new OreHammer(new Item.Properties(), 64));
     public static final DeferredHolder<Item, Item> IRON_ORE_HAMMER = ITEMS.register("iron_ore_hammer", () -> new OreHammer(new Item.Properties(), 96));
@@ -78,11 +77,10 @@ public class ATORegistry {
     // ###################### HELPER METHODS
 
     public static DeferredHolder<Item, BlockItem> blockItem(DeferredHolder<Block, Block> block) {
-        return ATORegistry.ITEMS.register(block.getId().getPath(),
-                () -> new BlockItem(block.get(), new Item.Properties()));
+        return ATORegistry.ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    public static DeferredHolder<Item, Item> material(String path) {
+    public static DeferredHolder<Item, Item> item(String path) {
         return ATORegistry.ITEMS.register(path, () -> new Item(new Item.Properties()));
     }
 

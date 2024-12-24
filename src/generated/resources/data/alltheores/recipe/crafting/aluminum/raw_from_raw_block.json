@@ -1,13 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "ingredients": [
-    {
-      "tag": "c:storage_blocks/raw_aluminum"
+  "key": {
+    "a": {
+      "tag": "c:raw_materials/aluminum"
     }
+  },
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
   ],
   "result": {
-    "count": 9,
-    "id": "alltheores:raw_aluminum"
+    "count": 1,
+    "id": "alltheores:raw_aluminum_block"
   }
 }

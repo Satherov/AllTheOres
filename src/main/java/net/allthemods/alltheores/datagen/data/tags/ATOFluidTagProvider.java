@@ -2,7 +2,6 @@ package net.allthemods.alltheores.datagen.data.tags;
 
 import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
-import net.allthemods.alltheores.registry.ATOTagRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
@@ -21,7 +20,6 @@ public class ATOFluidTagProvider extends FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         ATOSetHelper.applyToFluid( set -> {
-            tag(ATOTagRegistry.MOLTEN_FLUID).addTag(set.MOLTEN_FLUID_TAG);
             tag(set.MOLTEN_FLUID_TAG).add(set.MOLTEN.get(), set.MOLTEN_FLOWING.get());
         });
     }

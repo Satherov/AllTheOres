@@ -1,14 +1,11 @@
 package net.allthemods.alltheores.registry;
 
-
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluid;
 
 public class ATOTagRegistry {
 
@@ -35,7 +32,4 @@ public class ATOTagRegistry {
     public static final TagKey<Item> SHARDS = ItemTags.create(Reference.forge("shards"));
     public static final TagKey<Item> CLUMPS = ItemTags.create(Reference.forge("clumps"));
     public static final TagKey<Item> DIRTY_DUSTS = ItemTags.create(Reference.forge("dirty_dusts"));
-
-    public static final TagKey<Fluid> MOLTEN_FLUID = FluidTags.create(Reference.forge("molten"));
-    public static final TagKey<Block> MOLTEN_BLOCK = BlockTags.create(Reference.forge("molten"));
 }

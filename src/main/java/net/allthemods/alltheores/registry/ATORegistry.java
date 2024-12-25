@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.registry;
 
+import com.ibm.icu.impl.Pair;
 import net.allthemods.alltheores.content.blocks.sets.ato_sets.*;
 import net.allthemods.alltheores.content.blocks.sets.vanilla_sets.VanillaDebrisSet;
 import net.allthemods.alltheores.content.blocks.sets.vanilla_sets.VanillaGemSet;
@@ -10,6 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
@@ -17,6 +19,8 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import java.util.Map;
 
 public class ATORegistry {
 
@@ -31,8 +35,11 @@ public class ATORegistry {
     /*
     * Checklist for adding new Resources:
     * For all: Textures obviously :D
-    * For Ingots: Go to ATOSagMillRecipeProvider and add a byproduct to the map (if not added it will datagen a recipe without byproduct)
-    * For Alloys: Go to ATOAlloyRecipeProvider and add a recipe (if not added it just won't have a recipe in the alloy smelter)
+    * For Ingots: Define a Byproduct in the map at the bottom (if not added it will datagen a recipe without byproduct)
+    * For Alloys: Add a recipe in the following Datagenerators:
+    * - ATORecipeProvider (AllTheOres)
+    * - ATOAlloySmelterRecipeProvider (EnderIO)
+    * - ATOMultiBlockRecipeProvider (Immersive Engineering)
     * For Gems: Nothing, a new entry does everything for you
     * For Dusts: Nothing, a new entry does everything for you
     * */
@@ -81,14 +88,31 @@ public class ATORegistry {
     public static final DeferredHolder<Item, Item> INVAR_ORE_HAMMER = ITEMS.register("invar_ore_hammer", () -> new OreHammer(new Item.Properties(), 192));
     public static final DeferredHolder<Item, Item> PLATINUM_ORE_HAMMER = ITEMS.register("platinum_ore_hammer", () -> new OreHammer(new Item.Properties(), 256));
 
+    // If you don't define an entry here the recipe will be generated without a byproduct
+    // This setup is kina weird, but it'll crash with a NullPointer if you define it directly
+    public static Map<ItemLike, Pair<ItemLike, Float>> getByproducts() {
+        return Map.of(
+                ALUMINUM.RAW.get(), Pair.of(ZINC.DUST.get(), 0.05f),
+                LEAD.RAW.get(), Pair.of(SILVER.DUST.get(), 0.45f),
+                NICKEL.RAW.get(), Pair.of(PLATINUM.DUST.get(), 0.25f),
+                OSMIUM.RAW.get(), Pair.of(IRIDIUM.DUST.get(), 0.3f),
+                PLATINUM.RAW.get(), Pair.of(GOLD.DUST.get(), 0.1f),
+                SILVER.RAW.get(), Pair.of(LEAD.DUST.get(), 0.45f),
+                TIN.RAW.get(), Pair.of(IRON.DUST.get(), 0.2f),
+                URANIUM.RAW.get(), Pair.of(LEAD.DUST.get(), 0.5f),
+                ZINC.RAW.get(), Pair.of(ALUMINUM.DUST.get(), 0.05f),
+                IRIDIUM.RAW.get(), Pair.of(OSMIUM.DUST.get(), 0.3f)
+        );
+    }
+
     // ###################### HELPER METHODS
 
     public static DeferredHolder<Item, BlockItem> blockItem(DeferredHolder<Block, Block> block) {
-        return ATORegistry.ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static DeferredHolder<Item, Item> item(String path) {
-        return ATORegistry.ITEMS.register(path, () -> new Item(new Item.Properties()));
+        return ITEMS.register(path, () -> new Item(new Item.Properties()));
     }
 
 }

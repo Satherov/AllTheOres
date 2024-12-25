@@ -2,7 +2,6 @@ package net.allthemods.alltheores.datagen.data.recipe.enderio;
 
 import com.enderio.machines.common.recipe.SagMillingRecipe;
 import com.enderio.machines.data.recipes.SagMillRecipeProvider;
-import com.ibm.icu.impl.Pair;
 import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATORegistry;
@@ -18,7 +17,6 @@ import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
@@ -47,28 +45,12 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
 
         ATOSetHelper.applyToIngot( set -> {
 
-            Map<ItemLike, Pair<ItemLike, Float>> byproducts = Map.of(
-                    ATORegistry.ALUMINUM.RAW.get(), Pair.of(ATORegistry.ZINC.DUST.get(), 0.05f),
-                    ATORegistry.LEAD.RAW.get(), Pair.of(ATORegistry.SILVER.DUST.get(), 0.45f),
-                    ATORegistry.NICKEL.RAW.get(), Pair.of(ATORegistry.PLATINUM.DUST.get(), 0.25f),
-                    ATORegistry.OSMIUM.RAW.get(), Pair.of(ATORegistry.IRIDIUM.DUST.get(), 0.3f),
-                    ATORegistry.PLATINUM.RAW.get(), Pair.of(ATORegistry.GOLD.DUST.get(), 0.1f),
-                    ATORegistry.SILVER.RAW.get(), Pair.of(ATORegistry.LEAD.DUST.get(), 0.45f),
-                    ATORegistry.TIN.RAW.get(), Pair.of(ATORegistry.IRON.DUST.get(), 0.2f),
-                    ATORegistry.URANIUM.RAW.get(), Pair.of(ATORegistry.LEAD.DUST.get(), 0.5f),
-                    ATORegistry.ZINC.RAW.get(), Pair.of(ATORegistry.ALUMINUM.DUST.get(), 0.05f),
-                    ATORegistry.IRIDIUM.RAW.get(), Pair.of(ATORegistry.OSMIUM.DUST.get(), 0.3f)
-            );
-
             sagMillMultiply(
                     String.format("/%s/raw", set.name),
                     Ingredient.of(set.RAW_TAG),
-                    Stream.of(
-                            output(set.DUST.get(), 0.25f),
-                            // This exists so it won't crash
-                            // You should still define a byproduct in the map
-                            byproducts.containsKey(set.RAW.get())
-                                    ? output(byproducts.get(set.RAW.get()).first, byproducts.get(set.RAW.get()).second)
+                    Stream.of(output(set.DUST.get(), 0.25f),
+                            ATORegistry.getByproducts().containsKey(set.RAW.get())
+                                    ? output(ATORegistry.getByproducts().get(set.RAW.get()).first, ATORegistry.getByproducts().get(set.RAW.get()).second)
                                     : null
                     ).filter(Objects::nonNull).toList(),
                     output

@@ -1,4 +1,4 @@
-package net.allthemods.alltheores.datagen.data.recipe;
+package net.allthemods.alltheores.datagen.data.recipe.mekanism;
 
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.datagen.recipe.builder.*;

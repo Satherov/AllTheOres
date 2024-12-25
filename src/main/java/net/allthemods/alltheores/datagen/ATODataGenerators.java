@@ -5,9 +5,10 @@ import net.allthemods.alltheores.datagen.assets.ATOItemModelProvider;
 import net.allthemods.alltheores.datagen.assets.lang.EN_USProvider;
 import net.allthemods.alltheores.datagen.data.ATODatapackGenerators;
 import net.allthemods.alltheores.datagen.data.ATOLootTableProvider;
-import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOAlloyRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOAlloySmelterRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOSagMillRecipeProvider;
-import net.allthemods.alltheores.datagen.data.recipe.ATOMekanismRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOImmersiveEngineeringRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.mekanism.ATOMekanismRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.ATORecipeProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOBlockTagProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOItemTagProvider;
@@ -56,7 +57,8 @@ public final class ATODataGenerators {
         provider.addSubProvider(event.includeServer(), new ATORecipeProvider(packOutput, lookupProvider));
         provider.addSubProvider(event.includeServer(), new ATOMekanismRecipeProvider(packOutput, lookupProvider));
         provider.addSubProvider(event.includeServer(), new ATOSagMillRecipeProvider(packOutput, lookupProvider));
-        provider.addSubProvider(event.includeServer(), new ATOAlloyRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOAlloySmelterRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOImmersiveEngineeringRecipeProvider(packOutput, lookupProvider));
 
         // Loot Tables
         provider.addSubProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(ATOLootTableProvider::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));

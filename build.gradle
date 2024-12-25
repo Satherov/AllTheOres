@@ -92,6 +92,8 @@ dependencies {
     implementation "com.enderio:${ender_io_machines}"
     implementation "com.enderio:${ender_io_machines}:api"
     implementation "curse.maven:${immersiveengineering}"
+    implementation "curse.maven:${actually_additions}"
+    implementation "curse.maven:${adorned}"
 }
 
 tasks.withType(ProcessResources).configureEach {

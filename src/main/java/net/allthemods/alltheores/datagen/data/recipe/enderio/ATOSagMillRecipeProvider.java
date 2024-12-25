@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 
@@ -39,7 +38,7 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
         ATOSetHelper.applyToAlloy( set ->
                 sagMillDirect(String.format("/%s/ingot", set.name),
                     Ingredient.of(set.INGOT_TAG),
-                    set.DUST.get(),
+                    output(set.DUST.get(), 1),
                     output)
         );
 
@@ -65,21 +64,21 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
 
         ATOSetHelper.applyToGem( set -> {
 
-            sagMillOre(String.format("/%s/ore", set.name),
+            sagMillGem(String.format("/%s/ore", set.name),
                     Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
                     set.GEM.get(),
                     output);
 
             sagMillDirect(String.format("/%s/gem", set.name),
                     Ingredient.of(set.GEM_TAG),
-                    set.DUST.get(),
+                    output(set.DUST.get(), 1),
                     output);
         });
 
         ATOSetHelper.applyToDust( set ->
                 sagMillDirect(String.format("/%s/ore", set.name),
                     Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
-                    set.DUST.get(),
+                    output(set.DUST.get(), 6),
                     output)
         );
     }
@@ -88,12 +87,16 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
         sagMillMultiply(name, input, List.of(output(output), output(output, 0.33f), output(Items.COBBLESTONE, 0.15f)), recipeOutput);
     }
 
+    private void sagMillGem(String name, Ingredient input, Item output, RecipeOutput recipeOutput) {
+        sagMillMultiply(name, input, List.of(output(output, 6), output(Items.COBBLESTONE, 0.15f)), recipeOutput);
+    }
+
     private void sagMillMultiply(String name, Ingredient input, List<SagMillingRecipe.OutputItem> outputs, RecipeOutput recipeOutput) {
         sagMill(name, input, outputs, SagMillingRecipe.BonusType.MULTIPLY_OUTPUT, recipeOutput);
     }
 
-    private void sagMillDirect(String name, Ingredient input, ItemLike output, RecipeOutput recipeOutput) {
-        sagMill(name, input, List.of(output(output)), SagMillingRecipe.BonusType.NONE, recipeOutput);
+    private void sagMillDirect(String name, Ingredient input, SagMillingRecipe.OutputItem output, RecipeOutput recipeOutput) {
+        sagMill(name, input, List.of(output), SagMillingRecipe.BonusType.NONE, recipeOutput);
     }
 
     private void sagMill(String name, Ingredient input, List<SagMillingRecipe.OutputItem> outputs, SagMillingRecipe.BonusType bonusType, RecipeOutput recipeOutput) {

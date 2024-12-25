@@ -5,6 +5,7 @@ import net.allthemods.alltheores.datagen.assets.ATOItemModelProvider;
 import net.allthemods.alltheores.datagen.assets.lang.EN_USProvider;
 import net.allthemods.alltheores.datagen.data.ATODatapackGenerators;
 import net.allthemods.alltheores.datagen.data.ATOLootTableProvider;
+import net.allthemods.alltheores.datagen.data.recipe.actuallyadditions.ATOCrushingRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOAlloySmelterRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOSagMillRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOImmersiveEngineeringRecipeProvider;
@@ -59,6 +60,7 @@ public final class ATODataGenerators {
         provider.addSubProvider(event.includeServer(), new ATOSagMillRecipeProvider(packOutput, lookupProvider));
         provider.addSubProvider(event.includeServer(), new ATOAlloySmelterRecipeProvider(packOutput, lookupProvider));
         provider.addSubProvider(event.includeServer(), new ATOImmersiveEngineeringRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOCrushingRecipeProvider(packOutput, lookupProvider));
 
         // Loot Tables
         provider.addSubProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(ATOLootTableProvider::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));

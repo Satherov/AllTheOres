@@ -368,6 +368,23 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             );
         });
 
+        ATOSetHelper.applyToDust( set -> {
+
+                // ##### Crusher #####
+
+                // Ore -> Dust
+                recipeOutput.accept(
+                        crusherDir(String.format("%s/from_ore", set.name)),
+                        crusherRecipe(
+                                new TagOutput(set.DUST.get(), 2),
+                                Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
+                                List.of()
+                        ),
+                        null,
+                        new ModLoadedCondition("immersiveengineering")
+                );
+        });
+
         ATOSetHelper.applyToVanillaIngot( set -> {
 
             // ##### Arc Furnace #####

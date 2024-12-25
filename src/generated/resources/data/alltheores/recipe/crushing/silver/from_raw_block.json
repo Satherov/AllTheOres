@@ -1,0 +1,18 @@
+{
+  "type": "actuallyadditions:crushing",
+  "ingredient": {
+    "tag": "c:storage_blocks/raw_silver"
+  },
+  "result": [
+    {
+      "result": {
+        "count": 12,
+        "id": "alltheores:silver_dust"
+      }
+    },
+    {
+      "chance": 0.0,
+      "result": {}
+    }
+  ]
+}

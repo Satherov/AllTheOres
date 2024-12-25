@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.content.blocks.sets.vanilla_sets;
 
+import net.allthemods.alltheores.content.blocks.sets.ato_sets.ATOFluidSet;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -16,6 +17,8 @@ public class VanillaDebrisSet extends VanillaSet {
     public static List<VanillaDebrisSet> getVanillaDebrisSets() {
         return instances;
     }
+
+    public final ATOFluidSet FLUID;
 
     // Item Tags
     public final TagKey<Item> INGOT_TAG;
@@ -40,7 +43,7 @@ public class VanillaDebrisSet extends VanillaSet {
     public final Item DEBRIS_ITEM;
     public final Item BLOCK_ITEM;
 
-    public VanillaDebrisSet(String name, Block debris, Item scrap, Item ingot, Block block) {
+    public VanillaDebrisSet(String name, int fluidColor, Block debris, Item scrap, Item ingot, Block block) {
         super(name);
         instances.add(this);
 
@@ -66,5 +69,7 @@ public class VanillaDebrisSet extends VanillaSet {
         // Block Items
         DEBRIS_ITEM = debris.asItem().getDefaultInstance().getItem();
         BLOCK_ITEM = block.asItem().getDefaultInstance().getItem();
+
+        FLUID = new ATOFluidSet(name, fluidColor);
     }
 }

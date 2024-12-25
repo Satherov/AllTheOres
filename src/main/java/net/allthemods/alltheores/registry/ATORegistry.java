@@ -80,7 +80,7 @@ public class ATORegistry {
     public static final VanillaIngotSet IRON = new VanillaIngotSet("iron", 0xFFC49C6D, Items.RAW_IRON, Blocks.RAW_IRON_BLOCK, Items.IRON_INGOT, Blocks.IRON_BLOCK);
     public static final VanillaIngotSet GOLD = new VanillaIngotSet("gold", 0xFFE2B928, Items.RAW_GOLD, Blocks.RAW_GOLD_BLOCK, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
     public static final VanillaGemSet DIAMOND = new VanillaGemSet("diamond",  Items.DIAMOND, Blocks.DIAMOND_BLOCK);
-    public static final VanillaDebrisSet NETHERITE = new VanillaDebrisSet("netherite", Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);
+    public static final VanillaDebrisSet NETHERITE = new VanillaDebrisSet("netherite", 0xFF262626, Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);
 
     public static final DeferredHolder<Item, Item> COPPER_ORE_HAMMER = ITEMS.register("copper_ore_hammer", () -> new OreHammer(new Item.Properties(), 64));
     public static final DeferredHolder<Item, Item> IRON_ORE_HAMMER = ITEMS.register("iron_ore_hammer", () -> new OreHammer(new Item.Properties(), 96));

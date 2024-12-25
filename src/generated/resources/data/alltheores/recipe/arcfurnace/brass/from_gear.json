@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:brass_ingot"
+      "basePredicate": {
+        "item": "alltheores:brass_ingot"
+      },
+      "count": 2
     }
   ],
   "time": 100

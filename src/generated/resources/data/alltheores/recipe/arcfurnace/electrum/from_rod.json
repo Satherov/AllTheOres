@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:electrum_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/electrum"
+      },
+      "count": 2
     }
   ],
   "time": 100

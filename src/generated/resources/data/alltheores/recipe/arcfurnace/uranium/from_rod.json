@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:uranium_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/uranium"
+      },
+      "count": 2
     }
   ],
   "time": 100

@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:lead_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/lead"
+      },
+      "count": 2
     }
   ],
   "time": 100

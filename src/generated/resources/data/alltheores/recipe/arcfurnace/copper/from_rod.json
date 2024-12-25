@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "minecraft:copper_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/copper"
+      },
+      "count": 2
     }
   ],
   "time": 100

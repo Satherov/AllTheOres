@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:enderium_ingot"
+      "basePredicate": {
+        "item": "alltheores:enderium_ingot"
+      },
+      "count": 2
     }
   ],
   "time": 100

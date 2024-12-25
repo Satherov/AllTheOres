@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:osmium_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/osmium"
+      },
+      "count": 2
     }
   ],
   "time": 100

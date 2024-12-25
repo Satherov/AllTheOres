@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:brass_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/brass"
+      },
+      "count": 2
     }
   ],
   "time": 100

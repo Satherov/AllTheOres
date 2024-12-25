@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:silver_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/silver"
+      },
+      "count": 2
     }
   ],
   "time": 100

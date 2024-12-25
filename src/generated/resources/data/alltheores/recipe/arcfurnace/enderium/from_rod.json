@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:enderium_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/enderium"
+      },
+      "count": 2
     }
   ],
   "time": 100

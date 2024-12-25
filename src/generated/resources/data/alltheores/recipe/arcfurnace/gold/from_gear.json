@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "minecraft:gold_ingot"
+      "basePredicate": {
+        "item": "minecraft:gold_ingot"
+      },
+      "count": 2
     }
   ],
   "time": 100

@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:constantan_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/constantan"
+      },
+      "count": 2
     }
   ],
   "time": 100

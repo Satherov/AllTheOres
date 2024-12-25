@@ -173,7 +173,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_rod", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT.get()))),
+                            new TagOutputList(List.of(new TagOutput(set.NUGGET_TAG, 2))),
                             List.of(),
                             new IngredientWithSize(set.ROD_TAG),
                             List.of()
@@ -186,7 +186,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_gear", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT.get()))),
+                            new TagOutputList(List.of(new TagOutput(set.INGOT.get(), 2))),
                             List.of(),
                             new IngredientWithSize(set.GEAR_TAG),
                             List.of()
@@ -406,7 +406,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_rod", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT))),
+                            new TagOutputList(List.of(new TagOutput(set.NUGGET_TAG, 2))),
                             List.of(),
                             new IngredientWithSize(set.ROD_TAG, 1),
                             List.of()
@@ -419,7 +419,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_gear", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT))),
+                            new TagOutputList(List.of(new TagOutput(set.INGOT, 2))),
                             List.of(),
                             new IngredientWithSize(set.GEAR_TAG, 1),
                             List.of()
@@ -570,7 +570,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_rod", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT))),
+                            new TagOutputList(List.of(new TagOutput(set.SCRAP, 2))),
                             List.of(),
                             new IngredientWithSize(set.ROD_TAG, 1),
                             List.of()
@@ -583,7 +583,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_gear", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT))),
+                            new TagOutputList(List.of(new TagOutput(set.SCRAP, 8))),
                             List.of(),
                             new IngredientWithSize(set.GEAR_TAG, 1),
                             List.of()
@@ -596,7 +596,7 @@ public class ATOImmersiveEngineeringRecipeProvider extends RecipeProvider implem
             recipeOutput.accept(
                     arcFurnaceDir(String.format("%s/from_plate", set.name)),
                     arcFurnaceRecipe(
-                            new TagOutputList(List.of(new TagOutput(set.INGOT))),
+                            new TagOutputList(List.of(new TagOutput(set.SCRAP, 2))),
                             List.of(),
                             new IngredientWithSize(set.PLATE_TAG, 1),
                             List.of()

@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:lumium_ingot"
+      "basePredicate": {
+        "item": "alltheores:lumium_ingot"
+      },
+      "count": 2
     }
   ],
   "time": 100

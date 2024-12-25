@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:aluminum_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/aluminum"
+      },
+      "count": 2
     }
   ],
   "time": 100

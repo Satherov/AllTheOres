@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:invar_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/invar"
+      },
+      "count": 2
     }
   ],
   "time": 100

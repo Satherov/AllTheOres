@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "minecraft:iron_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/iron"
+      },
+      "count": 2
     }
   ],
   "time": 100

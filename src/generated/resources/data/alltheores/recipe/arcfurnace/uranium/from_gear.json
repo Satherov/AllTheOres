@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:uranium_ingot"
+      "basePredicate": {
+        "item": "alltheores:uranium_ingot"
+      },
+      "count": 2
     }
   ],
   "time": 100

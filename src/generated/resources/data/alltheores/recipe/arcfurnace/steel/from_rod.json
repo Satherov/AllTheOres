@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:steel_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/steel"
+      },
+      "count": 2
     }
   ],
   "time": 100

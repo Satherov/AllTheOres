@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:signalum_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/signalum"
+      },
+      "count": 2
     }
   ],
   "time": 100

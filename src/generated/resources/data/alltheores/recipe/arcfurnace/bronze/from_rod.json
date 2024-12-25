@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:bronze_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/bronze"
+      },
+      "count": 2
     }
   ],
   "time": 100

@@ -13,7 +13,10 @@
   },
   "results": [
     {
-      "item": "alltheores:zinc_ingot"
+      "basePredicate": {
+        "tag": "c:nuggets/zinc"
+      },
+      "count": 2
     }
   ],
   "time": 100

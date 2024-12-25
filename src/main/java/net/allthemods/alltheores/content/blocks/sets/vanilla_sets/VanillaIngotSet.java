@@ -1,5 +1,6 @@
 package net.allthemods.alltheores.content.blocks.sets.vanilla_sets;
 
+import net.allthemods.alltheores.content.blocks.sets.ato_sets.ATOFluidSet;
 import net.allthemods.alltheores.content.blocks.sets.ato_sets.MekanismSet;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.BlockTags;
@@ -21,6 +22,7 @@ public class VanillaIngotSet extends VanillaSet {
     }
 
     public final MekanismSet MEK;
+    public final ATOFluidSet FLUID;
 
     // Item Tags
     public final TagKey<Item> RAW_TAG;
@@ -42,16 +44,16 @@ public class VanillaIngotSet extends VanillaSet {
     public final Item INGOT;
 
     // Blocks
+    public final Block RAW_BLOCK;
     public final Block BLOCK;
 
     // Block Items
+    public final Item RAW_BLOCK_ITEM;
     public final Item BLOCK_ITEM;
 
-    public VanillaIngotSet(String name, int fluidColor, Item raw, Item ingot, Block block) {
+    public VanillaIngotSet(String name, int fluidColor, Item raw, Block rawBlock, Item ingot, Block block) {
         super(name);
         instances.add(this);
-
-        MEK =  ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, block) : null;
 
         // Item Tags
         RAW_TAG = ItemTags.create(Reference.raw_materials(name));
@@ -73,9 +75,14 @@ public class VanillaIngotSet extends VanillaSet {
         INGOT = ingot;
 
         // Blocks
+        RAW_BLOCK = rawBlock;
         BLOCK = block;
 
         // Block Items
+        RAW_BLOCK_ITEM = block.asItem().getDefaultInstance().getItem();
         BLOCK_ITEM = block.asItem().getDefaultInstance().getItem();
+
+        MEK =  ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, block) : null;
+        FLUID = new ATOFluidSet(name, fluidColor);
     }
 }

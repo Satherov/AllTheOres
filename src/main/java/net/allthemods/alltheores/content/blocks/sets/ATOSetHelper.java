@@ -57,4 +57,8 @@ public class ATOSetHelper {
     public static void applyToMekanism(Consumer<MekanismSet> consumer) {
         MekanismSet.getMekanismSets().forEach(consumer);
     }
+
+    public static void applyToFluid(Consumer<ATOFluidSet> consumer) {
+        ATOFluidSet.getFluidSets().forEach(consumer);
+    }
 }

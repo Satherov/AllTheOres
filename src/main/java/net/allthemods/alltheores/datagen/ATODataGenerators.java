@@ -12,6 +12,7 @@ import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOImm
 import net.allthemods.alltheores.datagen.data.recipe.mekanism.ATOMekanismRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.ATORecipeProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOBlockTagProvider;
+import net.allthemods.alltheores.datagen.data.tags.ATOFluidTagProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOItemTagProvider;
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.Util;
@@ -53,6 +54,7 @@ public final class ATODataGenerators {
         ATOBlockTagProvider blockTags = new ATOBlockTagProvider(packOutput, lookupProvider, fileHelper);
         provider.addSubProvider(event.includeServer(), blockTags);
         provider.addSubProvider(event.includeServer(), new ATOItemTagProvider(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper));
+        provider.addSubProvider(event.includeServer(), new ATOFluidTagProvider(packOutput, lookupProvider, fileHelper));
 
         // Recipes
         provider.addSubProvider(event.includeServer(), new ATORecipeProvider(packOutput, lookupProvider));

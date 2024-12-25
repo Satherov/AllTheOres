@@ -55,15 +55,15 @@ public class ATORegistry {
     public static final ATOIngotSet ZINC = new ATOIngotSet("zinc", 0xFFB5B5B5, "stone",24, -64, 126, 3);
     public static final ATOIngotSet IRIDIUM = new ATOIngotSet("iridium", 0xFFC0C0C0,"diamond", 10, -64, 32, 4);
 
-    public static final ATOAlloySet STEEL = new ATOAlloySet("steel");
-    public static final ATOAlloySet INVAR = new ATOAlloySet("invar");
-    public static final ATOAlloySet ELECTRUM = new ATOAlloySet("electrum");
-    public static final ATOAlloySet BRONZE = new ATOAlloySet("bronze");
-    public static final ATOAlloySet BRASS = new ATOAlloySet("brass");
-    public static final ATOAlloySet ENDERIUM = new ATOAlloySet("enderium");
-    public static final ATOAlloySet LUMIUM = new ATOAlloySet("lumium");
-    public static final ATOAlloySet SIGNALUM = new ATOAlloySet("signalum");
-    public static final ATOAlloySet CONSTANTAN = new ATOAlloySet("constantan");
+    public static final ATOAlloySet STEEL = new ATOAlloySet("steel", 0xFF696969);
+    public static final ATOAlloySet INVAR = new ATOAlloySet("invar", 0xFFCFCFCF);
+    public static final ATOAlloySet ELECTRUM = new ATOAlloySet("electrum", 0xFFEFE5B2);
+    public static final ATOAlloySet BRONZE = new ATOAlloySet("bronze", 0xFFD98A3D);
+    public static final ATOAlloySet BRASS = new ATOAlloySet("brass", 0xFFF4BA45);
+    public static final ATOAlloySet ENDERIUM = new ATOAlloySet("enderium", 0xFF0E6464);
+    public static final ATOAlloySet LUMIUM = new ATOAlloySet("lumium", 0xFFFFDA7E);
+    public static final ATOAlloySet SIGNALUM = new ATOAlloySet("signalum", 0xFFDB7F15);
+    public static final ATOAlloySet CONSTANTAN = new ATOAlloySet("constantan", 0xFFDAB38E);
 
     public static final ATOGemSet RUBY = new ATOGemSet("ruby",  "stone", 7, -64, 228, 3);
     public static final ATOGemSet PERIDOT = new ATOGemSet("peridot",  "stone", 7, -64, 196, 3);
@@ -76,9 +76,9 @@ public class ATORegistry {
 
     public static final DeferredHolder<Item, Item> COPPER_NUGGET = ITEMS.register("copper_nugget", () -> new Item(new Item.Properties()));
 
-    public static final VanillaIngotSet COPPER = new VanillaIngotSet("copper", 0xFFC66740, Items.RAW_COPPER, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
-    public static final VanillaIngotSet IRON = new VanillaIngotSet("iron", 0xFFC49C6D, Items.RAW_IRON, Items.IRON_INGOT, Blocks.IRON_BLOCK);
-    public static final VanillaIngotSet GOLD = new VanillaIngotSet("gold", 0xFFE2B928, Items.RAW_GOLD, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
+    public static final VanillaIngotSet COPPER = new VanillaIngotSet("copper", 0xFFC66740, Items.RAW_COPPER, Blocks.RAW_COPPER_BLOCK, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
+    public static final VanillaIngotSet IRON = new VanillaIngotSet("iron", 0xFFC49C6D, Items.RAW_IRON, Blocks.RAW_IRON_BLOCK, Items.IRON_INGOT, Blocks.IRON_BLOCK);
+    public static final VanillaIngotSet GOLD = new VanillaIngotSet("gold", 0xFFE2B928, Items.RAW_GOLD, Blocks.RAW_GOLD_BLOCK, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
     public static final VanillaGemSet DIAMOND = new VanillaGemSet("diamond",  Items.DIAMOND, Blocks.DIAMOND_BLOCK);
     public static final VanillaDebrisSet NETHERITE = new VanillaDebrisSet("netherite", Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);
 

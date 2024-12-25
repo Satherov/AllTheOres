@@ -90,4 +90,8 @@ public class Reference {
     public static ResourceLocation dirty_dust(String path) {
         return forge("dirty_dusts/" + path);
     }
+
+    public static ResourceLocation molten(String path) {
+        return forge("molten_" + path);
+    }
 }

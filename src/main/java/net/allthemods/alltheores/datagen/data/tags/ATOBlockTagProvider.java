@@ -76,5 +76,10 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
                     break;
             }
         });
+
+        ATOSetHelper.applyToFluid( set -> {
+            tag(ATOTagRegistry.MOLTEN_BLOCK).addTag(set.MOLTEN_BLOCK_TAG);
+            tag(set.MOLTEN_BLOCK_TAG).add(set.MOLTEN_BLOCK.get());
+        });
     }
 }

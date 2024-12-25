@@ -32,13 +32,16 @@ public class ClientEventHandler {
             for (DeferredHolder<Item, ? extends Item> item : ATORegistry.ITEMS.getEntries()) {
                 event.accept(item.get());
             }
+            for (DeferredHolder<Item, ? extends Item> item : ATORegistry.FLUID_ITEMS.getEntries()) {
+                event.accept(item.get());
+            }
         }
     }
 
     @SubscribeEvent
     public static void registerItemColors(RegisterClientExtensionsEvent event) {
         if (Reference.enableFluids) {
-            ATOSetHelper.applyToIngot(set -> event.registerFluidType(new IClientFluidTypeExtensions() {
+            ATOSetHelper.applyToFluid(set -> event.registerFluidType(new IClientFluidTypeExtensions() {
                 @Override
                 public @NotNull ResourceLocation getStillTexture() {
                     return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal");
@@ -93,7 +96,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         if (Reference.enableFluids) {
-            ATOSetHelper.applyToIngot(set -> event.register(new DynamicFluidContainerModel.Colors(), set.MOLTEN_BUCKET.get()));
+            ATOSetHelper.applyToFluid(set -> event.register(new DynamicFluidContainerModel.Colors(), set.MOLTEN_BUCKET.get()));
         }
     }
 }

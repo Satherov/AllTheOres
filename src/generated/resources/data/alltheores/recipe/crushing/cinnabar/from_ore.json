@@ -1,0 +1,18 @@
+{
+  "type": "actuallyadditions:crushing",
+  "ingredient": {
+    "tag": "c:ores/cinnabar"
+  },
+  "result": [
+    {
+      "result": {
+        "count": 6,
+        "id": "alltheores:cinnabar"
+      }
+    },
+    {
+      "chance": 0.0,
+      "result": {}
+    }
+  ]
+}

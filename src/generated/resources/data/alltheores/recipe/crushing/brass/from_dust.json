@@ -1,0 +1,18 @@
+{
+  "type": "actuallyadditions:crushing",
+  "ingredient": {
+    "tag": "c:ingots/brass"
+  },
+  "result": [
+    {
+      "result": {
+        "count": 1,
+        "id": "alltheores:brass_dust"
+      }
+    },
+    {
+      "chance": 0.0,
+      "result": {}
+    }
+  ]
+}

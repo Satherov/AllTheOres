@@ -19,6 +19,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        url 'https://maven.rover656.dev/releases'
+    }
 }
 
 base {
@@ -83,7 +86,18 @@ configurations {
 
 dependencies {
     implementation "curse.maven:${jei}"
+
     implementation "curse.maven:${mekanism}"
+
+    implementation "com.enderio:${ender_io_base}"
+    implementation "com.enderio:${ender_io_base}:api"
+    implementation "com.enderio:${ender_io_machines}"
+    implementation "com.enderio:${ender_io_machines}:api"
+
+    implementation "curse.maven:${immersiveengineering}"
+
+    implementation "curse.maven:${actually_additions}"
+    implementation "curse.maven:${adorned}"
 }
 
 tasks.withType(ProcessResources).configureEach {

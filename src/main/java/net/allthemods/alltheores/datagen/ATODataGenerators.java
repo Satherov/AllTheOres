@@ -5,12 +5,15 @@ import net.allthemods.alltheores.datagen.assets.ATOItemModelProvider;
 import net.allthemods.alltheores.datagen.assets.lang.EN_USProvider;
 import net.allthemods.alltheores.datagen.data.ATODatapackGenerators;
 import net.allthemods.alltheores.datagen.data.ATOLootTableProvider;
-import net.allthemods.alltheores.datagen.data.recipe.actuallyadditions.ATOCrushingRecipeProvider;
-import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOAlloySmelterRecipeProvider;
-import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOSagMillRecipeProvider;
-import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOImmersiveEngineeringRecipeProvider;
-import net.allthemods.alltheores.datagen.data.recipe.mekanism.ATOMekanismRecipeProvider;
 import net.allthemods.alltheores.datagen.data.recipe.ATORecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.actuallyadditions.ATOAACrushingRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOEIOAlloySmelterRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.enderio.ATOEIOSagMillRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOIEAlloyRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOIEArcFurnaceRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOIECrusherRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.immersiveengineering.ATOIEMetalPressRecipeProvider;
+import net.allthemods.alltheores.datagen.data.recipe.mekanism.ATOMekanismRecipeProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOBlockTagProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOFluidTagProvider;
 import net.allthemods.alltheores.datagen.data.tags.ATOItemTagProvider;
@@ -35,7 +38,7 @@ import java.util.concurrent.CompletableFuture;
 public final class ATODataGenerators {
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event){
+    public static void gatherData(GatherDataEvent event) {
 
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
@@ -58,11 +61,18 @@ public final class ATODataGenerators {
 
         // Recipes
         provider.addSubProvider(event.includeServer(), new ATORecipeProvider(packOutput, lookupProvider));
+
         provider.addSubProvider(event.includeServer(), new ATOMekanismRecipeProvider(packOutput, lookupProvider));
-        provider.addSubProvider(event.includeServer(), new ATOSagMillRecipeProvider(packOutput, lookupProvider));
-        provider.addSubProvider(event.includeServer(), new ATOAlloySmelterRecipeProvider(packOutput, lookupProvider));
-        provider.addSubProvider(event.includeServer(), new ATOImmersiveEngineeringRecipeProvider(packOutput, lookupProvider));
-        provider.addSubProvider(event.includeServer(), new ATOCrushingRecipeProvider(packOutput, lookupProvider));
+
+        provider.addSubProvider(event.includeServer(), new ATOEIOSagMillRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOEIOAlloySmelterRecipeProvider(packOutput, lookupProvider));
+
+        provider.addSubProvider(event.includeServer(), new ATOIEAlloyRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOIEArcFurnaceRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOIECrusherRecipeProvider(packOutput, lookupProvider));
+        provider.addSubProvider(event.includeServer(), new ATOIEMetalPressRecipeProvider(packOutput, lookupProvider));
+
+        provider.addSubProvider(event.includeServer(), new ATOAACrushingRecipeProvider(packOutput, lookupProvider));
 
         // Loot Tables
         provider.addSubProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(ATOLootTableProvider::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));

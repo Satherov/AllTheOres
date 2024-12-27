@@ -20,11 +20,11 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements IConditionBuilder {
+public class ATOEIOSagMillRecipeProvider extends SagMillRecipeProvider implements IConditionBuilder {
 
     private static final int SAG_MILL_ENERGY = 2400;
 
-    public ATOSagMillRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public ATOEIOSagMillRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
 
@@ -35,14 +35,14 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
     @Override
     protected void buildRecipes(RecipeOutput output) {
 
-        ATOSetHelper.applyToAlloy( set ->
+        ATOSetHelper.applyToAlloy(set ->
                 sagMillDirect(String.format("/%s/ingot", set.name),
-                    Ingredient.of(set.INGOT_TAG),
-                    output(set.DUST.get(), 1),
-                    output)
+                        Ingredient.of(set.INGOT_TAG),
+                        output(set.DUST.get(), 1),
+                        output)
         );
 
-        ATOSetHelper.applyToIngot( set -> {
+        ATOSetHelper.applyToIngot(set -> {
 
             sagMillMultiply(
                     String.format("/%s/raw", set.name),
@@ -62,7 +62,7 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
                     output);
         });
 
-        ATOSetHelper.applyToGem( set -> {
+        ATOSetHelper.applyToGem(set -> {
 
             sagMillGem(String.format("/%s/ore", set.name),
                     Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
@@ -75,11 +75,11 @@ public class ATOSagMillRecipeProvider extends SagMillRecipeProvider implements I
                     output);
         });
 
-        ATOSetHelper.applyToDust( set ->
+        ATOSetHelper.applyToDust(set ->
                 sagMillDirect(String.format("/%s/ore", set.name),
-                    Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
-                    output(set.DUST.get(), 6),
-                    output)
+                        Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
+                        output(set.DUST.get(), 6),
+                        output)
         );
     }
 

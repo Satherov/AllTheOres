@@ -16,11 +16,13 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.registry.ATORegistry.*;
+import static net.allthemods.alltheores.registry.ATORegistry.blockItem;
+import static net.allthemods.alltheores.registry.ATORegistry.item;
 
 public class ATOIngotSet extends ATOAlloySet {
 
     private static final List<ATOIngotSet> instances = new ArrayList<>();
+
     public static List<ATOIngotSet> getIngotSets() {
         return instances;
     }
@@ -41,10 +43,10 @@ public class ATOIngotSet extends ATOAlloySet {
     public final DeferredHolder<Item, Item> RAW;
 
     // Blocks
-    public final DeferredHolder<Block, Block>  RAW_BLOCK;
+    public final DeferredHolder<Block, Block> RAW_BLOCK;
 
     // Block Items
-    public final DeferredHolder<Item, BlockItem>  RAW_BLOCK_ITEM;
+    public final DeferredHolder<Item, BlockItem> RAW_BLOCK_ITEM;
 
     public ATOIngotSet(String name, int fluidColor, String hardness, int veinSize, int minY, int maxY, int count) {
         super(name, fluidColor);
@@ -69,6 +71,6 @@ public class ATOIngotSet extends ATOAlloySet {
         RAW_BLOCK_ITEM = blockItem(RAW_BLOCK);
 
         ORES = new ATOOreSet(name, ESetTypes.INGOT, hardness, RAW, RAW_BLOCK, veinSize, minY, maxY, count);
-        MEK =  ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, BLOCK) : null;
+        MEK = ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, BLOCK) : null;
     }
 }

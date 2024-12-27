@@ -16,6 +16,7 @@ import static net.allthemods.alltheores.registry.ATORegistry.item;
 public class ATOAlloySet extends ATOMaterialSet {
 
     private static final List<ATOAlloySet> instances = new ArrayList<>();
+
     public static List<ATOAlloySet> getAlloySets() {
         return instances;
     }

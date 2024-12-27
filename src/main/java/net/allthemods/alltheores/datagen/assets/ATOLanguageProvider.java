@@ -10,7 +10,8 @@ public class ATOLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    protected void addTranslations() {}
+    protected void addTranslations() {
+    }
 
     protected String format(String string) {
         return string.substring(0, 1).toUpperCase() + string.substring(1);

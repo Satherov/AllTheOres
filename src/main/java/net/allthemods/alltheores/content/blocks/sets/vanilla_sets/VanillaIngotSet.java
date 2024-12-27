@@ -17,6 +17,7 @@ import java.util.List;
 public class VanillaIngotSet extends VanillaSet {
 
     private static final List<VanillaIngotSet> instances = new ArrayList<>();
+
     public static List<VanillaIngotSet> getVanillaIngotSets() {
         return instances;
     }
@@ -82,7 +83,7 @@ public class VanillaIngotSet extends VanillaSet {
         RAW_BLOCK_ITEM = block.asItem().getDefaultInstance().getItem();
         BLOCK_ITEM = block.asItem().getDefaultInstance().getItem();
 
-        MEK =  ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, block) : null;
+        MEK = ModList.get().isLoaded("mekanism") ? new MekanismSet(name, fluidColor, block) : null;
         FLUID = new ATOFluidSet(name, fluidColor);
     }
 }

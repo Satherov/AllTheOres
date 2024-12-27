@@ -13,6 +13,7 @@ import java.util.List;
 public class VanillaGemSet extends VanillaSet {
 
     private static final List<VanillaGemSet> instances = new ArrayList<>();
+
     public static List<VanillaGemSet> getVanillaGemSets() {
         return instances;
     }

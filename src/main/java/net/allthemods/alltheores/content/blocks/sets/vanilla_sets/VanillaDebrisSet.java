@@ -14,6 +14,7 @@ import java.util.List;
 public class VanillaDebrisSet extends VanillaSet {
 
     private static final List<VanillaDebrisSet> instances = new ArrayList<>();
+
     public static List<VanillaDebrisSet> getVanillaDebrisSets() {
         return instances;
     }

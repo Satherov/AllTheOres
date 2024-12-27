@@ -22,7 +22,8 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.allthemods.alltheores.registry.ATORegistry.*;
+import static net.allthemods.alltheores.registry.ATORegistry.BLOCKS;
+import static net.allthemods.alltheores.registry.ATORegistry.blockItem;
 
 public class ATOOreSet extends BlockSet {
 
@@ -30,6 +31,7 @@ public class ATOOreSet extends BlockSet {
     public final String hardness;
 
     private static final List<ATOOreSet> instances = new ArrayList<>();
+
     public static List<ATOOreSet> getOreSets() {
         return instances;
     }
@@ -102,15 +104,15 @@ public class ATOOreSet extends BlockSet {
         END_MODIFIER = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, String.format("%s_end", name)));
 
         switch (type) {
-            case INGOT :
+            case INGOT:
                 DROP_ITEM_TAG = ItemTags.create(Reference.raw_materials(name));
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(String.format("raw_%s", name)));
                 break;
-            case GEM :
+            case GEM:
                 DROP_ITEM_TAG = ItemTags.create(Reference.gem(name));
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
                 break;
-            case DUST :
+            case DUST:
                 DROP_ITEM_TAG = ItemTags.create(Reference.dust(name));
                 DROP_BLOCK_TAG = BlockTags.create(Reference.block(name));
                 break;

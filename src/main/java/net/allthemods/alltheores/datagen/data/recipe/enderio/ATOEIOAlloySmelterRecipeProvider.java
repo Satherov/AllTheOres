@@ -19,11 +19,11 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class ATOAlloySmelterRecipeProvider extends AlloyRecipeProvider implements IConditionBuilder {
+public class ATOEIOAlloySmelterRecipeProvider extends AlloyRecipeProvider implements IConditionBuilder {
 
     private static final int ALLOY_SMELTER_ENERGY = 4800;
-    
-    public ATOAlloySmelterRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
+
+    public ATOEIOAlloySmelterRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
         super(packOutput, registries);
     }
 

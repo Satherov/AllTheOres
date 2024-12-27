@@ -15,6 +15,7 @@ import static net.allthemods.alltheores.registry.ATORegistry.item;
 public class VanillaSet extends BlockSet {
 
     private static final List<VanillaSet> instances = new ArrayList<>();
+
     public static List<VanillaSet> getVanillaSets() {
         return instances;
     }

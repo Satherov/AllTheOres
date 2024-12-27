@@ -55,7 +55,7 @@ public class ATOItemTagProvider extends ItemTagsProvider {
             tag(ATOTagRegistry.IN_ANCIENT_STONE_ITEM).add(set.OTHER_ORE_BLOCK_ITEM.get());
         });
 
-        ATOSetHelper.applyToMaterial( set -> {
+        ATOSetHelper.applyToMaterial(set -> {
             tag(Tags.Items.DUSTS).addTag(set.DUST_TAG);
             tag(set.DUST_TAG).add(set.DUST.get());
 

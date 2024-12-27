@@ -1,13 +1,13 @@
 package net.allthemods.alltheores.datagen.assets.lang;
 
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.datagen.assets.ATOLanguageProvider;
 import net.allthemods.alltheores.registry.ATORegistry;
-import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.data.PackOutput;
 
 public class EN_USProvider extends ATOLanguageProvider {
     public EN_USProvider(PackOutput output) {
-        super(output,"en_us");
+        super(output, "en_us");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class EN_USProvider extends ATOLanguageProvider {
             add(set.OTHER_ORE_BLOCK.get(), String.format("Other %s Ore", format(set.name)));
         });
 
-        ATOSetHelper.applyToMaterial( set -> add(set.BLOCK.get(), String.format("%s Block", format(set.name))));
+        ATOSetHelper.applyToMaterial(set -> add(set.BLOCK.get(), String.format("%s Block", format(set.name))));
 
         ATOSetHelper.applyToAlloy(set -> {
             add(set.NUGGET.get(), String.format("%s Nugget", format(set.name)));
@@ -72,7 +72,7 @@ public class EN_USProvider extends ATOLanguageProvider {
             add(set.DIRTY_DUST.get(), String.format("Dirty %s Dust", format(set.name)));
         });
 
-        ATOSetHelper.applyToFluid( set -> {
+        ATOSetHelper.applyToFluid(set -> {
             add(set.MOLTEN_BLOCK.get(), String.format("Molten %s", format(set.name)));
             add(set.MOLTEN_TYPE.get().getDescriptionId(), String.format("Molten %s", format(set.name)));
             add(set.MOLTEN_BUCKET.get(), String.format("Bucket of Molten %s", format(set.name)));

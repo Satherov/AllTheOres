@@ -3,11 +3,11 @@ package net.allthemods.alltheores.content.blocks.sets.ato_sets;
 import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalBuilder;
 import net.allthemods.alltheores.content.blocks.sets.BlockSet;
-import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.content.items.mekanism.Clump;
 import net.allthemods.alltheores.content.items.mekanism.Crystal;
 import net.allthemods.alltheores.content.items.mekanism.DirtyDust;
 import net.allthemods.alltheores.content.items.mekanism.Shard;
+import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATOMekanismRegistry;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -23,6 +23,7 @@ import java.util.List;
 public class MekanismSet extends BlockSet {
 
     private static final List<MekanismSet> instances = new ArrayList<>();
+
     public static List<MekanismSet> getMekanismSets() {
         return instances;
     }
@@ -87,9 +88,9 @@ public class MekanismSet extends BlockSet {
 
     private static int darkenColor(int color, double factor) {
         return (0xFF << 24) | // Alpha
-                (Math.max(0, (int)(((color >> 16) & 0xFF) * factor)) << 16) | // Red
-                (Math.max(0, (int)(((color >> 8) & 0xFF) * factor)) << 8) |  // Green
-                Math.max(0, (int)((color & 0xFF) * factor)); // Blue
+                (Math.max(0, (int) (((color >> 16) & 0xFF) * factor)) << 16) | // Red
+                (Math.max(0, (int) (((color >> 8) & 0xFF) * factor)) << 8) |  // Green
+                Math.max(0, (int) ((color & 0xFF) * factor)); // Blue
     }
 
 }

@@ -14,6 +14,6 @@ public class ATOBlockStateProvider extends net.neoforged.neoforge.client.model.g
     @Override
     protected void registerStatesAndModels() {
         ATORegistry.BLOCKS.getEntries().stream().toList().forEach(block -> simpleBlockWithItem(block.get(), cubeAll(block.get())));
-        ATORegistry.FLUID_BLOCKS.getEntries().stream().toList().forEach( block -> simpleBlockWithItem(block.get(), models().cubeAll(block.getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal"))));
+        ATORegistry.FLUID_BLOCKS.getEntries().stream().toList().forEach(block -> simpleBlockWithItem(block.get(), models().cubeAll(block.getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/molten_metal"))));
     }
 }

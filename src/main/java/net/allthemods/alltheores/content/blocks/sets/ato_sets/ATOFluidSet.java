@@ -28,6 +28,7 @@ import java.util.function.Supplier;
 public class ATOFluidSet extends BlockSet {
 
     private static final List<ATOFluidSet> instances = new ArrayList<>();
+
     public static List<ATOFluidSet> getFluidSets() {
         return instances;
     }
@@ -46,7 +47,7 @@ public class ATOFluidSet extends BlockSet {
     public final DeferredHolder<Item, BucketItem> MOLTEN_BUCKET;
     public final DeferredHolder<Block, LiquidBlock> MOLTEN_BLOCK;
 
-    public ATOFluidSet (String name, int fluidColor) {
+    public ATOFluidSet(String name, int fluidColor) {
         super(name);
         instances.add(this);
 

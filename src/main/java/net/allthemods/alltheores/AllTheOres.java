@@ -18,12 +18,10 @@ public class AllTheOres {
     public AllTheOres(IEventBus modEventBus, ModContainer modContainer) {
         ATORegistry.BLOCKS.register(modEventBus);
         ATORegistry.ITEMS.register(modEventBus);
-        if (Reference.enableFluids) {
-            ATORegistry.FLUID_ITEMS.register(modEventBus);
-            ATORegistry.FLUID_BLOCKS.register(modEventBus);
-            ATORegistry.FLUID_TYPES.register(modEventBus);
-            ATORegistry.FLUIDS.register(modEventBus);
-        }
+        ATORegistry.FLUID_ITEMS.register(modEventBus);
+        ATORegistry.FLUID_BLOCKS.register(modEventBus);
+        ATORegistry.FLUID_TYPES.register(modEventBus);
+        ATORegistry.FLUIDS.register(modEventBus);
         if (ModList.get().isLoaded("mekanism")) {
             ATOMekanismRegistry.SLURRYS.register(modEventBus);
         }

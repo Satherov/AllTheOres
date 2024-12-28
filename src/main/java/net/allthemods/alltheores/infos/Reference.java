@@ -6,10 +6,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class Reference {
 
@@ -20,7 +23,18 @@ public class Reference {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable(String.format("itemGroup.%s", Reference.MOD_ID)))
             .icon(() -> ATORegistry.ALUMINUM.ORES.STONE_ORE_BLOCK_ITEM.get().asItem().getDefaultInstance())
-            .build()
+            .displayItems((parameters, output) -> {
+                ATORegistry.ITEMS.getEntries().stream()
+                        .map(Supplier::get)
+                        .map(Item::getDefaultInstance)
+                        .forEach(output::accept);
+                if (Reference.enableFluids) {
+                    ATORegistry.FLUID_ITEMS.getEntries().stream()
+                            .map(Supplier::get)
+                            .map(Item::getDefaultInstance)
+                            .forEach(output::accept);
+                }
+            }).build()
     );
 
     public static ResourceLocation ato(String path) {

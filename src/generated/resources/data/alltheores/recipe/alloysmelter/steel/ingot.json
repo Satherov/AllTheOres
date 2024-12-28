@@ -7,15 +7,15 @@
   ],
   "type": "immersiveengineering:alloy",
   "input0": {
-    "tag": "c:ingots/copper"
+    "tag": "c:ingots/iron"
   },
   "input1": {
-    "tag": "c:ingots/nickel"
+    "tag": "minecraft:coals"
   },
   "result": {
     "basePredicate": {
-      "item": "alltheores:constantan_ingot"
+      "item": "alltheores:steel_ingot"
     },
-    "count": 4
+    "count": 2
   }
 }

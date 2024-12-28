@@ -9,7 +9,7 @@
   "additives": [
     {
       "basePredicate": {
-        "tag": "c:ingots/silver"
+        "tag": "c:ingots/nickel"
       },
       "count": 2
     }
@@ -17,16 +17,16 @@
   "energy": 51200,
   "input": {
     "basePredicate": {
-      "tag": "c:ingots/gold"
+      "tag": "c:ingots/iron"
     },
     "count": 2
   },
   "results": [
     {
       "basePredicate": {
-        "item": "alltheores:electrum_ingot"
+        "item": "alltheores:steel_ingot"
       },
-      "count": 10
+      "count": 5
     }
   ],
   "time": 100

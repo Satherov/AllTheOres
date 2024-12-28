@@ -8,16 +8,25 @@
   "type": "immersiveengineering:arc_furnace",
   "additives": [
     {
-      "tag": "c:ingots/nickel"
+      "basePredicate": {
+        "tag": "c:ingots/nickel"
+      },
+      "count": 2
     }
   ],
   "energy": 51200,
   "input": {
-    "tag": "c:ingots/iron"
+    "basePredicate": {
+      "tag": "c:ingots/iron"
+    },
+    "count": 4
   },
   "results": [
     {
-      "item": "alltheores:invar_ingot"
+      "basePredicate": {
+        "item": "alltheores:invar_ingot"
+      },
+      "count": 8
     }
   ],
   "time": 100

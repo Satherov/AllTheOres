@@ -16,6 +16,9 @@
     "tag": "c:ingots/nickel"
   },
   "result": {
-    "item": "alltheores:invar_ingot"
+    "basePredicate": {
+      "item": "alltheores:invar_ingot"
+    },
+    "count": 6
   }
 }

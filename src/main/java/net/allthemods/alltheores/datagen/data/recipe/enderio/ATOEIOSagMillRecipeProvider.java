@@ -47,7 +47,8 @@ public class ATOEIOSagMillRecipeProvider extends SagMillRecipeProvider implement
             sagMillMultiply(
                     String.format("/%s/raw", set.name),
                     Ingredient.of(set.RAW_TAG),
-                    Stream.of(output(set.DUST.get(), 0.25f),
+                    Stream.of(output(set.DUST.get()),
+                            output(set.DUST.get(), 0.25f),
                             ATORegistry.getByproducts().containsKey(set.RAW.get())
                                     ? output(ATORegistry.getByproducts().get(set.RAW.get()).first, ATORegistry.getByproducts().get(set.RAW.get()).second)
                                     : null

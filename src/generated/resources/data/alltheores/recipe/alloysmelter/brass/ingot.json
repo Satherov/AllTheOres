@@ -16,6 +16,9 @@
     "tag": "c:ingots/zinc"
   },
   "result": {
-    "item": "alltheores:brass_ingot"
+    "basePredicate": {
+      "item": "alltheores:brass_ingot"
+    },
+    "count": 8
   }
 }

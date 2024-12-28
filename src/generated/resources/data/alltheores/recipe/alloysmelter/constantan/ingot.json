@@ -13,6 +13,9 @@
     "tag": "c:ingots/nickel"
   },
   "result": {
-    "item": "alltheores:constantan_ingot"
+    "basePredicate": {
+      "item": "alltheores:constantan_ingot"
+    },
+    "count": 4
   }
 }

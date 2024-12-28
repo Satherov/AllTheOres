@@ -16,9 +16,12 @@ import static net.allthemods.alltheores.registry.ATORegistry.item;
 public class ATOAlloySet extends ATOMaterialSet {
 
     private static final List<ATOAlloySet> instances = new ArrayList<>();
+
     public static List<ATOAlloySet> getAlloySets() {
         return instances;
     }
+
+    public final ATOFluidSet FLUID;
 
     // Item Tags
     public final TagKey<Item> NUGGET_TAG;
@@ -37,7 +40,7 @@ public class ATOAlloySet extends ATOMaterialSet {
     public final DeferredHolder<Item, Item> PLATE;
 
 
-    public ATOAlloySet(String name) {
+    public ATOAlloySet(String name, int fluidColor) {
         super(name, ESetTypes.ALLOY);
         instances.add(this);
 
@@ -55,5 +58,7 @@ public class ATOAlloySet extends ATOMaterialSet {
         ROD = item(String.format("%s_rod", name));
         GEAR = item(String.format("%s_gear", name));
         PLATE = item(String.format("%s_plate", name));
+
+        FLUID = new ATOFluidSet(name, fluidColor);
     }
 }

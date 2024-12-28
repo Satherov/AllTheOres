@@ -35,7 +35,7 @@ public class ATOItemModelProvider extends net.neoforged.neoforge.client.model.ge
                     }
                 });
 
-        ATOSetHelper.applyToIngot(group -> withExistingParent(group.MOLTEN_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket_drip"))
+        ATOSetHelper.applyToFluid(group -> withExistingParent(group.MOLTEN_BUCKET.getId().getPath(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket_drip"))
                 .customLoader(DynamicFluidContainerModelBuilder::begin)
                 .fluid(group.MOLTEN.get()));
     }

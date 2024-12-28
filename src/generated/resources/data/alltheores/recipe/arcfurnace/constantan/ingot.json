@@ -8,16 +8,25 @@
   "type": "immersiveengineering:arc_furnace",
   "additives": [
     {
-      "tag": "c:ingots/nickel"
+      "basePredicate": {
+        "tag": "c:ingots/nickel"
+      },
+      "count": 2
     }
   ],
   "energy": 51200,
   "input": {
-    "tag": "c:ingots/copper"
+    "basePredicate": {
+      "tag": "c:ingots/copper"
+    },
+    "count": 2
   },
   "results": [
     {
-      "item": "alltheores:constantan_ingot"
+      "basePredicate": {
+        "item": "alltheores:constantan_ingot"
+      },
+      "count": 5
     }
   ],
   "time": 100

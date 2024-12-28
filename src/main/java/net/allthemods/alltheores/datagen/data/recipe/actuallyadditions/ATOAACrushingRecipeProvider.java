@@ -14,9 +14,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
+public class ATOAACrushingRecipeProvider extends CrushingRecipeGenerator {
 
-    public ATOCrushingRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public ATOAACrushingRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }
 
@@ -26,7 +26,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        ATOSetHelper.applyToAlloy( set -> {
+        ATOSetHelper.applyToAlloy(set -> {
             // Ingot -> Dust
             new CrushingBuilder(
                     Ingredient.of(set.INGOT_TAG),
@@ -34,7 +34,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
                     .save(recipeOutput, crushingRecipeDir(String.format("%s/from_dust", set.name)));
         });
 
-        ATOSetHelper.applyToIngot( set -> {
+        ATOSetHelper.applyToIngot(set -> {
             // Ore -> Dust
             new CrushingBuilder(
                     Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
@@ -48,7 +48,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
                     new CrushingRecipe.CrushingResult(new ItemStack(set.DUST, 1), 1.0f)
             );
             if (ATORegistry.getByproducts().containsKey(set.RAW.get())) {
-                rawBuilder.addResult2( new CrushingRecipe.CrushingResult(new ItemStack(ATORegistry.getByproducts().get(set.RAW.get()).first, 1), ATORegistry.getByproducts().get(set.RAW.get()).second));
+                rawBuilder.addResult2(new CrushingRecipe.CrushingResult(new ItemStack(ATORegistry.getByproducts().get(set.RAW.get()).first, 1), ATORegistry.getByproducts().get(set.RAW.get()).second));
             }
             rawBuilder.save(recipeOutput, crushingRecipeDir(String.format("%s/from_raw", set.name)));
 
@@ -59,7 +59,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
                     .save(recipeOutput, crushingRecipeDir(String.format("%s/from_raw_block", set.name)));
         });
 
-        ATOSetHelper.applyToGem( set -> {
+        ATOSetHelper.applyToGem(set -> {
             // Ore -> Gem
             new CrushingBuilder(
                     Ingredient.of(set.ORES.ORE_BLOCK_ITEM_TAG),
@@ -74,7 +74,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
                     .save(recipeOutput, crushingRecipeDir(String.format("%s/from_gem", set.name)));
         });
 
-        ATOSetHelper.applyToVanillaIngot( set -> {
+        ATOSetHelper.applyToVanillaIngot(set -> {
             // Ingot -> Dust
             new CrushingBuilder(
                     Ingredient.of(set.INGOT_TAG),
@@ -82,7 +82,7 @@ public class ATOCrushingRecipeProvider extends CrushingRecipeGenerator {
                     .save(recipeOutput, crushingRecipeDir(String.format("%s/from_ingot", set.name)));
         });
 
-        ATOSetHelper.applyToVanillaGem( set -> {
+        ATOSetHelper.applyToVanillaGem(set -> {
             // Gem -> Dust
             new CrushingBuilder(
                     Ingredient.of(set.GEM_TAG),

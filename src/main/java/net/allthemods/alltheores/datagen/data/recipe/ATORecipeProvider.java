@@ -1,9 +1,9 @@
 package net.allthemods.alltheores.datagen.data.recipe;
 
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATORegistry;
 import net.allthemods.alltheores.registry.ATOTagRegistry;
-import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -16,26 +16,26 @@ import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ATORecipeProvider extends RecipeProvider{
+public class ATORecipeProvider extends RecipeProvider {
 
     public ATORecipeProvider(PackOutput packOutput, CompletableFuture<Provider> provider) {
         super(packOutput, provider);
     }
 
     private ResourceLocation smeltingRecipeDir(String type, String name) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" +  type + "_smelting");
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" + type + "_smelting");
     }
 
     private ResourceLocation blastingRecipeDir(String type, String name) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" +  type + "_blasting");
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "smelting/" + name + "/" + type + "_blasting");
     }
 
     private ResourceLocation shapelessIORecipeDir(String typeIn, String name, String typeOut) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" +  typeOut + "_from_" + typeIn);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" + typeOut + "_from_" + typeIn);
     }
 
     private ResourceLocation shapelessRecipeDir(String name, String type) {
-        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" +  type);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "crafting/" + name + "/" + type);
     }
 
     private ResourceLocation hammerRecipeDir(String typeIn, String name, String typeOut) {
@@ -110,8 +110,8 @@ public class ATORecipeProvider extends RecipeProvider{
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        
-        ATOSetHelper.applyToVanillaIngot( set -> {
+
+        ATOSetHelper.applyToVanillaIngot(set -> {
 
             // ##### Hammer #####
 
@@ -148,7 +148,7 @@ public class ATORecipeProvider extends RecipeProvider{
                     .save(recipeOutput, shapelessRecipeDir(set.name, "plate"));
         });
 
-        ATOSetHelper.applyToVanillaGem( set -> {
+        ATOSetHelper.applyToVanillaGem(set -> {
 
             // ##### Hammer #####
 
@@ -173,7 +173,7 @@ public class ATORecipeProvider extends RecipeProvider{
                     .save(recipeOutput, shapelessRecipeDir(set.name, "plate"));
         });
 
-        ATOSetHelper.applyToVanillaDebris( set -> {
+        ATOSetHelper.applyToVanillaDebris(set -> {
 
             // ##### Hammer #####
 
@@ -261,7 +261,7 @@ public class ATORecipeProvider extends RecipeProvider{
                     .save(recipeOutput, smeltingRecipeDir("dust", set.name));
         });
 
-        ATOSetHelper.applyToIngot( set -> {
+        ATOSetHelper.applyToIngot(set -> {
 
             // ##### Compressing #####
 
@@ -308,7 +308,7 @@ public class ATORecipeProvider extends RecipeProvider{
                     .save(recipeOutput, smeltingRecipeDir("ore", set.name));
         });
 
-        ATOSetHelper.applyToGem( set -> {
+        ATOSetHelper.applyToGem(set -> {
 
             // ##### Compressing #####
 
@@ -329,7 +329,7 @@ public class ATORecipeProvider extends RecipeProvider{
             hammer(set.GEM_TAG, 1, set.DUST.get()).save(recipeOutput, hammerRecipeDir("gem", set.name, "dust"));
         });
 
-        ATOSetHelper.applyToDust( set -> {
+        ATOSetHelper.applyToDust(set -> {
 
             // ##### Compressing #####
 

@@ -1,6 +1,5 @@
 package net.allthemods.alltheores.registry;
 
-
 import net.allthemods.alltheores.infos.Reference;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;

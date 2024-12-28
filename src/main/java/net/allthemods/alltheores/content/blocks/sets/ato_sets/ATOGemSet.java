@@ -15,6 +15,7 @@ import static net.allthemods.alltheores.registry.ATORegistry.item;
 public class ATOGemSet extends ATOMaterialSet {
 
     private static final List<ATOGemSet> instances = new ArrayList<>();
+
     public static List<ATOGemSet> getGemSets() {
         return instances;
     }

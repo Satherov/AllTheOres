@@ -70,7 +70,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output) {
 
-        ATOSetHelper.applyToVanillaIngot( set -> {
+        ATOSetHelper.applyToVanillaIngot(set -> {
 
             // ##### Dissolution #####
 
@@ -148,7 +148,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, dustRecipeDir("raw_block", set.name));
         });
 
-        ATOSetHelper.applyToVanillaGem( set -> {
+        ATOSetHelper.applyToVanillaGem(set -> {
 
             // ##### Crushing #####
 
@@ -170,7 +170,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, enrichingRecipeDir("dust", set.name));
         });
 
-        ATOSetHelper.applyToVanillaDebris( set -> {
+        ATOSetHelper.applyToVanillaDebris(set -> {
 
             // ##### Crushing #####
 
@@ -180,7 +180,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, dustRecipeDir("ingot", set.name));
         });
 
-        ATOSetHelper.applyToAlloy( set -> {
+        ATOSetHelper.applyToAlloy(set -> {
 
             // ##### Crushing ####
 
@@ -190,7 +190,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, dustRecipeDir("ingot", set.name));
         });
 
-        ATOSetHelper.applyToIngot( set -> {
+        ATOSetHelper.applyToIngot(set -> {
 
             // ##### Dissolution #####
 
@@ -260,7 +260,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, dustRecipeDir("raw_block", set.name));
         });
 
-        ATOSetHelper.applyToGem( set -> {
+        ATOSetHelper.applyToGem(set -> {
 
             // ##### Crushing #####
 
@@ -282,7 +282,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, enrichingRecipeDir("dust", set.name));
         });
 
-        ATOSetHelper.applyToDust( set -> {
+        ATOSetHelper.applyToDust(set -> {
             // ##### Enriching #####
 
             // Ore -> Dust
@@ -291,7 +291,7 @@ public class ATOMekanismRecipeProvider extends RecipeProvider {
                     .build(output, enrichingRecipeDir("ore", set.name));
         });
 
-        ATOSetHelper.applyToMekanism( set -> {
+        ATOSetHelper.applyToMekanism(set -> {
 
             // ##### Washing #####
 

@@ -22,6 +22,7 @@ import static net.allthemods.alltheores.registry.ATORegistry.item;
 public class ATOMaterialSet extends BlockSet {
 
     private static final List<ATOMaterialSet> instances = new ArrayList<>();
+
     public static List<ATOMaterialSet> getMaterialSets() {
         return instances;
     }
@@ -64,13 +65,13 @@ public class ATOMaterialSet extends BlockSet {
 
         // Items
         switch (type) {
-            case INGOT, ALLOY :
+            case INGOT, ALLOY:
                 DUST = item(String.format("%s_dust", name));
                 BLOCK = ATORegistry.BLOCKS.register(String.format("%s_block", name), () -> new Block(Block.Properties.of()
                         .strength(3.0f, 3.0f)
                         .sound(SoundType.METAL)));
                 break;
-            case GEM :
+            case GEM:
                 DUST = item(String.format("%s_dust", name));
                 BLOCK = ATORegistry.BLOCKS.register(String.format("%s_block", name), () -> new Block(Block.Properties.of()
                         .strength(3.0f, 3.0f)

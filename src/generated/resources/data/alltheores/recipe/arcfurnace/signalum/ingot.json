@@ -8,13 +8,16 @@
   "type": "immersiveengineering:arc_furnace",
   "additives": [
     {
-      "tag": "c:ingots/silver"
+      "basePredicate": {
+        "tag": "c:ingots/silver"
+      },
+      "count": 2
     },
     {
       "basePredicate": {
         "tag": "c:dusts/redstone"
       },
-      "count": 4
+      "count": 8
     }
   ],
   "energy": 51200,
@@ -22,11 +25,14 @@
     "basePredicate": {
       "tag": "c:ingots/copper"
     },
-    "count": 3
+    "count": 6
   },
   "results": [
     {
-      "item": "alltheores:signalum_ingot"
+      "basePredicate": {
+        "item": "alltheores:signalum_ingot"
+      },
+      "count": 10
     }
   ],
   "time": 100

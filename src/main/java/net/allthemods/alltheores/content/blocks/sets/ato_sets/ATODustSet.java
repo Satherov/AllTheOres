@@ -8,6 +8,7 @@ import java.util.List;
 public class ATODustSet extends ATOMaterialSet {
 
     private static final List<ATODustSet> instances = new ArrayList<>();
+
     public static List<ATODustSet> getDustSets() {
         return instances;
     }

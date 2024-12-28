@@ -1,8 +1,8 @@
 package net.allthemods.alltheores.datagen.data.tags;
 
+import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
 import net.allthemods.alltheores.registry.ATOTagRegistry;
-import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -56,14 +56,14 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
             tag(ATOTagRegistry.IN_END_STONE).add(set.END_ORE_BLOCK.get());
             tag(ATOTagRegistry.IN_ANCIENT_STONE).add(set.OTHER_ORE_BLOCK.get());
         });
-        
-        ATOSetHelper.applyToMaterial( set -> {
+
+        ATOSetHelper.applyToMaterial(set -> {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(set.BLOCK_TAG);
             tag(Tags.Blocks.STORAGE_BLOCKS).addTag(set.BLOCK_TAG);
             tag(set.BLOCK_TAG).add(set.BLOCK.get());
         });
 
-        ATOSetHelper.applyToIngot( set -> {
+        ATOSetHelper.applyToIngot(set -> {
             switch (set.ORES.hardness) {
                 case "stone":
                     tag(BlockTags.NEEDS_STONE_TOOL).addTag(set.RAW_BLOCK_TAG);
@@ -75,6 +75,10 @@ public class ATOBlockTagProvider extends BlockTagsProvider {
                     tag(BlockTags.NEEDS_DIAMOND_TOOL).addTag(set.RAW_BLOCK_TAG);
                     break;
             }
+        });
+
+        ATOSetHelper.applyToFluid(set -> {
+            tag(set.MOLTEN_BLOCK_TAG).add(set.MOLTEN_BLOCK.get());
         });
     }
 }

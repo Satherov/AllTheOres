@@ -12,6 +12,12 @@
   },
   "outputs": [
     {
+      "item": {
+        "count": 1,
+        "id": "alltheores:iridium_dust"
+      }
+    },
+    {
       "chance": 0.25,
       "item": {
         "count": 1,

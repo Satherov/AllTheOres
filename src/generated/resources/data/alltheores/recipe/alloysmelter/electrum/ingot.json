@@ -13,6 +13,9 @@
     "tag": "c:ingots/silver"
   },
   "result": {
-    "item": "alltheores:electrum_ingot"
+    "basePredicate": {
+      "item": "alltheores:electrum_ingot"
+    },
+    "count": 4
   }
 }

@@ -1,17 +1,56 @@
 {
   "values": [
-    "#c:shards/aluminum",
-    "#c:shards/lead",
-    "#c:shards/nickel",
-    "#c:shards/osmium",
-    "#c:shards/platinum",
-    "#c:shards/silver",
-    "#c:shards/tin",
-    "#c:shards/uranium",
-    "#c:shards/zinc",
-    "#c:shards/iridium",
-    "#c:shards/copper",
-    "#c:shards/iron",
-    "#c:shards/gold"
+    {
+      "id": "#c:shards/aluminum",
+      "required": false
+    },
+    {
+      "id": "#c:shards/lead",
+      "required": false
+    },
+    {
+      "id": "#c:shards/nickel",
+      "required": false
+    },
+    {
+      "id": "#c:shards/osmium",
+      "required": false
+    },
+    {
+      "id": "#c:shards/platinum",
+      "required": false
+    },
+    {
+      "id": "#c:shards/silver",
+      "required": false
+    },
+    {
+      "id": "#c:shards/tin",
+      "required": false
+    },
+    {
+      "id": "#c:shards/uranium",
+      "required": false
+    },
+    {
+      "id": "#c:shards/zinc",
+      "required": false
+    },
+    {
+      "id": "#c:shards/iridium",
+      "required": false
+    },
+    {
+      "id": "#c:shards/copper",
+      "required": false
+    },
+    {
+      "id": "#c:shards/iron",
+      "required": false
+    },
+    {
+      "id": "#c:shards/gold",
+      "required": false
+    }
   ]
 }

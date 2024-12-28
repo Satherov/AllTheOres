@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_constantan",
-    "alltheores:flowing_molten_constantan"
+    {
+      "id": "alltheores:molten_constantan",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_constantan",
+      "required": false
+    }
   ]
 }

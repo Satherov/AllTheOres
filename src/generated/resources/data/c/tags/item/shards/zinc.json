@@ -1,5 +1,8 @@
 {
   "values": [
-    "alltheores:zinc_shard"
+    {
+      "id": "alltheores:zinc_shard",
+      "required": false
+    }
   ]
 }

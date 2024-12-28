@@ -1,17 +1,56 @@
 {
   "values": [
-    "#c:clumps/aluminum",
-    "#c:clumps/lead",
-    "#c:clumps/nickel",
-    "#c:clumps/osmium",
-    "#c:clumps/platinum",
-    "#c:clumps/silver",
-    "#c:clumps/tin",
-    "#c:clumps/uranium",
-    "#c:clumps/zinc",
-    "#c:clumps/iridium",
-    "#c:clumps/copper",
-    "#c:clumps/iron",
-    "#c:clumps/gold"
+    {
+      "id": "#c:clumps/aluminum",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/lead",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/nickel",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/osmium",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/platinum",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/silver",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/tin",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/uranium",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/zinc",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/iridium",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/copper",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/iron",
+      "required": false
+    },
+    {
+      "id": "#c:clumps/gold",
+      "required": false
+    }
   ]
 }

@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_uranium",
-    "alltheores:flowing_molten_uranium"
+    {
+      "id": "alltheores:molten_uranium",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_uranium",
+      "required": false
+    }
   ]
 }

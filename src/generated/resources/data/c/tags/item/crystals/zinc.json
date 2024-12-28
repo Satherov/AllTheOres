@@ -1,5 +1,8 @@
 {
   "values": [
-    "alltheores:zinc_crystal"
+    {
+      "id": "alltheores:zinc_crystal",
+      "required": false
+    }
   ]
 }

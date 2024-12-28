@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_invar",
-    "alltheores:flowing_molten_invar"
+    {
+      "id": "alltheores:molten_invar",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_invar",
+      "required": false
+    }
   ]
 }

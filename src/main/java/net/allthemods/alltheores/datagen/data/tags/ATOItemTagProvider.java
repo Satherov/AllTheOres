@@ -96,14 +96,14 @@ public class ATOItemTagProvider extends ItemTagsProvider {
         });
 
         ATOSetHelper.applyToMekanism(group -> {
-            tag(ATOTagRegistry.CRYSTALS).addTag(group.CRYSTAL_TAG);
-            tag(group.CRYSTAL_TAG).add(group.CRYSTAL.get());
-            tag(ATOTagRegistry.SHARDS).addTag(group.SHARD_TAG);
-            tag(group.SHARD_TAG).add(group.SHARD.get());
-            tag(ATOTagRegistry.CLUMPS).addTag(group.CLUMP_TAG);
-            tag(group.CLUMP_TAG).add(group.CLUMP.get());
-            tag(ATOTagRegistry.DIRTY_DUSTS).addTag(group.DIRTY_DUST_TAG);
-            tag(group.DIRTY_DUST_TAG).add(group.DIRTY_DUST.get());
+            tag(ATOTagRegistry.CRYSTALS).addOptionalTag(group.CRYSTAL_TAG);
+            tag(group.CRYSTAL_TAG).addOptional(group.CRYSTAL.getId());
+            tag(ATOTagRegistry.SHARDS).addOptionalTag(group.SHARD_TAG);
+            tag(group.SHARD_TAG).addOptional(group.SHARD.getId());
+            tag(ATOTagRegistry.CLUMPS).addOptionalTag(group.CLUMP_TAG);
+            tag(group.CLUMP_TAG).addOptional(group.CLUMP.getId());
+            tag(ATOTagRegistry.DIRTY_DUSTS).addOptionalTag(group.DIRTY_DUST_TAG);
+            tag(group.DIRTY_DUST_TAG).addOptional(group.DIRTY_DUST.getId());
         });
     }
 }

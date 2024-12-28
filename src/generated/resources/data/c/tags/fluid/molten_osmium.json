@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_osmium",
-    "alltheores:flowing_molten_osmium"
+    {
+      "id": "alltheores:molten_osmium",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_osmium",
+      "required": false
+    }
   ]
 }

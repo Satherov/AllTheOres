@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_lead",
-    "alltheores:flowing_molten_lead"
+    {
+      "id": "alltheores:molten_lead",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_lead",
+      "required": false
+    }
   ]
 }

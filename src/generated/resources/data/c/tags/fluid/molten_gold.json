@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_gold",
-    "alltheores:flowing_molten_gold"
+    {
+      "id": "alltheores:molten_gold",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_gold",
+      "required": false
+    }
   ]
 }

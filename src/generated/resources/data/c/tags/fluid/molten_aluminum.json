@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_aluminum",
-    "alltheores:flowing_molten_aluminum"
+    {
+      "id": "alltheores:molten_aluminum",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_aluminum",
+      "required": false
+    }
   ]
 }

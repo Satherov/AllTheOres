@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_electrum",
-    "alltheores:flowing_molten_electrum"
+    {
+      "id": "alltheores:molten_electrum",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_electrum",
+      "required": false
+    }
   ]
 }

@@ -19,8 +19,6 @@ public class ATOFluidTagProvider extends FluidTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        ATOSetHelper.applyToFluid(set -> {
-            tag(set.MOLTEN_FLUID_TAG).add(set.MOLTEN.get(), set.MOLTEN_FLOWING.get());
-        });
+        ATOSetHelper.applyToFluid(set -> tag(set.MOLTEN_FLUID_TAG).addOptional(set.MOLTEN.getId()).addOptional(set.MOLTEN_FLOWING.getId()));
     }
 }

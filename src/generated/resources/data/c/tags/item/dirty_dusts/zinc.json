@@ -1,5 +1,8 @@
 {
   "values": [
-    "alltheores:dirty_zinc_dust"
+    {
+      "id": "alltheores:dirty_zinc_dust",
+      "required": false
+    }
   ]
 }

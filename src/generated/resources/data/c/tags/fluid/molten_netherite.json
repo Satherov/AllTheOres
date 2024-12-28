@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_netherite",
-    "alltheores:flowing_molten_netherite"
+    {
+      "id": "alltheores:molten_netherite",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_netherite",
+      "required": false
+    }
   ]
 }

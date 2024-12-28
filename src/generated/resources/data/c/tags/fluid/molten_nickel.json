@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_nickel",
-    "alltheores:flowing_molten_nickel"
+    {
+      "id": "alltheores:molten_nickel",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_nickel",
+      "required": false
+    }
   ]
 }

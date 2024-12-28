@@ -1,17 +1,56 @@
 {
   "values": [
-    "#c:dirty_dusts/aluminum",
-    "#c:dirty_dusts/lead",
-    "#c:dirty_dusts/nickel",
-    "#c:dirty_dusts/osmium",
-    "#c:dirty_dusts/platinum",
-    "#c:dirty_dusts/silver",
-    "#c:dirty_dusts/tin",
-    "#c:dirty_dusts/uranium",
-    "#c:dirty_dusts/zinc",
-    "#c:dirty_dusts/iridium",
-    "#c:dirty_dusts/copper",
-    "#c:dirty_dusts/iron",
-    "#c:dirty_dusts/gold"
+    {
+      "id": "#c:dirty_dusts/aluminum",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/lead",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/nickel",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/osmium",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/platinum",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/silver",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/tin",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/uranium",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/zinc",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/iridium",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/copper",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/iron",
+      "required": false
+    },
+    {
+      "id": "#c:dirty_dusts/gold",
+      "required": false
+    }
   ]
 }

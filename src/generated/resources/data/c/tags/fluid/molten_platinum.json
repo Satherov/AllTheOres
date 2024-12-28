@@ -1,6 +1,12 @@
 {
   "values": [
-    "alltheores:molten_platinum",
-    "alltheores:flowing_molten_platinum"
+    {
+      "id": "alltheores:molten_platinum",
+      "required": false
+    },
+    {
+      "id": "alltheores:flowing_molten_platinum",
+      "required": false
+    }
   ]
 }

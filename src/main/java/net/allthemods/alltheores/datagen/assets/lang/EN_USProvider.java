@@ -25,10 +25,15 @@ public class EN_USProvider extends ATOLanguageProvider {
 
         ATOSetHelper.applyToOre(set -> {
             add(set.STONE_ORE_BLOCK.get(), String.format("%s Ore", format(set.name)));
+            add(set.STONE_ORE_BLOCK_ITEM.get().getDescriptionId() + ".tooltip", "§6Found between Y " + set.minY + " and Y " + set.maxY);
             add(set.SLATE_ORE_BLOCK.get(), String.format("Deepslate %s Ore", format(set.name)));
+            add(set.SLATE_ORE_BLOCK_ITEM.get().getDescriptionId() + ".tooltip", "§6Found between Y " + set.minY + " and Y " + set.maxY);
             add(set.NETHER_ORE_BLOCK.get(), String.format("Nether %s Ore", format(set.name)));
+            add(set.NETHER_ORE_BLOCK_ITEM.get().getDescriptionId() + ".tooltip", "§6Found between Y " + set.minY + " and Y " + set.maxY);
             add(set.END_ORE_BLOCK.get(), String.format("End %s Ore", format(set.name)));
+            add(set.END_ORE_BLOCK_ITEM.get().getDescriptionId() + ".tooltip", "§6Found between Y " + set.minY + " and Y " + set.maxY);
             add(set.OTHER_ORE_BLOCK.get(), String.format("Other %s Ore", format(set.name)));
+            add(set.OTHER_ORE_BLOCK_ITEM.get().getDescriptionId() + ".tooltip", "§6Found between Y " + set.minY + " and Y " + set.maxY);
         });
 
         ATOSetHelper.applyToMaterial(set -> add(set.BLOCK.get(), String.format("%s Block", format(set.name))));

@@ -39,6 +39,7 @@ public final class ATODataGenerators {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
+        if (!event.getModContainer().getModId().equals(Reference.MOD_ID)) return;
 
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();

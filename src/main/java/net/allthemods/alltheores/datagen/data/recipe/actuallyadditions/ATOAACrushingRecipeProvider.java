@@ -1,6 +1,6 @@
 package net.allthemods.alltheores.datagen.data.recipe.actuallyadditions;
 
-import de.ellpeck.actuallyadditions.data.CrushingRecipeGenerator;
+import de.ellpeck.actuallyadditions.data.CrushingRecipeGenerator.CrushingBuilder;
 import de.ellpeck.actuallyadditions.mod.crafting.CrushingRecipe;
 import net.allthemods.alltheores.content.blocks.sets.ATOSetHelper;
 import net.allthemods.alltheores.infos.Reference;
@@ -8,13 +8,14 @@ import net.allthemods.alltheores.registry.ATORegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ATOAACrushingRecipeProvider extends CrushingRecipeGenerator {
+public class ATOAACrushingRecipeProvider extends RecipeProvider {
 
     public ATOAACrushingRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
